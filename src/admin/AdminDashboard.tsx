@@ -36,7 +36,7 @@ export const AdminDashboard: React.FC = () => {
       />
 
       {/* Main Admin Content Container */}
-      <main className="flex-1 max-w-[1720px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 py-6 sm:py-8">
+      <main className="flex-1 max-w-[1920px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 py-6 sm:py-8">
         <AnimatePresence mode="wait">
           {activeTab === 'overview' && (
             <motion.div

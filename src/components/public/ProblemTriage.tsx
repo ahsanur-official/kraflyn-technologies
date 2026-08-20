@@ -98,14 +98,14 @@ export const ProblemTriage: React.FC = () => {
 
   return (
     <section className="py-16 sm:py-24 bg-slate-50 border-b border-slate-200 relative overflow-hidden">
-      <div className="max-w-[1720px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
+      <div className="max-w-[1920px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
         
         {/* Section Header with Scroll Reveal */}
         <motion.div 
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-2xl mx-auto mb-12"
         >
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wider mb-2">
@@ -134,25 +134,25 @@ export const ProblemTriage: React.FC = () => {
                   initial={{ opacity: 0, x: -25 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: idx * 0.08 }}
-                  whileHover={{ scale: 1.015, x: 4 }}
+                  transition={{ duration: 0.4, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                  whileHover={{ scale: 1.015, x: 5 }}
                   whileTap={{ scale: 0.99 }}
                   onClick={() => setSelectedIssueId(issue.id)}
-                  className={`w-full p-4.5 rounded-2xl text-left transition-all border flex items-start justify-between gap-3 cursor-pointer ${
+                  className={`w-full p-4.5 rounded-2xl text-left border flex items-start justify-between gap-3 cursor-pointer smooth-card-transition ${
                     isSelected
-                      ? 'bg-blue-600 text-white border-blue-600 shadow-lg shadow-blue-500/25'
-                      : 'bg-white text-slate-700 border-slate-200 hover:border-blue-300 hover:bg-slate-50/80 shadow-xs'
+                      ? 'bg-blue-600 text-white border-blue-600 shadow-xl shadow-blue-500/25'
+                      : 'bg-white text-slate-700 border-slate-200 hover:border-blue-300 hover:bg-blue-50/30 shadow-xs hover:shadow-md'
                   }`}
                 >
                   <div className="flex items-start gap-3.5">
-                    <div className={`p-2.5 rounded-xl shrink-0 ${
+                    <div className={`p-2.5 rounded-xl shrink-0 transition-colors duration-300 ${
                       isSelected ? 'bg-white/20 text-white' : 'bg-blue-50 text-blue-600'
                     }`}>
                       <Icon className="w-5 h-5" />
                     </div>
 
                     <div>
-                      <span className={`text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-md inline-block mb-1.5 ${
+                      <span className={`text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-md inline-block mb-1.5 transition-colors duration-300 ${
                         isSelected ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'
                       }`}>
                         {issue.category[language]}
@@ -160,7 +160,7 @@ export const ProblemTriage: React.FC = () => {
                       <h4 className="font-bold text-sm leading-snug">
                         {issue.title[language]}
                       </h4>
-                      <p className={`text-xs mt-1 line-clamp-1 ${
+                      <p className={`text-xs mt-1 line-clamp-1 transition-colors duration-300 ${
                         isSelected ? 'text-blue-100' : 'text-slate-500'
                       }`}>
                         {issue.description[language]}
@@ -168,7 +168,7 @@ export const ProblemTriage: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className={`p-2 rounded-xl shrink-0 mt-1 transition-transform ${
+                  <div className={`p-2 rounded-xl shrink-0 mt-1 transition-all duration-300 ${
                     isSelected ? 'bg-white/20 text-white translate-x-1' : 'bg-slate-100 text-slate-400'
                   }`}>
                     <ArrowRight className="w-4 h-4" />
@@ -183,7 +183,7 @@ export const ProblemTriage: React.FC = () => {
             initial={{ opacity: 0, x: 25 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-6"
           >
             <AnimatePresence mode="wait">
@@ -192,8 +192,8 @@ export const ProblemTriage: React.FC = () => {
                 initial={{ opacity: 0, y: 15, scale: 0.98 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -15, scale: 0.98 }}
-                transition={{ duration: 0.25 }}
-                className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-xl relative overflow-hidden"
+                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                className="bg-white rounded-3xl border border-slate-200 hover:border-blue-200 p-6 sm:p-8 shadow-xl relative overflow-hidden smooth-card-transition"
               >
                 <div className="absolute top-0 right-0 w-36 h-36 bg-blue-500/10 rounded-full blur-2xl pointer-events-none" />
 
@@ -233,10 +233,11 @@ export const ProblemTriage: React.FC = () => {
 
                   <div className="flex items-center gap-2">
                     <motion.button
-                      whileHover={{ scale: 1.03 }}
+                      whileHover={{ scale: 1.03, y: -1 }}
                       whileTap={{ scale: 0.97 }}
+                      transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
                       onClick={() => addToCart(matchedService)}
-                      className="px-4 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer"
+                      className="px-4 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all duration-200 cursor-pointer shadow-xs"
                     >
                       <ShoppingBag className="w-4 h-4" />
                       <span>{t.addToCart}</span>
@@ -245,8 +246,9 @@ export const ProblemTriage: React.FC = () => {
                     <motion.button
                       whileHover={{ scale: 1.03, y: -1 }}
                       whileTap={{ scale: 0.97 }}
+                      transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
                       onClick={() => openOrderModal(matchedService)}
-                      className="px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-md shadow-blue-500/20 transition-all cursor-pointer"
+                      className="px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-200 cursor-pointer"
                     >
                       <span>{t.directOrder}</span>
                       <ArrowRight className="w-4 h-4" />

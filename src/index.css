@@ -4,7 +4,22 @@
   html {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
+  
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Custom smooth transitions & animations */
+.smooth-card-transition {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
 }
 
 /* Custom subtle scrollbar */
@@ -25,3 +40,4 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
+

@@ -68,8 +68,8 @@ export const Navbar: React.FC = () => {
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs transition-all">
         
         {/* Top Mini Banner */}
-        <div className="bg-slate-900 text-slate-300 text-xs py-1.5 px-4 sm:px-8 lg:px-12 xl:px-16 border-b border-slate-800">
-          <div className="max-w-[1720px] w-full mx-auto flex justify-between items-center">
+        <div className="bg-slate-900 text-slate-300 text-xs py-1.5 px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 border-b border-slate-800">
+          <div className="max-w-[1920px] w-full mx-auto flex justify-between items-center">
             
             <div className="flex items-center gap-2">
               <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -83,6 +83,7 @@ export const Navbar: React.FC = () => {
               <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
+                transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
                 onClick={() => setLanguage(language === 'bn' ? 'en' : 'bn')}
                 className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white font-bold text-[11px] border border-slate-700 transition-colors cursor-pointer"
                 title="Switch between বাংলা / English"
@@ -107,7 +108,7 @@ export const Navbar: React.FC = () => {
         </div>
 
         {/* Main Navbar matching exactly the user's design */}
-        <div className="max-w-[1720px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
+        <div className="max-w-[1920px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
           <div className="flex items-center justify-between h-20">
             
             {/* Edu Quest Logo */}

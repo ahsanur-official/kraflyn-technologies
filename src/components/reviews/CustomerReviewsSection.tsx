@@ -37,14 +37,14 @@ export const CustomerReviewsSection: React.FC = () => {
 
   return (
     <section id="reviews-section" className="py-16 sm:py-24 bg-slate-50 border-t border-slate-200">
-      <div className="max-w-[1720px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
+      <div className="max-w-[1920px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
         
         {/* Section Header with Scroll Reveal */}
         <motion.div 
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6"
         >
           <div>
@@ -63,10 +63,11 @@ export const CustomerReviewsSection: React.FC = () => {
           {/* Action to Write Review */}
           <div className="flex items-center gap-3">
             <motion.button
-              whileHover={{ scale: 1.03 }}
+              whileHover={{ scale: 1.03, y: -1 }}
               whileTap={{ scale: 0.97 }}
+              transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
               onClick={openWriteReviewModal}
-              className="px-5 py-2.5 bg-white hover:bg-slate-100 border border-slate-300 text-slate-800 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 shadow-xs transition-colors cursor-pointer"
+              className="px-5 py-2.5 bg-white hover:bg-slate-100 border border-slate-300 text-slate-800 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 shadow-xs hover:shadow-md transition-all cursor-pointer"
             >
               <PlusCircle className="w-4 h-4 text-blue-600" />
               <span>{t.writeReviewBtn}</span>
@@ -79,8 +80,8 @@ export const CustomerReviewsSection: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5 }}
-          className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 mb-8 shadow-xs"
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="bg-white border border-slate-200 hover:border-slate-300 rounded-3xl p-6 sm:p-8 mb-8 shadow-xs hover:shadow-lg transition-all duration-300 smooth-card-transition"
         >
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-center">
             
@@ -101,7 +102,7 @@ export const CustomerReviewsSection: React.FC = () => {
 
             {/* Metrics */}
             <div className="grid grid-cols-3 col-span-1 md:col-span-3 gap-4 text-center">
-              <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100">
+              <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100 hover:bg-blue-50/40 transition-colors duration-200">
                 <div className="text-xl sm:text-2xl font-black text-blue-600">
                   99.4%
                 </div>
@@ -111,7 +112,7 @@ export const CustomerReviewsSection: React.FC = () => {
                 <div className="text-[10px] text-slate-400">Strict Schedule</div>
               </div>
 
-              <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100">
+              <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100 hover:bg-emerald-50/40 transition-colors duration-200">
                 <div className="text-xl sm:text-2xl font-black text-emerald-600">
                   25+
                 </div>
@@ -121,7 +122,7 @@ export const CustomerReviewsSection: React.FC = () => {
                 <div className="text-[10px] text-slate-400">BUET, DU, NSU, BRAC & More</div>
               </div>
 
-              <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100">
+              <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100 hover:bg-indigo-50/40 transition-colors duration-200">
                 <div className="text-xl sm:text-2xl font-black text-indigo-600">
                   100%
                 </div>
@@ -140,6 +141,7 @@ export const CustomerReviewsSection: React.FC = () => {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="flex items-center gap-2 overflow-x-auto pb-4 scrollbar-none mb-6"
         >
           <span className="text-xs font-bold text-slate-400 uppercase tracking-wider shrink-0 flex items-center gap-1">
@@ -149,7 +151,7 @@ export const CustomerReviewsSection: React.FC = () => {
             <button
               key={cat.key}
               onClick={() => setSelectedCategory(cat.key)}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
+              className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer ${
                 selectedCategory === cat.key
                   ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
                   : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'
@@ -170,9 +172,9 @@ export const CustomerReviewsSection: React.FC = () => {
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.4, delay: (idx % 3) * 0.08 }}
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                className="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between group"
+                transition={{ duration: 0.4, delay: (idx % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ y: -6, scale: 1.012, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
+                className="bg-white rounded-2xl border border-slate-200 hover:border-blue-300/80 p-5 shadow-xs hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 flex flex-col justify-between group smooth-card-transition"
               >
                 <div>
                   {/* Header with rating & verified tag */}

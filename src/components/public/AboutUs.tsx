@@ -14,14 +14,14 @@ export const AboutUs: React.FC = () => {
 
   return (
     <div className="py-16 md:py-24 bg-white">
-      <div className="max-w-[1720px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
+      <div className="max-w-[1920px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
         
         {/* Top Header with Scroll Reveal */}
         <motion.div 
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold mb-3">
@@ -46,11 +46,11 @@ export const AboutUs: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.45, delay: 0.1 }}
-            whileHover={{ y: -6, transition: { duration: 0.2 } }}
-            className="p-7 rounded-3xl bg-slate-50 border border-slate-200 shadow-xs hover:shadow-lg transition-all"
+            transition={{ duration: 0.45, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ y: -7, scale: 1.015, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
+            className="p-7 rounded-3xl bg-slate-50 border border-slate-200 hover:border-blue-300/80 shadow-xs hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 smooth-card-transition"
           >
-            <div className="w-12 h-12 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center mb-4">
+            <div className="w-12 h-12 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110">
               <Target className="w-6 h-6" />
             </div>
             <h3 className="text-lg font-bold text-slate-900 mb-2">
@@ -67,11 +67,11 @@ export const AboutUs: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.45, delay: 0.2 }}
-            whileHover={{ y: -6, transition: { duration: 0.2 } }}
-            className="p-7 rounded-3xl bg-slate-50 border border-slate-200 shadow-xs hover:shadow-lg transition-all"
+            transition={{ duration: 0.45, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ y: -7, scale: 1.015, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
+            className="p-7 rounded-3xl bg-slate-50 border border-slate-200 hover:border-emerald-300/80 shadow-xs hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-300 smooth-card-transition"
           >
-            <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center mb-4">
+            <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110">
               <ShieldCheck className="w-6 h-6" />
             </div>
             <h3 className="text-lg font-bold text-slate-900 mb-2">
@@ -88,11 +88,11 @@ export const AboutUs: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.45, delay: 0.3 }}
-            whileHover={{ y: -6, transition: { duration: 0.2 } }}
-            className="p-7 rounded-3xl bg-slate-50 border border-slate-200 shadow-xs hover:shadow-lg transition-all"
+            transition={{ duration: 0.45, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ y: -7, scale: 1.015, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
+            className="p-7 rounded-3xl bg-slate-50 border border-slate-200 hover:border-indigo-300/80 shadow-xs hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-300 smooth-card-transition"
           >
-            <div className="w-12 h-12 rounded-2xl bg-indigo-100 text-indigo-700 flex items-center justify-center mb-4">
+            <div className="w-12 h-12 rounded-2xl bg-indigo-100 text-indigo-700 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110">
               <Award className="w-6 h-6" />
             </div>
             <h3 className="text-lg font-bold text-slate-900 mb-2">
@@ -111,7 +111,7 @@ export const AboutUs: React.FC = () => {
           initial={{ opacity: 0, scale: 0.96, y: 25 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="p-8 rounded-3xl bg-gradient-to-r from-slate-950 via-blue-950 to-slate-900 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl"
         >
           <div className="space-y-2">
@@ -123,10 +123,11 @@ export const AboutUs: React.FC = () => {
             </p>
           </div>
           <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.03, y: -1 }}
+            whileTap={{ scale: 0.96 }}
+            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
             onClick={() => openOrderModal()}
-            className="px-6 py-3.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded-xl shadow-lg shadow-blue-600/30 transition-colors shrink-0 cursor-pointer flex items-center gap-2"
+            className="px-6 py-3.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded-xl shadow-lg shadow-blue-600/30 transition-all duration-200 shrink-0 cursor-pointer flex items-center gap-2"
           >
             <Sparkles className="w-4 h-4 text-amber-300" />
             <span>{t.orderNow}</span>
