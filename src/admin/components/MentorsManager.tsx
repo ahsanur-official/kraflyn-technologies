@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
+import { MentorProfile } from '../../types';
 import { 
   UserCheck, 
   GraduationCap, 
@@ -11,78 +12,55 @@ import {
   Plus, 
   Sparkles,
   Layers,
-  Award
+  Award,
+  X
 } from 'lucide-react';
-import { motion } from 'motion/react';
-
-interface MentorProfile {
-  id: string;
-  name: string;
-  institution: string;
-  degree: string;
-  specialization: string[];
-  activeAssignedOrders: number;
-  completedOrders: number;
-  rating: number;
-  contactPhone: string;
-  status: 'available' | 'busy' | 'on_leave';
-}
-
-const INITIAL_MENTORS: MentorProfile[] = [
-  {
-    id: 'm-1',
-    name: 'Engr. Tanvir Ahmed',
-    institution: 'BUET (CSE 17)',
-    degree: 'B.Sc in Computer Science & Engineering',
-    specialization: ['Data Structures', 'Algorithms', 'Web & Mobile Systems', 'C/C++/Java'],
-    activeAssignedOrders: 3,
-    completedOrders: 48,
-    rating: 4.9,
-    contactPhone: '+880 1711-000111',
-    status: 'available'
-  },
-  {
-    id: 'm-2',
-    name: 'Dr. Shahriar Hasan',
-    institution: 'Dhaka University (Applied Statistics & DS)',
-    degree: 'M.Sc & Ph.D in Applied Statistics',
-    specialization: ['Research Methodology', 'SPSS/R/Stata Analysis', 'Thesis Guidance', 'Econometrics'],
-    activeAssignedOrders: 2,
-    completedOrders: 62,
-    rating: 5.0,
-    contactPhone: '+880 1711-000222',
-    status: 'available'
-  },
-  {
-    id: 'm-3',
-    name: 'Nusrat Jahan, M.Eng',
-    institution: 'SUST (SWE)',
-    degree: 'B.Sc in Software Engineering',
-    specialization: ['Python / AI / ML', 'Database (SQL/NoSQL)', 'Fullstack Projects', 'React/Node'],
-    activeAssignedOrders: 4,
-    completedOrders: 39,
-    rating: 4.8,
-    contactPhone: '+880 1711-000333',
-    status: 'busy'
-  },
-  {
-    id: 'm-4',
-    name: 'Arif Chowdhury, MBA',
-    institution: 'IBA, University of Dhaka',
-    degree: 'MBA in Finance & Supply Chain',
-    specialization: ['Business Case Studies', 'Financial Modeling', 'Report Writing', 'Economics'],
-    activeAssignedOrders: 1,
-    completedOrders: 55,
-    rating: 4.9,
-    contactPhone: '+880 1711-000444',
-    status: 'available'
-  }
-];
+import { motion, AnimatePresence } from 'motion/react';
 
 export const MentorsManager: React.FC = () => {
-  const { language, showToast } = useApp();
-  const [mentors, setMentors] = useState<MentorProfile[]>(INITIAL_MENTORS);
-  const [filterSpecialty, setFilterSpecialty] = useState('All');
+  const { mentors, registerMentor, updateMentorStatus, language, showToast } = useApp();
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [newMentor, setNewMentor] = useState({
+    name: '',
+    institution: '',
+    degree: '',
+    specialization: '',
+    contactPhone: '',
+    status: 'available' as MentorProfile['status']
+  });
+
+  const handleAddMentor = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newMentor.name || !newMentor.institution) {
+      showToast(language === 'bn' ? 'দয়া করে নাম ও বিশ্ববিদ্যালয় উল্লেখ করুন' : 'Please provide name and institution');
+      return;
+    }
+
+    const specs = newMentor.specialization
+      .split(',')
+      .map(s => s.trim())
+      .filter(Boolean);
+
+    registerMentor({
+      name: newMentor.name,
+      institution: newMentor.institution,
+      degree: newMentor.degree || 'Academic Specialist',
+      specialization: specs.length ? specs : ['Academic Mentorship', 'Problem Solving'],
+      contactPhone: newMentor.contactPhone || '+880 1711-000000',
+      status: newMentor.status
+    });
+
+    setIsAddModalOpen(false);
+    setNewMentor({
+      name: '',
+      institution: '',
+      degree: '',
+      specialization: '',
+      contactPhone: '',
+      status: 'available'
+    });
+    showToast(language === 'bn' ? 'নতুন মেন্টর সফলভাবে যুক্ত হয়েছে' : 'New mentor added successfully');
+  };
 
   return (
     <div className="space-y-6">
@@ -104,7 +82,7 @@ export const MentorsManager: React.FC = () => {
         </div>
 
         <button
-          onClick={() => showToast(language === 'bn' ? 'নতুন মেন্টর অনবোর্ডিং ফর্ম ওপেন করা হয়েছে' : 'Mentor onboarding form opened')}
+          onClick={() => setIsAddModalOpen(true)}
           className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-xs flex items-center gap-1.5 shadow-md shadow-blue-500/20 cursor-pointer"
         >
           <Plus className="w-4 h-4" />
@@ -139,13 +117,21 @@ export const MentorsManager: React.FC = () => {
                   </div>
                 </div>
 
-                <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider ${
-                  mentor.status === 'available'
-                    ? 'bg-emerald-100 text-emerald-800 border border-emerald-200'
-                    : 'bg-amber-100 text-amber-800 border border-amber-200'
-                }`}>
-                  {mentor.status === 'available' ? '🟢 Available' : '🟡 Active Load'}
-                </span>
+                <select
+                  value={mentor.status}
+                  onChange={(e) => updateMentorStatus(mentor.id, e.target.value as MentorProfile['status'])}
+                  className={`px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider border cursor-pointer ${
+                    mentor.status === 'available'
+                      ? 'bg-emerald-100 text-emerald-800 border-emerald-200'
+                      : mentor.status === 'busy'
+                      ? 'bg-amber-100 text-amber-800 border-amber-200'
+                      : 'bg-slate-100 text-slate-700 border-slate-200'
+                  }`}
+                >
+                  <option value="available">🟢 Available</option>
+                  <option value="busy">🟡 Busy</option>
+                  <option value="on_leave">⚪ On Leave</option>
+                </select>
               </div>
 
               {/* Specialization Tags */}
@@ -168,16 +154,16 @@ export const MentorsManager: React.FC = () => {
               <div className="flex items-center gap-4">
                 <div>
                   <span className="text-slate-400 text-[10px] block">{language === 'bn' ? 'চলমান কাজ' : 'Active Orders'}</span>
-                  <span className="font-black text-blue-700 text-sm">{mentor.activeAssignedOrders}</span>
+                  <span className="font-black text-blue-700 text-sm">{mentor.activeAssignedOrders || 0}</span>
                 </div>
                 <div>
                   <span className="text-slate-400 text-[10px] block">{language === 'bn' ? 'সম্পন্ন কাজ' : 'Completed'}</span>
-                  <span className="font-black text-slate-800 text-sm">{mentor.completedOrders}</span>
+                  <span className="font-black text-slate-800 text-sm">{mentor.completedOrders || 0}</span>
                 </div>
                 <div>
                   <span className="text-slate-400 text-[10px] block">{language === 'bn' ? 'রেটিং' : 'Rating'}</span>
                   <span className="font-black text-amber-600 text-sm flex items-center gap-0.5">
-                    ★ {mentor.rating}
+                    ★ {mentor.rating || 5.0}
                   </span>
                 </div>
               </div>
@@ -196,6 +182,122 @@ export const MentorsManager: React.FC = () => {
           </motion.div>
         ))}
       </div>
+
+      {/* Add Mentor Modal */}
+      <AnimatePresence>
+        {isAddModalOpen && (
+          <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-200"
+            >
+              <div className="flex items-center justify-between pb-4 border-b border-slate-100">
+                <h3 className="font-bold text-slate-900 text-base">
+                  {language === 'bn' ? 'নতুন মেন্টর তথ্য যুক্ত করুন' : 'Add New Mentor Profile'}
+                </h3>
+                <button
+                  onClick={() => setIsAddModalOpen(false)}
+                  className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              <form onSubmit={handleAddMentor} className="space-y-4 pt-4 text-xs">
+                <div>
+                  <label className="font-bold text-slate-700 block mb-1">Mentor Name *</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. Engr. Tahmidul Islam"
+                    value={newMentor.name}
+                    onChange={e => setNewMentor({ ...newMentor, name: e.target.value })}
+                    className="w-full px-3 py-2 border border-slate-300 rounded-xl bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="font-bold text-slate-700 block mb-1">Institution *</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. BUET (CSE)"
+                      value={newMentor.institution}
+                      onChange={e => setNewMentor({ ...newMentor, institution: e.target.value })}
+                      className="w-full px-3 py-2 border border-slate-300 rounded-xl bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="font-bold text-slate-700 block mb-1">Degree / Role</label>
+                    <input
+                      type="text"
+                      placeholder="e.g. B.Sc in CSE"
+                      value={newMentor.degree}
+                      onChange={e => setNewMentor({ ...newMentor, degree: e.target.value })}
+                      className="w-full px-3 py-2 border border-slate-300 rounded-xl bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="font-bold text-slate-700 block mb-1">Specialization (Comma separated)</label>
+                  <input
+                    type="text"
+                    placeholder="e.g. C++, Data Structures, Machine Learning, Web"
+                    value={newMentor.specialization}
+                    onChange={e => setNewMentor({ ...newMentor, specialization: e.target.value })}
+                    className="w-full px-3 py-2 border border-slate-300 rounded-xl bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="font-bold text-slate-700 block mb-1">Phone / WhatsApp</label>
+                    <input
+                      type="text"
+                      placeholder="+880 1711-..."
+                      value={newMentor.contactPhone}
+                      onChange={e => setNewMentor({ ...newMentor, contactPhone: e.target.value })}
+                      className="w-full px-3 py-2 border border-slate-300 rounded-xl bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="font-bold text-slate-700 block mb-1">Initial Status</label>
+                    <select
+                      value={newMentor.status}
+                      onChange={e => setNewMentor({ ...newMentor, status: e.target.value as MentorProfile['status'] })}
+                      className="w-full px-3 py-2 border border-slate-300 rounded-xl bg-slate-50 font-bold"
+                    >
+                      <option value="available">🟢 Available</option>
+                      <option value="busy">🟡 Busy</option>
+                      <option value="on_leave">⚪ On Leave</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="pt-2 flex justify-end gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setIsAddModalOpen(false)}
+                    className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl font-bold"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold shadow-md shadow-blue-500/20"
+                  >
+                    Save Mentor
+                  </button>
+                </div>
+              </form>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
 
     </div>
   );

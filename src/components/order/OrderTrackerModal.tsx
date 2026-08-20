@@ -18,6 +18,8 @@ export const OrderTrackerModal: React.FC = () => {
     closeOrderTracker, 
     orders, 
     selectedOrderIdForTracking,
+    recentTrackedIds,
+    addRecentTrackedId,
     language,
     t 
   } = useApp();
@@ -31,7 +33,35 @@ export const OrderTrackerModal: React.FC = () => {
   });
   const [errorMsg, setErrorMsg] = useState('');
 
+  // Synchronize when selectedOrderIdForTracking or modal opens
+  React.useEffect(() => {
+    if (orderTrackerOpen) {
+      if (selectedOrderIdForTracking) {
+        setSearchQuery(selectedOrderIdForTracking);
+        const match = orders.find(o => o.id === selectedOrderIdForTracking);
+        if (match) {
+          setSearchedOrder(match);
+          setErrorMsg('');
+        }
+      } else if (orders.length > 0 && !searchedOrder) {
+        setSearchedOrder(orders[0]);
+      }
+    }
+  }, [orderTrackerOpen, selectedOrderIdForTracking, orders]);
+
   if (!orderTrackerOpen) return null;
+
+  const handleSelectRecent = (orderId: string) => {
+    setSearchQuery(orderId);
+    setErrorMsg('');
+    const found = orders.find(o => o.id.toLowerCase() === orderId.toLowerCase());
+    if (found) {
+      setSearchedOrder(found);
+      addRecentTrackedId(found.id);
+    } else {
+      setErrorMsg(language === 'bn' ? 'অর্ডারটি সিস্টেমে পাওয়া যায়নি।' : 'Order not found.');
+    }
+  };
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,6 +80,7 @@ export const OrderTrackerModal: React.FC = () => {
 
     if (found) {
       setSearchedOrder(found);
+      addRecentTrackedId(found.id);
       setErrorMsg('');
     } else {
       setErrorMsg(language === 'bn' ? 'কোনো অর্ডার পাওয়া যায়নি। সঠিক Order ID বা ফোন নম্বর দিন।' : 'No order found with this ID or phone number.');
@@ -144,6 +175,29 @@ export const OrderTrackerModal: React.FC = () => {
               {t.searchBtn}
             </button>
           </form>
+
+          {/* Quick Select Recent Orders */}
+          {recentTrackedIds.length > 0 && (
+            <div className="mt-3 flex items-center gap-1.5 flex-wrap">
+              <span className="text-[11px] font-bold text-slate-500">
+                {language === 'bn' ? 'সম্প্রতি দেখা অর্ডার:' : 'Recent Orders:'}
+              </span>
+              {recentTrackedIds.slice(0, 4).map((id) => (
+                <button
+                  key={id}
+                  type="button"
+                  onClick={() => handleSelectRecent(id)}
+                  className={`px-2 py-0.5 rounded-lg text-[11px] font-mono font-bold transition-all cursor-pointer ${
+                    searchedOrder?.id === id
+                      ? 'bg-blue-600 text-white shadow-xs'
+                      : 'bg-white text-slate-700 border border-slate-200 hover:border-blue-300 hover:bg-blue-50'
+                  }`}
+                >
+                  {id}
+                </button>
+              ))}
+            </div>
+          )}
 
           {errorMsg && (
             <div className="mt-2 text-xs text-rose-600 flex items-center gap-1.5">

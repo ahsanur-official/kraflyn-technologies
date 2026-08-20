@@ -26,26 +26,41 @@ export const OrderModal: React.FC = () => {
     cartItems, 
     cartTotal, 
     placeOrder,
+    userProfile,
+    updateUserProfile,
     language,
     t 
   } = useApp();
 
-  const [customerName, setCustomerName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [whatsapp, setWhatsapp] = useState('');
+  const [customerName, setCustomerName] = useState(userProfile.name || '');
+  const [phone, setPhone] = useState(userProfile.phone || '');
+  const [whatsapp, setWhatsapp] = useState(userProfile.whatsapp || '');
   const [sameAsPhone, setSameAsPhone] = useState(true);
-  const [university, setUniversity] = useState(UNIVERSITIES[0]);
-  const [customUni, setCustomUni] = useState('');
-  const [department, setDepartment] = useState(DEPARTMENTS[0]);
-  const [batchOrSemester, setBatchOrSemester] = useState('3rd Year / 6th Semester');
+  const [university, setUniversity] = useState(userProfile.university || UNIVERSITIES[0]);
+  const [customUni, setCustomUni] = useState(userProfile.customUni || '');
+  const [department, setDepartment] = useState(userProfile.department || DEPARTMENTS[0]);
+  const [batchOrSemester, setBatchOrSemester] = useState(userProfile.batchOrSemester || '3rd Year / 6th Semester');
   const [courseName, setCourseName] = useState('');
   const [courseCode, setCourseCode] = useState('');
   const [requirements, setRequirements] = useState('');
   const [deadline, setDeadline] = useState('');
-  const [preferredContact, setPreferredContact] = useState<'WhatsApp' | 'Phone Call' | 'Google Meet' | 'Email'>('WhatsApp');
+  const [preferredContact, setPreferredContact] = useState<'WhatsApp' | 'Phone Call' | 'Google Meet' | 'Email'>(userProfile.preferredContact || 'WhatsApp');
   const [attachments, setAttachments] = useState<AttachmentFile[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  // Sync state when userProfile or modal opens
+  React.useEffect(() => {
+    if (orderModalOpen) {
+      if (!customerName && userProfile.name) setCustomerName(userProfile.name);
+      if (!phone && userProfile.phone) setPhone(userProfile.phone);
+      if (!whatsapp && userProfile.whatsapp) setWhatsapp(userProfile.whatsapp);
+      if (userProfile.university) setUniversity(userProfile.university);
+      if (userProfile.department) setDepartment(userProfile.department);
+      if (userProfile.batchOrSemester) setBatchOrSemester(userProfile.batchOrSemester);
+      if (userProfile.preferredContact) setPreferredContact(userProfile.preferredContact);
+    }
+  }, [orderModalOpen, userProfile]);
 
   if (!orderModalOpen) return null;
 

@@ -42,7 +42,7 @@ export const AdminNavbar: React.FC<AdminNavbarProps> = ({ activeTab, setActiveTa
 
   return (
     <header className="bg-slate-900 border-b border-slate-800 text-white sticky top-0 z-30 shadow-xl">
-      <div className="max-w-[1920px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
+      <div className="max-w-[1920px] w-full mx-auto px-3 sm:px-6 md:px-8 lg:px-10 xl:px-12">
         
         {/* Top Tier: Brand, Live Badge & Global Controls */}
         <div className="py-3.5 flex items-center justify-between gap-4 border-b border-slate-800/80">

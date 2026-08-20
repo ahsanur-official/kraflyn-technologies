@@ -22,21 +22,21 @@ export const EduQuestLogo: React.FC<EduQuestLogoProps> = ({
   };
 
   const titleSizes = {
-    sm: 'text-lg',
-    md: 'text-2xl',
-    lg: 'text-3xl',
-    xl: 'text-4xl'
+    sm: 'text-base sm:text-lg',
+    md: 'text-xl sm:text-2xl',
+    lg: 'text-2xl sm:text-3xl',
+    xl: 'text-3xl sm:text-4xl'
   };
 
   const sloganSizes = {
-    sm: 'text-[8px] tracking-wider',
-    md: 'text-[9px] tracking-widest',
-    lg: 'text-[11px] tracking-[0.2em]',
-    xl: 'text-xs tracking-[0.25em]'
+    sm: 'text-[7px] sm:text-[8px] tracking-wider',
+    md: 'text-[8px] sm:text-[9px] tracking-wider sm:tracking-widest',
+    lg: 'text-[9px] sm:text-[11px] tracking-[0.15em] sm:tracking-[0.2em]',
+    xl: 'text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.25em]'
   };
 
   return (
-    <div className={`flex items-center gap-3 select-none ${className}`}>
+    <div className={`flex items-center gap-2 sm:gap-3 select-none shrink-0 ${className}`}>
       {/* 3D Crest Monogram SVG */}
       <div className={`relative shrink-0 ${iconSizes[size]} flex items-center justify-center`}>
         <svg
@@ -236,12 +236,12 @@ export const EduQuestLogo: React.FC<EduQuestLogoProps> = ({
           </div>
 
           {showSlogan && (
-            <div className="flex items-center gap-1.5 mt-1.5">
-              <span className="h-0.5 w-3 bg-blue-600 rounded-full"></span>
+            <div className="hidden xs:flex sm:flex items-center gap-1.5 mt-1 sm:mt-1.5">
+              <span className="h-0.5 w-2 sm:w-3 bg-blue-600 rounded-full"></span>
               <span className={`font-black uppercase text-slate-600 whitespace-nowrap ${sloganSizes[size]}`}>
                 YOUR ACADEMIC JOURNEY, OUR SUPPORT
               </span>
-              <span className="h-0.5 w-3 bg-orange-500 rounded-full"></span>
+              <span className="h-0.5 w-2 sm:w-3 bg-orange-500 rounded-full"></span>
             </div>
           )}
         </div>

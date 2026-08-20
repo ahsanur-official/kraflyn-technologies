@@ -125,12 +125,12 @@ const AppContent: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-slate-900 font-sans selection:bg-blue-600 selection:text-white pb-16 md:pb-0">
+    <div className="min-h-screen w-full overflow-x-hidden flex flex-col bg-white text-slate-900 font-sans selection:bg-blue-600 selection:text-white pb-16 md:pb-0">
       {/* Navigation Header */}
       <Navbar />
 
       {/* Main Dynamic View */}
-      <main className="flex-1">
+      <main className="flex-1 w-full overflow-x-hidden">
         {renderActiveView()}
       </main>
 

@@ -13,19 +13,28 @@ export const WriteReviewModal: React.FC = () => {
     closeWriteReviewModal, 
     addCustomerReview, 
     bilingualServices,
+    userProfile,
     language,
     t 
   } = useApp();
 
-  const [studentName, setStudentName] = useState('');
-  const [university, setUniversity] = useState(UNIVERSITIES[0]);
-  const [department, setDepartment] = useState(DEPARTMENTS[0]);
+  const [studentName, setStudentName] = useState(userProfile.name || '');
+  const [university, setUniversity] = useState(userProfile.university || UNIVERSITIES[0]);
+  const [department, setDepartment] = useState(userProfile.department || DEPARTMENTS[0]);
   const [serviceTitle, setServiceTitle] = useState(bilingualServices[0]?.title[language] || 'Course Support');
   const [rating, setRating] = useState(5);
   const [hoverRating, setHoverRating] = useState(0);
   const [gradeOutcome, setGradeOutcome] = useState(language === 'bn' ? 'A+ গ্রেড পেয়েছি' : 'Achieved Grade A+');
   const [comment, setComment] = useState('');
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  React.useEffect(() => {
+    if (writeReviewModalOpen && userProfile.name && !studentName) {
+      setStudentName(userProfile.name);
+      if (userProfile.university) setUniversity(userProfile.university);
+      if (userProfile.department) setDepartment(userProfile.department);
+    }
+  }, [writeReviewModalOpen, userProfile]);
 
   if (!writeReviewModalOpen) return null;
 

@@ -12,24 +12,46 @@ import {
 import { motion } from 'motion/react';
 
 export const ContactSection: React.FC = () => {
-  const { language, t } = useApp();
+  const { userProfile, submitInquiry, showToast, language, t } = useApp();
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [ticketId, setTicketId] = useState('');
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
+    name: userProfile.name || '',
+    email: userProfile.email || '',
+    phone: userProfile.phone || '',
     subject: 'General Academic Inquiry',
     message: ''
   });
 
+  // Sync with userProfile when available
+  React.useEffect(() => {
+    if (userProfile.name && !formData.name) {
+      setFormData(prev => ({
+        ...prev,
+        name: userProfile.name,
+        email: userProfile.email || prev.email,
+        phone: userProfile.phone || prev.phone
+      }));
+    }
+  }, [userProfile]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const id = submitInquiry({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      subject: formData.subject,
+      message: formData.message
+    });
+    setTicketId(id);
     setFormSubmitted(true);
+    showToast(language === 'bn' ? 'আপনার বার্তা সফলভাবে জমা হয়েছে' : 'Inquiry submitted successfully');
   };
 
   return (
     <div className="py-16 md:py-24 bg-slate-50">
-      <div className="max-w-[1920px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
+      <div className="max-w-[1920px] w-full mx-auto px-3 sm:px-6 md:px-8 lg:px-10 xl:px-12">
         
         {/* Header with Scroll Animation */}
         <motion.div 
@@ -161,6 +183,11 @@ export const ContactSection: React.FC = () => {
                 <h3 className="text-xl font-bold text-slate-900">
                   {language === 'bn' ? 'আপনার মেসেজটি সফলভাবে গৃহীত হয়েছে!' : 'Message Received!'}
                 </h3>
+                {ticketId && (
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-blue-800 border border-blue-200 rounded-full font-mono text-xs font-bold">
+                    <span>Ticket ID: {ticketId}</span>
+                  </div>
+                )}
                 <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto">
                   {language === 'bn'
                     ? `ধন্যবাদ ${formData.name}। আমাদের সাপোর্ট টিম শীঘ্রই আপনার WhatsApp বা ইমেইলে যোগাযোগ করবে।`

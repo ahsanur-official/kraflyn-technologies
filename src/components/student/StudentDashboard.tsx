@@ -148,7 +148,7 @@ export const StudentDashboard: React.FC = () => {
 
   return (
     <div className="py-8 md:py-10 bg-slate-50 min-h-screen">
-      <div className="max-w-[1920px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 space-y-6">
+      <div className="max-w-[1920px] w-full mx-auto px-3 sm:px-6 md:px-8 lg:px-10 xl:px-12 space-y-6">
         
         {/* Header Section */}
         <div className="flex flex-col sm:flex-row justify-between sm:items-end gap-4">

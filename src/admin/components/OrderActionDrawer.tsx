@@ -29,6 +29,7 @@ export const OrderActionDrawer: React.FC<OrderActionDrawerProps> = ({ order, onC
     updateOrderStatus, 
     assignMentorToOrder, 
     updateOrderPrice, 
+    mentors,
     showToast,
     language 
   } = useApp();
@@ -175,10 +176,28 @@ export const OrderActionDrawer: React.FC<OrderActionDrawerProps> = ({ order, onC
 
             {/* Mentor Assignment */}
             <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
-                <UserCheck className="w-3.5 h-3.5 text-blue-600" />
-                <span>{language === 'bn' ? 'মেন্টর নিযুক্ত করুন / পরিবর্তন করুন' : 'Assign / Reassign Lead Mentor'}</span>
-              </label>
+              <div className="flex items-center justify-between">
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
+                  <UserCheck className="w-3.5 h-3.5 text-blue-600" />
+                  <span>{language === 'bn' ? 'মেন্টর নিযুক্ত করুন / পরিবর্তন করুন' : 'Assign / Reassign Lead Mentor'}</span>
+                </label>
+                {mentors.length > 0 && (
+                  <select
+                    onChange={(e) => {
+                      if (e.target.value) setMentorInput(e.target.value);
+                    }}
+                    className="text-[11px] font-bold text-blue-600 bg-blue-50 border border-blue-200 rounded-lg px-2 py-0.5"
+                    defaultValue=""
+                  >
+                    <option value="" disabled>{language === 'bn' ? 'রোস্টার থেকে বাছাই' : 'Select from Roster'}</option>
+                    {mentors.map(m => (
+                      <option key={m.id} value={`${m.name} (${m.institution})`}>
+                        {m.name} - {m.institution} ({m.status})
+                      </option>
+                    ))}
+                  </select>
+                )}
+              </div>
               <input
                 type="text"
                 value={mentorInput}

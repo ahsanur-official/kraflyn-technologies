@@ -15,6 +15,7 @@ export interface TranslationDictionary {
   reviews: string;
   trackOrder: string;
   faq: string;
+  about: string;
   aboutUs: string;
   contact: string;
   cart: string;
@@ -224,6 +225,7 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
     reviews: 'শিক্ষার্থীদের রিভিউ',
     trackOrder: 'ট্র্যাক অর্ডার',
     faq: 'প্রশ্নোত্তর',
+    about: 'আমাদের সম্পর্কে',
     aboutUs: 'আমাদের সম্পর্কে',
     contact: 'যোগাযোগ',
     cart: 'কার্ট',
@@ -431,6 +433,7 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
     reviews: 'Student Reviews',
     trackOrder: 'Track Order',
     faq: 'FAQ',
+    about: 'About Us',
     aboutUs: 'About Us',
     contact: 'Contact',
     cart: 'Cart',

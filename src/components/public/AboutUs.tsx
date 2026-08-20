@@ -14,7 +14,7 @@ export const AboutUs: React.FC = () => {
 
   return (
     <div className="py-16 md:py-24 bg-white">
-      <div className="max-w-[1920px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
+      <div className="max-w-[1920px] w-full mx-auto px-3 sm:px-6 md:px-8 lg:px-10 xl:px-12">
         
         {/* Top Header with Scroll Reveal */}
         <motion.div 

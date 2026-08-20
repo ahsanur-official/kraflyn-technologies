@@ -197,6 +197,42 @@ export interface NotificationItem {
   linkId?: string;
 }
 
+export interface UserProfile {
+  name: string;
+  phone: string;
+  whatsapp: string;
+  email?: string;
+  university: string;
+  customUni?: string;
+  department: string;
+  batchOrSemester?: string;
+  preferredContact: 'WhatsApp' | 'Phone Call' | 'Google Meet' | 'Email';
+}
+
+export interface ContactInquiry {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+  submittedAt: string;
+  status: 'new' | 'reviewed' | 'resolved';
+}
+
+export interface MentorProfile {
+  id: string;
+  name: string;
+  institution: string;
+  degree: string;
+  specialization: string[];
+  activeAssignedOrders: number;
+  completedOrders: number;
+  rating: number;
+  contactPhone: string;
+  status: 'available' | 'busy' | 'on_leave';
+}
+
 export interface ProblemTrigger {
   id: string;
   text: string;
@@ -206,3 +242,4 @@ export interface ProblemTrigger {
   defaultCourse?: string;
   defaultExpectation?: string;
 }
+

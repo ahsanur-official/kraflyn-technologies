@@ -98,7 +98,7 @@ export const ProblemTriage: React.FC = () => {
 
   return (
     <section className="py-16 sm:py-24 bg-slate-50 border-b border-slate-200 relative overflow-hidden">
-      <div className="max-w-[1920px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
+      <div className="max-w-[1920px] w-full mx-auto px-3 sm:px-6 md:px-8 lg:px-10 xl:px-12">
         
         {/* Section Header with Scroll Reveal */}
         <motion.div 

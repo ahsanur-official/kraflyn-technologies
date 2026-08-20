@@ -38,8 +38,12 @@ export const BecomeMentorSection: React.FC = () => {
     e.preventDefault();
     const expertiseArray = formData.expertise.split(',').map(s => s.trim()).filter(Boolean);
     registerMentor({
-      ...formData,
-      expertise: expertiseArray.length ? expertiseArray : ['Course Coaching', 'Problem Solving']
+      name: formData.name,
+      institution: `${formData.university} (${formData.department})`,
+      degree: formData.qualification || 'Academic Mentor',
+      specialization: expertiseArray.length ? expertiseArray : ['Course Coaching', 'Problem Solving'],
+      contactPhone: formData.phone || formData.whatsapp,
+      status: 'available'
     });
     setSubmitted(true);
   };

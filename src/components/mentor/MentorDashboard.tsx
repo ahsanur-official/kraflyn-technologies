@@ -57,7 +57,7 @@ export const MentorDashboard: React.FC = () => {
 
   return (
     <div className="py-8 md:py-12 bg-slate-50 min-h-screen">
-      <div className="max-w-[1920px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
+      <div className="max-w-[1920px] w-full mx-auto px-3 sm:px-6 md:px-8 lg:px-10 xl:px-12">
         
         {/* Mentor Header */}
         <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs mb-8">
