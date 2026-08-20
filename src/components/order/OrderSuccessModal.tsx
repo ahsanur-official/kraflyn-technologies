@@ -5,12 +5,7 @@ import {
   MessageSquare, 
   Copy, 
   Check, 
-  ArrowRight, 
   Clock, 
-  Calendar, 
-  GraduationCap, 
-  ShieldCheck, 
-  PhoneCall,
   Search
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
@@ -21,7 +16,9 @@ export const OrderSuccessModal: React.FC = () => {
     closeOrderSuccessModal, 
     lastPlacedOrder,
     openOrderTracker,
-    showToast
+    showToast,
+    language,
+    t 
   } = useApp();
 
   const [copied, setCopied] = React.useState(false);
@@ -45,7 +42,7 @@ export const OrderSuccessModal: React.FC = () => {
   const handleCopyOrderId = () => {
     navigator.clipboard.writeText(lastPlacedOrder.id);
     setCopied(true);
-    showToast('Order ID Copied to Clipboard!');
+    showToast(t.copied);
     setTimeout(() => setCopied(false), 2000);
   };
 
@@ -67,14 +64,14 @@ export const OrderSuccessModal: React.FC = () => {
           </div>
 
           <span className="inline-block px-3 py-0.5 bg-white/20 text-emerald-100 rounded-full text-xs font-bold uppercase tracking-wider mb-1">
-            অর্ডার সফলভাবে গৃহীত হয়েছে
+            {t.orderSuccessBadge}
           </span>
 
           <h2 className="text-2xl font-black text-white">
-            Thank You, {lastPlacedOrder.customerName}!
+            {t.orderSuccessHeading}, {lastPlacedOrder.customerName}!
           </h2>
           <p className="text-xs text-emerald-100 mt-1 max-w-sm mx-auto">
-            আমাদের একাডেমিক টিম খুব শীঘ্রই আপনার সাথে WhatsApp বা ফোনে যোগাযোগ করে ডেলিভারি শুরু করবে।
+            {t.orderSuccessSubtitle}
           </p>
         </div>
 
@@ -85,7 +82,7 @@ export const OrderSuccessModal: React.FC = () => {
           <div className="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 flex items-center justify-between">
             <div>
               <div className="text-[11px] font-bold uppercase text-slate-400">
-                Your Order Reference ID
+                {t.orderIdLabel}
               </div>
               <div className="text-base font-black text-blue-700 font-mono">
                 {lastPlacedOrder.id}
@@ -99,12 +96,12 @@ export const OrderSuccessModal: React.FC = () => {
               {copied ? (
                 <>
                   <Check className="w-3.5 h-3.5 text-emerald-600" />
-                  <span className="text-emerald-600">Copied</span>
+                  <span className="text-emerald-600">{t.copied}</span>
                 </>
               ) : (
                 <>
                   <Copy className="w-3.5 h-3.5" />
-                  <span>Copy ID</span>
+                  <span>{t.copyId}</span>
                 </>
               )}
             </button>
@@ -113,28 +110,28 @@ export const OrderSuccessModal: React.FC = () => {
           {/* Quick Summary Grid */}
           <div className="grid grid-cols-2 gap-3 text-xs bg-blue-50/50 border border-blue-100 rounded-2xl p-4">
             <div>
-              <span className="text-slate-400 block text-[11px]">বিশ্ববিদ্যালয় / বিভাগ</span>
+              <span className="text-slate-400 block text-[11px]">{t.universityName}</span>
               <strong className="text-slate-800 block truncate">{lastPlacedOrder.university}</strong>
               <span className="text-slate-600 text-[11px] block">{lastPlacedOrder.department}</span>
             </div>
 
             <div>
-              <span className="text-slate-400 block text-[11px]">কোর্স / বিষয়</span>
+              <span className="text-slate-400 block text-[11px]">{t.courseName}</span>
               <strong className="text-slate-800 block truncate">{lastPlacedOrder.courseName}</strong>
               <span className="text-emerald-700 font-semibold text-[11px] block">
-                ডেডলাইন: {lastPlacedOrder.deadline}
+                {t.deadline}: {lastPlacedOrder.deadline}
               </span>
             </div>
 
             <div className="col-span-2 pt-2 border-t border-blue-100 flex items-center justify-between">
               <div>
-                <span className="text-slate-400 text-[11px] block">অর্ডারকৃত সার্ভিস</span>
+                <span className="text-slate-400 text-[11px] block">{t.selectedServices}</span>
                 <span className="font-bold text-slate-800">
                   {lastPlacedOrder.items.map(i => i.serviceTitle).join(', ')}
                 </span>
               </div>
               <div className="text-right">
-                <span className="text-slate-400 text-[11px] block">যোগাযোগ মাধ্যম</span>
+                <span className="text-slate-400 text-[11px] block">{t.contactMethod}</span>
                 <span className="font-bold text-emerald-700">{lastPlacedOrder.preferredContact}</span>
               </div>
             </div>
@@ -146,10 +143,10 @@ export const OrderSuccessModal: React.FC = () => {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-3.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2 shadow-md shadow-emerald-500/20 transition-all hover:scale-[1.01]"
+              className="w-full py-3.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-2xl font-bold text-sm flex items-center justify-center gap-2 shadow-md shadow-emerald-500/20 transition-all hover:scale-[1.01]"
             >
               <MessageSquare className="w-5 h-5 fill-white/20" />
-              <span>WhatsApp এ সরাসরি যোগাযোগ করুন (Fastest)</span>
+              <span>{t.whatsappOutreachBtn}</span>
             </a>
 
             <button
@@ -160,7 +157,7 @@ export const OrderSuccessModal: React.FC = () => {
               className="w-full py-2.5 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl font-semibold text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
             >
               <Search className="w-4 h-4" />
-              <span>অর্ডারের বর্তমান অবস্থা ট্র্যাক করুন (Track Order)</span>
+              <span>{t.trackOrderStatus}</span>
             </button>
           </div>
 
@@ -168,12 +165,12 @@ export const OrderSuccessModal: React.FC = () => {
           <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 space-y-2 text-xs">
             <div className="font-bold text-slate-700 flex items-center gap-1.5">
               <Clock className="w-3.5 h-3.5 text-blue-600" />
-              পরবর্তী ধাপসমূহ (Next Steps):
+              {t.nextStepsTitle}:
             </div>
             <ul className="space-y-1.5 text-slate-600 text-[11px] pl-4 list-disc">
-              <li>আমাদের সাপোর্ট কো-অর্ডিনেটর আপনার দেওয়া নম্বরে মেসেজ বা কল করবেন।</li>
-              <li>আপনার কোর্স সিলেবাস ও ডেডলাইন অনুযায়ী বিষয়ভিত্তিক সেরা মেন্টর নিয়োগ দেওয়া হবে।</li>
-              <li>ডেলিভারি শেষে আপনার সন্তুষ্টি অনুযায়ী প্রয়োজনমতো ফ্রি রিভিশন দেওয়া হবে।</li>
+              <li>{t.nextStep1}</li>
+              <li>{t.nextStep2}</li>
+              <li>{t.nextStep3}</li>
             </ul>
           </div>
 
@@ -182,7 +179,7 @@ export const OrderSuccessModal: React.FC = () => {
             onClick={closeOrderSuccessModal}
             className="w-full py-2 text-center text-xs font-semibold text-slate-400 hover:text-slate-600 cursor-pointer"
           >
-            ওয়েবসাইটে ফিরে যান (Back to Edu Quest)
+            {t.backToSite}
           </button>
 
         </div>

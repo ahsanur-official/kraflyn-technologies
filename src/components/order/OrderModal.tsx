@@ -10,13 +10,10 @@ import {
   FileText, 
   Phone, 
   MessageSquare, 
-  Building2, 
   GraduationCap, 
   BookOpen, 
   Calendar, 
   CheckCircle2, 
-  ShieldCheck,
-  Clock,
   Sparkles,
   Info
 } from 'lucide-react';
@@ -28,7 +25,9 @@ export const OrderModal: React.FC = () => {
     quickOrderService, 
     cartItems, 
     cartTotal, 
-    placeOrder 
+    placeOrder,
+    language,
+    t 
   } = useApp();
 
   const [customerName, setCustomerName] = useState('');
@@ -109,13 +108,23 @@ export const OrderModal: React.FC = () => {
 
   const validateForm = () => {
     const errs: Record<string, string> = {};
-    if (!customerName.trim()) errs.customerName = 'আপনার নাম উল্লেখ করুন';
-    if (!phone.trim()) errs.phone = 'সচল মোবাইল নম্বর প্রদান করুন';
-    if (!courseName.trim()) errs.courseName = 'কোর্সের নাম বা বিষয়ের নাম লিখুন';
-    if (!requirements.trim() || requirements.trim().length < 10) {
-      errs.requirements = 'আপনার কী কী বিষয়ে সহায়তা প্রয়োজন তা বিস্তারিত লিখুন (কমপক্ষে ১০ অক্ষর)';
+    if (!customerName.trim()) {
+      errs.customerName = language === 'bn' ? 'আপনার নাম উল্লেখ করুন' : 'Please provide your name';
     }
-    if (!deadline) errs.deadline = 'সম্ভাব্য ডেলিভারির তারিখ বা ডেডলাইন উল্লেখ করুন';
+    if (!phone.trim()) {
+      errs.phone = language === 'bn' ? 'সচল মোবাইল নম্বর প্রদান করুন' : 'Please provide a valid phone number';
+    }
+    if (!courseName.trim()) {
+      errs.courseName = language === 'bn' ? 'কোর্সের নাম বা বিষয়ের নাম লিখুন' : 'Please enter the course/subject name';
+    }
+    if (!requirements.trim() || requirements.trim().length < 10) {
+      errs.requirements = language === 'bn' 
+        ? 'আপনার কী কী বিষয়ে সহায়তা প্রয়োজন তা বিস্তারিত লিখুন (কমপক্ষে ১০ অক্ষর)' 
+        : 'Please describe your requirements in detail (min 10 chars)';
+    }
+    if (!deadline) {
+      errs.deadline = language === 'bn' ? 'সম্ভাব্য ডেলিভারির তারিখ বা ডেডলাইন উল্লেখ করুন' : 'Please select your deadline';
+    }
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
@@ -153,7 +162,7 @@ export const OrderModal: React.FC = () => {
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 animate-in fade-in">
-      <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 max-w-3xl w-full max-h-[92vh] flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
+      <div className="bg-white rounded-3xl shadow-2xl border border-slate-200 max-w-3xl w-full max-h-[92vh] flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
         
         {/* Header */}
         <div className="bg-gradient-to-r from-blue-700 via-blue-800 to-indigo-900 text-white p-5 sm:p-6 shrink-0 relative">
@@ -170,10 +179,10 @@ export const OrderModal: React.FC = () => {
             </div>
             <div>
               <h2 className="text-xl font-bold tracking-tight">
-                Academic Support Order
+                {t.orderModalHeading}
               </h2>
               <p className="text-xs text-blue-100 mt-0.5">
-                আপনার প্রয়োজনীয় বিবরণ দিন — আমাদের টিম সরাসরি যোগাযোগ করে ডেলিভারি কনফার্ম করবে
+                {t.orderModalSubtitle}
               </p>
             </div>
           </div>
@@ -181,7 +190,7 @@ export const OrderModal: React.FC = () => {
           {/* Reassurance pill */}
           <div className="mt-3.5 inline-flex items-center gap-2 bg-emerald-500/20 border border-emerald-400/40 text-emerald-100 text-xs px-3 py-1 rounded-full">
             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-300" />
-            <span>অগ্রিম কোনো পেমেন্ট প্রয়োজন নেই • সরাসরি WhatsApp এ যোগাযোগ</span>
+            <span>{language === 'bn' ? 'অগ্রিম কোনো পেমেন্ট প্রয়োজন নেই • সরাসরি WhatsApp এ যোগাযোগ' : 'No advance payment needed • Direct WhatsApp Outreach'}</span>
           </div>
         </div>
 
@@ -189,14 +198,14 @@ export const OrderModal: React.FC = () => {
         <form onSubmit={handleSubmitOrder} className="overflow-y-auto p-5 sm:p-7 space-y-6 flex-1 text-slate-800 text-sm">
           
           {/* 1. Selected Services Summary */}
-          <div className="bg-slate-50 border border-slate-200 rounded-xl p-4">
+          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-bold uppercase text-slate-500 tracking-wider flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-                অর্ডারকৃত সার্ভিসসমূহ ({itemsToOrder.length})
+                {t.selectedServices} ({itemsToOrder.length})
               </span>
               <span className="text-xs font-semibold text-blue-600">
-                আনুমানিক ফি: ৳{orderEstimatedTotal}
+                {t.estimatedFee}: ৳{orderEstimatedTotal}
               </span>
             </div>
 
@@ -223,19 +232,19 @@ export const OrderModal: React.FC = () => {
           <div>
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-1.5">
               <Phone className="w-3.5 h-3.5 text-blue-600" />
-              আপনার ব্যক্তিগত ও যোগাযোগের তথ্য
+              {t.personalContactInfo}
             </h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-semibold text-slate-700 mb-1">
-                  আপনার পূর্ণ নাম (Full Name) <span className="text-rose-500">*</span>
+                  {t.fullName} <span className="text-rose-500">*</span>
                 </label>
                 <input
                   type="text"
                   value={customerName}
                   onChange={(e) => setCustomerName(e.target.value)}
-                  placeholder="যেমন: মোঃ এহসানুর রহমান"
+                  placeholder={t.fullNamePlaceholder}
                   className={`w-full px-3.5 py-2.5 rounded-xl border ${
                     errors.customerName ? 'border-rose-400 bg-rose-50/40' : 'border-slate-300'
                   } focus:outline-hidden focus:ring-2 focus:ring-blue-500 text-xs sm:text-sm`}
@@ -245,13 +254,13 @@ export const OrderModal: React.FC = () => {
 
               <div>
                 <label className="block text-xs font-semibold text-slate-700 mb-1">
-                  সচল মোবাইল নম্বর (Phone Number) <span className="text-rose-500">*</span>
+                  {t.phone} <span className="text-rose-500">*</span>
                 </label>
                 <input
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  placeholder="017XXXXXXXX"
+                  placeholder={t.phonePlaceholder}
                   className={`w-full px-3.5 py-2.5 rounded-xl border ${
                     errors.phone ? 'border-rose-400 bg-rose-50/40' : 'border-slate-300'
                   } focus:outline-hidden focus:ring-2 focus:ring-blue-500 text-xs sm:text-sm`}
@@ -264,7 +273,7 @@ export const OrderModal: React.FC = () => {
                 <div className="flex items-center justify-between">
                   <label className="text-xs font-semibold text-blue-900 flex items-center gap-2">
                     <MessageSquare className="w-4 h-4 text-emerald-600" />
-                    হোয়াটসঅ্যাপ (WhatsApp) নম্বর
+                    {t.whatsapp}
                   </label>
                   <label className="flex items-center gap-1.5 text-xs text-slate-600 cursor-pointer">
                     <input
@@ -273,7 +282,7 @@ export const OrderModal: React.FC = () => {
                       onChange={(e) => setSameAsPhone(e.target.checked)}
                       className="rounded-sm text-blue-600 focus:ring-blue-500"
                     />
-                    <span>মোবাইল নম্বরের মতোই</span>
+                    <span>{t.sameAsPhone}</span>
                   </label>
                 </div>
 
@@ -282,7 +291,7 @@ export const OrderModal: React.FC = () => {
                     type="tel"
                     value={whatsapp}
                     onChange={(e) => setWhatsapp(e.target.value)}
-                    placeholder="WhatsApp নম্বর লিখুন (01XXXXXXXXX)"
+                    placeholder="01XXXXXXXXX"
                     className="w-full mt-2 px-3.5 py-2 bg-white rounded-lg border border-blue-200 text-xs focus:ring-2 focus:ring-blue-500"
                   />
                 )}
@@ -291,7 +300,7 @@ export const OrderModal: React.FC = () => {
               {/* University & Department */}
               <div>
                 <label className="block text-xs font-semibold text-slate-700 mb-1">
-                  বিশ্ববিদ্যালয় / কলেজ (University) <span className="text-rose-500">*</span>
+                  {t.universityName} <span className="text-rose-500">*</span>
                 </label>
                 <select
                   value={university}
@@ -307,7 +316,7 @@ export const OrderModal: React.FC = () => {
                     type="text"
                     value={customUni}
                     onChange={(e) => setCustomUni(e.target.value)}
-                    placeholder="আপনার বিশ্ববিদ্যালয়ের নাম লিখুন"
+                    placeholder={language === 'bn' ? 'আপনার বিশ্ববিদ্যালয়ের নাম লিখুন' : 'Enter university name'}
                     className="w-full mt-2 px-3 py-2 border border-slate-300 rounded-lg text-xs"
                   />
                 )}
@@ -315,7 +324,7 @@ export const OrderModal: React.FC = () => {
 
               <div>
                 <label className="block text-xs font-semibold text-slate-700 mb-1">
-                  বিভাগ / বিষয় (Department) <span className="text-rose-500">*</span>
+                  {t.departmentName} <span className="text-rose-500">*</span>
                 </label>
                 <select
                   value={department}
@@ -334,20 +343,20 @@ export const OrderModal: React.FC = () => {
           <div>
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-1.5">
               <BookOpen className="w-3.5 h-3.5 text-blue-600" />
-              কোর্স ও সাপোর্টের বিস্তারিত বিবরণ
+              {t.courseDetails}
             </h3>
 
             <div className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-semibold text-slate-700 mb-1">
-                    কোর্সের নাম (Course Name) <span className="text-rose-500">*</span>
+                    {t.courseName} <span className="text-rose-500">*</span>
                   </label>
                   <input
                     type="text"
                     value={courseName}
                     onChange={(e) => setCourseName(e.target.value)}
-                    placeholder="যেমন: Data Structures / DSP / Thesis"
+                    placeholder={t.courseNamePlaceholder}
                     className={`w-full px-3.5 py-2.5 rounded-xl border ${
                       errors.courseName ? 'border-rose-400 bg-rose-50/40' : 'border-slate-300'
                     } text-xs sm:text-sm focus:ring-2 focus:ring-blue-500`}
@@ -357,13 +366,13 @@ export const OrderModal: React.FC = () => {
 
                 <div>
                   <label className="block text-xs font-semibold text-slate-700 mb-1">
-                    কোর্স কোড (ঐচ্ছিক)
+                    {t.courseCode}
                   </label>
                   <input
                     type="text"
                     value={courseCode}
                     onChange={(e) => setCourseCode(e.target.value)}
-                    placeholder="যেমন: CSE-225 / EEE-4103"
+                    placeholder={t.courseCodePlaceholder}
                     className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
@@ -372,13 +381,13 @@ export const OrderModal: React.FC = () => {
               {/* Problem statement / requirements */}
               <div>
                 <label className="block text-xs font-semibold text-slate-700 mb-1">
-                  কী কী বিষয়ে সহায়তা লাগবে? (বিস্তারিত লিখুন) <span className="text-rose-500">*</span>
+                  {t.requirements} <span className="text-rose-500">*</span>
                 </label>
                 <textarea
                   rows={4}
                   value={requirements}
                   onChange={(e) => setRequirements(e.target.value)}
-                  placeholder="যেমন: ল্যাব অ্যাসাইনমেন্টের কোডে সেগমেন্টেশন এরর হচ্ছে, বা থিসিসের চ্যাপ্টার ৩ রিসার্চ মেথডলজি বুঝতে পারছি না, অথবা পরীক্ষার আগে ১-অন-১ লাইভ সেশন প্রয়োজন..."
+                  placeholder={t.requirementsPlaceholder}
                   className={`w-full px-3.5 py-2.5 rounded-xl border ${
                     errors.requirements ? 'border-rose-400 bg-rose-50/40' : 'border-slate-300'
                   } text-xs sm:text-sm focus:ring-2 focus:ring-blue-500 leading-relaxed`}
@@ -391,7 +400,7 @@ export const OrderModal: React.FC = () => {
                 <div>
                   <label className="block text-xs font-semibold text-slate-700 mb-1 flex items-center gap-1">
                     <Calendar className="w-3.5 h-3.5 text-blue-600" />
-                    কাঙ্ক্ষিত ডেলিভারির সময় / ডেডলাইন <span className="text-rose-500">*</span>
+                    {t.deadline} <span className="text-rose-500">*</span>
                   </label>
                   <input
                     type="date"
@@ -407,17 +416,17 @@ export const OrderModal: React.FC = () => {
 
                 <div>
                   <label className="block text-xs font-semibold text-slate-700 mb-1">
-                    যোগাযোগের পছন্দের মাধ্যম (Contact Channel)
+                    {t.contactMethod}
                   </label>
                   <select
                     value={preferredContact}
                     onChange={(e) => setPreferredContact(e.target.value as any)}
                     className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-xs sm:text-sm focus:ring-2 focus:ring-blue-500"
                   >
-                    <option value="WhatsApp">WhatsApp (সবচেয়ে দ্রুত রেসপন্স)</option>
-                    <option value="Phone Call">সরাসরি ফোন কল</option>
-                    <option value="Google Meet">Google Meet (লাইভ আলোচনা)</option>
-                    <option value="Email">ইমেইল</option>
+                    <option value="WhatsApp">{language === 'bn' ? 'WhatsApp (সবচেয়ে দ্রুত রেসপন্স)' : 'WhatsApp (Fastest Response)'}</option>
+                    <option value="Phone Call">{language === 'bn' ? 'সরাসরি ফোন কল' : 'Direct Phone Call'}</option>
+                    <option value="Google Meet">{language === 'bn' ? 'Google Meet (লাইভ আলোচনা)' : 'Google Meet (Live Session)'}</option>
+                    <option value="Email">{language === 'bn' ? 'ইমেইল' : 'Email'}</option>
                   </select>
                 </div>
               </div>
@@ -425,9 +434,9 @@ export const OrderModal: React.FC = () => {
               {/* File Attachment Uploader */}
               <div>
                 <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                  প্রশ্নপত্র, অ্যাসাইনমেন্ট ড্রাফট বা কোড ফাইল আপলোড (ঐচ্ছিক)
+                  {t.attachFiles}
                 </label>
-                <div className="border-2 border-dashed border-slate-200 hover:border-blue-400 rounded-xl p-4 text-center bg-slate-50/60 transition-colors">
+                <div className="border-2 border-dashed border-slate-200 hover:border-blue-400 rounded-2xl p-4 text-center bg-slate-50/60 transition-colors">
                   <input
                     type="file"
                     multiple
@@ -438,10 +447,10 @@ export const OrderModal: React.FC = () => {
                   <label htmlFor="order-file-upload" className="cursor-pointer block">
                     <UploadCloud className="w-7 h-7 text-blue-500 mx-auto mb-1" />
                     <span className="text-xs font-bold text-blue-600 hover:underline">
-                      ক্লিক করে ফাইল সিলেক্ট করুন
+                      {t.clickToUpload}
                     </span>
                     <span className="text-[11px] text-slate-400 block mt-0.5">
-                      PDF, DOCX, CPP, PY, ZIP বা ছবি ফাইল সংযুক্ত করা যাবে
+                      {t.fileTypesAllowed}
                     </span>
                   </label>
                 </div>
@@ -472,17 +481,20 @@ export const OrderModal: React.FC = () => {
           </div>
 
           {/* Delivery Note Box */}
-          <div className="bg-amber-50 border border-amber-200 rounded-xl p-3.5 flex items-start gap-2.5 text-xs text-amber-900">
+          <div className="bg-amber-50 border border-amber-200 rounded-2xl p-3.5 flex items-start gap-2.5 text-xs text-amber-900">
             <Info className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
             <div className="leading-relaxed">
-              <strong>ডেলিভারি প্রসেস:</strong> অর্ডার সম্পন্ন হওয়ার পর আমাদের একাডেমিক টিম ১৫-৩০ মিনিটের মধ্যে আপনার WhatsApp/ফোনে কল বা মেসেজ দিয়ে বিস্তারিত শুনে কাজ বুঝিয়ে দিবে।
+              <strong>{language === 'bn' ? 'ডেলিভারি নিশ্চয়তা: ' : 'Delivery Assurance: '}</strong>
+              {language === 'bn' 
+                ? 'অর্ডার পাওয়ার ১৫-৩০ মিনিটের মধ্যে আমাদের একাডেমিক কো-অর্ডিনেটর আপনার WhatsApp এ নক করে সব বুঝে নিবে।' 
+                : 'Our academic coordinator will reach out to you via WhatsApp within 15-30 minutes to review the details.'}
             </div>
           </div>
 
           {/* Footer Submit Button */}
           <div className="pt-2 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3">
             <div className="text-xs text-slate-500 text-center sm:text-left">
-              🔒 গোপনীয়তা ও একাডেমিক সততা বজায় রাখা হবে
+              🔒 {t.confidentialMentorship}
             </div>
 
             <div className="flex items-center gap-3 w-full sm:w-auto">
@@ -491,7 +503,7 @@ export const OrderModal: React.FC = () => {
                 onClick={closeOrderModal}
                 className="w-1/3 sm:w-auto px-4 py-2.5 border border-slate-300 text-slate-700 hover:bg-slate-100 rounded-xl text-xs font-semibold cursor-pointer"
               >
-                বাতিল করুন
+                {t.cancelBtn}
               </button>
 
               <button
@@ -500,11 +512,11 @@ export const OrderModal: React.FC = () => {
                 className="w-2/3 sm:w-auto px-6 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold text-xs sm:text-sm rounded-xl shadow-md shadow-blue-500/20 flex items-center justify-center gap-2 cursor-pointer transition-all disabled:opacity-50"
               >
                 {isSubmitting ? (
-                  <span>অর্ডার প্রসেসিং হচ্ছে...</span>
+                  <span>{language === 'bn' ? 'অর্ডার প্রসেসিং হচ্ছে...' : 'Processing Order...'}</span>
                 ) : (
                   <>
                     <Send className="w-4 h-4" />
-                    <span>অর্ডার কনফার্ম করুন (Place Order)</span>
+                    <span>{t.confirmOrderBtn}</span>
                   </>
                 )}
               </button>

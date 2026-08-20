@@ -180,7 +180,7 @@ export interface AcademicOrder {
   deadline: string;
   preferredContact: 'WhatsApp' | 'Phone Call' | 'Google Meet' | 'Email';
   attachments: AttachmentFile[];
-  status: 'order_received' | 'mentor_assigned' | 'contacted_student' | 'in_progress' | 'delivered_completed';
+  status: 'order_received' | 'mentor_assigned' | 'contacted_student' | 'in_progress' | 'delivered_completed' | 'cancelled';
   assignedMentorName?: string;
   createdAt: string;
   updatedAt: string;

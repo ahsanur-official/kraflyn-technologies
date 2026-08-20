@@ -91,10 +91,10 @@ export const AuthModal: React.FC = () => {
             <span>1-Click Instant Demo Login:</span>
           </div>
 
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-2 gap-2">
             <button
               onClick={() => handleQuickLogin('student')}
-              className="p-2 rounded-xl bg-white border border-indigo-200 hover:border-indigo-500 text-indigo-900 text-left transition-colors shadow-2xs"
+              className="p-2.5 rounded-xl bg-white border border-indigo-200 hover:border-indigo-500 text-indigo-900 text-left transition-colors shadow-2xs cursor-pointer"
             >
               <div className="font-bold text-xs flex items-center gap-1">
                 <span>🎓</span> Student
@@ -104,22 +104,12 @@ export const AuthModal: React.FC = () => {
 
             <button
               onClick={() => handleQuickLogin('mentor')}
-              className="p-2 rounded-xl bg-white border border-emerald-200 hover:border-emerald-500 text-emerald-900 text-left transition-colors shadow-2xs"
+              className="p-2.5 rounded-xl bg-white border border-emerald-200 hover:border-emerald-500 text-emerald-900 text-left transition-colors shadow-2xs cursor-pointer"
             >
               <div className="font-bold text-xs flex items-center gap-1">
                 <span>👨‍🏫</span> Mentor
               </div>
               <div className="text-[10px] text-slate-400">Tanvir (BUET)</div>
-            </button>
-
-            <button
-              onClick={() => handleQuickLogin('admin')}
-              className="p-2 rounded-xl bg-white border border-purple-200 hover:border-purple-500 text-purple-900 text-left transition-colors shadow-2xs"
-            >
-              <div className="font-bold text-xs flex items-center gap-1">
-                <span>⚡</span> Admin
-              </div>
-              <div className="text-[10px] text-slate-400">Ops Lead</div>
             </button>
           </div>
         </div>

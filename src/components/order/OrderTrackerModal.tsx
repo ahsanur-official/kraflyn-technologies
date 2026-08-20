@@ -6,10 +6,7 @@ import {
   Search, 
   Package, 
   CheckCircle2, 
-  Clock, 
-  PhoneCall, 
   MessageSquare, 
-  FileText, 
   UserCheck, 
   Calendar, 
   AlertCircle 
@@ -20,7 +17,9 @@ export const OrderTrackerModal: React.FC = () => {
     orderTrackerOpen, 
     closeOrderTracker, 
     orders, 
-    selectedOrderIdForTracking 
+    selectedOrderIdForTracking,
+    language,
+    t 
   } = useApp();
 
   const [searchQuery, setSearchQuery] = useState(selectedOrderIdForTracking || '');
@@ -39,7 +38,7 @@ export const OrderTrackerModal: React.FC = () => {
     setErrorMsg('');
     const query = searchQuery.trim().toLowerCase();
     if (!query) {
-      setErrorMsg('অনুগ্রহ করে আপনার Order ID অথবা মোবাইল নম্বর লিখুন');
+      setErrorMsg(language === 'bn' ? 'অনুগ্রহ করে আপনার Order ID অথবা মোবাইল নম্বর লিখুন' : 'Please enter your Order ID or phone number');
       return;
     }
 
@@ -53,17 +52,37 @@ export const OrderTrackerModal: React.FC = () => {
       setSearchedOrder(found);
       setErrorMsg('');
     } else {
-      setErrorMsg('কোনো অর্ডার পাওয়া যায়নি। সঠিক Order ID বা ফোন নম্বর দিন।');
+      setErrorMsg(language === 'bn' ? 'কোনো অর্ডার পাওয়া যায়নি। সঠিক Order ID বা ফোন নম্বর দিন।' : 'No order found with this ID or phone number.');
       setSearchedOrder(null);
     }
   };
 
   const steps = [
-    { key: 'order_received', title: 'Order Received', desc: 'অর্ডার সিস্টেমে গৃহীত হয়েছে' },
-    { key: 'mentor_assigned', title: 'Mentor Assigned', desc: 'কোর্স অনুযায়ী বিশেষজ্ঞ মেন্টর নির্ধারিত' },
-    { key: 'contacted_student', title: 'Contacted Student', desc: 'WhatsApp এ রিকোয়ারমেন্ট কনফার্মেশন' },
-    { key: 'in_progress', title: 'Delivery In Progress', desc: 'সাপোর্ট সেশন / ডেলিভারি তৈরি হচ্ছে' },
-    { key: 'delivered_completed', title: 'Delivered & Support', desc: 'ডেলিভারি সম্পন্ন ও ফ্রি রিভিশন' }
+    { 
+      key: 'order_received', 
+      title: language === 'bn' ? 'অর্ডার গ্রহণ করা হয়েছে' : 'Order Received', 
+      desc: language === 'bn' ? 'অর্ডার সিস্টেমে গৃহীত হয়েছে' : 'Order placed and logged in system' 
+    },
+    { 
+      key: 'mentor_assigned', 
+      title: language === 'bn' ? 'মেন্টর নিযুক্ত' : 'Mentor Assigned', 
+      desc: language === 'bn' ? 'কোর্স অনুযায়ী বিশেষজ্ঞ মেন্টর নির্ধারিত' : 'Specialized mentor allocated' 
+    },
+    { 
+      key: 'contacted_student', 
+      title: language === 'bn' ? 'শিক্ষার্থীর সাথে যোগাযোগ' : 'Contacted Student', 
+      desc: language === 'bn' ? 'WhatsApp এ রিকোয়ারমেন্ট কনফার্মেশন' : 'Requirements aligned via WhatsApp' 
+    },
+    { 
+      key: 'in_progress', 
+      title: language === 'bn' ? 'ডেলিভারি প্রস্তুত হচ্ছে' : 'Delivery In Progress', 
+      desc: language === 'bn' ? 'সাপোর্ট সেশন / ডেলিভারি তৈরি হচ্ছে' : 'Solving, mentoring, and code drafting' 
+    },
+    { 
+      key: 'delivered_completed', 
+      title: language === 'bn' ? 'ডেলিভারি সম্পন্ন' : 'Delivered & Support', 
+      desc: language === 'bn' ? 'ডেলিভারি সম্পন্ন ও ফ্রি রিভিশন' : 'Delivered with post-delivery revisions' 
+    }
   ];
 
   const getStepIndex = (status: AcademicOrder['status']) => {
@@ -90,9 +109,9 @@ export const OrderTrackerModal: React.FC = () => {
               <Package className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-lg font-bold">Track Your Order Status</h3>
+              <h3 className="text-lg font-bold">{t.trackOrderHeading}</h3>
               <p className="text-xs text-slate-400">
-                অর্ডার আইডি বা মোবাইল নম্বর দিয়ে ডেলিভারির অগ্রগতি দেখুন
+                {t.trackOrderSubtitle}
               </p>
             </div>
           </div>
@@ -114,7 +133,7 @@ export const OrderTrackerModal: React.FC = () => {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="যেমন: EQ-ORD-2024-8841 অথবা 01712345678"
+                placeholder={t.orderIdOrPhonePlaceholder}
                 className="w-full pl-10 pr-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-xs sm:text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500"
               />
             </div>
@@ -122,7 +141,7 @@ export const OrderTrackerModal: React.FC = () => {
               type="submit"
               className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold rounded-xl shadow-xs transition-colors cursor-pointer"
             >
-              Search
+              {t.searchBtn}
             </button>
           </form>
 
@@ -142,7 +161,7 @@ export const OrderTrackerModal: React.FC = () => {
               <div className="bg-blue-50/80 border border-blue-200/80 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-blue-600">
-                    Active Academic Order
+                    {language === 'bn' ? 'সক্রিয় একাডেমিক অর্ডার' : 'Active Academic Order'}
                   </span>
                   <h4 className="text-base font-black text-slate-900 font-mono">
                     {searchedOrder.id}
@@ -153,7 +172,7 @@ export const OrderTrackerModal: React.FC = () => {
                 </div>
 
                 <div className="text-left sm:text-right">
-                  <span className="text-[10px] text-slate-400 block">কাঙ্ক্ষিত ডেডলাইন</span>
+                  <span className="text-[10px] text-slate-400 block">{t.deadline}</span>
                   <span className="text-xs font-bold text-slate-800 flex items-center sm:justify-end gap-1">
                     <Calendar className="w-3.5 h-3.5 text-blue-600" />
                     {searchedOrder.deadline}
@@ -164,14 +183,13 @@ export const OrderTrackerModal: React.FC = () => {
               {/* Progress Stepper */}
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">
-                  ডেলিভারি অগ্রগতি (Delivery Tracker)
+                  {t.deliveryProgress}
                 </h4>
 
                 <div className="relative pl-6 space-y-6 before:absolute before:left-2.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-200">
                   {steps.map((step, idx) => {
                     const isCompleted = idx < currentStepIdx;
                     const isCurrent = idx === currentStepIdx;
-                    const isUpcoming = idx > currentStepIdx;
 
                     return (
                       <div key={step.key} className="relative flex items-start gap-3">
@@ -206,9 +224,9 @@ export const OrderTrackerModal: React.FC = () => {
 
               {/* Assigned Mentor & Deliverables Card */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                <div className="border border-slate-200 rounded-xl p-3.5 bg-slate-50">
+                <div className="border border-slate-200 rounded-2xl p-3.5 bg-slate-50">
                   <span className="text-[10px] font-bold uppercase text-slate-400 block mb-1">
-                    কোর্স ও সার্ভিসসমূহ
+                    {t.courseName} & {t.selectedServices}
                   </span>
                   <div className="font-bold text-slate-800 text-xs">
                     {searchedOrder.courseName}
@@ -218,13 +236,13 @@ export const OrderTrackerModal: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="border border-slate-200 rounded-xl p-3.5 bg-slate-50">
+                <div className="border border-slate-200 rounded-2xl p-3.5 bg-slate-50">
                   <span className="text-[10px] font-bold uppercase text-slate-400 block mb-1">
-                    নিযুক্ত মেন্টর
+                    {t.assignedMentor}
                   </span>
                   <div className="font-bold text-slate-800 text-xs flex items-center gap-1.5">
                     <UserCheck className="w-4 h-4 text-emerald-600" />
-                    <span>{searchedOrder.assignedMentorName || 'Mentorship Team Coordinating'}</span>
+                    <span>{searchedOrder.assignedMentorName || (language === 'bn' ? 'একাডেমিক টিম সমন্বয় করছে' : 'Mentorship Team Coordinating')}</span>
                   </div>
                   <div className="text-[11px] text-slate-500 mt-0.5">
                     Academic Quality Lead
@@ -235,8 +253,8 @@ export const OrderTrackerModal: React.FC = () => {
               {/* Direct WhatsApp Contact CTA */}
               <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 flex items-center justify-between gap-3">
                 <div className="text-xs text-emerald-900">
-                  <strong className="block font-bold">জরুরি আপডেট প্রয়োজন?</strong>
-                  আমাদের সাপোর্ট টিম WhatsApp এ সার্বক্ষণিক সক্রিয়।
+                  <strong className="block font-bold">{language === 'bn' ? 'জরুরি আপডেট প্রয়োজন?' : 'Need urgent status update?'}</strong>
+                  {language === 'bn' ? 'আমাদের সাপোর্ট টিম WhatsApp এ সার্বক্ষণিক সক্রিয়।' : 'Our support team is available 24/7 on WhatsApp.'}
                 </div>
                 <a
                   href={`https://wa.me/8801712345678?text=Hello%20Edu%20Quest%20Team,%20checking%20status%20for%20order%20${searchedOrder.id}`}
@@ -252,7 +270,7 @@ export const OrderTrackerModal: React.FC = () => {
           ) : (
             <div className="py-12 text-center text-slate-400">
               <Package className="w-12 h-12 mx-auto mb-2 opacity-50" />
-              <p>অর্ডার সার্চ করতে উপরে আপনার Order ID বা ফোন নম্বর প্রদান করুন</p>
+              <p>{t.orderNotFound}</p>
             </div>
           )}
         </div>

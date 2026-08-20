@@ -12,9 +12,25 @@ import {
   REVIEWS, 
   INITIAL_ORDERS 
 } from '../data/mockData';
+import { 
+  Language, 
+  TRANSLATIONS, 
+  TranslationDictionary,
+  BILINGUAL_SERVICES 
+} from '../data/translations';
 
 interface AppContextType {
-  // Navigation
+  // Language & i18n
+  language: Language;
+  setLanguage: (lang: Language) => void;
+  t: TranslationDictionary;
+  bilingualServices: typeof BILINGUAL_SERVICES;
+
+  // View Switcher (Student Web vs Admin Web)
+  currentView: 'student' | 'admin';
+  setCurrentView: (view: 'student' | 'admin') => void;
+
+  // Navigation within Student Web
   activeNavTab: string;
   setActiveNavTab: (tab: string) => void;
 
@@ -76,6 +92,12 @@ interface AppContextType {
   openOrderTracker: (orderId?: string) => void;
   closeOrderTracker: () => void;
 
+  // Admin Order & System Management
+  updateOrderStatus: (orderId: string, status: AcademicOrder['status'], note?: string) => void;
+  assignMentorToOrder: (orderId: string, mentorName: string) => void;
+  updateOrderPrice: (orderId: string, newTotal: number) => void;
+  deleteOrder: (orderId: string) => void;
+
   // Reviews
   reviews: Review[];
   writeReviewModalOpen: boolean;
@@ -90,6 +112,7 @@ interface AppContextType {
     gradeOutcome?: string;
     comment: string;
   }) => void;
+  deleteReview: (reviewId: string) => void;
 
   // Toast / Feedback
   toastMessage: string | null;
@@ -99,12 +122,91 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 const STORAGE_KEYS = {
+  LANGUAGE: 'eduquest_lang_v2',
+  VIEW: 'eduquest_view_v2',
   CART: 'eduquest_cart_v2',
   ORDERS: 'eduquest_orders_v2',
   REVIEWS: 'eduquest_reviews_v2',
 };
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  // Language State
+  const [language, setLanguageState] = useState<Language>(() => {
+    const saved = localStorage.getItem(STORAGE_KEYS.LANGUAGE);
+    return (saved === 'en' || saved === 'bn') ? saved : 'bn';
+  });
+
+  const setLanguage = (lang: Language) => {
+    setLanguageState(lang);
+    localStorage.setItem(STORAGE_KEYS.LANGUAGE, lang);
+  };
+
+  const t = TRANSLATIONS[language];
+
+  // Helper to check if current URL points to Admin Portal
+  const checkIsAdminRoute = (): boolean => {
+    if (typeof window === 'undefined') return false;
+    const path = window.location.pathname.toLowerCase();
+    const hash = window.location.hash.toLowerCase();
+    const search = window.location.search.toLowerCase();
+    return (
+      path === '/admin' || 
+      path.startsWith('/admin/') || 
+      hash === '#admin' || 
+      hash === '#/admin' || 
+      hash.includes('admin') || 
+      search.includes('view=admin') || 
+      search.includes('admin=true')
+    );
+  };
+
+  // View Switcher (Student Web vs Isolated Admin Web)
+  const [currentView, setCurrentViewState] = useState<'student' | 'admin'>(() => {
+    if (checkIsAdminRoute()) {
+      return 'admin';
+    }
+    const saved = localStorage.getItem(STORAGE_KEYS.VIEW);
+    return saved === 'admin' ? 'admin' : 'student';
+  });
+
+  const setCurrentView = (view: 'student' | 'admin') => {
+    setCurrentViewState(view);
+    localStorage.setItem(STORAGE_KEYS.VIEW, view);
+    if (typeof window !== 'undefined') {
+      if (view === 'admin') {
+        if (!window.location.hash.includes('admin') && window.location.pathname !== '/admin') {
+          window.location.hash = '#admin';
+        }
+      } else {
+        if (window.location.hash.includes('admin')) {
+          history.replaceState(null, '', window.location.pathname + window.location.search);
+        }
+      }
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Listen for hash & popstate URL changes
+  React.useEffect(() => {
+    const handleUrlChange = () => {
+      if (checkIsAdminRoute()) {
+        setCurrentViewState('admin');
+      } else {
+        const saved = localStorage.getItem(STORAGE_KEYS.VIEW);
+        if (saved !== 'admin') {
+          setCurrentViewState('student');
+        }
+      }
+    };
+
+    window.addEventListener('popstate', handleUrlChange);
+    window.addEventListener('hashchange', handleUrlChange);
+    return () => {
+      window.removeEventListener('popstate', handleUrlChange);
+      window.removeEventListener('hashchange', handleUrlChange);
+    };
+  }, []);
+
   const [activeNavTab, setActiveNavTab] = useState<string>('home');
   const [services] = useState<Service[]>(SERVICES);
   const [serviceDetailModalService, setServiceDetailModalService] = useState<Service | null>(null);
@@ -204,7 +306,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         next[existingIndex].quantity += 1;
         return next;
       });
-      showToast(`Updated "${service.title}" in your support cart!`);
+      showToast(language === 'bn' ? `"${service.title}" কার্টে আপডেট করা হয়েছে!` : `Updated "${service.title}" in cart!`);
     } else {
       const newItem: CartItem = {
         id: `cart-${Date.now()}-${Math.random().toString(36).substr(2, 5)}`,
@@ -220,20 +322,19 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         quantity: 1
       };
       setCartItems(prev => [newItem, ...prev]);
-      showToast(`Added "${service.title}" to your cart!`);
+      showToast(language === 'bn' ? `"${service.title}" কার্টে যুক্ত হয়েছে!` : `Added "${service.title}" to cart!`);
     }
   };
 
   const removeFromCart = (cartItemId: string) => {
     setCartItems(prev => prev.filter(item => item.id !== cartItemId));
-    showToast('Removed item from cart.');
+    showToast(language === 'bn' ? 'কার্ট থেকে আইটেম সরানো হয়েছে।' : 'Item removed from cart.');
   };
 
   const updateCartItem = (cartItemId: string, updates: Partial<CartItem>) => {
     setCartItems(prev => prev.map(item => {
       if (item.id === cartItemId) {
         const updated = { ...item, ...updates };
-        // Recalculate price if tier or fees change
         if (updates.packageTier || updates.urgencyFee !== undefined || updates.basePrice !== undefined) {
           const uFee = updated.urgencyFee || 0;
           updated.totalPrice = updated.basePrice + uFee;
@@ -309,7 +410,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     } else if (cartItems.length > 0) {
       orderItems = [...cartItems];
     } else {
-      // General custom order
       orderItems = [{
         id: `ci-custom-${Date.now()}`,
         serviceId: 'custom-academic-support',
@@ -376,6 +476,58 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setSelectedOrderIdForTracking(null);
   };
 
+  // Admin Operations
+  const updateOrderStatus = (orderId: string, status: AcademicOrder['status'], note?: string) => {
+    setOrders(prev => prev.map(ord => {
+      if (ord.id === orderId) {
+        const updatedNotes = note ? [...(ord.notes || []), note] : (ord.notes || []);
+        return {
+          ...ord,
+          status,
+          updatedAt: 'Just now',
+          notes: updatedNotes
+        };
+      }
+      return ord;
+    }));
+    showToast(language === 'bn' ? `অর্ডার #${orderId} স্ট্যাটাস আপডেট হয়েছে!` : `Order #${orderId} status updated!`);
+  };
+
+  const assignMentorToOrder = (orderId: string, mentorName: string) => {
+    setOrders(prev => prev.map(ord => {
+      if (ord.id === orderId) {
+        return {
+          ...ord,
+          assignedMentorName: mentorName,
+          status: ord.status === 'order_received' ? 'mentor_assigned' : ord.status,
+          updatedAt: 'Just now',
+          notes: [...(ord.notes || []), `Mentor ${mentorName} assigned to order.`]
+        };
+      }
+      return ord;
+    }));
+    showToast(language === 'bn' ? `মেন্টর ${mentorName} সফলভাবে অ্যাসাইন করা হয়েছে!` : `Mentor ${mentorName} assigned!`);
+  };
+
+  const updateOrderPrice = (orderId: string, newTotal: number) => {
+    setOrders(prev => prev.map(ord => {
+      if (ord.id === orderId) {
+        return {
+          ...ord,
+          totalAmount: newTotal,
+          updatedAt: 'Just now'
+        };
+      }
+      return ord;
+    }));
+    showToast(language === 'bn' ? `অর্ডার মূল্য ৳${newTotal} তে আপডেট করা হয়েছে!` : `Order price updated to ৳${newTotal}!`);
+  };
+
+  const deleteOrder = (orderId: string) => {
+    setOrders(prev => prev.filter(ord => ord.id !== orderId));
+    showToast(language === 'bn' ? `অর্ডার #${orderId} ডিলিট করা হয়েছে!` : `Order #${orderId} deleted!`);
+  };
+
   // Reviews
   const openWriteReviewModal = () => setWriteReviewModalOpen(true);
   const closeWriteReviewModal = () => setWriteReviewModalOpen(false);
@@ -404,12 +556,23 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
     setReviews(prev => [newRev, ...prev]);
     setWriteReviewModalOpen(false);
-    showToast('ধন্যবাদ! আপনার মূল্যবান রিভিউ যুক্ত হয়েছে।');
+    showToast(language === 'bn' ? 'ধন্যবাদ! আপনার মূল্যবান রিভিউ যুক্ত হয়েছে।' : 'Thank you! Your review has been added.');
+  };
+
+  const deleteReview = (reviewId: string) => {
+    setReviews(prev => prev.filter(r => r.id !== reviewId));
+    showToast(language === 'bn' ? 'রিভিউ মুছে ফেলা হয়েছে।' : 'Review deleted.');
   };
 
   return (
     <AppContext.Provider
       value={{
+        language,
+        setLanguage,
+        t,
+        bilingualServices: BILINGUAL_SERVICES,
+        currentView,
+        setCurrentView,
         activeNavTab,
         setActiveNavTab,
         services,
@@ -439,11 +602,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         selectedOrderIdForTracking,
         openOrderTracker,
         closeOrderTracker,
+        updateOrderStatus,
+        assignMentorToOrder,
+        updateOrderPrice,
+        deleteOrder,
         reviews,
         writeReviewModalOpen,
         openWriteReviewModal,
         closeWriteReviewModal,
         addCustomerReview,
+        deleteReview,
         toastMessage,
         showToast
       }}

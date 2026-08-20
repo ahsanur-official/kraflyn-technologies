@@ -228,20 +228,20 @@ export const EduQuestLogo: React.FC<EduQuestLogoProps> = ({
             <span className={`font-black text-slate-900 ${titleSizes[size]}`}>
               Edu
             </span>
-            <span className={`font-black text-blue-600 ml-1.5 ${titleSizes[size]} relative`}>
+            <span className={`font-black text-blue-600 ml-1.5 ${titleSizes[size]} relative inline-block`}>
               Quest
-              {/* Little Orange Swoosh Accent under Q/u */}
-              <span className="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full opacity-90"></span>
+              {/* Vibrant Orange Underline Accent under Quest */}
+              <span className="absolute -bottom-1.5 left-0 right-0 h-[3px] sm:h-1 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full shadow-xs"></span>
             </span>
           </div>
 
           {showSlogan && (
-            <div className="flex items-center gap-1.5 mt-1">
-              <span className="h-px w-3 bg-blue-600 hidden sm:inline-block"></span>
-              <span className={`font-bold uppercase text-slate-600 whitespace-nowrap ${sloganSizes[size]}`}>
-                Your Academic Journey, Our Support
+            <div className="flex items-center gap-1.5 mt-1.5">
+              <span className="h-0.5 w-3 bg-blue-600 rounded-full"></span>
+              <span className={`font-black uppercase text-slate-600 whitespace-nowrap ${sloganSizes[size]}`}>
+                YOUR ACADEMIC JOURNEY, OUR SUPPORT
               </span>
-              <span className="h-px w-3 bg-amber-500 hidden sm:inline-block"></span>
+              <span className="h-0.5 w-3 bg-orange-500 rounded-full"></span>
             </div>
           )}
         </div>

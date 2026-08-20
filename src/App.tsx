@@ -14,6 +14,9 @@ import { FaqSection } from './components/public/FaqSection';
 import { ContactSection } from './components/public/ContactSection';
 import { AboutUs } from './components/public/AboutUs';
 
+// Admin Dashboard
+import { AdminDashboard } from './admin/AdminDashboard';
+
 // Modals & Drawers
 import { CartDrawer } from './components/cart/CartDrawer';
 import { OrderModal } from './components/order/OrderModal';
@@ -21,7 +24,7 @@ import { OrderSuccessModal } from './components/order/OrderSuccessModal';
 import { OrderTrackerModal } from './components/order/OrderTrackerModal';
 import { WriteReviewModal } from './components/reviews/WriteReviewModal';
 import { ServiceDetailModal } from './components/public/ServiceDetailModal';
-import { CheckCircle2, Info } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 
 const ToastNotification: React.FC = () => {
   const { toastMessage } = useApp();
@@ -38,8 +41,19 @@ const ToastNotification: React.FC = () => {
 };
 
 const AppContent: React.FC = () => {
-  const { activeNavTab } = useApp();
+  const { currentView, activeNavTab } = useApp();
 
+  // If Admin Panel is selected, render isolated Admin Operations Dashboard
+  if (currentView === 'admin') {
+    return (
+      <div className="min-h-screen bg-slate-100 font-sans selection:bg-blue-600 selection:text-white">
+        <AdminDashboard />
+        <ToastNotification />
+      </div>
+    );
+  }
+
+  // Student-Facing Web Application
   const renderActiveView = () => {
     switch (activeNavTab) {
       case 'home':

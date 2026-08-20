@@ -7,7 +7,6 @@ import {
   ShieldCheck, 
   ArrowRight, 
   Sparkles, 
-  ShoppingBag,
   Plus
 } from 'lucide-react';
 
@@ -16,21 +15,29 @@ export const ServiceDetailModal: React.FC = () => {
     serviceDetailModalService, 
     closeServiceDetail, 
     addToCart, 
-    openOrderModal 
+    openOrderModal,
+    bilingualServices,
+    language,
+    t 
   } = useApp();
 
   if (!serviceDetailModalService) return null;
 
-  const service = serviceDetailModalService;
+  const rawService = serviceDetailModalService;
+  const bilingualData = bilingualServices.find(s => s.id === rawService.id);
+
+  const title = bilingualData ? bilingualData.title[language] : rawService.title;
+  const description = bilingualData ? bilingualData.fullDesc[language] : rawService.description;
+  const deliverables = bilingualData ? bilingualData.deliverables[language] : rawService.deliverables;
 
   const handleAddToCart = () => {
-    addToCart(service);
+    addToCart(rawService);
     closeServiceDetail();
   };
 
   const handleOrderDirectly = () => {
     closeServiceDetail();
-    openOrderModal(service);
+    openOrderModal(rawService);
   };
 
   return (
@@ -48,15 +55,15 @@ export const ServiceDetailModal: React.FC = () => {
 
           <div className="flex items-center gap-2 mb-2">
             <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-white/20 text-white border border-white/20">
-              {service.category}
+              {rawService.category}
             </span>
           </div>
 
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-2">
-            {service.title}
+            {title}
           </h2>
           <p className="text-xs sm:text-sm text-blue-100 mt-1">
-            {service.description}
+            {description}
           </p>
         </div>
 
@@ -68,12 +75,12 @@ export const ServiceDetailModal: React.FC = () => {
             <div className="flex items-center gap-2 mb-3">
               <Sparkles className="w-4 h-4 text-blue-600" />
               <h3 className="text-sm font-bold text-slate-900">
-                সার্ভিসের অন্তর্ভুক্ত বিষয়সমূহ (What You'll Receive):
+                {language === 'bn' ? 'সার্ভিসের অন্তর্ভুক্ত বিষয়সমূহ:' : 'What You Receive in this Service:'}
               </h3>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-              {service.deliverables.map((item, idx) => (
+              {deliverables.map((item, idx) => (
                 <div key={idx} className="flex items-start gap-2 text-xs text-slate-700">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                   <span>{item}</span>
@@ -87,15 +94,15 @@ export const ServiceDetailModal: React.FC = () => {
             <div className="p-3.5 bg-blue-50/80 rounded-2xl border border-blue-100 flex items-center gap-3">
               <Clock className="w-5 h-5 text-blue-600 shrink-0" />
               <div>
-                <div className="font-bold text-slate-900">Estimated Turnaround</div>
-                <div className="text-slate-600">{service.turnaround}</div>
+                <div className="font-bold text-slate-900">{language === 'bn' ? 'সম্ভাব্য সময়সীমা' : 'Estimated Turnaround'}</div>
+                <div className="text-slate-600">{bilingualData?.typicalTurnaround || rawService.turnaround}</div>
               </div>
             </div>
 
             <div className="p-3.5 bg-emerald-50/80 rounded-2xl border border-emerald-100 flex items-center gap-3">
               <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />
               <div>
-                <div className="font-bold text-slate-900">গোপনীয়তা ও সততা</div>
+                <div className="font-bold text-slate-900">{t.confidentialMentorship}</div>
                 <div className="text-slate-600">100% Student Privacy & Integrity</div>
               </div>
             </div>
@@ -104,9 +111,9 @@ export const ServiceDetailModal: React.FC = () => {
           {/* Pricing & CTA */}
           <div className="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
-              <span className="text-xs text-slate-400 uppercase font-bold block">Starting Price</span>
+              <span className="text-xs text-slate-400 uppercase font-bold block">{t.startingPrice}</span>
               <div className="flex items-baseline gap-1">
-                <span className="text-2xl font-black text-slate-900">৳{service.startingPrice}</span>
+                <span className="text-2xl font-black text-slate-900">৳{rawService.startingPrice}</span>
               </div>
             </div>
 
@@ -116,14 +123,14 @@ export const ServiceDetailModal: React.FC = () => {
                 className="w-full sm:w-auto px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-blue-700 bg-slate-100 hover:bg-blue-50 border border-slate-200 rounded-xl flex items-center justify-center gap-1.5 cursor-pointer"
               >
                 <Plus className="w-4 h-4" />
-                <span>Add to Cart</span>
+                <span>{t.addToCart}</span>
               </button>
 
               <button
                 onClick={handleOrderDirectly}
                 className="w-full sm:w-auto px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl shadow-md shadow-blue-600/20 flex items-center justify-center gap-2 transition-all cursor-pointer"
               >
-                <span>Order Now</span>
+                <span>{t.directOrder}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>

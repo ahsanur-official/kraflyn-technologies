@@ -5,9 +5,9 @@ import {
   Layers, 
   ShoppingBag, 
   Star, 
-  Search,
-  Sparkles
+  Search
 } from 'lucide-react';
+import { motion } from 'motion/react';
 
 export const MobileBottomNav: React.FC = () => {
   const { 
@@ -15,8 +15,8 @@ export const MobileBottomNav: React.FC = () => {
     setActiveNavTab, 
     cartCount, 
     openCart, 
-    openOrderModal, 
-    openOrderTracker 
+    openOrderTracker,
+    t 
   } = useApp();
 
   const handleTabClick = (tab: string, sectionId?: string) => {
@@ -30,63 +30,77 @@ export const MobileBottomNav: React.FC = () => {
   };
 
   return (
-    <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 px-3 py-2 flex items-center justify-around shadow-2xl">
-      
+    <motion.div 
+      initial={{ y: 80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.4 }}
+      className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 px-3 py-2 flex items-center justify-around shadow-2xl"
+    >
       {/* Home */}
-      <button
+      <motion.button
+        whileTap={{ scale: 0.9 }}
         onClick={() => handleTabClick('home')}
         className={`flex flex-col items-center gap-0.5 py-1 px-2 rounded-lg text-[10px] font-bold ${
           activeNavTab === 'home' ? 'text-blue-600' : 'text-slate-500'
         }`}
       >
         <Home className="w-5 h-5" />
-        <span>Home</span>
-      </button>
+        <span>{t.home}</span>
+      </motion.button>
 
       {/* Services */}
-      <button
+      <motion.button
+        whileTap={{ scale: 0.9 }}
         onClick={() => handleTabClick('services', 'services-section')}
         className={`flex flex-col items-center gap-0.5 py-1 px-2 rounded-lg text-[10px] font-bold ${
           activeNavTab === 'services' ? 'text-blue-600' : 'text-slate-500'
         }`}
       >
         <Layers className="w-5 h-5" />
-        <span>Services</span>
-      </button>
+        <span>{t.services}</span>
+      </motion.button>
 
       {/* Center Cart / Order Now Button */}
-      <button
+      <motion.button
+        whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.92 }}
         onClick={openCart}
-        className="relative -top-3 bg-gradient-to-tr from-blue-600 to-indigo-600 text-white w-12 h-12 rounded-full flex flex-col items-center justify-center shadow-lg shadow-blue-500/40 active:scale-95 transition-transform"
+        className="relative -top-3 bg-gradient-to-tr from-blue-600 to-indigo-600 text-white w-12 h-12 rounded-full flex flex-col items-center justify-center shadow-lg shadow-blue-500/40"
       >
         <ShoppingBag className="w-5 h-5" />
         {cartCount > 0 && (
-          <span className="absolute -top-1 -right-1 bg-amber-400 text-slate-950 text-[10px] font-black w-4.5 h-4.5 rounded-full flex items-center justify-center border-2 border-white">
+          <motion.span 
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            className="absolute -top-1 -right-1 bg-amber-400 text-slate-950 text-[10px] font-black w-4.5 h-4.5 rounded-full flex items-center justify-center border-2 border-white shadow-xs"
+          >
             {cartCount}
-          </span>
+          </motion.span>
         )}
-      </button>
+      </motion.button>
 
       {/* Customer Reviews */}
-      <button
+      <motion.button
+        whileTap={{ scale: 0.9 }}
         onClick={() => handleTabClick('reviews', 'reviews-section')}
         className={`flex flex-col items-center gap-0.5 py-1 px-2 rounded-lg text-[10px] font-bold ${
           activeNavTab === 'reviews' ? 'text-blue-600' : 'text-slate-500'
         }`}
       >
         <Star className="w-5 h-5 fill-amber-400 text-amber-400" />
-        <span>Reviews</span>
-      </button>
+        <span>{t.reviews}</span>
+      </motion.button>
 
       {/* Track Order */}
-      <button
+      <motion.button
+        whileTap={{ scale: 0.9 }}
         onClick={() => openOrderTracker()}
         className="flex flex-col items-center gap-0.5 py-1 px-2 rounded-lg text-[10px] font-bold text-slate-500 hover:text-blue-600"
       >
         <Search className="w-5 h-5 text-blue-500" />
-        <span>Track</span>
-      </button>
+        <span>{t.trackOrder}</span>
+      </motion.button>
 
-    </div>
+    </motion.div>
   );
 };

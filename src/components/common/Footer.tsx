@@ -7,14 +7,22 @@ import {
   Mail, 
   MapPin, 
   ShieldCheck, 
-  Heart, 
   ArrowUp,
   Star,
-  Search
+  Search,
+  Languages
 } from 'lucide-react';
 
 export const Footer: React.FC = () => {
-  const { setActiveNavTab, openOrderTracker, openOrderModal } = useApp();
+  const { 
+    setActiveNavTab, 
+    openOrderTracker, 
+    openOrderModal, 
+    bilingualServices,
+    language, 
+    setLanguage,
+    t 
+  } = useApp();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -32,7 +40,7 @@ export const Footer: React.FC = () => {
 
   return (
     <footer className="bg-slate-950 text-slate-400 text-xs border-t border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-[1720px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           
           {/* Col 1 & 2: Brand & Mission */}
@@ -41,10 +49,10 @@ export const Footer: React.FC = () => {
               <EduQuestLogo size="md" showSlogan={true} />
             </div>
             <p className="text-slate-400 text-xs leading-relaxed max-w-sm">
-              Edu Quest হল বাংলাদেশের বিশ্ববিদ্যালয় শিক্ষার্থীদের জন্য একটি সমন্বিত একাডেমিক সাপোর্ট প্ল্যাটফর্ম। কোর্স সাপোর্ট, ল্যাব রিপোর্ট, প্রোগ্রামিং অ্যাসাইনমেন্ট, প্রেজেন্টেশন এবং থিসিস গবেষণায় নির্ভরযোগ্য দিকনির্দেশনা প্রদান করাই আমাদের লক্ষ্য।
+              {t.footerAbout}
             </p>
 
-            <div className="flex items-center gap-3 text-white">
+            <div className="flex flex-wrap items-center gap-3 text-white pt-1">
               <a
                 href="https://wa.me/8801712345678"
                 target="_blank"
@@ -54,13 +62,21 @@ export const Footer: React.FC = () => {
                 <MessageSquare className="w-3.5 h-3.5" />
                 <span>WhatsApp: +880 1712-345678</span>
               </a>
+
+              <button
+                onClick={() => setLanguage(language === 'bn' ? 'en' : 'bn')}
+                className="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-semibold flex items-center gap-1 cursor-pointer transition-colors border border-slate-700"
+              >
+                <Languages className="w-3.5 h-3.5 text-blue-400" />
+                <span>Language: {language === 'bn' ? 'বাংলা (Change to EN)' : 'English (Change to BN)'}</span>
+              </button>
             </div>
           </div>
 
           {/* Col 3: Quick Navigation */}
           <div className="space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-wider text-white">
-              Quick Links
+              {t.quickLinks}
             </h4>
             <ul className="space-y-2">
               <li>
@@ -68,7 +84,7 @@ export const Footer: React.FC = () => {
                   onClick={() => handleNavClick('home')}
                   className="hover:text-blue-400 transition-colors cursor-pointer"
                 >
-                  Home
+                  {t.home}
                 </button>
               </li>
               <li>
@@ -76,7 +92,7 @@ export const Footer: React.FC = () => {
                   onClick={() => handleNavClick('services', 'services-section')}
                   className="hover:text-blue-400 transition-colors cursor-pointer"
                 >
-                  All Services (8)
+                  {t.services}
                 </button>
               </li>
               <li>
@@ -84,7 +100,7 @@ export const Footer: React.FC = () => {
                   onClick={() => handleNavClick('how-it-works', 'how-it-works-section')}
                   className="hover:text-blue-400 transition-colors cursor-pointer"
                 >
-                  How It Works
+                  {t.howItWorks}
                 </button>
               </li>
               <li>
@@ -93,7 +109,7 @@ export const Footer: React.FC = () => {
                   className="hover:text-blue-400 transition-colors cursor-pointer flex items-center gap-1"
                 >
                   <Star className="w-3 h-3 text-amber-400 fill-amber-400" />
-                  <span>Customer Reviews</span>
+                  <span>{t.reviews}</span>
                 </button>
               </li>
               <li>
@@ -102,65 +118,43 @@ export const Footer: React.FC = () => {
                   className="hover:text-blue-400 transition-colors cursor-pointer text-blue-400 flex items-center gap-1"
                 >
                   <Search className="w-3 h-3" />
-                  <span>Track Order Status</span>
+                  <span>{t.trackOrder}</span>
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => handleNavClick('faq', 'faq-section')}
+                  className="hover:text-blue-400 transition-colors cursor-pointer"
+                >
+                  {t.faq}
                 </button>
               </li>
             </ul>
           </div>
 
-          {/* Col 4: Services */}
+          {/* Col 4: Popular Services */}
           <div className="space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-wider text-white">
-              Popular Services
+              {t.popularServices}
             </h4>
             <ul className="space-y-2">
-              <li>
-                <button 
-                  onClick={() => handleNavClick('services', 'services-section')}
-                  className="hover:text-blue-400 transition-colors text-left cursor-pointer"
-                >
-                  Course Support & Exam Prep
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => handleNavClick('services', 'services-section')}
-                  className="hover:text-blue-400 transition-colors text-left cursor-pointer"
-                >
-                  Programming & Lab Code Review
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => handleNavClick('services', 'services-section')}
-                  className="hover:text-blue-400 transition-colors text-left cursor-pointer"
-                >
-                  Thesis & Research Mentorship
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => handleNavClick('services', 'services-section')}
-                  className="hover:text-blue-400 transition-colors text-left cursor-pointer"
-                >
-                  Presentation & Viva Defense
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => handleNavClick('services', 'services-section')}
-                  className="hover:text-blue-400 transition-colors text-left cursor-pointer"
-                >
-                  Final Year Project (FYP)
-                </button>
-              </li>
+              {bilingualServices.slice(0, 5).map((srv) => (
+                <li key={srv.id}>
+                  <button 
+                    onClick={() => handleNavClick('services', 'services-section')}
+                    className="hover:text-blue-400 transition-colors text-left cursor-pointer"
+                  >
+                    {srv.title[language]}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Col 5: Contact Info */}
           <div className="space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-wider text-white">
-              Direct Contact
+              {t.directContact}
             </h4>
             <div className="space-y-2.5 text-slate-400">
               <div className="flex items-start gap-2">
@@ -178,9 +172,9 @@ export const Footer: React.FC = () => {
               <div className="pt-2">
                 <button
                   onClick={() => openOrderModal()}
-                  className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-xs shadow-xs transition-colors cursor-pointer"
+                  className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-xs shadow-xs transition-colors cursor-pointer"
                 >
-                  Order Academic Support
+                  {t.orderNow}
                 </button>
               </div>
             </div>
@@ -191,13 +185,13 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-slate-500 text-[11px] text-center sm:text-left">
-            © {new Date().getFullYear()} Edu Quest. All rights reserved. Academic support & mentorship platform.
+            © {new Date().getFullYear()} {t.copyright}
           </p>
 
           <div className="flex items-center gap-4">
             <span className="text-[11px] text-slate-500 flex items-center gap-1">
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
-              100% Confidential Mentorship
+              {t.confidentialMentorship}
             </span>
 
             <button
