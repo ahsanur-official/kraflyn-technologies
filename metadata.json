@@ -1,0 +1,6 @@
+{
+  "name": "Edu Quest",
+  "description": "Your Academic Journey, Our Support. Browse academic services, add support to cart, place orders for instant mentor delivery and direct contact.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
