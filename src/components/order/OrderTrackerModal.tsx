@@ -211,7 +211,7 @@ export const OrderTrackerModal: React.FC = () => {
         </div>
 
         {/* Order Details Body */}
-        <div className="overflow-y-auto p-5 sm:p-6 space-y-6 flex-1 text-slate-800 text-xs sm:text-sm">
+        <div className="overflow-y-auto custom-scrollbar p-5 sm:p-6 space-y-6 flex-1 text-slate-800 text-xs sm:text-sm">
           {searchedOrder ? (
             <>
               {/* Order Info Banner */}

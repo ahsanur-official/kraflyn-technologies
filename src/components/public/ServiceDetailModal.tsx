@@ -42,12 +42,13 @@ export const ServiceDetailModal: React.FC = () => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-in fade-in">
-      <div className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200">
+      <div className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] shadow-2xl border border-slate-200 flex flex-col overflow-hidden">
         
-        {/* Header Banner */}
-        <div className="relative bg-gradient-to-r from-blue-700 via-blue-800 to-indigo-900 text-white p-6 sm:p-8 rounded-t-3xl">
+        {/* Header Banner (Fixed Header) */}
+        <div className="relative bg-gradient-to-r from-blue-700 via-blue-800 to-indigo-900 text-white p-5 sm:p-7 shrink-0">
           <button
             onClick={closeServiceDetail}
+            aria-label="Close"
             className="absolute top-4 right-4 p-2 text-slate-300 hover:text-white rounded-full bg-slate-800/60 hover:bg-slate-800 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
@@ -59,19 +60,19 @@ export const ServiceDetailModal: React.FC = () => {
             </span>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-2">
+          <h2 className="text-xl sm:text-2xl font-extrabold text-white mt-1 pr-8">
             {title}
           </h2>
-          <p className="text-xs sm:text-sm text-blue-100 mt-1">
+          <p className="text-xs sm:text-sm text-blue-100 mt-1 leading-relaxed">
             {description}
           </p>
         </div>
 
-        {/* Modal Body */}
-        <div className="p-6 sm:p-8 space-y-6">
+        {/* Modal Scrollable Body */}
+        <div className="p-5 sm:p-7 space-y-5 overflow-y-auto flex-1 custom-scrollbar">
           
           {/* Deliverables */}
-          <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+          <div className="bg-slate-50 p-4 sm:p-5 rounded-2xl border border-slate-200/80">
             <div className="flex items-center gap-2 mb-3">
               <Sparkles className="w-4 h-4 text-blue-600" />
               <h3 className="text-sm font-bold text-slate-900">
@@ -107,35 +108,34 @@ export const ServiceDetailModal: React.FC = () => {
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Pricing & CTA */}
-          <div className="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div>
-              <span className="text-xs text-slate-400 uppercase font-bold block">{t.startingPrice}</span>
-              <div className="flex items-baseline gap-1">
-                <span className="text-2xl font-black text-slate-900">৳{rawService.startingPrice}</span>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3 w-full sm:w-auto">
-              <button
-                onClick={handleAddToCart}
-                className="w-full sm:w-auto px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-blue-700 bg-slate-100 hover:bg-blue-50 border border-slate-200 rounded-xl flex items-center justify-center gap-1.5 cursor-pointer"
-              >
-                <Plus className="w-4 h-4" />
-                <span>{t.addToCart}</span>
-              </button>
-
-              <button
-                onClick={handleOrderDirectly}
-                className="w-full sm:w-auto px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl shadow-md shadow-blue-600/20 flex items-center justify-center gap-2 transition-all cursor-pointer"
-              >
-                <span>{t.directOrder}</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+        {/* Pricing & Sticky CTA Footer */}
+        <div className="p-4 sm:p-6 bg-white border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4 shrink-0">
+          <div>
+            <span className="text-xs text-slate-400 uppercase font-bold block">{t.startingPrice}</span>
+            <div className="flex items-baseline gap-1">
+              <span className="text-2xl font-black text-slate-900">৳{rawService.startingPrice}</span>
             </div>
           </div>
 
+          <div className="flex items-center gap-3 w-full sm:w-auto">
+            <button
+              onClick={handleAddToCart}
+              className="w-full sm:w-auto px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-blue-700 bg-slate-100 hover:bg-blue-50 border border-slate-200 rounded-xl flex items-center justify-center gap-1.5 cursor-pointer transition-colors"
+            >
+              <Plus className="w-4 h-4" />
+              <span>{t.addToCart}</span>
+            </button>
+
+            <button
+              onClick={handleOrderDirectly}
+              className="w-full sm:w-auto px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl shadow-md shadow-blue-600/20 flex items-center justify-center gap-2 transition-all cursor-pointer"
+            >
+              <span>{t.directOrder}</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
         </div>
 
       </div>

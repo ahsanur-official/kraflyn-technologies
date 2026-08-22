@@ -213,7 +213,7 @@ export const OrderModal: React.FC = () => {
         </div>
 
         {/* Form Body */}
-        <form onSubmit={handleSubmitOrder} className="overflow-y-auto p-5 sm:p-7 space-y-6 flex-1 text-slate-800 text-sm">
+        <form onSubmit={handleSubmitOrder} className="overflow-y-auto custom-scrollbar p-5 sm:p-7 space-y-6 flex-1 text-slate-800 text-sm">
           
           {/* 1. Selected Services Summary */}
           <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4">

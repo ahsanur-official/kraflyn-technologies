@@ -242,7 +242,7 @@ export const BookingWizardModal: React.FC = () => {
         )}
 
         {/* Modal Scrollable Body */}
-        <div className="p-6 overflow-y-auto flex-1">
+        <div className="p-6 overflow-y-auto flex-1 custom-scrollbar">
           
           {/* ================= SUCCESS SCREEN ================= */}
           {submittedRequestId ? (
