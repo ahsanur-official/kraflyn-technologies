@@ -1,6 +1,7 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
 import { KraflynLogo } from '../common/KraflynLogo';
+import { CountUpNumber } from '../common/CountUpNumber';
 import { 
   ArrowRight, 
   ShoppingBag, 
@@ -160,7 +161,7 @@ export const Hero: React.FC = () => {
               </motion.button>
             </motion.div>
 
-            {/* Live Stats Row with smooth hovering */}
+            {/* Live Stats Row with smooth hovering and scroll count-up animation */}
             <motion.div 
               variants={itemVariants} 
               className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3.5 pt-5 sm:pt-6 border-t border-slate-800 text-center sm:text-left"
@@ -170,7 +171,15 @@ export const Hero: React.FC = () => {
                 transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                 className="p-2.5 xs:p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-400/40 hover:bg-white/8 backdrop-blur-xs transition-all duration-300 cursor-default shadow-xs hover:shadow-lg hover:shadow-cyan-500/10"
               >
-                <div className="text-lg xs:text-xl sm:text-2xl xl:text-3xl font-black text-white">{t.heroStatStudents}</div>
+                <div className="text-lg xs:text-xl sm:text-2xl xl:text-3xl font-black text-white">
+                  <CountUpNumber 
+                    end={5000} 
+                    duration={2.2} 
+                    suffix="+" 
+                    formatCommas={true} 
+                    isBengali={language === 'bn'} 
+                  />
+                </div>
                 <div className="text-[10px] xs:text-xs text-slate-400 font-medium mt-0.5">{t.heroStatStudentsLabel}</div>
               </motion.div>
 
@@ -179,7 +188,15 @@ export const Hero: React.FC = () => {
                 transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                 className="p-2.5 xs:p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 hover:border-emerald-400/40 hover:bg-white/8 backdrop-blur-xs transition-all duration-300 cursor-default shadow-xs hover:shadow-lg hover:shadow-emerald-500/10"
               >
-                <div className="text-lg xs:text-xl sm:text-2xl xl:text-3xl font-black text-emerald-400">{t.heroStatSatisfaction}</div>
+                <div className="text-lg xs:text-xl sm:text-2xl xl:text-3xl font-black text-emerald-400">
+                  <CountUpNumber 
+                    end={99.4} 
+                    decimals={1} 
+                    duration={2.2} 
+                    suffix="%" 
+                    isBengali={language === 'bn'} 
+                  />
+                </div>
                 <div className="text-[10px] xs:text-xs text-slate-400 font-medium mt-0.5">{t.heroStatSatisfactionLabel}</div>
               </motion.div>
 
@@ -188,7 +205,14 @@ export const Hero: React.FC = () => {
                 transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                 className="p-2.5 xs:p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 hover:border-sky-400/40 hover:bg-white/8 backdrop-blur-xs transition-all duration-300 cursor-default shadow-xs hover:shadow-lg hover:shadow-sky-500/10"
               >
-                <div className="text-lg xs:text-xl sm:text-2xl xl:text-3xl font-black text-sky-400">{t.heroStatUniversities}</div>
+                <div className="text-lg xs:text-xl sm:text-2xl xl:text-3xl font-black text-sky-400">
+                  <CountUpNumber 
+                    end={45} 
+                    duration={1.8} 
+                    suffix="+" 
+                    isBengali={language === 'bn'} 
+                  />
+                </div>
                 <div className="text-[10px] xs:text-xs text-slate-400 font-medium mt-0.5">{t.heroStatUniversitiesLabel}</div>
               </motion.div>
 
@@ -197,7 +221,16 @@ export const Hero: React.FC = () => {
                 transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                 className="p-2.5 xs:p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 hover:border-fuchsia-400/40 hover:bg-white/8 backdrop-blur-xs transition-all duration-300 cursor-default shadow-xs hover:shadow-lg hover:shadow-fuchsia-500/10"
               >
-                <div className="text-lg xs:text-xl sm:text-2xl xl:text-3xl font-black text-fuchsia-300">{t.heroStatTurnaround}</div>
+                <div className="text-lg xs:text-xl sm:text-2xl xl:text-3xl font-black text-fuchsia-300">
+                  <CountUpNumber 
+                    end={24} 
+                    start={2} 
+                    duration={1.8} 
+                    prefix={language === 'bn' ? '২-' : '2-'} 
+                    suffix={language === 'bn' ? ' ঘণ্টা' : ' Hours'} 
+                    isBengali={language === 'bn'} 
+                  />
+                </div>
                 <div className="text-[10px] xs:text-xs text-slate-400 font-medium mt-0.5">{t.heroStatTurnaroundLabel}</div>
               </motion.div>
             </motion.div>

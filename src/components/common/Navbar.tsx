@@ -175,7 +175,7 @@ export const Navbar: React.FC = () => {
               onClick={() => handleNavClick('home')}
               className="text-left focus:outline-hidden cursor-pointer shrink-0 min-w-0"
             >
-              <KraflynLogo size="md" showSlogan={true} />
+              <KraflynLogo size="md" showSlogan={true} theme="light" />
             </motion.button>
 
             {/* Right Action Controls: Cart Pill + Direct Order + Menu Hamburger */}
@@ -267,7 +267,7 @@ export const Navbar: React.FC = () => {
                 {/* Drawer Header */}
                 <div className="p-5 sm:p-6 border-b border-slate-100 flex items-center justify-between bg-slate-50/70">
                   <div>
-                    <KraflynLogo size="sm" showSlogan={true} />
+                    <KraflynLogo size="sm" showSlogan={true} theme="light" />
                   </div>
 
                   <motion.button

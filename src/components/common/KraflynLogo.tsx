@@ -13,7 +13,8 @@ export const KraflynLogo: React.FC<KraflynLogoProps> = ({
   className = '',
   size = 'md',
   showSlogan = true,
-  variant = 'horizontal'
+  variant = 'horizontal',
+  theme = 'auto'
 }) => {
   const emblemSizes = {
     xs: 'w-6 h-6',
@@ -24,6 +25,23 @@ export const KraflynLogo: React.FC<KraflynLogoProps> = ({
     '2xl': 'w-24 h-24 sm:w-36 sm:h-36',
     hero: 'w-36 h-36 sm:w-60 sm:h-60 md:w-72 md:h-72'
   };
+
+  const isDark = theme === 'dark';
+
+  const kraflnTextColor = isDark 
+    ? 'text-white' 
+    : 'text-slate-950';
+
+  const technologiesGradient = isDark
+    ? 'text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400'
+    : 'text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600';
+
+  const sloganTextColor = isDark 
+    ? 'text-slate-300' 
+    : 'text-slate-600';
+
+  const cyanDotColor = isDark ? 'bg-cyan-400' : 'bg-cyan-500';
+  const purpleDotColor = isDark ? 'bg-purple-400' : 'bg-purple-600';
 
   const titleSizes = {
     xs: 'text-[11px] font-black',
@@ -269,19 +287,19 @@ export const KraflynLogo: React.FC<KraflynLogoProps> = ({
       <div className={`flex flex-col items-center text-center ${className}`}>
         <EmblemSvg />
         <div className="mt-3 flex flex-col items-center">
-          <div className="flex flex-col sm:flex-row items-center tracking-tight leading-none text-slate-900 dark:text-white">
-            <span className="text-slate-900 font-black text-xl sm:text-2xl tracking-wider">KRAFLYN</span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 font-black text-xl sm:text-2xl sm:ml-1.5">
+          <div className="flex flex-col sm:flex-row items-center tracking-tight leading-none">
+            <span className={`${kraflnTextColor} font-black text-xl sm:text-2xl tracking-wider`}>KRAFLYN</span>
+            <span className={`${technologiesGradient} font-black text-xl sm:text-2xl sm:ml-1.5`}>
               TECHNOLOGIES
             </span>
           </div>
           {showSlogan && (
-            <div className="mt-1.5 flex items-center justify-center gap-1.5 text-slate-500 font-bold">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
-              <span className="text-[10px] tracking-[0.2em] font-extrabold uppercase text-slate-500">
+            <div className="mt-1.5 flex items-center justify-center gap-1.5 font-bold">
+              <span className={`w-1.5 h-1.5 rounded-full ${cyanDotColor} animate-pulse`}></span>
+              <span className={`text-[10px] tracking-[0.2em] font-extrabold uppercase ${sloganTextColor}`}>
                 Create • Connect • Grow
               </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-purple-500 animate-pulse"></span>
+              <span className={`w-1.5 h-1.5 rounded-full ${purpleDotColor} animate-pulse`}></span>
             </div>
           )}
         </div>
@@ -297,20 +315,20 @@ export const KraflynLogo: React.FC<KraflynLogoProps> = ({
 
       {/* Stylized Brand Typography Column */}
       <div className="flex flex-col justify-center min-w-0">
-        <div className={`flex items-center tracking-tight leading-none text-slate-900 dark:text-white ${titleSizes[size]}`}>
-          <span className="text-slate-900 tracking-tight">KRAFLYN</span>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 ml-1.5 font-black">
+        <div className={`flex items-center tracking-tight leading-none ${titleSizes[size]}`}>
+          <span className={`${kraflnTextColor} tracking-tight font-black`}>KRAFLYN</span>
+          <span className={`${technologiesGradient} ml-1.5 font-black`}>
             TECHNOLOGIES
           </span>
         </div>
 
         {showSlogan && (
-          <div className="flex items-center gap-1 sm:gap-1.5 mt-0.5 sm:mt-1 text-slate-500">
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 shrink-0"></span>
-            <span className={`font-extrabold uppercase tracking-widest text-slate-600 dark:text-slate-400 truncate ${sloganSizes[size]}`}>
+          <div className="flex items-center gap-1 sm:gap-1.5 mt-0.5 sm:mt-1">
+            <span className={`w-1.5 h-1.5 rounded-full ${cyanDotColor} shrink-0`}></span>
+            <span className={`font-extrabold uppercase tracking-widest ${sloganTextColor} truncate ${sloganSizes[size]}`}>
               Create • Connect • Grow
             </span>
-            <span className="w-1.5 h-1.5 rounded-full bg-purple-500 shrink-0"></span>
+            <span className={`w-1.5 h-1.5 rounded-full ${purpleDotColor} shrink-0`}></span>
           </div>
         )}
       </div>

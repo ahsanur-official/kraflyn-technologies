@@ -47,7 +47,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onAuthenticated }) => {
       <header className="max-w-7xl w-full mx-auto px-6 py-6 flex items-center justify-between z-10">
         <div className="flex items-center gap-3">
           <div className="bg-slate-900/90 p-2.5 rounded-2xl border border-slate-800 backdrop-blur-xs">
-            <KraflynLogo size="sm" showSlogan={false} />
+            <KraflynLogo size="sm" showSlogan={false} theme="dark" />
           </div>
           <span className="hidden sm:inline-block px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-rose-500/20 text-rose-300 border border-rose-500/30">
             Operations Portal

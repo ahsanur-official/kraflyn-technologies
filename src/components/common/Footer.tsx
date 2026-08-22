@@ -50,7 +50,7 @@ export const Footer: React.FC = () => {
           {/* Col 1 & 2: Kraflyn Technologies Brand & Mission */}
           <div className="lg:col-span-2 space-y-4">
             <div className="bg-slate-900/90 inline-block p-3 rounded-2xl border border-slate-800 shadow-sm">
-              <KraflynLogo size="md" showSlogan={true} />
+              <KraflynLogo size="md" showSlogan={true} theme="dark" />
             </div>
             <p className="text-slate-400 text-xs leading-relaxed max-w-sm">
               {t.footerAbout}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
+import { CountUpNumber } from '../common/CountUpNumber';
 import { 
   Star, 
   CheckCircle2, 
@@ -103,7 +104,8 @@ export const CustomerReviewsSection: React.FC = () => {
             {/* Main Score */}
             <div className="text-center md:text-left md:border-r md:border-slate-100 md:pr-6">
               <div className="text-4xl sm:text-5xl font-black text-slate-900 leading-none">
-                4.9<span className="text-2xl text-slate-400 font-normal">/5.0</span>
+                <CountUpNumber end={4.9} decimals={1} duration={2} isBengali={language === 'bn'} />
+                <span className="text-2xl text-slate-400 font-normal">/5.0</span>
               </div>
               <div className="flex items-center justify-center md:justify-start gap-1 text-amber-400 my-2">
                 {[1, 2, 3, 4, 5].map((s) => (
@@ -119,7 +121,7 @@ export const CustomerReviewsSection: React.FC = () => {
             <div className="grid grid-cols-3 col-span-1 md:col-span-3 gap-4 text-center">
               <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100 hover:bg-blue-50/40 transition-colors duration-200">
                 <div className="text-xl sm:text-2xl font-black text-blue-600">
-                  99.4%
+                  <CountUpNumber end={99.4} decimals={1} suffix="%" duration={2} isBengali={language === 'bn'} />
                 </div>
                 <div className="text-xs font-semibold text-slate-700 mt-0.5">
                   {language === 'bn' ? 'সময়মতো ডেলিভারি' : 'On-Time Completion'}
@@ -129,7 +131,7 @@ export const CustomerReviewsSection: React.FC = () => {
 
               <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100 hover:bg-emerald-50/40 transition-colors duration-200">
                 <div className="text-xl sm:text-2xl font-black text-emerald-600">
-                  30+
+                  <CountUpNumber end={30} suffix="+" duration={1.8} isBengali={language === 'bn'} />
                 </div>
                 <div className="text-xs font-semibold text-slate-700 mt-0.5">
                   {language === 'bn' ? 'বিশ্ববিদ্যালয় কভারেজ' : 'Universities Covered'}
@@ -139,7 +141,7 @@ export const CustomerReviewsSection: React.FC = () => {
 
               <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100 hover:bg-indigo-50/40 transition-colors duration-200">
                 <div className="text-xl sm:text-2xl font-black text-indigo-600">
-                  100%
+                  <CountUpNumber end={100} suffix="%" duration={1.8} isBengali={language === 'bn'} />
                 </div>
                 <div className="text-xs font-semibold text-slate-700 mt-0.5">
                   {language === 'bn' ? 'গোপনীয়তা সংরক্ষিত' : 'Confidential Delivery'}
