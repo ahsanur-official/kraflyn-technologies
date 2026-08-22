@@ -180,31 +180,34 @@ export const OrderModal: React.FC = () => {
       <div className="bg-white rounded-3xl shadow-2xl border border-slate-200 max-w-3xl w-full max-h-[92vh] flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
         
         {/* Header */}
-        <div className="bg-gradient-to-r from-blue-700 via-blue-800 to-indigo-900 text-white p-5 sm:p-6 shrink-0 relative">
-          <button
-            onClick={closeOrderModal}
-            className="absolute top-5 right-5 p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
-          >
-            <X className="w-5 h-5" />
-          </button>
+        <div className="bg-gradient-to-r from-blue-700 via-blue-800 to-indigo-900 text-white p-5 sm:p-6 shrink-0">
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="w-10 h-10 rounded-xl bg-white/15 border border-white/20 flex items-center justify-center text-amber-300 shrink-0">
+                <GraduationCap className="w-6 h-6" />
+              </div>
+              <div className="min-w-0">
+                <h2 className="text-lg sm:text-xl font-bold tracking-tight">
+                  {t.orderModalHeading || t.orderModalTitle || 'সার্ভিস অর্ডার ফর্ম'}
+                </h2>
+                <p className="text-xs text-blue-100 mt-0.5 leading-normal">
+                  {t.orderModalSubtitle || 'নিচের তথ্যগুলো পূরণ করুন। অর্ডার সাবমিট হওয়ামাত্রই WhatsApp-এ যোগাযোগ করা হবে।'}
+                </p>
+              </div>
+            </div>
 
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-white/15 border border-white/20 flex items-center justify-center text-amber-300">
-              <GraduationCap className="w-6 h-6" />
-            </div>
-            <div>
-              <h2 className="text-xl font-bold tracking-tight">
-                {t.orderModalHeading}
-              </h2>
-              <p className="text-xs text-blue-100 mt-0.5">
-                {t.orderModalSubtitle}
-              </p>
-            </div>
+            <button
+              onClick={closeOrderModal}
+              aria-label="Close"
+              className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer shrink-0"
+            >
+              <X className="w-5 h-5" />
+            </button>
           </div>
 
           {/* Reassurance pill */}
           <div className="mt-3.5 inline-flex items-center gap-2 bg-emerald-500/20 border border-emerald-400/40 text-emerald-100 text-xs px-3 py-1 rounded-full">
-            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-300" />
+            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-300 shrink-0" />
             <span>{language === 'bn' ? 'অগ্রিম কোনো পেমেন্ট প্রয়োজন নেই • সরাসরি WhatsApp এ যোগাযোগ' : 'No advance payment needed • Direct WhatsApp Outreach'}</span>
           </div>
         </div>

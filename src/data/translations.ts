@@ -119,8 +119,12 @@ export interface TranslationDictionary {
   removeItem: string;
 
   // Order Modal
+  orderModalHeading: string;
   orderModalTitle: string;
   orderModalSubtitle: string;
+  trackOrderHeading: string;
+  trackOrderSubtitle: string;
+  orderIdOrPhonePlaceholder: string;
   stepContact: string;
   stepAcademic: string;
   stepRequirements: string;
@@ -346,8 +350,12 @@ export const DICTIONARY: Record<Language, TranslationDictionary> = {
     removeItem: 'মুছে ফেলুন',
 
     // Order Modal
+    orderModalHeading: 'সার্ভিস অর্ডার ফর্ম',
     orderModalTitle: 'সার্ভিস অর্ডার ফর্ম',
     orderModalSubtitle: 'নিচের তথ্যগুলো পূরণ করুন। অর্ডার সাবমিট হওয়ামাত্রই WhatsApp-এ যোগাযোগ করা হবে।',
+    trackOrderHeading: 'অর্ডার স্ট্যাটাস ট্র্যাকার',
+    trackOrderSubtitle: 'আপনার অর্ডার আইডি বা ফোন নম্বর দিয়ে লাইভ অগ্রগতি দেখুন',
+    orderIdOrPhonePlaceholder: 'অর্ডার আইডি (যেমন: EQ-ORD-...) অথবা মোবাইল নম্বর লিখুন',
     stepContact: '১. যোগাযোগ তথ্য',
     stepAcademic: '২. শিক্ষা ও প্রজেক্ট বিবরণ',
     stepRequirements: '৩. রিকোয়ারমেন্ট ও ফাইল',
@@ -571,8 +579,12 @@ export const DICTIONARY: Record<Language, TranslationDictionary> = {
     removeItem: 'Remove',
 
     // Order Modal
+    orderModalHeading: 'Service Order Form',
     orderModalTitle: 'Service Order Form',
     orderModalSubtitle: 'Provide your project details below. Our coordinator will contact you on WhatsApp right away.',
+    trackOrderHeading: 'Live Order Tracker',
+    trackOrderSubtitle: 'Track your project status in real-time with Order ID or Phone',
+    orderIdOrPhonePlaceholder: 'Enter Order ID (e.g. EQ-ORD-...) or Mobile Number',
     stepContact: '1. Contact Details',
     stepAcademic: '2. Academic / Project Info',
     stepRequirements: '3. Requirements & Files',

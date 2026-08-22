@@ -134,22 +134,25 @@ export const OrderTrackerModal: React.FC = () => {
       <div className="bg-white rounded-3xl shadow-2xl border border-slate-200 max-w-2xl w-full overflow-hidden animate-in zoom-in-95 duration-200 max-h-[90vh] flex flex-col">
         
         {/* Modal Header */}
-        <div className="bg-slate-900 text-white p-5 sm:p-6 flex items-center justify-between shrink-0">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-blue-600/30 border border-blue-500/40 flex items-center justify-center text-blue-400">
+        <div className="bg-slate-900 text-white p-4 sm:p-5 flex items-center justify-between shrink-0 border-b border-slate-800 gap-3">
+          <div className="flex items-center gap-3 min-w-0 flex-1">
+            <div className="w-10 h-10 rounded-xl bg-blue-600/30 border border-blue-500/40 flex items-center justify-center text-blue-400 shrink-0">
               <Package className="w-5 h-5" />
             </div>
-            <div>
-              <h3 className="text-lg font-bold">{t.trackOrderHeading}</h3>
-              <p className="text-xs text-slate-400">
-                {t.trackOrderSubtitle}
+            <div className="min-w-0 flex-1">
+              <h3 className="text-base sm:text-lg font-bold text-white leading-snug">
+                {t.trackOrderHeading || (language === 'bn' ? 'অর্ডার স্ট্যাটাস ট্র্যাকার' : 'Live Order Tracker')}
+              </h3>
+              <p className="text-xs text-slate-400 leading-normal mt-0.5">
+                {t.trackOrderSubtitle || (language === 'bn' ? 'আপনার অর্ডার আইডি বা ফোন নম্বর দিয়ে লাইভ অগ্রগতি দেখুন' : 'Track your project status in real-time with Order ID or Phone')}
               </p>
             </div>
           </div>
 
           <button
             onClick={closeOrderTracker}
-            className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white transition-colors cursor-pointer"
+            aria-label="Close"
+            className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white transition-all cursor-pointer shrink-0"
           >
             <X className="w-5 h-5" />
           </button>
