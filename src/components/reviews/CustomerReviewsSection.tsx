@@ -6,7 +6,10 @@ import {
   PlusCircle, 
   Sparkles, 
   ThumbsUp, 
-  Filter 
+  Filter,
+  Palette,
+  Code2,
+  GraduationCap
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -17,16 +20,28 @@ export const CustomerReviewsSection: React.FC = () => {
 
   const categories = [
     { key: 'All', label: { bn: 'সকল রিভিউ', en: 'All Reviews' } },
-    { key: 'Course Support', label: { bn: 'কোর্স সাপোর্ট', en: 'Course Support' } },
-    { key: 'Programming', label: { bn: 'প্রোগ্রামিং ও ল্যাব', en: 'Programming & Lab' } },
-    { key: 'Thesis', label: { bn: 'থিসিস মেন্টরশিপ', en: 'Thesis Mentorship' } },
-    { key: 'Presentation', label: { bn: 'প্রেজেন্টেশন ও ডিফেন্স', en: 'Presentation & Defense' } },
-    { key: 'Lab Report', label: { bn: 'ল্যাব রিপোর্ট', en: 'Lab Report' } }
+    { key: 'Design', label: { bn: '🎨 ডিজাইন সার্ভিস', en: '🎨 Design Services' } },
+    { key: 'Development', label: { bn: '💻 ডেভেলপমেন্ট সার্ভিস', en: '💻 Development' } },
+    { key: 'Student Support', label: { bn: '🎓 স্টুডেন্ট সাপোর্ট', en: '🎓 Student Support' } },
+    { key: 'Thesis', label: { bn: 'থিসিস ও FYP', en: 'Thesis & FYP' } }
   ];
 
   const filteredReviews = selectedCategory === 'All'
     ? reviews
-    : reviews.filter(r => r.serviceTitle.toLowerCase().includes(selectedCategory.toLowerCase()) || selectedCategory.toLowerCase().includes(r.serviceTitle.toLowerCase()));
+    : reviews.filter(r => {
+        const cat = selectedCategory.toLowerCase();
+        const srvTitle = r.serviceTitle.toLowerCase();
+        if (cat === 'design') {
+          return srvTitle.includes('poster') || srvTitle.includes('banner') || srvTitle.includes('design') || srvTitle.includes('ui') || srvTitle.includes('cv') || srvTitle.includes('logo') || srvTitle.includes('presentation');
+        }
+        if (cat === 'development') {
+          return srvTitle.includes('website') || srvTitle.includes('web') || srvTitle.includes('app') || srvTitle.includes('code') || srvTitle.includes('portfolio') || srvTitle.includes('api') || srvTitle.includes('bug');
+        }
+        if (cat === 'student support') {
+          return srvTitle.includes('fyp') || srvTitle.includes('thesis') || srvTitle.includes('support') || srvTitle.includes('paper') || srvTitle.includes('research') || srvTitle.includes('turnitin');
+        }
+        return srvTitle.includes(cat);
+      });
 
   const handleHelpfulClick = (revId: string) => {
     setHelpfulCounts(prev => ({
@@ -109,12 +124,12 @@ export const CustomerReviewsSection: React.FC = () => {
                 <div className="text-xs font-semibold text-slate-700 mt-0.5">
                   {language === 'bn' ? 'সময়মতো ডেলিভারি' : 'On-Time Completion'}
                 </div>
-                <div className="text-[10px] text-slate-400">Strict Schedule</div>
+                <div className="text-[10px] text-slate-400">Fast Turnaround</div>
               </div>
 
               <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100 hover:bg-emerald-50/40 transition-colors duration-200">
                 <div className="text-xl sm:text-2xl font-black text-emerald-600">
-                  25+
+                  30+
                 </div>
                 <div className="text-xs font-semibold text-slate-700 mt-0.5">
                   {language === 'bn' ? 'বিশ্ববিদ্যালয় কভারেজ' : 'Universities Covered'}
@@ -127,9 +142,9 @@ export const CustomerReviewsSection: React.FC = () => {
                   100%
                 </div>
                 <div className="text-xs font-semibold text-slate-700 mt-0.5">
-                  {language === 'bn' ? 'গোপনীয়তা সংরক্ষিত' : 'Confidential Mentorship'}
+                  {language === 'bn' ? 'গোপনীয়তা সংরক্ষিত' : 'Confidential Delivery'}
                 </div>
-                <div className="text-[10px] text-slate-400">Verified Mentors</div>
+                <div className="text-[10px] text-slate-400">Verified Specialists</div>
               </div>
             </div>
 
@@ -180,61 +195,39 @@ export const CustomerReviewsSection: React.FC = () => {
                   {/* Header with rating & verified tag */}
                   <div className="flex items-center justify-between gap-2 mb-3">
                     <div className="flex items-center gap-1 text-amber-400">
-                      {Array.from({ length: rev.rating }).map((_, i) => (
+                      {[...Array(rev.rating)].map((_, i) => (
                         <Star key={i} className="w-3.5 h-3.5 fill-amber-400" />
                       ))}
                     </div>
-
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-emerald-50 border border-emerald-200 text-emerald-700 text-[10px] font-bold rounded-md">
-                      <CheckCircle2 className="w-3 h-3" /> {t.verifiedStudent}
-                    </span>
-                  </div>
-
-                  {/* Service Tag & Outcome Pill */}
-                  <div className="flex flex-wrap items-center gap-1.5 mb-3">
-                    <span className="px-2 py-0.5 bg-blue-50 text-blue-700 text-[11px] font-bold rounded-md">
-                      {rev.serviceTitle}
-                    </span>
-                    {rev.gradeOutcome && (
-                      <span className="px-2 py-0.5 bg-amber-50 text-amber-800 text-[10px] font-semibold rounded-md">
-                        🎯 {rev.gradeOutcome}
+                    {rev.verified && (
+                      <span className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
+                        <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                        {language === 'bn' ? 'যাচাইকৃত শিক্ষার্থী' : 'Verified Order'}
                       </span>
                     )}
                   </div>
 
-                  {/* Review Text */}
-                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic relative">
+                  {/* Comment */}
+                  <p className="text-xs text-slate-700 leading-relaxed italic mb-4">
                     "{rev.comment}"
                   </p>
                 </div>
 
-                {/* Student Footer */}
-                <div className="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 text-white font-bold flex items-center justify-center text-xs shrink-0 shadow-xs">
-                      {rev.studentName.slice(0, 2).toUpperCase()}
-                    </div>
-                    <div>
-                      <h5 className="font-bold text-slate-900 text-xs leading-none">
-                        {rev.studentName}
-                      </h5>
-                      <div className="text-[10px] text-slate-500 mt-0.5 truncate max-w-[150px]">
-                        {rev.university}
-                      </div>
-                    </div>
+                {/* Footer User Info */}
+                <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                  <div>
+                    <div className="font-bold text-slate-900">{rev.userName}</div>
+                    <div className="text-[10px] text-slate-400 truncate max-w-[170px]">{rev.serviceTitle}</div>
                   </div>
 
-                  <div className="flex items-center gap-2 text-slate-400">
-                    <span className="text-[10px]">{rev.date}</span>
-                    <button
-                      onClick={() => handleHelpfulClick(rev.id)}
-                      className="p-1 hover:text-blue-600 flex items-center gap-1 text-[10px] cursor-pointer"
-                      title="Mark as helpful"
-                    >
-                      <ThumbsUp className="w-3 h-3" />
-                      <span>{helpfulCounts[rev.id] || 4}</span>
-                    </button>
-                  </div>
+                  <button
+                    onClick={() => handleHelpfulClick(rev.id)}
+                    className="flex items-center gap-1 text-[11px] text-slate-400 hover:text-blue-600 cursor-pointer transition-colors p-1"
+                    title="Mark as helpful"
+                  >
+                    <ThumbsUp className="w-3.5 h-3.5" />
+                    <span>{(rev.helpfulCount || 0) + (helpfulCounts[rev.id] || 0)}</span>
+                  </button>
                 </div>
               </motion.div>
             ))}

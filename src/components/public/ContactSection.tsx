@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
+import { KraflynLogo } from '../common/KraflynLogo';
 import { 
   Phone, 
   Mail, 
@@ -7,7 +8,10 @@ import {
   Clock, 
   Send, 
   CheckCircle2, 
-  Sparkles 
+  Sparkles,
+  Palette,
+  Code2,
+  GraduationCap
 } from 'lucide-react';
 import { motion } from 'motion/react';
 
@@ -19,7 +23,7 @@ export const ContactSection: React.FC = () => {
     name: userProfile.name || '',
     email: userProfile.email || '',
     phone: userProfile.phone || '',
-    subject: 'General Academic Inquiry',
+    subject: 'Creative Design & Branding',
     message: ''
   });
 
@@ -61,17 +65,17 @@ export const ContactSection: React.FC = () => {
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-2xl mx-auto mb-14"
         >
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold mb-3">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-blue-200 text-blue-800 text-xs font-bold mb-3 shadow-xs">
+            <KraflynLogo size="xs" variant="emblem" />
             <span>{language === 'bn' ? 'আমরা আছি সার্বক্ষণিক পাশে' : "We're Here For You"}</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
-            {language === 'bn' ? 'Edu Quest সাপোর্টের সাথে যোগাযোগ করুন' : 'Get In Touch With Edu Quest'}
+            {language === 'bn' ? 'Kraflyn Technologies সাপোর্টের সাথে যোগাযোগ করুন' : 'Get In Touch With Kraflyn Technologies'}
           </h1>
           <p className="mt-3 text-xs sm:text-sm text-slate-600">
             {language === 'bn' 
-              ? 'যেকোনো একাডেমিক জিজ্ঞাসা, কাস্টম রিকোয়ারমেন্ট অথবা জরুরি সহায়তার জন্য সরাসরি যোগাযোগ করুন।' 
-              : 'Have an urgent question, custom requirements, or feedback? Reach our academic coordinators directly.'}
+              ? 'ডিজাইন, ডেভেলপমেন্ট বা স্টুডেন্ট সাপোর্ট সংক্রান্ত যেকোনো কাস্টম রিকোয়ারমেন্ট অথবা সহায়তার জন্য আমাদের সাথে যোগাযোগ করুন।' 
+              : 'Have an urgent project, custom requirement, or special inquiry? Connect directly with our coordinators.'}
           </p>
         </motion.div>
 
@@ -87,7 +91,7 @@ export const ContactSection: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.1 }}
               whileHover={{ scale: 1.02, y: -2 }}
-              href="https://wa.me/8801712345678?text=Hello%20Edu%20Quest,%20I%20have%20an%20academic%20inquiry."
+              href="https://wa.me/8801712345678?text=Hello%20Kraflyn%20Technologies,%20I%20have%20an%20inquiry."
               target="_blank"
               rel="noreferrer"
               className="p-5 bg-emerald-600 text-white rounded-3xl flex items-start gap-4 shadow-md hover:bg-emerald-700 transition-all block cursor-pointer"
@@ -136,9 +140,9 @@ export const ContactSection: React.FC = () => {
                 <Mail className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-sm font-bold text-slate-900">{language === 'bn' ? 'ইমেইল সাপোর্ট' : 'Email Inquiries'}</h3>
-                <div className="text-xs text-slate-600 mt-0.5">support@eduquest.ac</div>
-                <div className="text-[11px] text-slate-400 mt-1">{language === 'bn' ? 'একাডেমিক ও সমন্বয় সহায়তা' : 'Academic & Mentor Coordination'}</div>
+                <h3 className="text-sm font-bold text-slate-900">{language === 'bn' ? 'অফিসিয়াল ইমেইল' : 'Official Email'}</h3>
+                <div className="text-xs text-slate-600 mt-0.5">support@kraflyn.com</div>
+                <div className="text-[11px] text-slate-400 mt-1">{language === 'bn' ? 'প্রজেক্ট কো-অর্ডিনেশন ও সাপোর্ট' : 'Project Coordination & Support'}</div>
               </div>
             </motion.div>
 
@@ -155,148 +159,149 @@ export const ContactSection: React.FC = () => {
                 <Clock className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-sm font-bold text-slate-900">{language === 'bn' ? 'সাপোর্ট সময়সূচি' : 'Support Schedule'}</h3>
-                <div className="text-xs text-slate-600 mt-0.5">{language === 'bn' ? 'সপ্তাহে ৭ দিন: ২৪/৭ সক্রিয়' : '7 Days a Week: 24/7 Active Coordination'}</div>
-                <div className="text-[11px] text-slate-400 mt-1">{language === 'bn' ? 'পরীক্ষার সময়ে ইমার্জেন্সি সাপোর্ট' : 'Emergency support available during exams'}</div>
+                <h3 className="text-sm font-bold text-slate-900">{language === 'bn' ? 'কাজের সময়' : 'Working Hours'}</h3>
+                <div className="text-xs text-slate-600 mt-0.5">{language === 'bn' ? '২৪/৭ ইমার্জেন্সি সাপোর্ট' : '24/7 Priority Assistance'}</div>
+                <div className="text-[11px] text-emerald-600 font-semibold mt-1">● Online & Ready</div>
               </div>
             </motion.div>
 
           </div>
 
-          {/* Interactive Form with Motion */}
-          <motion.div 
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="lg:col-span-2 bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-md"
-          >
-            {formSubmitted ? (
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-12 space-y-4"
-              >
-                <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
-                  <CheckCircle2 className="w-8 h-8" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900">
-                  {language === 'bn' ? 'আপনার মেসেজটি সফলভাবে গৃহীত হয়েছে!' : 'Message Received!'}
-                </h3>
-                {ticketId && (
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-blue-800 border border-blue-200 rounded-full font-mono text-xs font-bold">
-                    <span>Ticket ID: {ticketId}</span>
+          {/* Contact Inquiry Form */}
+          <div className="lg:col-span-2">
+            <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-xs">
+              {formSubmitted ? (
+                <div className="text-center py-12 space-y-4">
+                  <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
+                    <CheckCircle2 className="w-10 h-10" />
                   </div>
-                )}
-                <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto">
-                  {language === 'bn'
-                    ? `ধন্যবাদ ${formData.name}। আমাদের সাপোর্ট টিম শীঘ্রই আপনার WhatsApp বা ইমেইলে যোগাযোগ করবে।`
-                    : `Thank you for reaching out, ${formData.name}. Our academic support team will review your inquiry and reply via WhatsApp or email shortly.`}
-                </p>
-                <button
-                  onClick={() => {
-                    setFormSubmitted(false);
-                    setFormData({ name: '', email: '', phone: '', subject: 'General Academic Inquiry', message: '' });
-                  }}
-                  className="px-5 py-2 text-xs font-semibold text-blue-600 border border-blue-200 rounded-xl hover:bg-blue-50 cursor-pointer"
-                >
-                  {language === 'bn' ? 'আরেকটি বার্তা পাঠান' : 'Send Another Inquiry'}
-                </button>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <h3 className="text-lg font-bold text-slate-900 mb-2">
-                  {language === 'bn' ? 'আমাদের সরাসরি বার্তা পাঠান' : 'Send Us a Direct Message'}
-                </h3>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">
-                      {t.fullName} <span className="text-rose-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder={t.fullNamePlaceholder}
-                      value={formData.name}
-                      onChange={e => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-3.5 py-2.5 text-xs border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">
-                      {language === 'bn' ? 'ইমেইল ঠিকানা' : 'Email Address'} <span className="text-rose-500">*</span>
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="student@university.edu"
-                      value={formData.email}
-                      onChange={e => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-3.5 py-2.5 text-xs border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">
-                      {t.phone} <span className="text-rose-500">*</span>
-                    </label>
-                    <input
-                      type="tel"
-                      required
-                      placeholder={t.phonePlaceholder}
-                      value={formData.phone}
-                      onChange={e => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-3.5 py-2.5 text-xs border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">
-                      {language === 'bn' ? 'বিষয় / টপিক' : 'Topic / Subject'}
-                    </label>
-                    <select
-                      value={formData.subject}
-                      onChange={e => setFormData({ ...formData, subject: e.target.value })}
-                      className="w-full px-3.5 py-2.5 text-xs border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 bg-white"
+                  <h3 className="text-2xl font-black text-slate-900">
+                    {language === 'bn' ? 'আপনার বার্তা গৃহীত হয়েছে!' : 'Inquiry Received!'}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto">
+                    {language === 'bn' 
+                      ? `ধন্যবাদ! আপনার ইনকোয়ারি আইডি: ${ticketId}। আমাদের কো-অর্ডিনেটর খুব শীঘ্রই আপনার দেওয়া ইমেইল ও ফোনে যোগাযোগ করবেন।`
+                      : `Thank you! Your ticket ID is: ${ticketId}. Our coordinator will get back to you shortly.`}
+                  </p>
+                  <div className="pt-4">
+                    <button
+                      onClick={() => {
+                        setFormSubmitted(false);
+                        setFormData({
+                          name: '',
+                          email: '',
+                          phone: '',
+                          subject: 'Creative Design & Branding',
+                          message: ''
+                        });
+                      }}
+                      className="px-6 py-2.5 bg-blue-600 text-white text-xs font-bold rounded-xl shadow-xs hover:bg-blue-700 cursor-pointer"
                     >
-                      <option>{language === 'bn' ? 'সাধারণ একাডেমিক তথ্য' : 'General Academic Inquiry'}</option>
-                      <option>{language === 'bn' ? 'জরুরি অ্যাসাইনমেন্ট / ল্যাব সাপোর্ট' : 'Urgent Assignment / Lab Support'}</option>
-                      <option>{language === 'bn' ? 'থিসিস ও রিসার্চ প্ল্যানিং' : 'Thesis & Research Planning'}</option>
-                      <option>{language === 'bn' ? 'ভাইভা ও প্রজেক্ট ডিফেন্স কোচিং' : 'Viva & Project Defense Coaching'}</option>
-                    </select>
+                      {language === 'bn' ? 'অন্য একটি বার্তা পাঠান' : 'Send Another Inquiry'}
+                    </button>
                   </div>
                 </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div>
+                    <h3 className="text-lg font-black text-slate-900">
+                      {language === 'bn' ? 'সরাসরি মেসেজ পাঠান' : 'Send a Direct Message'}
+                    </h3>
+                    <p className="text-xs text-slate-500 mt-0.5">
+                      {language === 'bn'
+                        ? 'আপনার প্রজেক্টের বিস্তারিত জানিয়ে নিচে লিখুন।'
+                        : 'Fill in your project details and we will get back to you promptly.'}
+                    </p>
+                  </div>
 
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">
-                    {t.requirements} <span className="text-rose-500">*</span>
-                  </label>
-                  <textarea
-                    rows={4}
-                    required
-                    placeholder={t.requirementsPlaceholder}
-                    value={formData.message}
-                    onChange={e => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-3.5 py-2.5 text-xs border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">
+                        {language === 'bn' ? 'আপনার নাম *' : 'Full Name *'}
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="e.g. Tanvir Ahmed"
+                        value={formData.name}
+                        onChange={e => setFormData({ ...formData, name: e.target.value })}
+                        className="w-full px-3.5 py-2.5 text-xs bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all"
+                      />
+                    </div>
 
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  type="submit"
-                  className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl shadow-md shadow-blue-500/20 flex items-center gap-2 transition-colors cursor-pointer"
-                >
-                  <Send className="w-4 h-4" />
-                  <span>{language === 'bn' ? 'মেসেজ পাঠান' : 'Send Message'}</span>
-                </motion.button>
-              </form>
-            )}
-          </motion.div>
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">
+                        {language === 'bn' ? 'ইমেইল অ্যাড্রেস *' : 'Email Address *'}
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        placeholder="e.g. name@domain.com"
+                        value={formData.email}
+                        onChange={e => setFormData({ ...formData, email: e.target.value })}
+                        className="w-full px-3.5 py-2.5 text-xs bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">
+                        {language === 'bn' ? 'মোবাইল / হোয়াটসঅ্যাপ *' : 'Phone / WhatsApp *'}
+                      </label>
+                      <input
+                        type="tel"
+                        required
+                        placeholder="e.g. +880 1712-345678"
+                        value={formData.phone}
+                        onChange={e => setFormData({ ...formData, phone: e.target.value })}
+                        className="w-full px-3.5 py-2.5 text-xs bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">
+                        {language === 'bn' ? 'সার্ভিস ক্যাটাগরি *' : 'Service Category *'}
+                      </label>
+                      <select
+                        value={formData.subject}
+                        onChange={e => setFormData({ ...formData, subject: e.target.value })}
+                        className="w-full px-3.5 py-2.5 text-xs bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all cursor-pointer font-medium text-slate-700"
+                      >
+                        <option value="Creative Design & Branding">🎨 Creative Design & Branding</option>
+                        <option value="Web & Software Development">💻 Web & Software Development</option>
+                        <option value="FYP & Academic Mentorship">🎓 FYP & Student Support</option>
+                        <option value="Research Paper & LaTeX">📄 Research Paper & LaTeX</option>
+                        <option value="Urgent Custom Milestone">⚡ Urgent Custom Milestone</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">
+                      {language === 'bn' ? 'আপনার রিকোয়ারমেন্ট / বার্তা *' : 'Project Details / Message *'}
+                    </label>
+                    <textarea
+                      required
+                      rows={5}
+                      placeholder={language === 'bn' ? 'আপনার প্রজেক্টের রিকোয়ারমেন্ট, ডেডলাইন ও যেকোনো নির্দিষ্ট তথ্য এখানে লিখুন...' : 'Describe your project scope, turnaround deadline, or specific requirements...'}
+                      value={formData.message}
+                      onChange={e => setFormData({ ...formData, message: e.target.value })}
+                      className="w-full px-3.5 py-2.5 text-xs bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full py-3.5 bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 hover:from-cyan-700 hover:to-indigo-700 text-white font-black text-xs sm:text-sm rounded-xl shadow-md shadow-blue-500/25 flex items-center justify-center gap-2 cursor-pointer transition-all"
+                  >
+                    <Send className="w-4 h-4" />
+                    <span>{language === 'bn' ? 'বার্তা পাঠান' : 'Send Message'}</span>
+                  </button>
+                </form>
+              )}
+            </div>
+          </div>
 
         </div>
 

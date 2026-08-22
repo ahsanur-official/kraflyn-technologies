@@ -18,6 +18,9 @@ export interface User {
 }
 
 export type ServiceCategory = 
+  | 'Design Services'
+  | 'Development Services'
+  | 'Student Support'
   | 'Academic Support'
   | 'Technical Support'
   | 'Communication'

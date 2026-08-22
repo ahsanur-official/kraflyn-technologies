@@ -1,6 +1,6 @@
 {
-  "name": "Edu Quest",
-  "description": "Your Academic Journey, Our Support. Browse academic services, add support to cart, place orders for instant mentor delivery and direct contact.",
+  "name": "Kraflyn Technologies",
+  "description": "Kraflyn Technologies — Create. Connect. Grow. One-stop digital platform providing creative design, modern development and complete academic & technical support for students, clubs, researchers and young professionals.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

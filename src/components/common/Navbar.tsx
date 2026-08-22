@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useApp } from '../../context/AppContext';
-import { EduQuestLogo } from './EduQuestLogo';
+import { KraflynLogo } from './KraflynLogo';
 import { 
   ShoppingBag, 
   Search, 
@@ -37,6 +37,50 @@ export const Navbar: React.FC = () => {
   } = useApp();
 
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    let ticking = false;
+
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+          
+          if (currentScrollY <= 40) {
+            setIsVisible(true);
+            setIsScrolled(false);
+          } else {
+            setIsScrolled(true);
+            const delta = currentScrollY - lastScrollY.current;
+
+            // User scrolling UP
+            if (delta < -3) {
+              setIsVisible(true);
+            } 
+            // User scrolling DOWN
+            else if (delta > 6 && currentScrollY > 100) {
+              setIsVisible(false);
+            }
+          }
+
+          lastScrollY.current = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    document.addEventListener('scroll', onScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      document.removeEventListener('scroll', onScroll);
+    };
+  }, []);
 
   const handleNavClick = (tab: string, sectionId?: string) => {
     setActiveNavTab(tab);
@@ -65,15 +109,27 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs transition-all">
+      <motion.header
+        initial={{ y: 0 }}
+        animate={{ 
+          y: isVisible || menuOpen ? 0 : -140
+        }}
+        transition={{ duration: 0.28, ease: 'easeInOut' }}
+        style={{
+          boxShadow: isScrolled 
+            ? '0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.03)' 
+            : 'none'
+        }}
+        className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/90 transition-[box-shadow]"
+      >
         
         {/* Top Mini Banner */}
-        <div className="bg-slate-900 text-slate-300 text-xs py-1.5 px-3 sm:px-6 md:px-8 lg:px-10 xl:px-12 border-b border-slate-800">
+        <div className="bg-slate-950 text-slate-300 text-xs py-1.5 px-3 sm:px-6 md:px-8 lg:px-10 xl:px-12 border-b border-slate-800">
           <div className="max-w-[1920px] w-full mx-auto flex justify-between items-center gap-2">
             
             <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
-              <span className="inline-block w-2 h-2 shrink-0 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span className="truncate text-[10px] sm:text-xs">
+              <span className="inline-block w-2 h-2 shrink-0 rounded-full bg-cyan-400 animate-pulse"></span>
+              <span className="truncate text-[10px] sm:text-xs text-slate-300">
                 {t.hotlineText}
               </span>
             </div>
@@ -85,10 +141,10 @@ export const Navbar: React.FC = () => {
                 whileTap={{ scale: 0.97 }}
                 transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
                 onClick={() => setLanguage(language === 'bn' ? 'en' : 'bn')}
-                className="flex items-center gap-1 px-2 py-0.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white font-bold text-[10px] sm:text-[11px] border border-slate-700 transition-colors cursor-pointer shrink-0"
+                className="flex items-center gap-1 px-2.5 py-0.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white font-bold text-[10px] sm:text-[11px] border border-slate-700 transition-colors cursor-pointer shrink-0"
                 title="Switch between বাংলা / English"
               >
-                <Languages className="w-3 h-3 text-blue-400 shrink-0" />
+                <Languages className="w-3 h-3 text-cyan-400 shrink-0" />
                 <span>{language === 'bn' ? 'English' : 'বাংলা'}</span>
               </motion.button>
 
@@ -108,49 +164,49 @@ export const Navbar: React.FC = () => {
           </div>
         </div>
 
-        {/* Main Navbar matching exactly the user's design */}
-        <div className="max-w-[1920px] w-full mx-auto px-3 sm:px-6 md:px-8 lg:px-10 xl:px-12">
-          <div className="flex items-center justify-between h-16 sm:h-20 gap-2">
+        {/* Main Navbar */}
+        <div className="max-w-[1920px] w-full mx-auto px-2.5 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+          <div className="flex items-center justify-between h-14 sm:h-16 md:h-20 gap-1.5 sm:gap-2">
             
-            {/* Edu Quest Logo */}
+            {/* Kraflyn Technologies Official Logo */}
             <motion.button 
               whileHover={{ scale: 1.01 }}
               whileTap={{ scale: 0.99 }}
               onClick={() => handleNavClick('home')}
-              className="text-left focus:outline-hidden cursor-pointer shrink-0"
+              className="text-left focus:outline-hidden cursor-pointer shrink-0 min-w-0"
             >
-              <EduQuestLogo size="md" showSlogan={true} />
+              <KraflynLogo size="md" showSlogan={true} />
             </motion.button>
 
             {/* Right Action Controls: Cart Pill + Direct Order + Menu Hamburger */}
-            <div className="flex items-center gap-2 sm:gap-3 md:gap-4 shrink-0">
+            <div className="flex items-center gap-1.5 sm:gap-3 md:gap-4 shrink-0">
               
-              {/* Cart Pill Button */}
+              {/* Cart Pill Button - Responsive, prominent, and proportional on mobile */}
               <motion.button
                 whileHover={{ scale: 1.03, y: -1 }}
                 whileTap={{ scale: 0.96 }}
                 onClick={openCart}
-                className="relative flex items-center gap-1.5 sm:gap-2.5 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-2xl bg-[#f0f4f9] hover:bg-[#e4ebf5] border border-blue-100/80 text-slate-800 transition-all cursor-pointer shadow-xs group shrink-0"
+                className="relative flex items-center gap-1.5 xs:gap-2 sm:gap-3 px-2.5 xs:px-3.5 sm:px-5 py-1.5 sm:py-2 md:py-2.5 rounded-xl sm:rounded-2xl bg-gradient-to-b from-slate-50 to-slate-100 hover:from-blue-50/80 hover:to-indigo-50/80 border border-slate-200 hover:border-blue-300 text-slate-900 transition-all cursor-pointer shadow-2xs hover:shadow-md group shrink-0"
                 title={language === 'bn' ? 'কার্ট দেখুন' : 'View Cart'}
               >
-                <div className="relative shrink-0 flex items-center justify-center">
-                  <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5 text-slate-700 group-hover:text-blue-600 transition-colors" />
+                <div className="relative shrink-0 flex items-center justify-center p-1 xs:p-1.5 sm:p-2 rounded-lg sm:rounded-xl bg-white group-hover:bg-blue-600/10 border border-slate-200/80 group-hover:border-blue-300/60 shadow-2xs transition-colors">
+                  <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-slate-800 group-hover:text-blue-600 transition-colors" />
                   {cartCount > 0 && (
                     <motion.span 
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      className="absolute -top-2 -right-2 min-w-[16px] h-[16px] sm:min-w-[18px] sm:h-[18px] px-1 bg-blue-600 text-white text-[9px] sm:text-[10px] font-black rounded-full flex items-center justify-center border-2 border-white shadow-xs"
+                      className="absolute -top-1.5 -right-1.5 min-w-[16px] h-[16px] sm:min-w-[20px] sm:h-[20px] px-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-[9px] sm:text-xs font-black rounded-full flex items-center justify-center border-2 border-white shadow-xs"
                     >
                       {cartCount}
                     </motion.span>
                   )}
                 </div>
 
-                <div className="flex flex-col text-left pl-0.5">
-                  <span className="text-[10px] sm:text-[11px] font-bold text-slate-600 leading-none">
+                <div className="flex flex-col text-left">
+                  <span className="text-[9px] xs:text-[10px] sm:text-xs font-extrabold text-slate-500 group-hover:text-blue-600 transition-colors uppercase tracking-wider leading-none">
                     {language === 'bn' ? 'কার্ট' : 'Cart'}
                   </span>
-                  <span className="text-[11px] sm:text-xs md:text-sm font-black text-slate-950 leading-tight">
+                  <span className="text-xs xs:text-sm sm:text-base font-black text-slate-900 leading-tight mt-0.5">
                     {cartCount > 0 ? `৳${cartTotal}` : '৳০'}
                   </span>
                 </div>
@@ -161,7 +217,7 @@ export const Navbar: React.FC = () => {
                 whileHover={{ scale: 1.03, y: -1 }}
                 whileTap={{ scale: 0.96 }}
                 onClick={() => openOrderModal()}
-                className="hidden md:flex px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-blue-600 via-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs sm:text-sm font-black rounded-2xl shadow-md shadow-blue-500/25 transition-all items-center gap-2 cursor-pointer active:scale-95 shrink-0"
+                className="hidden md:flex px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 hover:from-cyan-700 hover:to-indigo-700 text-white text-xs sm:text-sm font-black rounded-2xl shadow-md shadow-blue-500/25 transition-all items-center gap-2 cursor-pointer active:scale-95 shrink-0"
               >
                 <Sparkles className="w-4 h-4 text-amber-300 fill-amber-300/30" />
                 <span className="tracking-tight whitespace-nowrap">{t.directOrder}</span>
@@ -172,7 +228,7 @@ export const Navbar: React.FC = () => {
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.92 }}
                 onClick={() => setMenuOpen(true)}
-                className="p-2 sm:p-2.5 text-slate-800 hover:text-blue-600 hover:bg-slate-100/90 rounded-2xl border border-slate-200/80 transition-colors cursor-pointer flex items-center justify-center shrink-0"
+                className="p-1.5 xs:p-2 sm:p-2.5 text-slate-800 hover:text-blue-600 hover:bg-slate-100/90 rounded-xl sm:rounded-2xl border border-slate-200/80 transition-colors cursor-pointer flex items-center justify-center shrink-0"
                 title={language === 'bn' ? 'মেনু খুলুন' : 'Open Menu'}
                 aria-label="Open Navigation Menu"
               >
@@ -183,9 +239,9 @@ export const Navbar: React.FC = () => {
 
           </div>
         </div>
-      </header>
+      </motion.header>
 
-      {/* Smooth Animated Full Navigation Drawer (Desktop & Mobile) */}
+      {/* Smooth Animated Navigation Drawer */}
       <AnimatePresence>
         {menuOpen && (
           <>
@@ -211,10 +267,7 @@ export const Navbar: React.FC = () => {
                 {/* Drawer Header */}
                 <div className="p-5 sm:p-6 border-b border-slate-100 flex items-center justify-between bg-slate-50/70">
                   <div>
-                    <EduQuestLogo size="sm" showSlogan={false} />
-                    <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider block mt-1">
-                      {language === 'bn' ? 'একাডেমিক নেভিগেশন' : 'Academic Navigation'}
-                    </span>
+                    <KraflynLogo size="sm" showSlogan={true} />
                   </div>
 
                   <motion.button
@@ -341,7 +394,7 @@ export const Navbar: React.FC = () => {
                     setMenuOpen(false);
                     openOrderModal();
                   }}
-                  className="w-full py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-2xl font-black text-xs sm:text-sm shadow-md shadow-blue-500/25 flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full py-3.5 bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 text-white rounded-2xl font-black text-xs sm:text-sm shadow-md shadow-blue-500/25 flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <Sparkles className="w-4 h-4 text-amber-300" />
                   <span>{t.heroDirectOrderBtn}</span>

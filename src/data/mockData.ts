@@ -35,223 +35,939 @@ export const DEPARTMENTS: string[] = [
   'Physics / Applied Physics',
   'Pharmacy / Biotechnology',
   'English & Modern Languages',
+  'Design & Architecture',
   'Other Department'
 ];
 
-export const SERVICES: Service[] = [
+export interface BrandPillar {
+  id: string;
+  title: string;
+  subtitle: string;
+  iconName: string;
+  color: string;
+  badge: string;
+  points?: string[];
+  content: string;
+}
+
+export const KRAFLYN_PILLARS: BrandPillar[] = [
   {
-    id: 'course-support',
-    title: 'Course Support',
-    iconName: 'BookOpen',
-    shortDesc: 'Conceptual clarity, syllabus breakdown, and 1-to-1 tutoring for tough academic courses.',
-    fullDesc: 'Stuck with complex algorithms, discrete math, electronics, or core theories? Get personalized 1-on-1 tutoring sessions, step-by-step topic breakdowns, past paper walkthroughs, and exam preparation strategies tailored to your university syllabus.',
-    category: 'Academic Support',
+    id: 'mission',
+    title: 'Our Mission',
+    subtitle: 'Purpose & Commitment',
+    iconName: 'Target',
+    color: 'from-blue-600 to-indigo-600',
+    badge: 'Empowerment',
+    content: 'Empowering students by providing affordable, quality and reliable digital solutions in design, development and academic support.'
+  },
+  {
+    id: 'vision',
+    title: 'Our Vision',
+    subtitle: 'Future Outlook',
+    iconName: 'Eye',
+    color: 'from-purple-600 to-indigo-600',
+    badge: 'Leadership',
+    content: 'To become the most trusted digital support platform for students and educational communities in Bangladesh and beyond.'
+  },
+  {
+    id: 'values',
+    title: 'Our Values',
+    subtitle: 'Core Principles',
+    iconName: 'Diamond',
+    color: 'from-teal-600 to-emerald-600',
+    badge: 'Excellence',
+    content: 'Guided by high ethical standards, precision craftsmanship and customer satisfaction.',
+    points: [
+      'Quality First',
+      'Student Focused',
+      'Integrity & Transparency',
+      'Creativity & Innovation',
+      'On-time Delivery'
+    ]
+  },
+  {
+    id: 'why-kraflyn',
+    title: 'Why Kraflyn Technologies?',
+    subtitle: 'Our Differentiator',
+    iconName: 'Heart',
+    color: 'from-rose-500 to-pink-600',
+    badge: 'Impact',
+    content: "We don't just complete tasks, we empower students to learn, build, and grow in their academic and professional journey."
+  }
+];
+
+export const NEXORA_PILLARS = KRAFLYN_PILLARS;
+
+// All 45 Comprehensive Services grouped strictly by the 3 Core Pillars from the official Kraflyn Technologies catalog
+export const SERVICES: Service[] = [
+  // ==========================================
+  // 1. DESIGN SERVICES (15 Services)
+  // ==========================================
+  {
+    id: 'poster-banner-flyer',
+    title: 'Poster / Banner / Flyer',
+    iconName: 'Layout',
+    shortDesc: 'Eye-catching posters, fest banners, promotional flyers and roll-ups designed for print and web.',
+    fullDesc: 'Custom visual designs for department festivals, university events, hackathons, seminars, and promotional campaigns. We deliver print-ready high-resolution vector files (CMYK/RGB, 300 DPI) with source files included.',
+    category: 'Design Services',
     startingPrice: 300,
-    typicalTurnaround: '12 - 24 Hours',
+    typicalTurnaround: '6 - 18 Hours',
     deliverables: [
-      '1-on-1 live interactive conceptual session',
-      'Curated handwritten/digital notes & summaries',
-      'Past semester exam question solutions',
-      'Formula sheets & key concepts cheat-sheet',
-      'Follow-up doubt clearing on WhatsApp/Meet'
+      'High-resolution Print Ready PDF & PNG (300 DPI)',
+      'Social Media optimized aspect ratios (1:1, 4:5, 16:9)',
+      'Editable Source Files (PSD / AI / Canva / Figma)',
+      'Unlimited revisions until final satisfaction',
+      'Fast turnaround within 6 to 18 hours'
     ],
     tag: 'Popular'
   },
   {
-    id: 'programming-lab',
-    title: 'Programming & Lab',
-    iconName: 'Code',
-    shortDesc: 'Hands-on debugging, algorithm implementation, and lab task guidance.',
-    fullDesc: 'Get stuck on segmentation faults, recursive algorithms, or framework bugs? Work with experienced developers in C/C++, Java, Python, JavaScript, OOP, Data Structures, DB, and Web Development to master your lab tasks with full conceptual understanding.',
-    category: 'Technical Support',
-    startingPrice: 400,
-    typicalTurnaround: '6 - 18 Hours',
+    id: 'presentation-ppt-design',
+    title: 'Presentation & PPT Design',
+    iconName: 'Presentation',
+    shortDesc: 'Modern, high-impact slide decks, defense presentations, and interactive keynote templates.',
+    fullDesc: 'Transform dull bullet points into persuasive, beautifully animated presentations for thesis defense, capstone projects, business pitches, and class seminars with custom vector infographics and balanced layout hierarchy.',
+    category: 'Design Services',
+    startingPrice: 350,
+    typicalTurnaround: '12 - 24 Hours',
     deliverables: [
-      'Line-by-line code explanation and logic flow',
-      'Live debugging assistance and error resolution',
-      'Clean coding practices and indentation review',
-      'Sample test cases and edge case analysis',
-      'Lab viva questions prep on written code'
+      'Custom styled PPTX / Keynote / Google Slides deck',
+      'Clean typography, color harmony & visual data charts',
+      'Dynamic transition animations & slide master templates',
+      'Presenter speaking notes formatting & PDF handouts',
+      'Full commercial fonts and vector icon pack'
     ],
     tag: 'High Demand'
   },
   {
-    id: 'assignment-guidance',
-    title: 'Assignment Guidance',
-    iconName: 'FileText',
-    shortDesc: 'Structured methodology, problem solving approach, and academic citation reviews.',
-    fullDesc: 'Comprehensive academic guidance on how to structure your assignments, conduct independent research, organize citations, verify mathematical derivations, and present your arguments convincingly while maintaining strict academic integrity.',
-    category: 'Academic Support',
-    startingPrice: 350,
-    typicalTurnaround: '12 - 36 Hours',
-    deliverables: [
-      'Problem breakdown & step-by-step outline',
-      'Reference material & bibliography curation',
-      'Mathematical derivation & logic verification',
-      'Draft proofreading & structural critique',
-      'Plagiarism check and citation formatting (IEEE/APA)'
-    ]
-  },
-  {
-    id: 'lab-report',
-    title: 'Lab Report Support',
-    iconName: 'FlaskConical',
-    shortDesc: 'Data plotting, error calculations, apparatus explanation, and standard formatting.',
-    fullDesc: 'Transform raw lab experiment data into polished, professional laboratory reports. Mentors guide you through statistical calculations, MATLAB/Origin graphing, error tolerance analysis, and standard departmental reporting standards.',
-    category: 'Technical Support',
+    id: 'social-media-creatives',
+    title: 'Social Media Creatives',
+    iconName: 'Share2',
+    shortDesc: 'Engaging post graphics, story covers, carousels, and club event social media branding.',
+    fullDesc: 'Stop the scroll with high-converting social media creatives for Facebook, Instagram, LinkedIn, and club pages. Designed with modern aesthetics, clean typography, and optimized formats for maximum engagement.',
+    category: 'Design Services',
     startingPrice: 250,
-    typicalTurnaround: '8 - 24 Hours',
+    typicalTurnaround: '6 - 12 Hours',
     deliverables: [
-      'Experimental procedure and objective structuring',
-      'High-resolution graphs & tabular data plotting',
-      'Standard error and deviation calculations',
-      'Result discussion & conclusion drafting guidance',
-      'Standard LaTeX / Word formatting template'
+      'Square posts, portrait carousels & 9:16 vertical stories',
+      'Custom club branding & campaign hashtag highlights',
+      'Source files in Figma / Photoshop / Illustrator',
+      'Exported in lightweight web-optimized PNG & JPG',
+      'Content copywriting guidance & aesthetic presets'
     ]
   },
   {
-    id: 'presentation-viva',
-    title: 'Presentation & Viva',
-    iconName: 'Mic',
-    shortDesc: 'Slide deck structuring, speech rehearsals, and mock faculty viva preparation.',
-    fullDesc: 'Overcome presentation anxiety and ace your defense. Get slide design feedback, elevator pitch rehearsal, expected critical faculty questioning simulations, and body language coaching for mid-term, final, or project defenses.',
-    category: 'Communication',
-    startingPrice: 300,
+    id: 'logo-brand-identity',
+    title: 'Logo & Brand Identity',
+    iconName: 'Sparkles',
+    shortDesc: 'Unique vector logos, brand color palettes, typography guidelines, and complete brand identity.',
+    fullDesc: 'Establish a memorable identity for your startup, university club, personal brand, or project. Includes multiple logo concepts, monochrome variants, typography guidelines, color palettes, and full brand book documentation.',
+    category: 'Design Services',
+    startingPrice: 600,
+    typicalTurnaround: '24 - 48 Hours',
+    deliverables: [
+      '3-5 distinct creative logo design concepts',
+      'Vector master files (SVG, EPS, AI, PDF, Transparent PNG)',
+      'Comprehensive Brand Identity Guidelines (Colors & Fonts)',
+      'Social media profile avatars & banner kits',
+      'Full intellectual property ownership & copyright transfer'
+    ],
+    tag: 'Creative Choice'
+  },
+  {
+    id: 'cv-resume-design',
+    title: 'CV / Resume Design',
+    iconName: 'FileText',
+    shortDesc: 'Modern, professional, ATS-friendly resumes and LaTeX / Word executive CV templates.',
+    fullDesc: 'Stand out in job applications, internships, and scholarship screenings. We craft clean, ATS-compliant resumes with optimal typographic hierarchy, skill matrices, and impactful achievement formatting.',
+    category: 'Design Services',
+    startingPrice: 250,
+    typicalTurnaround: '6 - 12 Hours',
+    deliverables: [
+      'ATS-friendly single & two-page modern resume templates',
+      'Editable Word (.docx), LaTeX source, and print-ready PDF',
+      'Matching cover letter template styling',
+      'Keyword optimization for tech, engineering & business roles',
+      'Free minor contact/experience updates within 30 days'
+    ],
+    tag: 'Must Have'
+  },
+  {
+    id: 'certificate-id-card-design',
+    title: 'Certificate & ID Card Design',
+    iconName: 'Award',
+    shortDesc: 'Official event participation certificates, merit awards, and customized student ID card layouts.',
+    fullDesc: 'Professional certificates for hackathons, club fests, webinars, and workshop completions. Complete with dynamic placeholder fields, custom guilloche security patterns, and matching badge/ID card designs.',
+    category: 'Design Services',
+    startingPrice: 200,
+    typicalTurnaround: '6 - 18 Hours',
+    deliverables: [
+      'Print-ready high-DPI certificate layouts (A4 & US Letter)',
+      'Custom lanyard badge & plastic ID card templates (CR80)',
+      'Bulk automated name/ID mail-merge compatible setup',
+      'Vector seals, ribbon badges, and guilloche security patterns',
+      'Editable AI / PSD / Canva source templates'
+    ]
+  },
+  {
+    id: 'research-poster',
+    title: 'Research Poster',
+    iconName: 'Columns',
+    shortDesc: 'IEEE/conference scientific presentation posters with data visualizations and clean structure.',
+    fullDesc: 'Display your research paper findings with academic rigor and visual clarity. Designed specifically for academic conferences, thesis defense showcases, and symposium poster sessions (A0, A1, 36x48 inches).',
+    category: 'Design Services',
+    startingPrice: 500,
     typicalTurnaround: '12 - 24 Hours',
     deliverables: [
-      'Slide deck review (Visual balance, bullet optimization)',
-      '1-on-1 Mock viva with difficult counter-questions',
-      'Speaking script & transition cues formulation',
-      'Q&A survival tactics for strict faculties',
-      'Confidence building & body language feedback'
-    ],
-    tag: 'Quick Turnaround'
+      'Standard conference poster dimensions (A0, A1, 36x48 inch)',
+      'High-res vector diagram integration & chart formatting',
+      'Mathematical formulas & LaTeX equation placement',
+      'Print-ready 300 DPI PDF + editable PowerPoint/Illustrator file',
+      'Color scheme optimized for distance reading'
+    ]
   },
   {
-    id: 'research-support',
-    title: 'Research Support',
-    iconName: 'Microscope',
-    shortDesc: 'Topic selection, literature review matrices, dataset sourcing, and methodology design.',
-    fullDesc: 'Bridge the gap between raw ideas and publication-ready academic papers. Receive mentorship on scoping novelty, systematically categorizing IEEE/ACM/Springer papers, experimental design, and statistical data validation.',
-    category: 'Research',
+    id: 'ui-ux-design',
+    title: 'UI/UX Design',
+    iconName: 'Layers',
+    shortDesc: 'Interactive web & mobile app prototypes, wireframes, user journeys, and Figma design systems.',
+    fullDesc: 'Bring your digital product or final year software project to life. We design intuitive, pixel-perfect user interfaces, interactive Figma clickable prototypes, design systems, and responsive web/mobile components.',
+    category: 'Design Services',
+    startingPrice: 1200,
+    typicalTurnaround: '24 - 72 Hours',
+    deliverables: [
+      'Interactive Figma prototypes with clickable user flows',
+      'Responsive desktop, tablet & mobile screen layouts',
+      'Component library, auto-layout, design tokens & typography',
+      'Developer handoff specs with CSS parameters & assets',
+      'User journey maps and wireframe documentation'
+    ],
+    tag: 'Premium'
+  },
+  {
+    id: 'infographic-design',
+    title: 'Infographic Design',
+    iconName: 'BarChart2',
+    shortDesc: 'Data-driven visual storytelling, process roadmaps, and educational concept breakdown charts.',
+    fullDesc: 'Turn intricate statistics, timelines, survey findings, and system workflows into beautiful, easy-to-digest infographics for academic papers, presentations, or business reports.',
+    category: 'Design Services',
+    startingPrice: 400,
+    typicalTurnaround: '12 - 24 Hours',
+    deliverables: [
+      'Custom vector illustrations, icons, and chart graphics',
+      'Logical hierarchy and visual storytelling flow',
+      'Web-optimized and ultra-high-resolution print formats',
+      'Source files in Adobe Illustrator or Figma',
+      'Color palettes aligned with your research or brand theme'
+    ]
+  },
+  {
+    id: 'brochure-pamphlet-design',
+    title: 'Brochure / Pamphlet Design',
+    iconName: 'BookOpen',
+    shortDesc: 'Bi-fold & tri-fold brochures, corporate profile booklets, and department fest event catalogs.',
+    fullDesc: 'Multi-page event schedules, department magazines, club admission guides, and corporate brochures formatted with precise folding margins, bleed areas, and elegant typography.',
+    category: 'Design Services',
+    startingPrice: 450,
+    typicalTurnaround: '12 - 36 Hours',
+    deliverables: [
+      'Bi-fold, tri-fold, or multi-page booklet layouts',
+      'Exact print bleeds, margins, and crop marks for press',
+      'Curated stock imagery and vector graphic assets',
+      'Interactive clickable PDF version for digital distribution',
+      'Editable Adobe InDesign / Illustrator / Canva source'
+    ]
+  },
+  {
+    id: 'menu-price-list-design',
+    title: 'Menu / Price List Design',
+    iconName: 'ListOrdered',
+    shortDesc: 'Clear, modern service rate sheets, digital cafeteria menus, and price catalog layouts.',
+    fullDesc: 'Clean, appetizing, and organized price lists and menu boards for campus cafes, student business ventures, and freelance service pricing sheets.',
+    category: 'Design Services',
+    startingPrice: 350,
+    typicalTurnaround: '8 - 24 Hours',
+    deliverables: [
+      'Single-sheet, multi-page, or digital screen menu formats',
+      'Easy-to-read pricing columns and item categorization',
+      'Print-ready high-resolution files + digital TV display format',
+      'QR code integration for contactless digital viewing',
+      'Easily editable source template for future price updates'
+    ]
+  },
+  {
+    id: 'tshirt-merchandise-design',
+    title: 'T-shirt & Merchandise Design',
+    iconName: 'Tag',
+    shortDesc: 'Custom club jerseys, batch hoodies, conference tote bags, mugs, and merchandise vector artwork.',
+    fullDesc: 'Custom vector artwork tailored specifically for screen printing, DTF, embroidery, and sublimation on batch t-shirts, graduation hoodies, varsity jackets, and club merchandise.',
+    category: 'Design Services',
+    startingPrice: 400,
+    typicalTurnaround: '12 - 24 Hours',
+    deliverables: [
+      'Vector art with exact Pantone/CMYK screen print separations',
+      'Realistic 3D apparel mockups for batch previews',
+      'Front, back, and sleeve detailed print artwork',
+      'Scalable AI / EPS / SVG / Transparent PNG (300 DPI)',
+      'Commercial print release and production guide'
+    ]
+  },
+  {
+    id: 'photo-editing-retouching',
+    title: 'Photo Editing & Retouching',
+    iconName: 'Image',
+    shortDesc: 'Professional portrait retouching, background removal, event color grading, and restoration.',
+    fullDesc: 'High-end photo editing for graduation portraits, passport/visa photos, club event albums, product photography, and campus event coverage.',
+    category: 'Design Services',
+    startingPrice: 200,
+    typicalTurnaround: '4 - 12 Hours',
+    deliverables: [
+      'Natural skin tone retouching & blemish removal',
+      'Background cleanup, studio backdrop replacement & isolation',
+      'Color grading, contrast balancing, and lighting enhancement',
+      'High-res master output without compression loss',
+      'Batch processing available for campus event albums'
+    ]
+  },
+  {
+    id: 'thesis-project-report-design',
+    title: 'Thesis / Project Report Design',
+    iconName: 'Book',
+    shortDesc: 'Complete academic book layout, cover page styling, LaTeX template design, and diagram polish.',
+    fullDesc: 'Ensure your undergraduate or graduate thesis meets strict university formatting guidelines with elegant cover pages, preliminary pages, table of contents, list of figures, and vector architecture diagram styling.',
+    category: 'Design Services',
+    startingPrice: 500,
+    typicalTurnaround: '12 - 36 Hours',
+    deliverables: [
+      'University-compliant cover page & spine layout design',
+      'LaTeX / Word automated table of contents & header/footer setup',
+      'High-resolution diagram redrawing & chart polishing',
+      'Strict margin adherence for hardcover binding',
+      'Digital interactive PDF with bookmarks + print ready copy'
+    ],
+    tag: 'Academic Focus'
+  },
+  {
+    id: 'illustration-custom-design',
+    title: 'Illustration & Custom Design',
+    iconName: 'Palette',
+    shortDesc: 'Custom vector illustrations, mascots, creative digital artwork, and icon set development.',
+    fullDesc: 'Handcrafted vector artwork, character illustrations, university fest mascots, custom icon systems, and bespoke graphics tailored to your exact creative vision.',
+    category: 'Design Services',
+    startingPrice: 600,
+    typicalTurnaround: '24 - 48 Hours',
+    deliverables: [
+      'Unique custom vector illustration in your chosen aesthetic',
+      'Layered source files (AI, SVG, PSD, High-Res PNG)',
+      'Transparent background versions for web/app integration',
+      'Color palette variations for light and dark modes',
+      'Full commercial usage rights'
+    ]
+  },
+
+  // ==========================================
+  // 2. DEVELOPMENT SERVICES (15 Services)
+  // ==========================================
+  {
+    id: 'personal-portfolio-website',
+    title: 'Personal / Portfolio Website',
+    iconName: 'Globe',
+    shortDesc: 'Modern, high-performance personal portfolio showcasing your projects, resume, and skills.',
+    fullDesc: 'Build an impressive personal brand with an ultra-fast, responsive portfolio website built with modern frameworks (React, Next.js, Tailwind CSS). Includes dynamic project showcases, downloadable resume, contact forms, and GitHub integration.',
+    category: 'Development Services',
+    startingPrice: 1500,
+    typicalTurnaround: '24 - 48 Hours',
+    deliverables: [
+      'Fully responsive, lightning-fast modern web portfolio',
+      'Interactive project gallery with live demo and source links',
+      'Direct contact form integrated with email / WhatsApp',
+      'Free domain connecting & deployment to Vercel / GitHub Pages',
+      'Clean TypeScript / Tailwind source code repository'
+    ],
+    tag: 'Best Seller'
+  },
+  {
+    id: 'university-club-website',
+    title: 'University / Club Website',
+    iconName: 'Users',
+    shortDesc: 'Complete portal for student organizations, fest registrations, executive member profiles, and blogs.',
+    fullDesc: 'All-in-one portal for university clubs, IEEE student branches, and departmental forums. Features member directories, event registration forms with payment verification, photo galleries, and announcement blogs.',
+    category: 'Development Services',
+    startingPrice: 2500,
+    typicalTurnaround: '48 - 96 Hours',
+    deliverables: [
+      'Dynamic event registration & ticket generation system',
+      'Executive committee & alumni directory with filterable roles',
+      'Club news, blog, and past achievements gallery',
+      'Admin dashboard to manage applicants and export Excel sheets',
+      'Mobile-first responsive design with fast loading speeds'
+    ],
+    tag: 'Recommended'
+  },
+  {
+    id: 'business-ecommerce-website',
+    title: 'Business / E-commerce Website',
+    iconName: 'ShoppingBag',
+    shortDesc: 'Full-featured online store with product catalog, cart, checkout, and local payment integration.',
+    fullDesc: 'Launch your online store or business website with complete product management, cart, checkout, automated invoice generation, customer accounts, and seamless bKash/Nagad/SSLCommerz payment gateways.',
+    category: 'Development Services',
+    startingPrice: 4500,
+    typicalTurnaround: '3 - 7 Days',
+    deliverables: [
+      'Complete product catalog with filters, search, and variants',
+      'Shopping cart, secure checkout, and automated PDF invoicing',
+      'Integrated payment gateways (bKash, Nagad, Rocket, Cards)',
+      'Powerful admin panel for stock, order status, and customer logs',
+      'SEO optimization & Google Analytics tracking integration'
+    ],
+    tag: 'Enterprise'
+  },
+  {
+    id: 'web-application',
+    title: 'Web Application',
+    iconName: 'Code',
+    shortDesc: 'Full-stack SaaS platforms, custom portals, management systems, and interactive dashboards.',
+    fullDesc: 'Custom web application development using modern tech stacks (React, Node.js, Next.js, Express, PostgreSQL, MongoDB). Engineered for scalability, security, fast execution, and delightful user experiences.',
+    category: 'Development Services',
+    startingPrice: 3500,
+    typicalTurnaround: '3 - 7 Days',
+    deliverables: [
+      'Fullstack modern architecture with React/Next.js & Node.js',
+      'Role-based access control (RBAC), authentication & session security',
+      'Robust relational or NoSQL database integration',
+      'Comprehensive REST/GraphQL API layer with automated validation',
+      'Complete documentation and Git repository handover'
+    ],
+    tag: 'Custom Built'
+  },
+  {
+    id: 'mobile-application',
+    title: 'Mobile Application (Android/iOS)',
+    iconName: 'Smartphone',
+    shortDesc: 'Cross-platform mobile apps with Flutter or React Native delivering smooth native performance.',
+    fullDesc: 'Build powerful Android and iOS mobile applications for your startup, university capstone project, or client. Features smooth 60 FPS animations, push notifications, offline storage, camera/GPS integrations, and backend sync.',
+    category: 'Development Services',
+    startingPrice: 5000,
+    typicalTurnaround: '5 - 10 Days',
+    deliverables: [
+      'Cross-platform Flutter / React Native codebase',
+      'Ready-to-publish Android APK / AAB and iOS build bundle',
+      'Firebase push notifications, cloud storage & auth setup',
+      'Offline caching & responsive UI for all screen sizes',
+      'Google Play Store / Apple App Store submission assistance'
+    ],
+    tag: 'Cross-Platform'
+  },
+  {
+    id: 'backend-development',
+    title: 'Backend Development',
+    iconName: 'Server',
+    shortDesc: 'Scalable server architecture, RESTful/GraphQL APIs, microservices, and secure auth systems.',
+    fullDesc: 'Solid, secure, and well-structured server-side backends built with Node.js, Express, Python (FastAPI/Django), or Go. Handles heavy traffic, async job queues, rate limiting, and structured logging.',
+    category: 'Development Services',
+    startingPrice: 2000,
+    typicalTurnaround: '24 - 72 Hours',
+    deliverables: [
+      'Clean modular MVC / Clean Architecture code structure',
+      'JWT/OAuth2 secure authentication and token refresh rotation',
+      'Swagger / Postman interactive API documentation collection',
+      'Input sanitization, CORS protection & rate limiting',
+      'Deployment on cloud VPS / Docker containerization'
+    ]
+  },
+  {
+    id: 'database-development',
+    title: 'Database Development',
+    iconName: 'Database',
+    shortDesc: 'Relational & NoSQL database schema design, indexing, complex query optimization, and migrations.',
+    fullDesc: 'Design resilient database architectures in PostgreSQL, MySQL, MongoDB, Redis, or Firestore. We normalize schemas, write complex aggregation pipelines, establish indexing strategies, and optimize slow queries.',
+    category: 'Development Services',
+    startingPrice: 1200,
+    typicalTurnaround: '12 - 36 Hours',
+    deliverables: [
+      'Normalized ERD diagrams & database schema definitions',
+      'Optimized SQL queries, stored procedures & views',
+      'Index strategy to eliminate query bottlenecks',
+      'Automated migration scripts (Drizzle, Prisma, TypeORM)',
+      'Backup strategies and data seeding routines'
+    ]
+  },
+  {
+    id: 'api-development-integration',
+    title: 'API Development & Integration',
+    iconName: 'Network',
+    shortDesc: 'Custom REST/GraphQL APIs and seamless integration with third-party webhooks and services.',
+    fullDesc: 'Connect your applications with external APIs including SMS gateways, Google Maps, Firebase, OpenAI/Gemini AI models, weather APIs, social auth, and webhook event handlers.',
+    category: 'Development Services',
+    startingPrice: 1000,
+    typicalTurnaround: '12 - 24 Hours',
+    deliverables: [
+      'Secure third-party API connectivity with fallback retries',
+      'Webhook listener implementation with signature verification',
+      'Clean error handling & formatted response payloads',
+      'Postman collection for immediate team testing',
+      'Environment variable configuration & secret protection'
+    ]
+  },
+  {
+    id: 'bug-fixing-maintenance',
+    title: 'Bug Fixing & Maintenance',
+    iconName: 'Wrench',
+    shortDesc: 'Fast debugging, runtime error fixing, dependency upgrades, and code refactoring.',
+    fullDesc: 'Encountering cryptic build errors, console crashes, broken styles, or dependency conflicts? Our senior developers quickly trace stack traces, resolve logic flaws, and optimize code reliability.',
+    category: 'Development Services',
+    startingPrice: 500,
+    typicalTurnaround: '4 - 12 Hours',
+    deliverables: [
+      'Root cause diagnosis with clear explanation',
+      'Clean code fix with zero regression side-effects',
+      'Security patch verification and dependency upgrades',
+      'Performance audit and console error cleanup',
+      'Follow-up testing to ensure permanent resolution'
+    ],
+    tag: 'Quick Fix'
+  },
+  {
+    id: 'domain-hosting-setup',
+    title: 'Domain & Hosting Setup',
+    iconName: 'Cloud',
+    shortDesc: 'DNS configuration, SSL certificate installation, cPanel/VPS deployment, and custom domain email.',
+    fullDesc: 'Get your website live without hassle. We handle nameserver pointing, DNS records (A, CNAME, MX, TXT for SPF/DKIM), free auto-renewing SSL certificates, and cloud deployment on Vercel, Netlify, or VPS.',
+    category: 'Development Services',
+    startingPrice: 400,
+    typicalTurnaround: '2 - 6 Hours',
+    deliverables: [
+      'Domain DNS mapping (Nameservers, A Records, CNAMEs)',
+      'Free Let\'s Encrypt SSL/TLS Certificate setup (HTTPS)',
+      'Professional business email configuration (e.g. info@yourdomain)',
+      'Web server hosting configuration (Nginx, Apache, Node.js)',
+      'Automated deployment pipeline setup from GitHub'
+    ]
+  },
+  {
+    id: 'payment-gateway-integration',
+    title: 'Payment Gateway Integration',
+    iconName: 'CreditCard',
+    shortDesc: 'Integration of local (bKash, Nagad, Rocket, SSLCommerz) and international (Stripe) gateways.',
+    fullDesc: 'Accept online payments seamlessly. We integrate official merchant APIs for bKash Tokenized/Checkout API, Nagad PGW, SSLCommerz, ShurjoPay, AamarPay, and international Stripe/PayPal with instant callback verification.',
+    category: 'Development Services',
+    startingPrice: 1200,
+    typicalTurnaround: '12 - 24 Hours',
+    deliverables: [
+      'Official Merchant API integration with secure backend verification',
+      'Instant payment IPN / Webhook callback transaction recording',
+      'Automated order confirmation and SMS/Email receipts',
+      'Sandbox testing mode + seamless production switchover',
+      'Refund and failed transaction handling logic'
+    ],
+    tag: 'Essential'
+  },
+  {
+    id: 'admin-dashboard-development',
+    title: 'Admin Dashboard Development',
+    iconName: 'LayoutDashboard',
+    shortDesc: 'Feature-packed administration panels with analytics charts, data tables, and user management.',
+    fullDesc: 'Manage your operations with a custom admin control center. Includes interactive analytics charts, searchable/sortable paginated tables, CSV export, role permissions, and audit logs.',
+    category: 'Development Services',
+    startingPrice: 2500,
+    typicalTurnaround: '2 - 4 Days',
+    deliverables: [
+      'Dynamic data visualizer charts (Recharts / Chart.js)',
+      'Advanced data tables with search, filter, sort & pagination',
+      'Export data to Excel / CSV / PDF with one click',
+      'Multi-role permission controls (Admin, Manager, Viewer)',
+      'Dark mode / Light mode responsive user interface'
+    ]
+  },
+  {
+    id: 'custom-feature-development',
+    title: 'Custom Feature Development',
+    iconName: 'Cpu',
+    shortDesc: 'Custom algorithmic modules, automated scripts, web scraping, and bespoke business tools.',
+    fullDesc: 'Need a specific feature that standard templates don\'t offer? We build custom calculators, automated background schedulers, web scrapers (Puppeteer/BeautifulSoup), PDF report generators, and AI integrations.',
+    category: 'Development Services',
+    startingPrice: 1000,
+    typicalTurnaround: '12 - 48 Hours',
+    deliverables: [
+      'Bespoke feature coded to your exact functional specification',
+      'Modular, reusable, and thoroughly documented code',
+      'Integration into your existing application codebase',
+      'Unit testing and edge-case validation',
+      'Deployment walkthrough and live demonstration'
+    ]
+  },
+  {
+    id: 'website-speed-optimization',
+    title: 'Website Speed Optimization',
+    iconName: 'Zap',
+    shortDesc: 'Core Web Vitals enhancement, image compression, caching, asset bundling, and 90+ Google Score.',
+    fullDesc: 'Speed up your sluggish website. We optimize Core Web Vitals (LCP, FID, CLS), compress media assets to WebP/AVIF, implement lazy loading, minify JavaScript/CSS, and configure server caching.',
+    category: 'Development Services',
+    startingPrice: 600,
+    typicalTurnaround: '6 - 18 Hours',
+    deliverables: [
+      'Comprehensive Google PageSpeed Insights & GTmetrix audit',
+      'Asset compression, code splitting & script deferral',
+      'Database query optimization & object caching setup',
+      'CDN integration (Cloudflare) for global low latency',
+      'Before-and-after performance metrics report'
+    ]
+  },
+  {
+    id: 'website-security-backup',
+    title: 'Website Security & Backup',
+    iconName: 'ShieldCheck',
+    shortDesc: 'Malware removal, SQLi/XSS vulnerability patching, automated cloud backups, and firewall setup.',
+    fullDesc: 'Protect your valuable digital assets. We audit code vulnerabilities, enforce HTTPS, configure Cloudflare DDoS mitigation, sanitize inputs against SQL injection & XSS, and setup automated cloud backups.',
+    category: 'Development Services',
+    startingPrice: 800,
+    typicalTurnaround: '12 - 24 Hours',
+    deliverables: [
+      'Complete security vulnerability scan & malware cleanup',
+      'Firewall, brute-force protection & rate-limit configuration',
+      'Automated daily/weekly encrypted cloud backup routines',
+      'Security headers (CSP, HSTS, X-Frame-Options) configuration',
+      'Disaster recovery documentation and 1-click restore plan'
+    ]
+  },
+
+  // ==========================================
+  // 3. STUDENT SUPPORT (15 Services)
+  // ==========================================
+  {
+    id: 'final-year-project-guidance',
+    title: 'Final Year Project Guidance',
+    iconName: 'CheckSquare',
+    shortDesc: 'End-to-end guidance for capstone projects, system architecture, SRS documentation, and defense.',
+    fullDesc: 'Turn your university capstone project into an outstanding academic achievement. Work with experienced engineering mentors on project feasibility, software architecture, SRS documentation, milestone execution, and defense presentations.',
+    category: 'Student Support',
+    startingPrice: 1500,
+    typicalTurnaround: '24 - 72 Hours',
+    deliverables: [
+      'System Architecture & ERD / UML diagramming review',
+      'Software Requirements Specification (SRS) review & polish',
+      'Sprint planning & milestone progress guidance',
+      'Prototype troubleshooting and feature demonstration prep',
+      'Final project defense mock questioning rehearsal'
+    ],
+    tag: 'Flagship'
+  },
+  {
+    id: 'research-paper-formatting',
+    title: 'Research Paper Formatting',
+    iconName: 'FileCheck',
+    shortDesc: 'IEEE, Springer, ACM, Elsevier, and APA standard LaTeX / Word paper formatting and citation styling.',
+    fullDesc: 'Ensure your research paper conforms strictly to target journal and conference author guidelines. We format two-column IEEE/ACM layouts, LaTeX Overleaf templates, bibliography references (BibTeX/Mendeley), and equation alignments.',
+    category: 'Student Support',
+    startingPrice: 500,
+    typicalTurnaround: '12 - 24 Hours',
+    deliverables: [
+      'Strict adherence to IEEE, ACM, Springer, Elsevier, or APA styles',
+      'Complete LaTeX / Overleaf source files or polished Word document',
+      'Standardized BibTeX citations & cross-reference verification',
+      'Vector diagram & figure caption alignment styling',
+      'Mathematical equations & algorithm pseudo-code formatting'
+    ],
+    tag: 'High Demand'
+  },
+  {
+    id: 'dataset-technical-guidance',
+    title: 'Dataset & Technical Guidance',
+    iconName: 'Binary',
+    shortDesc: 'Data collection methods, cleaning, exploratory analysis (EDA), and machine learning preprocessing.',
+    fullDesc: 'Get expert guidance on sourcing benchmarks, web scraping datasets, data cleaning, handling missing values, exploratory data analysis (EDA), feature engineering, and preparing datasets for Machine Learning models in Python/R/SPSS.',
+    category: 'Student Support',
+    startingPrice: 600,
+    typicalTurnaround: '12 - 36 Hours',
+    deliverables: [
+      'Dataset curation & benchmark sourcing strategies',
+      'Data cleaning, normalization & feature engineering pipelines',
+      'Exploratory Data Analysis (EDA) charts and correlation matrices',
+      'Python (Pandas, NumPy, Scikit-learn) / SPSS scripts',
+      'Data visualization plots formatted for publication'
+    ]
+  },
+  {
+    id: 'programming-support',
+    title: 'Programming Support (Any Language)',
+    iconName: 'Terminal',
+    shortDesc: 'Hands-on debugging, algorithm logic breakdown, and conceptual coaching in C++, Java, Python, JS.',
+    fullDesc: 'Master tricky programming concepts, data structures (Trees, Graphs, DP), Object-Oriented Programming (OOP), and lab problem sets in C, C++, Java, Python, JavaScript, PHP, or Assembly with live step-by-step logic coaching.',
+    category: 'Student Support',
+    startingPrice: 400,
+    typicalTurnaround: '6 - 18 Hours',
+    deliverables: [
+      'Line-by-line logic explanation and concept breakdown',
+      'Live debugging assistance and segmentation fault resolution',
+      'Clean coding practices, time complexity (Big-O) analysis',
+      'Edge-case test scenarios and input validation',
+      'Lab viva questions prep on written code'
+    ],
+    tag: 'Popular'
+  },
+  {
+    id: 'github-portfolio-setup',
+    title: 'GitHub / Portfolio Setup',
+    iconName: 'GitBranch',
+    shortDesc: 'Professional GitHub profile README, Git workflow mastery, repository showcases, and pinning.',
+    fullDesc: 'Transform your GitHub into a recruiter magnet. We build dynamic GitHub profile READMEs with live stats widgets, organize clean repository structures, write compelling project documentation, and teach proper branch/PR workflows.',
+    category: 'Student Support',
+    startingPrice: 350,
+    typicalTurnaround: '6 - 12 Hours',
+    deliverables: [
+      'Custom styled dynamic GitHub profile README with live stats',
+      'Professional project README.md templates with demo GIF badges',
+      'Git branching, commit hygiene, and pull request workflows',
+      'Repository organization with open-source licensing & badges',
+      'Pinning strategy highlighting your best engineering projects'
+    ]
+  },
+  {
+    id: 'cv-linkedin-optimization',
+    title: 'CV / LinkedIn Optimization',
+    iconName: 'UserCheck',
+    shortDesc: 'ATS resume audit, LinkedIn headline & summary revamp, and recruiter networking strategy.',
+    fullDesc: 'Optimize your professional profile for tech jobs, internships, and research assistantships. We audit your resume keywords, craft captivating LinkedIn headlines/summaries, and coach you on cold outreach to recruiters.',
+    category: 'Student Support',
+    startingPrice: 400,
+    typicalTurnaround: '12 - 24 Hours',
+    deliverables: [
+      'ATS score audit and tailored keyword enhancement',
+      'LinkedIn profile overhaul (Headline, About, Experience bullets)',
+      'Project impact quantification using STAR/XYZ methodology',
+      'Networking and cold email connection message templates',
+      'Personal branding tips to attract engineering recruiters'
+    ],
+    tag: 'Career Growth'
+  },
+  {
+    id: 'presentation-preparation',
+    title: 'Presentation Preparation',
+    iconName: 'Mic',
+    shortDesc: 'Slide structure critique, defense rehearsal coaching, and faculty counter-question simulations.',
+    fullDesc: 'Conquer presentation anxiety and deliver standout defense talks. We help you structure your speaking points, rehearse transitions, manage time constraints, and anticipate tough cross-examination questions from strict faculty panels.',
+    category: 'Student Support',
+    startingPrice: 350,
+    typicalTurnaround: '8 - 24 Hours',
+    deliverables: [
+      '1-on-1 Mock defense rehearsal with difficult counter-questions',
+      'Slide timing analysis and transition cues formulation',
+      'Speaking script formulation & bullet distillation',
+      'Q&A survival tactics for rigorous academic defense panels',
+      'Confidence building and body language feedback'
+    ]
+  },
+  {
+    id: 'scholarship-admission-guidance',
+    title: 'Scholarship / Admission Guidance',
+    iconName: 'GraduationCap',
+    shortDesc: 'Statement of Purpose (SOP), Motivation Letters, research proposals, and professor email drafting.',
+    fullDesc: 'Get accepted into top global universities (USA, Canada, Europe, Australia, Japan). Work with alumni who have won Erasmus Mundus, Fulbright, and Graduate Assistantships to draft compelling SOPs, CVs, and cold emails to professors.',
+    category: 'Student Support',
     startingPrice: 800,
     typicalTurnaround: '24 - 48 Hours',
     deliverables: [
-      'Research gap identification & problem formulation',
-      'Systematic Literature Review (SLR) matrix template',
-      'Dataset curation & preprocessing guidance',
-      'Methodology & architecture diagram discussion',
-      'Target journal/conference selection advice'
+      'Line-by-line review of Statement of Purpose (SOP) & Motivation Letters',
+      'Academic CV tailored for international admissions',
+      'Cold email templates for contacting prospective research supervisors',
+      'Scholarship application strategy & recommendation letter guidance',
+      'Visa and university interview mock preparation session'
+    ],
+    tag: 'Global Study'
+  },
+  {
+    id: 'thesis-report-writing-support',
+    title: 'Thesis / Report Writing Support',
+    iconName: 'BookOpen',
+    shortDesc: 'Chapter structuring, systematic literature reviews, methodology synthesis, and proofreading.',
+    fullDesc: 'Comprehensive academic mentorship on structuring your undergraduate/masters thesis. We help formulate research questions, build Systematic Literature Review (SLR) matrices, articulate methodology, and polish academic English.',
+    category: 'Student Support',
+    startingPrice: 1000,
+    typicalTurnaround: '24 - 72 Hours',
+    deliverables: [
+      'Chapter-by-chapter structuring & academic writing guidance',
+      'Systematic Literature Review (SLR) matrix template & synthesis',
+      'Methodology articulation and experimental setup description',
+      'Grammar, flow, and academic tone refinement',
+      'Citation verification and bibliography alignment'
     ]
   },
   {
-    id: 'thesis-mentorship',
-    title: 'Thesis Mentorship',
-    iconName: 'GraduationCap',
-    shortDesc: 'Step-by-step guidance throughout your undergraduate or masters thesis journey.',
-    fullDesc: 'End-to-end guidance from proposal defense to final book submission. Work with published researchers who assist you through literature review, algorithm implementation, benchmark comparisons, thesis formatting, and defense rehearsals.',
-    category: 'Final Year',
-    startingPrice: 1200,
-    typicalTurnaround: 'Milestone-based',
+    id: 'plagiarism-check-assistance',
+    title: 'Plagiarism Check Assistance',
+    iconName: 'Search',
+    shortDesc: 'Official Turnitin similarity report analysis, ethical paraphrasing, and citation alignment.',
+    fullDesc: 'Ensure your manuscript and reports are 100% compliant with university similarity thresholds. Receive official similarity index breakdown reports, citation corrections, and guidance on ethical paraphrasing.',
+    category: 'Student Support',
+    startingPrice: 250,
+    typicalTurnaround: '2 - 6 Hours',
     deliverables: [
-      'Proposal & topic validation with faculty expectations',
-      'Literature review structuring & citation management',
-      'Methodology design and benchmark comparisons',
-      'Full book chapter-by-chapter review & refinement',
-      'Pre-defense mock panel and slides preparation'
+      'Complete similarity percentage and highlighted matching sources report',
+      'Identification of accidental plagiarism vs common academic phrases',
+      'Guidance on restructuring sentences and proper paraphrasing',
+      'Missing citation restoration in IEEE/APA/Harvard formats',
+      'Fast turnaround within 2 to 6 hours'
     ],
-    tag: 'Flagship Program'
+    tag: 'Fast Delivery'
   },
   {
-    id: 'final-year-project',
-    title: 'Final Year Project (FYP)',
-    iconName: 'Rocket',
-    shortDesc: 'Architecture design, tech stack selection, milestone tracking, and prototype guidance.',
-    fullDesc: 'Turn your capstone project or engineering prototype into a standout achievement. Get guidance on system architecture (Microservices, AI pipelines, IoT, Mobile, Web), clean git workflows, documentation, and phase-wise faculty presentations.',
-    category: 'Final Year',
-    startingPrice: 1000,
-    typicalTurnaround: 'Sprint / Milestone',
+    id: 'technical-workshops-courses',
+    title: 'Technical Workshops & Courses',
+    iconName: 'Video',
+    shortDesc: 'Live cohort bootcamps on Web Development, AI/ML, UI/UX, Git, and Competitive Programming.',
+    fullDesc: 'Hands-on, project-based technical masterclasses led by industry practitioners and top competitive programmers. Learn in-demand skills through live coding, assignments, and personalized mentor code reviews.',
+    category: 'Student Support',
+    startingPrice: 500,
+    typicalTurnaround: 'Scheduled Cohorts',
     deliverables: [
-      'System Architecture & ERD / UML diagramming review',
-      'Technology stack consultation & environment setup',
-      'Sprint planning & milestone progress reviews',
-      'Software Requirements Specification (SRS) review',
-      'Final project demonstration & defense prep'
+      'Live interactive video sessions with real-time Q&A',
+      'Full access to session recordings, source code & lecture slides',
+      'Hands-on capstone project review & feedback from mentors',
+      'Certificate of Completion with verifiable credentials',
+      'Exclusive access to private alumni & peer discord/WhatsApp community'
+    ]
+  },
+  {
+    id: 'interview-preparation',
+    title: 'Interview Preparation',
+    iconName: 'Briefcase',
+    shortDesc: 'Mock technical coding interviews, system design discussions, and behavioral HR interview coaching.',
+    fullDesc: 'Ace your next software engineering or graduate job interview. Practice Data Structures & Algorithms live on whiteboard/coderpad, discuss basic system design, and receive structured feedback on behavioral questions.',
+    category: 'Student Support',
+    startingPrice: 600,
+    typicalTurnaround: '12 - 24 Hours',
+    deliverables: [
+      '1-on-1 Mock coding interview session simulating top tech companies',
+      'Detailed feedback report on problem-solving speed, code quality & communication',
+      'System design basics & architectural trade-offs discussion',
+      'Behavioral interview coaching using the STAR framework',
+      'Curated DSA question bank tailored to target company patterns'
+    ]
+  },
+  {
+    id: 'study-plan-academic-guidance',
+    title: 'Study Plan & Academic Guidance',
+    iconName: 'Calendar',
+    shortDesc: 'Personalized semester study roadmap, CGPA recovery planning, and time management coaching.',
+    fullDesc: 'Feeling overwhelmed by credits, lab deadlines, and exams? Work with top-performing academic mentors to audit your syllabus, design a realistic weekly study routine, and execute a strategic CGPA improvement plan.',
+    category: 'Student Support',
+    startingPrice: 300,
+    typicalTurnaround: '6 - 12 Hours',
+    deliverables: [
+      'Tailored weekly timetable balancing classes, labs & self-study',
+      'High-yield topic prioritization roadmap for upcoming exams',
+      'CGPA recovery calculation model & target grade milestones',
+      'Curated textbook chapters, video lecture links & notes list',
+      'Weekly progress check-in & accountability support'
+    ]
+  },
+  {
+    id: 'problem-solving-debugging',
+    title: 'Problem Solving & Debugging Help',
+    iconName: 'HelpCircle',
+    shortDesc: 'Urgent troubleshooting, mathematical derivations, logic resolution, and homework concept guidance.',
+    fullDesc: 'Get immediate help when you are stuck on difficult assignments, mathematical proofs, circuit calculations, or programming bugs. Connect with a mentor to get unstuck with complete conceptual clarity.',
+    category: 'Student Support',
+    startingPrice: 350,
+    typicalTurnaround: '3 - 12 Hours',
+    deliverables: [
+      'Direct, step-by-step problem dissection and solution logic',
+      'Mathematical formula verification and derivation steps',
+      'Comprehensive explanation of underlying core theorems',
+      'Interactive doubt clearing on WhatsApp / Google Meet',
+      'Related practice problems to solidify understanding'
     ],
-    tag: 'Comprehensive'
+    tag: 'Instant Support'
+  },
+  {
+    id: 'mentorship-career-guidance',
+    title: 'Mentorship & Career Guidance',
+    iconName: 'Compass',
+    shortDesc: '1-on-1 career mapping with industry software engineers, researchers, and university alumni.',
+    fullDesc: 'Get clarity on your future roadmap (Software Engineering, Data Science/AI, Cyber Security, Higher Studies abroad, or Product Management). Discuss career pathways, skill acquisition timelines, and industry expectations.',
+    category: 'Student Support',
+    startingPrice: 500,
+    typicalTurnaround: '12 - 24 Hours',
+    deliverables: [
+      '1-on-1 private video mentorship session with industry specialist',
+      'Personalized 6-month skill development and portfolio roadmap',
+      'Honest feedback on current technical skill strengths & gaps',
+      'Guidance on open-source contributions & internship applications',
+      'Direct networking connection with professional alumni network'
+    ]
   }
 ];
 
 export const PROBLEM_TRIGGERS: ProblemTrigger[] = [
   {
-    id: 'struggling-course',
-    text: "I don't understand my course",
-    serviceId: 'course-support',
-    icon: 'BookOpen',
-    description: 'Get matched with a top peer mentor for 1-to-1 concept coaching before midterms or finals.',
-    defaultExpectation: 'Need clear conceptual breakdown of difficult chapters and past paper solutions.'
-  },
-  {
-    id: 'stuck-lab',
-    text: "I have a lab task / coding error",
-    serviceId: 'programming-lab',
-    icon: 'Code',
-    description: 'Live debugging, logic explanation, and algorithm walkthrough for your CSE/EEE labs.',
-    defaultExpectation: 'Code has logic bugs/runtime errors; need step-by-step guidance on how to fix and explain in lab viva.'
-  },
-  {
-    id: 'presentation-trouble',
-    text: "I need help with presentation",
-    serviceId: 'presentation-viva',
+    id: 'design-flyer-ppt',
+    text: "Need presentation slides or event poster design",
+    serviceId: 'presentation-ppt-design',
     icon: 'Presentation',
-    description: 'Slide design review, rehearsal coaching, and speaking transitions to impress your teacher.',
-    defaultExpectation: 'Review my PowerPoint slides and help me prepare speaking notes and answers for Q&A.'
+    description: 'Custom slide decks, defense presentations, and event banners designed with professional aesthetics.',
+    defaultExpectation: 'Need polished presentation slides for class defense and matching event promotional creatives.'
   },
   {
-    id: 'viva-tomorrow',
-    text: "I have a viva tomorrow / this week",
-    serviceId: 'presentation-viva',
-    icon: 'Mic',
-    description: 'Emergency mock viva simulation with expected questions from faculty trends.',
-    defaultExpectation: 'Mock viva session to test my conceptual understanding and help me answer confidently under pressure.'
+    id: 'portfolio-website',
+    text: "Want a modern personal portfolio or club website",
+    serviceId: 'personal-portfolio-website',
+    icon: 'Globe',
+    description: 'Fast, responsive, modern websites showcasing your skills, projects, or student club events.',
+    defaultExpectation: 'Need a fast React/Next.js personal portfolio with live demo links and custom domain deployment.'
   },
   {
-    id: 'thesis-start',
-    text: "I don't know how to start my thesis",
-    serviceId: 'thesis-mentorship',
-    icon: 'GraduationCap',
-    description: 'Topic narrowing, research gap identification, and proposal defense preparation.',
-    defaultExpectation: 'Guidance on choosing an impactful research topic, finding papers, and drafting the thesis proposal.'
-  },
-  {
-    id: 'project-stuck',
-    text: "My final project is stuck",
-    serviceId: 'final-year-project',
-    icon: 'Rocket',
+    id: 'final-year-project',
+    text: "My final year capstone project is stuck",
+    serviceId: 'final-year-project-guidance',
+    icon: 'CheckSquare',
     description: 'Architectural troubleshooting, backend/frontend integration, or ML model guidance.',
     defaultExpectation: 'Need help resolving architecture bottlenecks, dataset integration, and preparing the SRS report.'
   },
   {
-    id: 'research-paper',
-    text: "Need research methodology & writing support",
-    serviceId: 'research-support',
-    icon: 'Microscope',
-    description: 'Literature review matrix, dataset validation, experimental analysis, and paper drafting.',
-    defaultExpectation: 'Need guidance structuring my methodology, data analysis, and formatting for IEEE submission.'
+    id: 'programming-debugging',
+    text: "I have a lab task / coding error",
+    serviceId: 'programming-support',
+    icon: 'Terminal',
+    description: 'Live debugging, logic explanation, and algorithm walkthrough for your CSE/EEE labs.',
+    defaultExpectation: 'Code has logic bugs/runtime errors; need step-by-step guidance on how to fix and explain in lab viva.'
   },
   {
-    id: 'lab-report-due',
-    text: "Need lab report review & graph analysis",
-    serviceId: 'lab-report',
-    icon: 'FlaskConical',
-    description: 'Data plotting, error margin calculations, and standard academic formatting.',
-    defaultExpectation: 'Help formatting the lab data, plotting error curves, and reviewing the discussion section.'
+    id: 'research-formatting',
+    text: "Need IEEE / Springer research paper formatting",
+    serviceId: 'research-paper-formatting',
+    icon: 'FileCheck',
+    description: 'Strict IEEE, Springer, ACM, and APA standard LaTeX / Word paper formatting.',
+    defaultExpectation: 'Need paper formatted in IEEE two-column LaTeX style with verified citations and clear diagrams.'
+  },
+  {
+    id: 'ats-resume-linkedin',
+    text: "Need ATS-friendly resume & LinkedIn revamp",
+    serviceId: 'cv-resume-design',
+    icon: 'FileText',
+    description: 'High-impact ATS-friendly resume formatting and LinkedIn optimization for job applications.',
+    defaultExpectation: 'Professional resume design with clean layout, keyword optimization, and LaTeX/Word editable source.'
+  },
+  {
+    id: 'ecommerce-web-app',
+    text: "Need custom web application / e-commerce portal",
+    serviceId: 'business-ecommerce-website',
+    icon: 'ShoppingBag',
+    description: 'Full-stack web applications with bKash/Nagad payment gateways, admin panels, and databases.',
+    defaultExpectation: 'Need full-stack web application with secure backend, database schema, and payment integration.'
+  },
+  {
+    id: 'plagiarism-check',
+    text: "Need Turnitin plagiarism check & proofreading",
+    serviceId: 'plagiarism-check-assistance',
+    icon: 'Search',
+    description: 'Turnitin similarity report analysis, ethical paraphrasing, and citation corrections.',
+    defaultExpectation: 'Need similarity report breakdown with citation check and guidance to lower similarity index.'
   }
 ];
 
 export const INITIAL_REQUESTS: SupportRequest[] = [
   {
-    id: 'ES-20260820-00125',
+    id: 'NX-2026-00125',
     studentId: 'user-std-1',
     studentName: 'Md. Ehsanur Rahaman',
     studentEmail: 'ehsan.cse@pundra.edu.bd',
@@ -263,9 +979,9 @@ export const INITIAL_REQUESTS: SupportRequest[] = [
     studentUniId: 'CSE-2021-042',
     batch: 'Batch 18',
     semester: '8th Semester',
-    serviceId: 'thesis-mentorship',
-    serviceTitle: 'Thesis Mentorship',
-    courseName: 'Undergraduate Thesis & Research',
+    serviceId: 'final-year-project-guidance',
+    serviceTitle: 'Final Year Project Guidance',
+    courseName: 'Capstone Project & Defense',
     courseCode: 'CSE-4200',
     teacherName: 'Dr. Shah Alam',
     academicLevel: '4th Year',
@@ -284,13 +1000,6 @@ export const INITIAL_REQUESTS: SupportRequest[] = [
         size: '2.4 MB',
         type: 'PDF',
         uploadedAt: '2026-08-19'
-      },
-      {
-        id: 'att-2',
-        name: 'sample_dataset_metadata.csv',
-        size: '410 KB',
-        type: 'CSV',
-        uploadedAt: '2026-08-19'
       }
     ],
     assignedMentorId: 'mentor-1',
@@ -298,498 +1007,159 @@ export const INITIAL_REQUESTS: SupportRequest[] = [
     status: 'in_progress',
     paymentStatus: 'paid',
     paymentDetails: {
-      id: 'pay-101',
-      requestId: 'ES-20260820-00125',
+      id: 'pay-1',
+      requestId: 'NX-2026-00125',
       amount: 2200,
       method: 'bKash',
-      transactionId: 'BK9A82D01F',
+      transactionId: '9K2L88X19B',
       senderNumber: '01712345678',
       status: 'verified',
       submittedAt: '2026-08-19 14:30',
       verifiedAt: '2026-08-19 14:45'
     },
     adminNotes: [
-      'Assigned to Tanvir Ahmed due to Bangla NLP/Vision expertise.',
-      'Initial 1-on-1 scheduled for Aug 22, 8:00 PM via Google Meet.'
+      'Student contacted via WhatsApp. Shared baseline Colab notebook.',
+      'Assigned Tanvir Ahmed (BUET CSE alumni). 1st session completed on 20 Aug.'
     ],
-    createdAt: '2026-08-19 11:20',
-    updatedAt: '2026-08-19 14:45'
-  },
-  {
-    id: 'ES-20260818-00118',
-    studentId: 'user-std-1',
-    studentName: 'Md. Ehsanur Rahaman',
-    studentEmail: 'ehsan.cse@pundra.edu.bd',
-    studentPhone: '+880 1712-345678',
-    studentWhatsApp: '+880 1712-345678',
-    university: 'Pundra University of Science and Technology (PUB)',
-    department: 'Computer Science & Engineering (CSE)',
-    academicLevel: '4th Year',
-    serviceId: 'course-support',
-    serviceTitle: 'Course Support',
-    courseName: 'Digital Signal Processing (DSP)',
-    courseCode: 'CSE-4103',
-    teacherName: 'Prof. Rafiqul Islam',
-    problemStatement: 'Need assistance understanding FFT algorithms, Butterworth filter design in MATLAB, and Z-transform properties for the upcoming final exam.',
-    whatDoneSoFar: 'Read textbook chapters 4 and 5, but getting confused during problem solving.',
-    expectedOutcome: 'Solved 10 previous semester problems and understand filter design workflow.',
-    deadline: '2026-08-18',
-    preferredContact: 'Google Meet',
-    preferredTime: 'Night',
-    expectedBudget: '৳500 – ৳1,000',
-    agreedPrice: 800,
-    attachments: [
-      {
-        id: 'att-3',
-        name: 'DSP_Previous_Question_2024.pdf',
-        size: '1.8 MB',
-        type: 'PDF',
-        uploadedAt: '2026-08-16'
-      }
-    ],
-    assignedMentorId: 'mentor-2',
-    assignedMentorName: 'Naimul Hasan (EEE Mentor)',
-    status: 'completed',
-    paymentStatus: 'paid',
-    createdAt: '2026-08-16 10:00',
-    updatedAt: '2026-08-18 22:30',
-    rating: 5,
-    reviewComment: 'The mentor broke down Z-transform and filter poles so simply. Scored full marks in my DSP quiz!'
-  },
-  {
-    id: 'ES-20260820-00130',
-    studentId: 'user-std-2',
-    studentName: 'Samira Chowdhury',
-    studentEmail: 'samira.c@northsouth.edu',
-    studentPhone: '+880 1819-987654',
-    studentWhatsApp: '+880 1819-987654',
-    university: 'North South University (NSU)',
-    department: 'Computer Science & Engineering (CSE)',
-    academicLevel: '2nd Year',
-    serviceId: 'programming-lab',
-    serviceTitle: 'Programming & Lab',
-    courseName: 'Data Structures & Algorithms',
-    courseCode: 'CSE225',
-    problemStatement: 'Binary Search Tree (BST) recursive deletion and AVL tree balance rotation implementation in C++. Facing segmentation faults on left-right double rotations.',
-    deadline: '2026-08-22',
-    preferredContact: 'WhatsApp',
-    preferredTime: 'Evening',
-    expectedBudget: '৳500 – ৳1,000',
-    agreedPrice: 650,
-    attachments: [
-      {
-        id: 'att-4',
-        name: 'avl_tree_lab_assignment.cpp',
-        size: '14 KB',
-        type: 'CPP',
-        uploadedAt: '2026-08-20'
-      }
-    ],
-    status: 'payment_pending',
-    paymentStatus: 'pending_verification',
-    paymentDetails: {
-      id: 'pay-102',
-      requestId: 'ES-20260820-00130',
-      amount: 650,
-      method: 'Nagad',
-      transactionId: 'NG771B902A',
-      senderNumber: '01819987654',
-      status: 'pending_verification',
-      submittedAt: '2026-08-20 09:15'
-    },
-    createdAt: '2026-08-20 08:30',
-    updatedAt: '2026-08-20 09:15'
-  },
-  {
-    id: 'ES-20260820-00133',
-    studentId: 'user-std-3',
-    studentName: 'Farhan Kabir',
-    studentEmail: 'farhan.k@bracu.ac.bd',
-    studentPhone: '+880 1623-112233',
-    studentWhatsApp: '+880 1623-112233',
-    university: 'BRAC University (BRACU)',
-    department: 'Electrical & Electronic Engineering (EEE)',
-    academicLevel: '3rd Year',
-    serviceId: 'presentation-viva',
-    serviceTitle: 'Presentation & Viva',
-    courseName: 'Microprocessor & Microcontrollers (8086)',
-    courseCode: 'EEE305',
-    problemStatement: 'Have a crucial lab viva on 8086 assembly memory segmentation and interrupt vectors next Tuesday. Need a 45-minute intense mock viva drill.',
-    deadline: '2026-08-25',
-    preferredContact: 'Google Meet',
-    preferredTime: 'Night',
-    expectedBudget: '৳200 – ৳500',
-    attachments: [],
-    status: 'under_review',
-    paymentStatus: 'unpaid',
-    createdAt: '2026-08-20 09:50',
-    updatedAt: '2026-08-20 09:50'
-  }
-];
-
-export const MENTORS: Mentor[] = [
-  {
-    id: 'mentor-1',
-    userId: 'user-mentor-1',
-    name: 'Engr. Tanvir Ahmed',
-    email: 'tanvir.ahmed@buet.ac.bd',
-    phone: '+880 1788-990011',
-    whatsapp: '+880 1788-990011',
-    university: 'BUET (Alumni)',
-    department: 'CSE',
-    qualification: 'M.Sc. in Computer Science (Ongoing, BUET), B.Sc. CSE',
-    expertise: ['Machine Learning', 'Bangla NLP', 'Computer Vision', 'Python', 'PyTorch', 'Thesis Writing'],
-    experience: '4+ years mentoring 120+ undergraduate thesis & project students with 5 IEEE conference publications.',
-    portfolio: 'https://github.com/tanvir-ai-research',
-    linkedIn: 'https://linkedin.com/in/tanvir-ai',
-    availableTime: 'Evenings & Weekends (7 PM - 11 PM)',
-    expectedRate: '৳600 - ৳1200 / session or milestone',
-    verificationStatus: 'approved',
-    rating: 4.9,
-    totalCompletedSessions: 84,
-    earnings: 68500,
-    bio: 'Passionate about helping students demystify deep learning and successfully defend high-scoring undergraduate theses.'
-  },
-  {
-    id: 'mentor-2',
-    userId: 'user-mentor-2',
-    name: 'Naimul Hasan',
-    email: 'naimul.eee@du.ac.bd',
-    phone: '+880 1911-223344',
-    whatsapp: '+880 1911-223344',
-    university: 'University of Dhaka',
-    department: 'EEE',
-    qualification: 'B.Sc. in EEE (DU), Silver Medalist in Engineering Olympiad',
-    expertise: ['Digital Signal Processing', 'Circuit Simulation (Proteus/Multisim)', 'MATLAB', 'Microcontrollers (Arduino/ESP32)'],
-    experience: '3 years coaching university students across EEE & CSE for hardware labs and mathematical theory.',
-    portfolio: 'https://naimul-circuits.dev',
-    availableTime: 'Afternoon & Night (3 PM - 10 PM)',
-    expectedRate: '৳500 - ৳900 / session',
-    verificationStatus: 'approved',
-    rating: 4.8,
-    totalCompletedSessions: 52,
-    earnings: 39200,
-    bio: 'Specialist in breaking down complex mathematical transforms into visual, intuitive engineering concepts.'
-  },
-  {
-    id: 'mentor-3',
-    userId: 'user-mentor-3',
-    name: 'Anika Tabassum',
-    email: 'anika.tabassum@sust.edu',
-    phone: '+880 1555-443322',
-    whatsapp: '+880 1555-443322',
-    university: 'SUST',
-    department: 'Software Engineering',
-    qualification: 'Senior Software Engineer & SUST SWE Graduate',
-    expertise: ['Data Structures & Algorithms', 'C++', 'Java Spring Boot', 'React', 'Git & Software Architecture'],
-    experience: 'Former competitive programmer (ICPC Regionalist) and mentor for university coding labs.',
-    portfolio: 'https://github.com/anika-swe',
-    availableTime: 'Weekdays Night (8 PM - 11:30 PM)',
-    expectedRate: '৳450 - ৳800 / session',
-    verificationStatus: 'approved',
-    rating: 5.0,
-    totalCompletedSessions: 41,
-    earnings: 31000,
-    bio: 'Dedicated to helping students master core programming fundamentals without stress or blind copy-pasting.'
-  },
-  {
-    id: 'mentor-4',
-    userId: 'user-mentor-4',
-    name: 'Dr. Kazi Mahfuzur',
-    email: 'kazi.mahfuz@researchhub.org',
-    phone: '+880 1822-334455',
-    whatsapp: '+880 1822-334455',
-    university: 'IUT / International PhD Scholar',
-    department: 'ICT',
-    qualification: 'Post-Doc Fellow, Former Assistant Professor',
-    expertise: ['Systematic Literature Review', 'Research Methodology', 'LaTeX Typesetting', 'Journal Submissions', 'Plagiarism Reduction'],
-    experience: '8+ years in academic publishing with 18 Scopus/SCI indexed papers.',
-    availableTime: 'Flexible (Morning & Night)',
-    expectedRate: '৳1000 - ৳2500 / milestone',
-    verificationStatus: 'approved',
-    rating: 4.95,
-    totalCompletedSessions: 96,
-    earnings: 114000,
-    bio: 'Empowering students to write clean, ethical, and high-impact academic research papers.'
-  },
-  {
-    id: 'mentor-5',
-    userId: 'user-mentor-5',
-    name: 'Sabbir Hossain',
-    email: 'sabbir.iot@nsu.edu',
-    phone: '+880 1733-889900',
-    whatsapp: '+880 1733-889900',
-    university: 'North South University',
-    department: 'CSE',
-    qualification: 'B.Sc. CSE (Final Year High Honors)',
-    expertise: ['Embedded Systems', 'IoT Prototypes', 'Raspberry Pi', 'Firebase', 'Mobile App Dev (Flutter)'],
-    experience: 'Led 14 successful capstone hardware-software integrated projects.',
-    availableTime: 'Afternoon & Evening',
-    expectedRate: '৳500 - ৳1000 / session',
-    verificationStatus: 'pending',
-    rating: 4.7,
-    totalCompletedSessions: 8,
-    earnings: 5600,
-    bio: 'Hands-on hardware & IoT enthusiast who turns complex circuit diagrams into working prototypes.'
-  }
-];
-
-export const REVIEWS: Review[] = [
-  {
-    id: 'rev-1',
-    requestId: 'EQ-ORD-1018',
-    studentName: 'Md. Ehsanur Rahaman',
-    university: 'Pundra University of Science & Technology (PUB)',
-    department: 'CSE',
-    serviceTitle: 'Course Support',
-    rating: 5,
-    gradeOutcome: 'A+ (3.92 GPA)',
-    comment: 'Digital Signal Processing (DSP) এর ফিল্টার ডিজাইন ও Z-transform নিয়ে খুব বিপদে ছিলাম। Edu Quest এর ভাইয়া ২ ঘণ্টার মধ্যে সম্পূর্ণ কনসেপ্ট ক্লিয়ার করে বিগত ৩ বছরের প্রশ্ন সলভ করিয়ে দেন। এক্সামে দারুণ করেছি!',
-    date: 'Aug 18, 2026',
-    verified: true,
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80'
-  },
-  {
-    id: 'rev-2',
-    requestId: 'EQ-ORD-1004',
-    studentName: 'Nusrat Jahan',
-    university: 'BRAC University',
-    department: 'CSE',
-    serviceTitle: 'Thesis Mentorship',
-    rating: 5,
-    gradeOutcome: 'Faculty Approved Proposal',
-    comment: 'I was completely stuck on how to formulate the research gap and methodology for my Deep Learning thesis. The mentor helped me organize the literature matrix and dataset pipeline step-by-step. Saved me weeks of confusion!',
-    date: 'Aug 15, 2026',
-    verified: true,
-    avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80'
-  },
-  {
-    id: 'rev-3',
-    requestId: 'EQ-ORD-0992',
-    studentName: 'Arafat Hossain',
-    university: 'BUET',
-    department: 'EEE',
-    serviceTitle: 'Presentation & Viva',
-    rating: 5,
-    gradeOutcome: 'Defended with Distinction (Grade A)',
-    comment: 'ভাইভার আগের দিন মক সেশনে এমন কিছু ট্রিকি প্রশ্ন প্র্যাকটিস করিয়েছিলেন যা পরের দিন এক্সটার্নাল ফ্যাকাল্টি সরাসরি জিজ্ঞেস করেছিল! কনফিডেন্স অনেক বেড়ে গিয়েছিল।',
-    date: 'Aug 11, 2026',
-    verified: true,
-    avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80'
-  },
-  {
-    id: 'rev-4',
-    requestId: 'EQ-ORD-0985',
-    studentName: 'Tahmidul Islam',
-    university: 'North South University (NSU)',
-    department: 'CSE',
-    serviceTitle: 'Programming & Lab',
-    rating: 5,
-    gradeOutcome: 'Full 20/20 Lab Marks',
-    comment: 'C++ AVL Tree double rotation এ সেগমেন্টেশন ফল্ট আসছিল। অর্ডার প্লেস করার ২০ মিনিটের মাথায় Edu Quest থেকে যোগাযোগ করে লাইভ কোড রিভিউ দিয়ে লাইন বাই লাইন ডিবাগ বুঝিয়ে দিল। অসাধারণ সার্ভিস!',
-    date: 'Aug 07, 2026',
-    verified: true,
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80'
-  },
-  {
-    id: 'rev-5',
-    requestId: 'EQ-ORD-0971',
-    studentName: 'Sadia Sultana Mim',
-    university: 'University of Dhaka (DU)',
-    department: 'Economics & Statistics',
-    serviceTitle: 'Research Support',
-    rating: 5,
-    gradeOutcome: 'Manuscript Accepted for Review',
-    comment: 'Econometrics data analysis in STATA & SPSS was giving severe heteroscedasticity errors. Edu Quest mentor corrected the regression models and explained standard error adjustments smoothly.',
-    date: 'Aug 02, 2026',
-    verified: true,
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80'
-  },
-  {
-    id: 'rev-6',
-    requestId: 'EQ-ORD-0960',
-    studentName: 'Rifat Al Mamun',
-    university: 'Ahsanullah University (AUST)',
-    department: 'Mechanical Engineering',
-    serviceTitle: 'Lab Report Support',
-    rating: 5,
-    gradeOutcome: 'Top 5% in Class',
-    comment: 'Fluid mechanics lab report calculation, MATLAB plotting and error analysis was done cleanly with standard LaTeX formatting templates. Delivery on time without any delay.',
-    date: 'Jul 29, 2026',
-    verified: true,
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80'
-  },
-  {
-    id: 'rev-7',
-    requestId: 'EQ-ORD-0945',
-    studentName: 'Fariha Tasnim',
-    university: 'United International University (UIU)',
-    department: 'Software Engineering',
-    serviceTitle: 'Final Year Project (FYP)',
-    rating: 5,
-    gradeOutcome: 'Project Phase 1 Approved',
-    comment: 'আমাদের ফাইনাল ইয়ার প্রজেক্টে React + FastAPI + PostgreSQL আর্কিটেকচার সেটআপ এবং SRS ডকুমেন্টেশন প্রিপারেশনে Edu Quest পুরো টিমকে সঠিক পথ দেখিয়েছে।',
-    date: 'Jul 24, 2026',
-    verified: true,
-    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&auto=format&fit=crop&q=80'
+    createdAt: '2026-08-19 12:10',
+    updatedAt: '2026-08-20 18:00'
   }
 ];
 
 export const INITIAL_ORDERS: AcademicOrder[] = [
   {
-    id: 'EQ-ORD-2024-8841',
+    id: 'NX-ORD-8841',
     items: [
       {
-        id: 'ci-1',
-        serviceId: 'thesis-mentorship',
-        serviceTitle: 'Thesis Mentorship',
-        category: 'Final Year',
-        basePrice: 1200,
-        packageTier: 'VIP 1-on-1 Mentorship',
+        id: 'cart-1',
+        serviceId: 'presentation-ppt-design',
+        serviceTitle: 'Presentation & PPT Design',
+        category: 'Design Services',
+        basePrice: 350,
+        packageTier: 'Standard Support',
         urgencyFee: 0,
-        totalPrice: 1200,
-        courseName: 'Undergraduate Thesis (CSE-4200)',
+        totalPrice: 350,
+        courseName: 'CSE-4200 Capstone Defense',
+        quantity: 1
+      },
+      {
+        id: 'cart-2',
+        serviceId: 'personal-portfolio-website',
+        serviceTitle: 'Personal / Portfolio Website',
+        category: 'Development Services',
+        basePrice: 1500,
+        packageTier: 'VIP 1-on-1 Mentorship',
+        urgencyFee: 200,
+        totalPrice: 1700,
+        courseName: 'Career & Industry Prep',
         quantity: 1
       }
     ],
-    totalAmount: 1200,
-    customerName: 'Md. Ehsanur Rahaman',
-    phone: '+880 1712-345678',
-    whatsapp: '+880 1712-345678',
-    email: 'ehsan.cse@pundra.edu.bd',
+    totalAmount: 2050,
+    customerName: 'Md. Ahsanur Rahaman',
+    phone: '01712-345678',
+    whatsapp: '01712-345678',
+    email: 'ahsanur@example.com',
     university: 'Pundra University of Science and Technology (PUB)',
     department: 'Computer Science & Engineering (CSE)',
-    batchOrSemester: '8th Semester / Batch 18',
-    courseName: 'Undergraduate Thesis',
+    batchOrSemester: '4th Year / 8th Semester',
+    courseName: 'Final Defense Presentation & Portfolio',
     courseCode: 'CSE-4200',
-    requirements: 'Bangla Handwritten Text Recognition methodology refinement, transformer vision encoder-decoder pipeline guidance and chapter 3 literature matrix.',
-    deadline: '2026-08-28',
-    preferredContact: 'WhatsApp',
-    attachments: [
-      {
-        id: 'att-1',
-        name: 'Bangla_OCR_Draft_Proposal.pdf',
-        size: '2.4 MB',
-        type: 'PDF',
-        uploadedAt: '2026-08-19'
-      }
-    ],
-    status: 'in_progress',
-    assignedMentorName: 'Engr. Tanvir Ahmed (BUET ML Researcher)',
-    createdAt: '2026-08-19 11:20 AM',
-    updatedAt: '2026-08-19 02:45 PM',
-    notes: [
-      'Order placed via Edu Quest website.',
-      'Operations coordinator reached out on WhatsApp within 12 minutes.',
-      'Specialist mentor assigned and 1-on-1 scheduled.'
-    ]
-  },
-  {
-    id: 'EQ-ORD-2024-8835',
-    items: [
-      {
-        id: 'ci-2',
-        serviceId: 'programming-lab',
-        serviceTitle: 'Programming & Lab',
-        category: 'Technical Support',
-        basePrice: 400,
-        packageTier: 'Express 24h Support',
-        urgencyFee: 150,
-        totalPrice: 550,
-        courseName: 'Data Structures & Algorithms (CSE225)',
-        quantity: 1
-      }
-    ],
-    totalAmount: 550,
-    customerName: 'Samira Chowdhury',
-    phone: '+880 1819-987654',
-    whatsapp: '+880 1819-987654',
-    university: 'North South University (NSU)',
-    department: 'CSE',
-    courseName: 'Data Structures & Algorithms',
-    courseCode: 'CSE225',
-    requirements: 'AVL tree recursive rotations and segmentation fault resolution in C++.',
-    deadline: '2026-08-22',
+    requirements: 'Need a stunning 15-slide defense slide deck with clean typography and custom diagrams, plus a personal portfolio setup on GitHub Pages.',
+    deadline: '2026-08-25',
     preferredContact: 'WhatsApp',
     attachments: [],
-    status: 'delivered_completed',
-    assignedMentorName: 'Anika Tabassum (Senior SWE & SUST Graduate)',
-    createdAt: '2026-08-20 08:30 AM',
-    updatedAt: '2026-08-20 11:15 AM',
-    notes: [
-      'Debugging code delivered with visual stack explanation.',
-      'Student confirmed full comprehension for lab viva.'
-    ]
+    status: 'in_progress',
+    assignedMentorName: 'Engr. Tahmidul Islam (BUET)',
+    createdAt: '2026-08-20 10:30',
+    updatedAt: '2026-08-20 11:15',
+    notes: ['Initial review done. Sent slide outline on WhatsApp.']
   }
 ];
 
-export const FAQS = [
+export const INITIAL_MENTORS: Mentor[] = [
   {
-    q: 'How quickly will your team contact me after booking?',
-    a: 'Usually within 30 to 90 minutes during active operating hours (8:00 AM – 11:30 PM). If you have an urgent deadline or a viva tomorrow, selecting WhatsApp as your preferred contact ensures immediate triage by our support coordinator.'
-  },
-  {
-    q: 'Do I need an account to request academic support?',
-    a: 'You can submit a support request as a guest in just 2 minutes! We will automatically generate your unique Request ID (e.g. ES-20260820-00125). You can optionally create an account anytime using Google or email to track all your requests, files, and mentor chats in one place.'
-  },
-  {
-    q: 'Can I securely upload my assignment, code, or thesis draft files?',
-    a: 'Yes! We support PDF, DOCX, PPTX, ZIP, C/C++/Python/Java source files, and research datasets. All files are securely kept between you and your verified mentor with strict privacy safeguards.'
-  },
-  {
-    q: 'How does the pricing and payment system work?',
-    a: 'Our model is transparent: Request → Contact & Triage → Scope Discussion → Agreed Budget → Mentorship. Once you and the mentor agree on the scope, you can easily pay via bKash, Nagad, Bank Transfer, or Debit/Credit Cards.'
-  },
-  {
-    q: 'Do you provide 1-to-1 live tutoring sessions?',
-    a: 'Yes! We conduct interactive 1-to-1 mentoring sessions over Google Meet, Zoom, or Discord with screen sharing, digital whiteboard walkthroughs, and live code debugging.'
-  },
-  {
-    q: 'Can you help with final-year projects, thesis book writing, and defense?',
-    a: 'Absolutely. We have specialized mentors holding Masters and PhDs from top engineering universities who guide you step-by-step through proposal defense, literature review matrices, architecture, implementation, LaTeX/Word formatting, and mock defenses.'
-  },
-  {
-    q: 'What is your academic integrity and ethics policy?',
-    a: 'EduSolve is a pure mentorship and academic coaching platform. We empower you to understand your coursework, learn debugging methodologies, and build problem-solving skills yourself. Mentors explain, teach, and guide — enabling you to defend and excel with authentic knowledge.'
-  }
-];
-
-export const DEMO_USERS: Record<string, User> = {
-  student: {
-    id: 'user-std-1',
-    name: 'Md. Ehsanur Rahaman',
-    email: 'ehsan.cse@pundra.edu.bd',
-    phone: '+880 1712-345678',
-    whatsapp: '+880 1712-345678',
-    facebook: 'https://facebook.com/ehsanur.rahaman',
-    university: 'Pundra University of Science and Technology (PUB)',
+    id: 'mentor-1',
+    userId: 'user-m-1',
+    name: 'Tanvir Ahmed',
+    email: 'tanvir.cse.buet@gmail.com',
+    phone: '+880 1711-223344',
+    whatsapp: '+880 1711-223344',
+    university: 'Bangladesh University of Engineering and Technology (BUET)',
     department: 'Computer Science & Engineering (CSE)',
-    studentId: 'CSE-2021-042',
-    batch: 'Batch 18',
-    semester: '8th Semester',
-    role: 'student',
-    createdAt: '2026-01-15'
+    qualification: 'B.Sc. in CSE (BUET), Published Researcher (IEEE/Springer)',
+    expertise: ['Fullstack Web', 'Machine Learning', 'NLP', 'System Architecture', 'LaTeX Formatting'],
+    experience: '4+ years guiding undergraduate projects, 6 IEEE conference publications.',
+    availableTime: 'Evenings (6 PM - 11 PM)',
+    expectedRate: '৳800 - ৳1500 / session',
+    verificationStatus: 'approved',
+    rating: 4.95,
+    totalCompletedSessions: 84,
+    earnings: 68500,
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
+    bio: 'Passionate about demystifying complex computer science and AI concepts. Mentored 80+ university students in capstone projects and research publications.'
   },
-  mentor: {
-    id: 'user-mentor-1',
-    name: 'Engr. Tanvir Ahmed',
-    email: 'tanvir.ahmed@buet.ac.bd',
-    phone: '+880 1788-990011',
-    whatsapp: '+880 1788-990011',
-    university: 'BUET (Alumni)',
-    department: 'CSE',
-    role: 'mentor',
-    createdAt: '2025-06-10'
-  },
-  admin: {
-    id: 'user-admin-1',
-    name: 'EduSolve Admin Team',
-    email: 'admin@edusolve.ac',
-    phone: '+880 1700-000000',
-    whatsapp: '+880 1700-000000',
-    university: 'EduSolve HQ (Dhaka)',
-    department: 'Academic Operations & Quality Control',
-    role: 'admin',
-    createdAt: '2025-01-01'
+  {
+    id: 'mentor-2',
+    userId: 'user-m-2',
+    name: 'Nusrat Jahan',
+    email: 'nusrat.du.cs@gmail.com',
+    phone: '+880 1822-334455',
+    whatsapp: '+880 1822-334455',
+    university: 'University of Dhaka (DU)',
+    department: 'Computer Science & Engineering (CSE)',
+    qualification: 'M.Sc. in CSE, Senior UI/UX & Frontend Engineer',
+    expertise: ['UI/UX Design', 'Figma', 'React/Next.js', 'Portfolio Building', 'Presentation Design'],
+    experience: '3+ years designing production UI/UX and web apps for global clients.',
+    availableTime: 'Afternoon & Night',
+    expectedRate: '৳600 - ৳1200 / session',
+    verificationStatus: 'approved',
+    rating: 4.9,
+    totalCompletedSessions: 62,
+    earnings: 49000,
+    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80',
+    bio: 'Dedicated to helping students craft industry-level UI/UX designs, slide decks, and responsive frontend web applications.'
   }
-};
+];
+
+export const INITIAL_REVIEWS: Review[] = [
+  {
+    id: 'rev-1',
+    studentName: 'Sabbir Hossain',
+    university: 'Pundra University of Science and Technology (PUB)',
+    department: 'Computer Science & Engineering',
+    serviceTitle: 'Presentation & PPT Design',
+    rating: 5,
+    comment: 'Kraflyn Technologies designed my final defense slide deck. The typography, color scheme, and diagrams were so clean that our faculty board praised our presentation structure!',
+    date: '2026-08-18',
+    gradeOutcome: 'A+ in Defense',
+    verified: true
+  },
+  {
+    id: 'rev-2',
+    studentName: 'Farhana Akter',
+    university: 'University of Dhaka (DU)',
+    department: 'Software Engineering',
+    serviceTitle: 'Personal / Portfolio Website',
+    rating: 5,
+    comment: 'Got my personal developer portfolio built and deployed in less than 48 hours. Responsive, lightning-fast, and helped me land an internship interview within a week!',
+    date: '2026-08-15',
+    gradeOutcome: 'Internship Offer',
+    verified: true
+  },
+  {
+    id: 'rev-3',
+    studentName: 'Rakibul Islam',
+    university: 'Rajshahi University of Engineering & Technology (RUET)',
+    department: 'Electrical & Electronic Engineering (EEE)',
+    serviceTitle: 'Research Paper Formatting',
+    rating: 5,
+    comment: 'Transformed our messy Word draft into a pristine IEEE two-column LaTeX document. Saved us hours of headache right before the conference submission deadline.',
+    date: '2026-08-12',
+    gradeOutcome: 'IEEE Paper Accepted',
+    verified: true
+  }
+];
+
+export const REVIEWS = INITIAL_REVIEWS;
+
