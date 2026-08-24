@@ -44,9 +44,9 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onAuthenticated }) => {
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none" />
 
       {/* Top Header */}
-      <header className="max-w-7xl w-full mx-auto px-6 py-6 flex items-center justify-between z-10">
-        <div className="flex items-center gap-3">
-          <div className="bg-slate-900/90 p-2.5 rounded-2xl border border-slate-800 backdrop-blur-xs">
+      <header className="max-w-7xl w-full mx-auto px-4 sm:px-6 py-4 sm:py-6 flex items-center justify-between z-10">
+        <div className="flex items-center gap-2.5">
+          <div className="bg-slate-900/90 p-2 rounded-2xl border border-slate-800 backdrop-blur-xs">
             <KraflynLogo size="sm" showSlogan={false} theme="dark" />
           </div>
           <span className="hidden sm:inline-block px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-rose-500/20 text-rose-300 border border-rose-500/30">
@@ -54,20 +54,21 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onAuthenticated }) => {
           </span>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <button
             onClick={() => setLanguage(language === 'bn' ? 'en' : 'bn')}
-            className="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-xs font-semibold text-slate-300 border border-slate-800 transition-colors cursor-pointer"
+            className="px-2.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-xs font-semibold text-slate-300 border border-slate-800 transition-colors cursor-pointer min-h-[36px]"
           >
             {language === 'bn' ? 'English' : 'বাংলা'}
           </button>
 
           <button
             onClick={() => setCurrentView('student')}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-800 transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-800 transition-colors cursor-pointer min-h-[36px]"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>{language === 'bn' ? 'মূল ওয়েবসাইটে ফিরে যান' : 'Back to Public Site'}</span>
+            <span className="hidden xs:inline sm:inline">{language === 'bn' ? 'মূল ওয়েবসাইট' : 'Public Site'}</span>
+            <span className="xs:hidden sm:hidden">{language === 'bn' ? 'সাইট' : 'Site'}</span>
           </button>
         </div>
       </header>

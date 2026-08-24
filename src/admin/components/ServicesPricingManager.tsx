@@ -20,30 +20,94 @@ export const ServicesPricingManager: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       
       {/* Header */}
       <motion.div 
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white p-5 rounded-3xl border border-slate-200 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4"
+        className="bg-white p-3.5 sm:p-5 rounded-2xl sm:rounded-3xl border border-slate-200 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3"
       >
         <div>
-          <h3 className="font-bold text-base text-slate-900 flex items-center gap-2">
+          <h3 className="font-bold text-sm sm:text-base text-slate-900 flex items-center gap-2">
             <Layers className="w-5 h-5 text-blue-600" />
             <span>{language === 'bn' ? 'সার্ভিস ক্যাটালগ ও প্রাইসিং কনফিগারেটর' : 'Services Catalog & Pricing Config'}</span>
           </h3>
-          <p className="text-xs text-slate-500 mt-0.5">
+          <p className="text-[11px] text-slate-500 mt-0.5">
             {language === 'bn' ? 'সার্ভিসের বেস প্রাইস এবং আনুমানিক ডেলিভারি সময় সমন্বয় করুন' : 'Adjust starting prices, package baselines, and estimated delivery turnarounds'}
           </p>
         </div>
       </motion.div>
 
-      {/* Services Pricing Table */}
+      {/* Mobile Card View (sm:hidden) */}
+      <div className="sm:hidden space-y-3">
+        {services.map((service) => (
+          <div key={service.id} className="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs space-y-3">
+            <div className="flex items-start justify-between gap-2">
+              <div className="min-w-0">
+                <h4 className="font-bold text-slate-900 text-sm truncate">{service.title}</h4>
+                <div className="text-[11px] text-blue-600 font-medium truncate">{service.category}</div>
+              </div>
+              <div className="text-right shrink-0">
+                {editingId === service.id ? (
+                  <div className="flex items-center gap-1">
+                    <span className="text-slate-500 font-bold text-xs">৳</span>
+                    <input
+                      type="number"
+                      value={tempPrice}
+                      onChange={(e) => setTempPrice(Number(e.target.value))}
+                      className="w-20 px-2 py-1 bg-white border border-blue-400 rounded-lg text-xs font-bold text-slate-900 focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                ) : (
+                  <span className="font-black text-slate-900 text-sm">
+                    ৳{service.startingPrice}
+                  </span>
+                )}
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between pt-2 border-t border-slate-100 text-xs">
+              <div className="flex items-center gap-1.5 text-slate-500 text-[11px]">
+                <Clock className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+                <span>{service.turnaround}</span>
+              </div>
+
+              {editingId === service.id ? (
+                <div className="flex items-center gap-1.5">
+                  <button
+                    onClick={() => handleSavePrice(service.id)}
+                    className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-bold text-xs flex items-center gap-1 shadow-xs cursor-pointer min-h-[36px]"
+                  >
+                    <Save className="w-3.5 h-3.5" />
+                    <span>{language === 'bn' ? 'সংরক্ষণ' : 'Save'}</span>
+                  </button>
+                  <button
+                    onClick={() => setEditingId(null)}
+                    className="px-2.5 py-1.5 border border-slate-300 text-slate-600 rounded-lg text-xs font-semibold hover:bg-slate-100 cursor-pointer min-h-[36px]"
+                  >
+                    {language === 'bn' ? 'বাতিল' : 'Cancel'}
+                  </button>
+                </div>
+              ) : (
+                <button
+                  onClick={() => handleStartEdit(service.id, service.startingPrice)}
+                  className="px-3 py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg font-bold text-xs flex items-center gap-1 cursor-pointer min-h-[36px]"
+                >
+                  <Edit3 className="w-3.5 h-3.5" />
+                  <span>{language === 'bn' ? 'মূল্য এডিট' : 'Edit Price'}</span>
+                </button>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Desktop/Tablet Services Pricing Table (hidden sm:block) */}
       <motion.div 
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white rounded-3xl border border-slate-200 shadow-xs overflow-hidden"
+        className="hidden sm:block bg-white rounded-3xl border border-slate-200 shadow-xs overflow-hidden"
       >
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs sm:text-sm text-slate-700">
@@ -57,7 +121,7 @@ export const ServicesPricingManager: React.FC = () => {
             </thead>
 
             <tbody className="divide-y divide-slate-100">
-              {services.map((service, idx) => (
+              {services.map((service) => (
                 <tr key={service.id} className="hover:bg-slate-50/80 transition-colors">
                   
                   {/* Category & Title */}

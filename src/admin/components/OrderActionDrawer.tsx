@@ -4,18 +4,12 @@ import { AcademicOrder } from '../../types';
 import { 
   X, 
   UserCheck, 
-  Send, 
   MessageSquare, 
   Paperclip, 
-  ExternalLink, 
   Edit3, 
   DollarSign, 
   Save, 
-  Sparkles,
-  PhoneCall,
-  Calendar,
-  Layers,
-  GraduationCap
+  Phone
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -87,7 +81,7 @@ export const OrderActionDrawer: React.FC<OrderActionDrawerProps> = ({ order, onC
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 overflow-hidden bg-slate-900/60 backdrop-blur-xs flex justify-end">
+      <div className="fixed inset-0 z-50 overflow-hidden bg-slate-900/70 backdrop-blur-xs flex justify-end">
         <motion.div 
           initial={{ opacity: 0, x: '100%' }}
           animate={{ opacity: 1, x: 0 }}
@@ -96,16 +90,16 @@ export const OrderActionDrawer: React.FC<OrderActionDrawerProps> = ({ order, onC
           className="bg-white w-full max-w-xl h-full shadow-2xl flex flex-col overflow-hidden text-slate-800 text-xs sm:text-sm"
         >
           {/* Drawer Header */}
-          <div className="bg-slate-900 text-white p-5 flex items-center justify-between shrink-0">
+          <div className="bg-slate-900 text-white p-4 sm:p-5 flex items-center justify-between shrink-0">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-blue-600/30 border border-blue-500/40 flex items-center justify-center text-blue-400 font-mono font-black">
-                <Edit3 className="w-5 h-5" />
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-600/30 border border-blue-500/40 flex items-center justify-center text-blue-400 font-mono font-black shrink-0">
+                <Edit3 className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
-              <div>
-                <h3 className="font-bold text-base">
-                  {language === 'bn' ? 'অর্ডার অ্যাকশন ও ব্যবস্থাপনা' : 'Order Triage & Actions'}
+              <div className="min-w-0">
+                <h3 className="font-bold text-sm sm:text-base truncate">
+                  {language === 'bn' ? 'অর্ডার পরিচালনা ও অ্যাকশন' : 'Order Triage & Actions'}
                 </h3>
-                <p className="text-[11px] text-slate-400 font-mono">
+                <p className="text-[10px] sm:text-[11px] text-slate-400 font-mono truncate">
                   ID: {order.id} • {order.customerName}
                 </p>
               </div>
@@ -113,17 +107,17 @@ export const OrderActionDrawer: React.FC<OrderActionDrawerProps> = ({ order, onC
 
             <button
               onClick={onClose}
-              className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white transition-colors cursor-pointer"
+              className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white transition-colors cursor-pointer min-h-[40px] min-w-[40px] flex items-center justify-center"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
 
           {/* Drawer Scrollable Body */}
-          <div className="flex-1 overflow-y-auto p-5 sm:p-6 space-y-6">
+          <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 sm:space-y-6">
             
             {/* Quick Summary Card */}
-            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-3">
+            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 sm:p-4 space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-[11px] font-bold uppercase text-slate-400">
                   {language === 'bn' ? 'শিক্ষার্থী বিবরণ' : 'Student Information'}
@@ -133,37 +127,41 @@ export const OrderActionDrawer: React.FC<OrderActionDrawerProps> = ({ order, onC
                 </span>
               </div>
 
-              <div className="grid grid-cols-2 gap-3 text-xs">
+              <div className="grid grid-cols-2 gap-2.5 sm:gap-3 text-xs">
                 <div>
-                  <span className="text-slate-400 text-[11px] block">{language === 'bn' ? 'নাম' : 'Name'}</span>
-                  <span className="font-bold text-slate-800">{order.customerName}</span>
+                  <span className="text-slate-400 text-[10px] sm:text-[11px] block">{language === 'bn' ? 'নাম' : 'Name'}</span>
+                  <span className="font-bold text-slate-800 truncate block">{order.customerName}</span>
                 </div>
                 <div>
-                  <span className="text-slate-400 text-[11px] block">{language === 'bn' ? 'ফোন ও WhatsApp' : 'Phone / WhatsApp'}</span>
-                  <span className="font-bold text-slate-800 font-mono">{order.phone} / {order.whatsapp}</span>
+                  <span className="text-slate-400 text-[10px] sm:text-[11px] block">{language === 'bn' ? 'যোগাযোগ' : 'Contact'}</span>
+                  <div className="flex items-center gap-1.5 mt-0.5">
+                    <a href={`tel:${order.phone}`} className="text-blue-600 font-bold hover:underline font-mono text-[11px]">
+                      📞 {order.phone}
+                    </a>
+                  </div>
                 </div>
                 <div>
-                  <span className="text-slate-400 text-[11px] block">{language === 'bn' ? 'বিশ্ববিদ্যালয়' : 'University'}</span>
+                  <span className="text-slate-400 text-[10px] sm:text-[11px] block">{language === 'bn' ? 'বিশ্ববিদ্যালয়' : 'University'}</span>
                   <span className="font-semibold text-slate-800 truncate block">{order.university}</span>
-                  <span className="text-[11px] text-slate-500">{order.department}</span>
+                  <span className="text-[10px] sm:text-[11px] text-slate-500 truncate block">{order.department}</span>
                 </div>
                 <div>
-                  <span className="text-slate-400 text-[11px] block">{language === 'bn' ? 'কোর্স ও কোড' : 'Course & Code'}</span>
+                  <span className="text-slate-400 text-[10px] sm:text-[11px] block">{language === 'bn' ? 'কোর্স ও ডেডলাইন' : 'Course & Deadline'}</span>
                   <span className="font-bold text-slate-800 block truncate">{order.courseName}</span>
-                  <span className="text-[11px] text-slate-500">{order.courseCode || 'N/A'}</span>
+                  <span className="text-[10px] sm:text-[11px] text-blue-600 font-bold">📅 {order.deadline}</span>
                 </div>
               </div>
             </div>
 
             {/* Status Update Control */}
-            <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-500 block">
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block">
                 {language === 'bn' ? 'স্ট্যাটাস আপডেট করুন' : 'Update Delivery Workflow Status'}
               </label>
               <select
                 value={targetStatus}
                 onChange={(e) => setTargetStatus(e.target.value as any)}
-                className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl font-bold text-xs sm:text-sm text-slate-800 focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3.5 py-3 bg-white border border-slate-300 rounded-xl font-bold text-base sm:text-sm text-slate-800 focus:ring-2 focus:ring-blue-500"
               >
                 <option value="order_received">1. Order Received (অর্ডার গৃহীত)</option>
                 <option value="mentor_assigned">2. Mentor Assigned (মেন্টর নিযুক্ত)</option>
@@ -175,18 +173,18 @@ export const OrderActionDrawer: React.FC<OrderActionDrawerProps> = ({ order, onC
             </div>
 
             {/* Mentor Assignment */}
-            <div className="space-y-2">
+            <div className="space-y-1.5">
               <div className="flex items-center justify-between">
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1.5">
                   <UserCheck className="w-3.5 h-3.5 text-blue-600" />
-                  <span>{language === 'bn' ? 'মেন্টর নিযুক্ত করুন / পরিবর্তন করুন' : 'Assign / Reassign Lead Mentor'}</span>
+                  <span>{language === 'bn' ? 'মেন্টর নিযুক্ত করুন' : 'Assign / Reassign Lead Mentor'}</span>
                 </label>
                 {mentors.length > 0 && (
                   <select
                     onChange={(e) => {
                       if (e.target.value) setMentorInput(e.target.value);
                     }}
-                    className="text-[11px] font-bold text-blue-600 bg-blue-50 border border-blue-200 rounded-lg px-2 py-0.5"
+                    className="text-[10px] sm:text-[11px] font-bold text-blue-600 bg-blue-50 border border-blue-200 rounded-lg px-2 py-1"
                     defaultValue=""
                   >
                     <option value="" disabled>{language === 'bn' ? 'রোস্টার থেকে বাছাই' : 'Select from Roster'}</option>
@@ -203,13 +201,13 @@ export const OrderActionDrawer: React.FC<OrderActionDrawerProps> = ({ order, onC
                 value={mentorInput}
                 onChange={(e) => setMentorInput(e.target.value)}
                 placeholder="e.g. Engr. Tanvir Ahmed (BUET CSE)"
-                className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-xs sm:text-sm focus:ring-2 focus:ring-blue-500 font-semibold"
+                className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-base sm:text-sm focus:ring-2 focus:ring-blue-500 font-semibold"
               />
             </div>
 
             {/* Price Adjustment */}
-            <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1.5">
                 <DollarSign className="w-3.5 h-3.5 text-emerald-600" />
                 <span>{language === 'bn' ? 'মোট পেমেন্ট ফি (টাকা)' : 'Total Agreed Fee (BDT ৳)'}</span>
               </label>
@@ -217,13 +215,13 @@ export const OrderActionDrawer: React.FC<OrderActionDrawerProps> = ({ order, onC
                 type="number"
                 value={priceInput}
                 onChange={(e) => setPriceInput(Number(e.target.value))}
-                className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-xs sm:text-sm font-black text-slate-900 focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-base sm:text-sm font-black text-slate-900 focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             {/* Admin Note / Activity Log */}
-            <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-500 block">
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block">
                 {language === 'bn' ? 'ইন্টারনাল অ্যাডমিন নোট' : 'Internal Operational Note'}
               </label>
               <textarea
@@ -231,14 +229,14 @@ export const OrderActionDrawer: React.FC<OrderActionDrawerProps> = ({ order, onC
                 value={adminNoteInput}
                 onChange={(e) => setAdminNoteInput(e.target.value)}
                 placeholder="e.g. Student requested draft delivery by 5 PM. Mentor notified."
-                className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-base sm:text-xs focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             {/* Student Requirements Content */}
-            <div className="space-y-2 bg-blue-50/60 border border-blue-100 rounded-2xl p-4">
+            <div className="space-y-1.5 bg-blue-50/60 border border-blue-100 rounded-2xl p-3.5 sm:p-4">
               <span className="text-[11px] font-bold uppercase text-blue-900 block">
-                {language === 'bn' ? 'শিক্ষার্থীর পূর্ণ বিবরণ ও রিকোয়ারমেন্ট' : 'Student Requirements Details'}
+                {language === 'bn' ? 'শিক্ষার্থীর রিকোয়ারমেন্ট' : 'Student Requirements Details'}
               </span>
               <p className="text-xs text-slate-700 whitespace-pre-wrap leading-relaxed">
                 {order.requirements}
@@ -247,10 +245,10 @@ export const OrderActionDrawer: React.FC<OrderActionDrawerProps> = ({ order, onC
 
             {/* Attachments Section */}
             {order.attachments && order.attachments.length > 0 && (
-              <div className="space-y-2">
+              <div className="space-y-1.5">
                 <span className="text-[11px] font-bold uppercase text-slate-400 flex items-center gap-1.5">
                   <Paperclip className="w-3.5 h-3.5 text-blue-600" />
-                  <span>{language === 'bn' ? 'সংযুক্ত ফাইলসমূহ' : 'Uploaded Files & Specs'} ({order.attachments.length})</span>
+                  <span>{language === 'bn' ? 'সংযুক্ত ফাইলসমূহ' : 'Uploaded Files'} ({order.attachments.length})</span>
                 </span>
                 <div className="space-y-1.5">
                   {order.attachments.map((att) => (
@@ -262,7 +260,7 @@ export const OrderActionDrawer: React.FC<OrderActionDrawerProps> = ({ order, onC
                         <span className="font-semibold text-slate-800 truncate">{att.name}</span>
                         <span className="text-slate-400 text-[10px]">({att.size})</span>
                       </div>
-                      <span className="text-[10px] text-emerald-600 font-bold bg-emerald-50 px-2 py-0.5 rounded">
+                      <span className="text-[10px] text-emerald-600 font-bold bg-emerald-50 px-2 py-0.5 rounded shrink-0">
                         Available
                       </span>
                     </div>
@@ -272,7 +270,7 @@ export const OrderActionDrawer: React.FC<OrderActionDrawerProps> = ({ order, onC
             )}
 
             {/* 1-Click WhatsApp Quick Outreach */}
-            <div className="space-y-2.5 pt-2">
+            <div className="space-y-2 pt-1">
               <span className="text-[11px] font-bold uppercase text-slate-500 block flex items-center gap-1.5">
                 <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
                 <span>{language === 'bn' ? '১-ক্লিক WhatsApp টেমপ্লেট' : '1-Click WhatsApp Direct Outreach'}</span>
@@ -283,7 +281,7 @@ export const OrderActionDrawer: React.FC<OrderActionDrawerProps> = ({ order, onC
                   href={getWhatsappQuickMsg('welcome')}
                   target="_blank"
                   rel="noreferrer"
-                  className="p-2.5 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-800 rounded-xl text-center font-bold text-[11px] transition-colors block"
+                  className="p-3 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-800 rounded-xl text-center font-bold text-xs transition-colors block min-h-[44px] flex items-center justify-center"
                 >
                   💬 Welcome Ack
                 </a>
@@ -291,7 +289,7 @@ export const OrderActionDrawer: React.FC<OrderActionDrawerProps> = ({ order, onC
                   href={getWhatsappQuickMsg('mentor_assigned')}
                   target="_blank"
                   rel="noreferrer"
-                  className="p-2.5 bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-800 rounded-xl text-center font-bold text-[11px] transition-colors block"
+                  className="p-3 bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-800 rounded-xl text-center font-bold text-xs transition-colors block min-h-[44px] flex items-center justify-center"
                 >
                   👨‍🏫 Mentor Update
                 </a>
@@ -299,20 +297,20 @@ export const OrderActionDrawer: React.FC<OrderActionDrawerProps> = ({ order, onC
                   href={getWhatsappQuickMsg('delivery')}
                   target="_blank"
                   rel="noreferrer"
-                  className="p-2.5 bg-purple-50 hover:bg-purple-100 border border-purple-200 text-purple-800 rounded-xl text-center font-bold text-[11px] transition-colors block"
+                  className="p-3 bg-purple-50 hover:bg-purple-100 border border-purple-200 text-purple-800 rounded-xl text-center font-bold text-xs transition-colors block min-h-[44px] flex items-center justify-center"
                 >
-                  🚀 Ready for Delivery
+                  🚀 Delivery Ready
                 </a>
               </div>
             </div>
 
           </div>
 
-          {/* Drawer Footer Actions */}
+          {/* Drawer Footer Actions with safe-area spacing */}
           <div className="p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between gap-3 shrink-0">
             <button
               onClick={onClose}
-              className="px-4 py-2.5 border border-slate-300 text-slate-700 hover:bg-slate-200 rounded-xl text-xs font-bold cursor-pointer"
+              className="px-4 py-3 border border-slate-300 text-slate-700 hover:bg-slate-200 rounded-xl text-xs sm:text-sm font-bold cursor-pointer min-h-[44px]"
             >
               {language === 'bn' ? 'বন্ধ করুন' : 'Cancel'}
             </button>
@@ -321,10 +319,10 @@ export const OrderActionDrawer: React.FC<OrderActionDrawerProps> = ({ order, onC
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={handleSaveAll}
-              className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-xs flex items-center gap-2 shadow-md shadow-blue-500/20 cursor-pointer"
+              className="flex-1 sm:flex-none px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md shadow-blue-500/20 cursor-pointer min-h-[44px]"
             >
               <Save className="w-4 h-4" />
-              <span>{language === 'bn' ? 'পরিবর্তন সংরক্ষণ করুন' : 'Save Order Changes'}</span>
+              <span>{language === 'bn' ? 'সংরক্ষণ করুন' : 'Save Changes'}</span>
             </motion.button>
           </div>
 
