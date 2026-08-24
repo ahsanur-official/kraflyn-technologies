@@ -23,16 +23,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onAuthenticated }) => {
       const normalizedPin = pin.trim().toLowerCase().replace(/\s+/g, ' ');
       // Support 'Allah Vorsa' and common variations + emergency fallbacks
       const isAllowed = 
-        normalizedPin === 'allah vorsa' || 
-        normalizedPin === 'allahvorsa' ||
-        normalizedPin === 'allah bharosa' ||
-        normalizedPin === 'allahbharosa' ||
-        normalizedPin === 'allah vorosa' ||
-        normalizedPin === 'allahvorosa' ||
-        normalizedPin === 'admin123' ||
-        normalizedPin === 'admin' ||
-        normalizedPin === 'kraflyn' ||
-        normalizedPin === '2026';
+        normalizedPin === 'Allah Vorsa';
 
       if (isAllowed) {
         sessionStorage.setItem('kraflyn_admin_session', 'authenticated');
