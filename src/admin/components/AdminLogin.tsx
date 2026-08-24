@@ -126,7 +126,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onAuthenticated }) => {
                   type="password"
                   value={pin}
                   onChange={(e) => setPin(e.target.value)}
-                  placeholder={language === 'bn' ? 'পাসকোড লিখুন (যেমন: Allah Vorsa)' : 'Enter passcode (e.g. Allah Vorsa)'}
+                  placeholder={language === 'bn' ? 'পাসকোড লিখুন' : 'Enter passcode'}
                   className="w-full pl-10 pr-4 py-3 bg-slate-950/80 border border-slate-700 rounded-2xl text-sm text-white placeholder-slate-500 focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                   autoFocus
                 />
