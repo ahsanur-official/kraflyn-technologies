@@ -1,0 +1,24 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Orders collection: Anyone can create an order or query by their orderId / phone, Admin can read/write all
+    match /orders/{orderId} {
+      allow read, write: if true;
+    }
+    
+    // Reviews collection: Anyone can read, submit or update
+    match /reviews/{reviewId} {
+      allow read, write: if true;
+    }
+    
+    // Notifications collection:
+    match /notifications/{notificationId} {
+      allow read, write: if true;
+    }
+    
+    // Default fallback
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}

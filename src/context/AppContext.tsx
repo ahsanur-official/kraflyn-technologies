@@ -21,6 +21,15 @@ import {
   TranslationDictionary,
   BILINGUAL_SERVICES 
 } from '../data/translations';
+import { 
+  subscribeToOrders, 
+  saveOrderToFirestore, 
+  updateOrderStatusInFirestore, 
+  deleteOrderFromFirestore,
+  subscribeToReviews,
+  saveReviewToFirestore,
+  deleteReviewFromFirestore
+} from '../lib/firestoreService';
 
 export const INITIAL_MENTORS: MentorProfile[] = [
   {
@@ -250,13 +259,17 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const t = TRANSLATIONS[language];
 
-  // Helper to check if current URL points to Admin Portal
+  // Helper to check if current URL or environment specifies Admin Portal
   const checkIsAdminRoute = (): boolean => {
+    // Check environment variable (used for separate Netlify deployment: VITE_APP_MODE=admin)
+    if (import.meta.env.VITE_APP_MODE === 'admin') return true;
     if (typeof window === 'undefined') return false;
     const path = window.location.pathname.toLowerCase();
     const hash = window.location.hash.toLowerCase();
     const search = window.location.search.toLowerCase();
+    const hostname = window.location.hostname.toLowerCase();
     return (
+      hostname.startsWith('admin') ||
       path === '/admin' || 
       path.startsWith('/admin/') || 
       hash === '#admin' || 
@@ -497,6 +510,28 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   // Toast
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
+  // Real-time Cloud Sync from Firebase Firestore
+  useEffect(() => {
+    // 1. Subscribe to Live Orders from Cloud Firestore
+    const unsubscribeOrders = subscribeToOrders((cloudOrders) => {
+      if (cloudOrders && cloudOrders.length > 0) {
+        setOrders(cloudOrders);
+      }
+    });
+
+    // 2. Subscribe to Live Reviews from Cloud Firestore
+    const unsubscribeReviews = subscribeToReviews((cloudReviews) => {
+      if (cloudReviews && cloudReviews.length > 0) {
+        setReviews(cloudReviews);
+      }
+    });
+
+    return () => {
+      unsubscribeOrders();
+      unsubscribeReviews();
+    };
+  }, []);
+
   // Sync to LocalStorage
   useEffect(() => {
     try {
@@ -728,6 +763,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     clearCart();
     setOrderSuccessModalOpen(true);
 
+    // Save order asynchronously to Cloud Firestore (cross-platform live sync)
+    saveOrderToFirestore(newOrder);
+
     return orderId;
   };
 
@@ -750,7 +788,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setSelectedOrderIdForTracking(null);
   };
 
-  // Admin Operations
+  // Admin Operations with Cloud Firestore Sync
   const updateOrderStatus = (orderId: string, status: AcademicOrder['status'], note?: string) => {
     setOrders(prev => prev.map(ord => {
       if (ord.id === orderId) {
@@ -764,6 +802,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       }
       return ord;
     }));
+    // Sync to Cloud Firestore
+    updateOrderStatusInFirestore(orderId, status, note);
     showToast(language === 'bn' ? `অর্ডার #${orderId} স্ট্যাটাস আপডেট হয়েছে!` : `Order #${orderId} status updated!`);
   };
 
@@ -780,10 +820,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       }
       return ord;
     }));
+    // Sync to Cloud Firestore
+    updateOrderStatusInFirestore(orderId, 'mentor_assigned', `Mentor ${mentorName} assigned`, mentorName);
     showToast(language === 'bn' ? `মেন্টর ${mentorName} সফলভাবে অ্যাসাইন করা হয়েছে!` : `Mentor ${mentorName} assigned!`);
   };
 
   const updateOrderPrice = (orderId: string, newTotal: number) => {
+    const targetOrder = orders.find(o => o.id === orderId);
+    const currStatus = targetOrder ? targetOrder.status : 'order_received';
     setOrders(prev => prev.map(ord => {
       if (ord.id === orderId) {
         return {
@@ -794,15 +838,18 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       }
       return ord;
     }));
+    // Sync to Cloud Firestore
+    updateOrderStatusInFirestore(orderId, currStatus, undefined, undefined, newTotal);
     showToast(language === 'bn' ? `অর্ডার মূল্য ৳${newTotal} তে আপডেট করা হয়েছে!` : `Order price updated to ৳${newTotal}!`);
   };
 
   const deleteOrder = (orderId: string) => {
     setOrders(prev => prev.filter(ord => ord.id !== orderId));
+    deleteOrderFromFirestore(orderId);
     showToast(language === 'bn' ? `অর্ডার #${orderId} ডিলিট করা হয়েছে!` : `Order #${orderId} deleted!`);
   };
 
-  // Reviews
+  // Reviews with Cloud Firestore Sync
   const openWriteReviewModal = () => setWriteReviewModalOpen(true);
   const closeWriteReviewModal = () => setWriteReviewModalOpen(false);
 
@@ -835,11 +882,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       university: reviewData.university,
       department: reviewData.department
     });
+    // Save to Firestore
+    saveReviewToFirestore(newRev);
     showToast(language === 'bn' ? 'ধন্যবাদ! আপনার মূল্যবান রিভিউ যুক্ত হয়েছে।' : 'Thank you! Your review has been added.');
   };
 
   const deleteReview = (reviewId: string) => {
     setReviews(prev => prev.filter(r => r.id !== reviewId));
+    deleteReviewFromFirestore(reviewId);
     showToast(language === 'bn' ? 'রিভিউ মুছে ফেলা হয়েছে।' : 'Review deleted.');
   };
 
