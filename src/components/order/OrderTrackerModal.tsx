@@ -314,7 +314,7 @@ export const OrderTrackerModal: React.FC = () => {
                   {language === 'bn' ? 'আমাদের সাপোর্ট টিম WhatsApp এ সার্বক্ষণিক সক্রিয়।' : 'Our support team is available 24/7 on WhatsApp.'}
                 </div>
                 <a
-                  href={`https://wa.me/8801712345678?text=Hello%20Edu%20Quest%20Team,%20checking%20status%20for%20order%20${searchedOrder.id}`}
+                  href={`https://wa.me/8801712345678?text=Hello%20Kraflyn%20Technologies%20Team,%20checking%20status%20for%20order%20${searchedOrder.id}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="shrink-0 px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-xs flex items-center gap-1.5 transition-colors"

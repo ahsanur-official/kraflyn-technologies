@@ -16,7 +16,7 @@ export const Testimonials: React.FC = () => {
             <span>Verified Student Reviews</span>
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-            What Students Say About EduSolve
+            What Clients & Students Say About Kraflyn Technologies
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600">
             Real feedback from university students who conquered tricky courses, labs, and thesis defenses.

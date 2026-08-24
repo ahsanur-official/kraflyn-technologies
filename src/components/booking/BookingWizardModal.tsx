@@ -179,7 +179,7 @@ export const BookingWizardModal: React.FC = () => {
   };
 
   const whatsappMessageUrl = `https://wa.me/8801712345678?text=${encodeURIComponent(
-    `Hi EduSolve Support! I just submitted an academic support request (ID: ${submittedRequestId || 'NEW'}).\n\nName: ${formData.studentName}\nUniversity: ${formData.university}\nCourse: ${formData.courseName}\nService: ${formData.serviceTitle}\nDeadline: ${formData.deadline}`
+    `Hi Kraflyn Technologies Support! I just submitted a support request (ID: ${submittedRequestId || 'NEW'}).\n\nName: ${formData.studentName}\nUniversity / Org: ${formData.university}\nCourse / Project: ${formData.courseName}\nService: ${formData.serviceTitle}\nDeadline: ${formData.deadline}`
   )}`;
 
   return (
@@ -832,7 +832,7 @@ export const BookingWizardModal: React.FC = () => {
                       className="mt-0.5 rounded text-indigo-600 focus:ring-indigo-500 w-4 h-4"
                     />
                     <span className="text-xs text-slate-700">
-                      I agree to the <strong>EduSolve Academic Terms & Integrity Policy</strong>. I understand that EduSolve mentors provide conceptual coaching and guidance.
+                      I agree to the <strong>Kraflyn Technologies Academic & Quality Terms Policy</strong>. I understand that Kraflyn Technologies specialists provide personalized coaching and project assistance.
                     </span>
                   </label>
                 </div>

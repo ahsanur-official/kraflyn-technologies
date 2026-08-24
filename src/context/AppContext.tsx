@@ -750,7 +750,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       createdAt: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + ' ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       updatedAt: 'Just now',
       notes: [
-        'Order registered in Edu Quest queue.',
+        'Order registered in Kraflyn Technologies queue.',
         'Academic Coordinator will contact via WhatsApp shortly.'
       ]
     };

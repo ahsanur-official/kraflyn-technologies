@@ -61,11 +61,11 @@ export const BecomeMentorSection: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-800 text-xs font-semibold mb-3 shadow-xs">
             <KraflynLogo size="xs" variant="emblem" />
-            <span>{language === 'bn' ? 'Kraflyn Technologies স্পেশালিস্ট ও মেন্টর নেটওয়ার্ক' : 'Join Kraflyn Technologies Specialist & Mentor Network'}</span>
+            <span>{language === 'bn' ? 'ক্র্যাফলিন টেকনোলজিস স্পেশালিস্ট ও মেন্টর নেটওয়ার্ক' : 'Join Kraflyn Technologies Specialist & Mentor Network'}</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
             {language === 'bn' 
-              ? 'Kraflyn Technologies স্পেশালিস্ট বা মেন্টর হিসেবে যুক্ত হোন' 
+              ? 'ক্র্যাফলিন টেকনোলজিস স্পেশালিস্ট বা মেন্টর হিসেবে যুক্ত হোন' 
               : 'Join as a Kraflyn Technologies Specialist or Academic Mentor'}
           </h1>
           <p className="mt-3 text-sm sm:text-base text-slate-600">

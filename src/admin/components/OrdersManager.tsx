@@ -192,7 +192,7 @@ export const OrdersManager: React.FC = () => {
 
                 {/* 1-tap WhatsApp */}
                 <a
-                  href={`https://wa.me/${order.whatsapp.replace(/[^0-9]/g, '')}?text=Hello%20${encodeURIComponent(order.customerName)},%20regarding%20your%20Edu%20Quest%20order%20${order.id}...`}
+                  href={`https://wa.me/${order.whatsapp.replace(/[^0-9]/g, '')}?text=Hello%20${encodeURIComponent(order.customerName)},%20regarding%20your%20Kraflyn%20Technologies%20order%20${order.id}...`}
                   target="_blank"
                   rel="noreferrer"
                   className="flex-1 min-h-[40px] flex items-center justify-center gap-1 px-3 py-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 rounded-xl text-xs font-bold transition-colors"
@@ -332,7 +332,7 @@ export const OrdersManager: React.FC = () => {
                       <div className="flex items-center justify-end gap-1.5">
                         {/* WhatsApp Direct */}
                         <a
-                          href={`https://wa.me/${order.whatsapp.replace(/[^0-9]/g, '')}?text=Hello%20${encodeURIComponent(order.customerName)},%20regarding%20your%20Edu%20Quest%20order%20${order.id}...`}
+                          href={`https://wa.me/${order.whatsapp.replace(/[^0-9]/g, '')}?text=Hello%20${encodeURIComponent(order.customerName)},%20regarding%20your%20Kraflyn%20Technologies%20order%20${order.id}...`}
                           target="_blank"
                           rel="noreferrer"
                           title="Message on WhatsApp"

@@ -233,7 +233,7 @@ export interface TranslationDictionary {
 export const DICTIONARY: Record<Language, TranslationDictionary> = {
   bn: {
     // Top Hotline Bar
-    hotlineText: 'ক্রাফ্লিন টেকনোলজিস সাপোর্ট হটলাইন: +৮৮০ ১৭১২-৩৪৫৬৭৮ (সকাল ৮:০০ - রাত ১১:৩০ WhatsApp এক্টিভ)',
+    hotlineText: 'ক্র্যাফলিন টেকনোলজিস সাপোর্ট হটলাইন: +৮৮০ ১৭১২-৩৪৫৬৭৮ (সকাল ৮:০০ - রাত ১১:৩০ WhatsApp এক্টিভ)',
     trackOrderStatus: 'অর্ডার স্ট্যাটাস ট্র্যাক করুন',
     directWhatsApp: 'সরাসরি WhatsApp হেল্প',
     adminPortalBtn: 'অ্যাডমিন পোর্টাল',
@@ -256,9 +256,9 @@ export const DICTIONARY: Record<Language, TranslationDictionary> = {
     // Hero
     heroBadge: '✨ DESIGN • DEVELOPMENT • STUDENT SUPPORT',
     heroTitle1: 'Create. Connect. Grow.',
-    heroTitleHighlight: 'Kraflyn Technologies',
+    heroTitleHighlight: 'ক্র্যাফলিন টেকনোলজিস',
     heroTitle2: 'ডিজিটাল সল্যুশন ও টেক প্ল্যাটফর্ম',
-    heroSubtitle: 'ক্রাফ্লিন টেকনোলজিস (Kraflyn Technologies) হল একটি ওয়ান-স্টপ ডিজিটাল প্ল্যাটফর্ম যা শিক্ষার্থী, ক্লাব, গবেষক এবং তরুণ পেশাদারদের জন্য ক্রিয়েটিভ ডিজাইন, আধুনিক ওয়েব ও সফটওয়্যার ডেভেলপমেন্ট এবং সম্পূর্ণ একাডেমিক ও টেকনিক্যাল সাপোর্ট প্রদান করে।',
+    heroSubtitle: 'ক্র্যাফলিন টেকনোলজিস (Kraflyn Technologies) হল একটি ওয়ান-স্টপ ডিজিটাল প্ল্যাটফর্ম যা শিক্ষার্থী, ক্লাব, গবেষক এবং তরুণ পেশাদারদের জন্য ক্রিয়েটিভ ডিজাইন, আধুনিক ওয়েব ও সফটওয়্যার ডেভেলপমেন্ট এবং সম্পূর্ণ একাডেমিক ও টেকনিক্যাল সাপোর্ট প্রদান করে।',
     heroBrowseBtn: 'সকল সার্ভিস এক্সপ্লোর করুন',
     heroDirectOrderBtn: 'সরাসরি অর্ডার করুন 🚀',
     heroStatStudents: '৫,০০০+',
@@ -273,13 +273,13 @@ export const DICTIONARY: Record<Language, TranslationDictionary> = {
     // Pillars from Image
     pillarsBadge: 'আমাদের লক্ষ্য ও নীতিমালা',
     pillarsHeading: 'আমাদের মিশন, ভিশন ও মূল্যবোধ',
-    pillarsSubtitle: 'যে আদর্শ ও প্রতিশ্রুতির উপর ভিত্তি করে ক্রাফ্লিন টেকনোলজিস শিক্ষা ও পেশাগত যাত্রাকে সফল করে তুলছে।',
+    pillarsSubtitle: 'যে আদর্শ ও প্রতিশ্রুতির উপর ভিত্তি করে ক্র্যাফলিন টেকনোলজিস শিক্ষা ও পেশাগত যাত্রাকে সফল করে তুলছে।',
     missionTitle: 'আমাদের মিশন',
     missionDesc: 'ডিজাইন, ডেভেলপমেন্ট ও একাডেমিক সাপোর্টে সুলভ, মানসম্মত এবং নির্ভরযোগ্য ডিজিটাল সমাধান দিয়ে শিক্ষার্থীদের ক্ষমতায়ন করা।',
     visionTitle: 'আমাদের ভিশন',
     visionDesc: 'বাংলাদেশ এবং বহির্বিশ্বের শিক্ষার্থী ও প্রফেশনাল কমিউনিটির কাছে সবচেয়ে বিশ্বস্ত ডিজিটাল সাপোর্ট প্ল্যাটফর্ম হিসেবে প্রতিষ্ঠিত হওয়া।',
     valuesTitle: 'আমাদের মূল্যবোধ',
-    whyNexoraTitle: 'কেন Kraflyn Technologies?',
+    whyNexoraTitle: 'কেন ক্র্যাফলিন টেকনোলজিস (Kraflyn Technologies)?',
     whyNexoraDesc: 'আমরা শুধু কাজ সম্পন্ন করি না, আমরা শিক্ষার্থীদের তাদের একাডেমিক ও প্রফেশনাল যাত্রায় শিখতে, তৈরি করতে এবং এগিয়ে যেতে সক্ষম করে তুলি।',
 
     // Problem Triage
@@ -333,7 +333,7 @@ export const DICTIONARY: Record<Language, TranslationDictionary> = {
     // FAQ
     faqBadge: 'সাধারণ জিজ্ঞাসা',
     faqHeading: 'সচরাচর জিজ্ঞাসিত প্রশ্নসমূহ',
-    faqSubtitle: 'ক্রাফ্লিন টেকনোলজিসের সার্ভিস, ডেলিভারি টাইম, নিরাপত্তা ও পেমেন্ট নিয়ে সাধারণ প্রশ্নের উত্তর।',
+    faqSubtitle: 'ক্র্যাফলিন টেকনোলজিসের সার্ভিস, ডেলিভারি টাইম, নিরাপত্তা ও পেমেন্ট নিয়ে সাধারণ প্রশ্নের উত্তর।',
 
     // Cart
     cartTitle: 'আপনার সার্ভিস কার্ট',
@@ -414,7 +414,7 @@ export const DICTIONARY: Record<Language, TranslationDictionary> = {
 
     // Write Review Modal
     writeReviewTitle: 'আপনার মূল্যবান মতামত দিন',
-    writeReviewSubtitle: 'Kraflyn Technologies-এর সাপোর্ট ও ডেলিভারি কেমন ছিল? আপনার মন্তব্য অন্য শিক্ষার্থীদের সাহায্য করবে।',
+    writeReviewSubtitle: 'ক্র্যাফলিন টেকনোলজিস (Kraflyn Technologies)-এর সাপোর্ট ও ডেলিভারি কেমন ছিল? আপনার মন্তব্য অন্য শিক্ষার্থীদের সাহায্য করবে।',
     yourRating: 'আপনার রেটিং *',
     gradeOutcomeLabel: 'প্রাপ্ত ফলাফল / গ্রেড (যদি থাকে)',
     gradeOutcomePlaceholder: 'যেমন: A+ গ্রেড পেয়েছি / প্রজেক্ট এক্সেপ্টেড',
@@ -423,15 +423,15 @@ export const DICTIONARY: Record<Language, TranslationDictionary> = {
     submitReviewBtn: 'রিভিউ সাবমিট করুন ✨',
 
     // Footer
-    footerAbout: 'Kraflyn Technologies হল একটি সমন্বিত ডিজিটাল প্ল্যাটফর্ম যা শিক্ষার্থী, ক্লাব, গবেষক ও তরুণ পেশাদারদের জন্য ক্রিয়েটিভ ডিজাইন, আধুনিক ডেভেলপমেন্ট এবং পূর্ণাঙ্গ একাডেমিক ও টেকনিক্যাল সাপোর্ট প্রদান করে। Create. Connect. Grow.',
+    footerAbout: 'ক্র্যাফলিন টেকনোলজিস (Kraflyn Technologies) হল একটি সমন্বিত ডিজিটাল প্ল্যাটফর্ম যা শিক্ষার্থী, ক্লাব, গবেষক ও তরুণ পেশাদারদের জন্য ক্রিয়েটিভ ডিজাইন, আধুনিক ডেভেলপমেন্ট এবং পূর্ণাঙ্গ একাডেমিক ও টেকনিক্যাল সাপোর্ট প্রদান করে। Create. Connect. Grow.',
     quickLinks: 'দ্রুত লিংক',
     popularServices: 'জনপ্রিয় সার্ভিসসমূহ',
     directContact: 'সরাসরি যোগাযোগ',
     confidentialMentorship: '১০০% শিক্ষার্থী ও ডেটা গোপনীয়তা সংরক্ষিত',
-    copyright: 'সর্বস্বত্ব সংরক্ষিত © ২০২৬ Kraflyn Technologies প্ল্যাটফর্ম। Create. Connect. Grow.',
+    copyright: 'সর্বস্বত্ব সংরক্ষিত © ২০২৬ ক্র্যাফলিন টেকনোলজিস (Kraflyn Technologies)। Create. Connect. Grow.',
 
     // Admin Portal
-    adminHeaderTitle: 'Kraflyn Technologies অ্যাডমিন কন্ট্রোল প্যানেল',
+    adminHeaderTitle: 'ক্র্যাফলিন টেকনোলজিস (Kraflyn Technologies) অ্যাডমিন কন্ট্রোল প্যানেল',
     adminHeaderSubtitle: 'সকল শিক্ষার্থীর অর্ডার, মেন্টর অ্যাসাইনমেন্ট, পেমেন্ট ও ডেলিভারি অগ্রগতি এক নজরে পর্যবেক্ষণ করুন।',
     adminStatTotalOrders: 'মোট অর্ডার সংখ্যা',
     adminStatTodayOrders: 'আজকের নতুন অর্ডার',
@@ -2318,11 +2318,11 @@ export const BILINGUAL_SERVICES: BilingualService[] = [
 export const BILINGUAL_FAQS = [
   {
     q: {
-      bn: 'Kraflyn Technologies কী এবং এখানে কী কী ধরনের সার্ভিস পাওয়া যায়?',
+      bn: 'ক্র্যাফলিন টেকনোলজিস (Kraflyn Technologies) কী এবং এখানে কী কী ধরনের সার্ভিস পাওয়া যায়?',
       en: 'What is Kraflyn Technologies and what services are offered?'
     },
     a: {
-      bn: 'Kraflyn Technologies হল শিক্ষার্থী, ক্লাব, গবেষক ও তরুণ পেশাদারদের জন্য একটি ওয়ান-স্টপ ডিজিটাল প্ল্যাটফর্ম। এখানে ১) ডিজাইন সার্ভিস (পোস্টার, স্লাইড, লোগো, সিভি, UI/UX ইত্যাদি), ২) ডেভেলপমেন্ট সার্ভিস (পোর্টফোলিও, ক্লাব ওয়েবসাইট, ই-কমার্স, মোবাইল অ্যাপ ইত্যাদি), এবং ৩) স্টুডেন্ট সাপোর্ট (FYP গাইডেন্স, পেপার ফরম্যাটিং, কোডিং সাপোর্ট, SOP ইত্যাদি) প্রদান করা হয়।',
+      bn: 'ক্র্যাফলিন টেকনোলজিস (Kraflyn Technologies) হল শিক্ষার্থী, ক্লাব, গবেষক ও তরুণ পেশাদারদের জন্য একটি ওয়ান-স্টপ ডিজিটাল প্ল্যাটফর্ম। এখানে ১) ডিজাইন সার্ভিস (পোস্টার, স্লাইড, লোগো, সিভি, UI/UX ইত্যাদি), ২) ডেভেলপমেন্ট সার্ভিস (পোর্টফোলিও, ক্লাব ওয়েবসাইট, ই-কমার্স, মোবাইল অ্যাপ ইত্যাদি), এবং ৩) স্টুডেন্ট সাপোর্ট (FYP গাইডেন্স, পেপার ফরম্যাটিং, কোডিং সাপোর্ট, SOP ইত্যাদি) প্রদান করা হয়।',
       en: 'Kraflyn Technologies is a premier digital platform providing 1) Design Services (Posters, PPTs, Logos, Resumes, UI/UX), 2) Development Services (Portfolios, Club Websites, E-commerce, Mobile Apps), and 3) Student Support (FYP Guidance, Paper Formatting, Programming, SOPs) for students, clubs, researchers, and creators.'
     }
   },
@@ -2362,7 +2362,7 @@ export const BILINGUAL_FAQS = [
       en: 'How is the privacy and confidentiality of my project files maintained?'
     },
     a: {
-      bn: 'Kraflyn Technologies ১০০% ক্লায়েন্ট ও শিক্ষার্থী গোপনীয়তা ও সুরক্ষা নিশ্চিত করে। আপনার আপলোড করা ফাইল এবং ব্যক্তিগত তথ্য কঠোরভাবে সংরক্ষিত থাকে এবং শুধুমাত্র আপনার নির্ধারিত এক্সপার্ট ছাড়া অন্য কারও সাথে শেয়ার করা হয় না।',
+      bn: 'ক্র্যাফলিন টেকনোলজিস (Kraflyn Technologies) ১০০% ক্লায়েন্ট ও শিক্ষার্থী গোপনীয়তা ও সুরক্ষা নিশ্চিত করে। আপনার আপলোড করা ফাইল এবং ব্যক্তিগত তথ্য কঠোরভাবে সংরক্ষিত থাকে এবং শুধুমাত্র আপনার নির্ধারিত এক্সপার্ট ছাড়া অন্য কারও সাথে শেয়ার করা হয় না।',
       en: 'Kraflyn Technologies guarantees 100% confidentiality and data privacy. Your uploaded files and contact information are strictly protected and only shared with your assigned specialist.'
     }
   },

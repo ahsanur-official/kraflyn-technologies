@@ -69,11 +69,11 @@ export const OrderActionDrawer: React.FC<OrderActionDrawerProps> = ({ order, onC
     let text = '';
 
     if (type === 'welcome') {
-      text = `Hello ${order.customerName}! Greetings from Edu Quest Support. We have received your order (${order.id}) for "${order.courseName}". Our team is reviewing the requirements and will assign a subject specialist shortly.`;
+      text = `Hello ${order.customerName}! Greetings from Kraflyn Technologies Support. We have received your order (${order.id}) for "${order.courseName}". Our team is reviewing the requirements and will assign a subject specialist shortly.`;
     } else if (type === 'mentor_assigned') {
-      text = `Hi ${order.customerName}, great news! Specialized mentor "${mentorInput || 'Academic Specialist'}" has been assigned to your order ${order.id}. We are working on your requirements with deadline ${order.deadline}.`;
+      text = `Hi ${order.customerName}, great news! Specialized mentor "${mentorInput || 'Subject Specialist'}" from Kraflyn Technologies has been assigned to your order ${order.id}. We are working on your requirements with deadline ${order.deadline}.`;
     } else {
-      text = `Hello ${order.customerName}! Your solution for order ${order.id} (${order.courseName}) is ready. Please check the deliverable and let us know if you need any clarification or revision.`;
+      text = `Hello ${order.customerName}! Your deliverable for order ${order.id} (${order.courseName}) from Kraflyn Technologies is ready. Please check the solution and let us know if you need any clarification or revision.`;
     }
 
     return `https://wa.me/${cleanPhone.startsWith('88') ? cleanPhone : '88' + cleanPhone}?text=${encodeURIComponent(text)}`;

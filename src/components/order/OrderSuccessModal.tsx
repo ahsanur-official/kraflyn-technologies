@@ -48,7 +48,7 @@ export const OrderSuccessModal: React.FC = () => {
 
   // Pre-filled WhatsApp message
   const waMessage = encodeURIComponent(
-    `Hello Edu Quest Support Team!\nI just placed an academic support order on your website.\n\n*Order ID:* ${lastPlacedOrder.id}\n*Student Name:* ${lastPlacedOrder.customerName}\n*University:* ${lastPlacedOrder.university}\n*Course:* ${lastPlacedOrder.courseName}\n*Services:* ${lastPlacedOrder.items.map(i => i.serviceTitle).join(', ')}\n*Deadline:* ${lastPlacedOrder.deadline}\n\nPlease let me know the next steps for mentor assignment and delivery.`
+    `Hello Kraflyn Technologies Support Team!\nI just placed an order on your website.\n\n*Order ID:* ${lastPlacedOrder.id}\n*Customer Name:* ${lastPlacedOrder.customerName}\n*University / Org:* ${lastPlacedOrder.university}\n*Course / Project:* ${lastPlacedOrder.courseName}\n*Services:* ${lastPlacedOrder.items.map(i => i.serviceTitle).join(', ')}\n*Deadline:* ${lastPlacedOrder.deadline}\n\nPlease let me know the next steps for specialist assignment and confirmation.`
   );
 
   const whatsappUrl = `https://wa.me/8801712345678?text=${waMessage}`;

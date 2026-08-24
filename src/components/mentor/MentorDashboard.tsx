@@ -227,7 +227,7 @@ export const MentorDashboard: React.FC = () => {
 
                     <div className="flex items-center gap-2">
                       <a
-                        href={`https://wa.me/${req.studentWhatsApp.replace(/[^0-9]/g, '')}?text=Hi%20${encodeURIComponent(req.studentName)},%20I%20am%20your%20EduSolve%20mentor%20${encodeURIComponent(currentMentor.name)}%20for%20${encodeURIComponent(req.serviceTitle)}.`}
+                        href={`https://wa.me/${req.studentWhatsApp.replace(/[^0-9]/g, '')}?text=Hi%20${encodeURIComponent(req.studentName)},%20I%20am%20your%20Kraflyn%20Technologies%20specialist%20${encodeURIComponent(currentMentor.name)}%20for%20${encodeURIComponent(req.serviceTitle)}.`}
                         target="_blank"
                         rel="noreferrer"
                         className="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-xs flex items-center gap-1.5"

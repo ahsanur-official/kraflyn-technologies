@@ -56,7 +56,7 @@ export const AdminNavbar: React.FC<AdminNavbarProps> = ({ activeTab, setActiveTa
             <div className="min-w-0">
               <div className="flex items-center gap-1.5 sm:gap-2">
                 <span className="font-extrabold text-sm sm:text-base tracking-tight bg-gradient-to-r from-white via-blue-100 to-blue-300 bg-clip-text text-transparent truncate">
-                  Edu Quest
+                  {language === 'bn' ? 'ক্র্যাফলিন টেকনোলজিস' : 'Kraflyn Technologies'}
                 </span>
                 <span className="px-1.5 sm:px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-wider bg-rose-500/20 text-rose-300 border border-rose-500/30 flex items-center gap-1 shrink-0">
                   <span className="w-1.5 h-1.5 rounded-full bg-rose-400 animate-ping"></span>
@@ -64,7 +64,7 @@ export const AdminNavbar: React.FC<AdminNavbarProps> = ({ activeTab, setActiveTa
                 </span>
               </div>
               <p className="text-[10px] sm:text-[11px] text-slate-400 hidden md:block truncate">
-                {language === 'bn' ? 'কেন্দ্রীয় অর্ডার ব্যবস্থাপনা ও মেন্টর সমন্বয় প্যানেল' : 'Central Academic Order Management & Mentor Coordination Engine'}
+                {language === 'bn' ? 'ক্র্যাফলিন টেকনোলজিস • কেন্দ্রীয় অর্ডার ও অপারেশনস প্যানেল' : 'Kraflyn Technologies • Central Operations & Management Console'}
               </p>
             </div>
           </div>

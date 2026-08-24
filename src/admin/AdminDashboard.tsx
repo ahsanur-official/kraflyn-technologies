@@ -18,13 +18,17 @@ import {
 
 export const AdminDashboard: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
-    return sessionStorage.getItem('eduquest_admin_session') === 'authenticated';
+    return (
+      sessionStorage.getItem('kraflyn_admin_session') === 'authenticated' ||
+      sessionStorage.getItem('eduquest_admin_session') === 'authenticated'
+    );
   });
   
   const [activeTab, setActiveTab] = useState<'overview' | 'orders' | 'reviews' | 'mentors' | 'services'>('overview');
   const { orders, language } = useApp();
 
   const handleLogout = () => {
+    sessionStorage.removeItem('kraflyn_admin_session');
     sessionStorage.removeItem('eduquest_admin_session');
     setIsAuthenticated(false);
   };

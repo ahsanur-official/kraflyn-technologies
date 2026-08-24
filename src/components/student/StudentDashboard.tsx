@@ -434,7 +434,7 @@ export const StudentDashboard: React.FC = () => {
                                       </div>
 
                                       <a
-                                        href={`https://wa.me/8801712345678?text=Hi%20EduSolve,%20inquiring%20about%20Request%20%23${req.id}`}
+                                        href={`https://wa.me/8801712345678?text=Hi%20Kraflyn%20Technologies,%20inquiring%20about%20Request%20%23${req.id}`}
                                         target="_blank"
                                         rel="noreferrer"
                                         onClick={(e) => e.stopPropagation()}
@@ -531,7 +531,7 @@ export const StudentDashboard: React.FC = () => {
                 <div className="mt-8 pt-6 border-t border-slate-800">
                   <p className="text-[10px] text-slate-400 mb-2 font-bold uppercase tracking-wider">Quick Connect</p>
                   <a
-                    href="https://wa.me/8801712345678?text=Hi%20EduSolve,%20I%20need%20quick%20support%20from%20operations."
+                    href="https://wa.me/8801712345678?text=Hi%20Kraflyn%20Technologies,%20I%20need%20quick%20support%20from%20operations."
                     target="_blank"
                     rel="noreferrer"
                     className="flex items-center justify-center gap-2.5 bg-[#25D366] text-white p-3 rounded-lg text-sm font-bold hover:brightness-110 transition-all shadow-sm"
@@ -685,7 +685,7 @@ export const StudentDashboard: React.FC = () => {
 
         {/* Bottom Banner / Status Mini-Bar */}
         <div className="bg-white h-10 border border-slate-200 rounded-lg flex items-center justify-center px-4 text-[11px] text-slate-400 font-medium uppercase tracking-[0.2em]">
-          EduSolve v1.2.0 • Academic Support Request ID: ES-20240820-0042
+          Kraflyn Technologies v2.0 • Support Request Engine
         </div>
 
       </div>

@@ -20,20 +20,29 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onAuthenticated }) => {
     setIsLoading(true);
 
     setTimeout(() => {
-      // Default passcode or quick bypass
-      if (pin === 'admin123' || pin === '2026' || pin === 'admin' || pin === 'kraflyn' || pin === 'eduquest') {
+      const normalizedPin = pin.trim().toLowerCase().replace(/\s+/g, ' ');
+      // Support 'Allah Vorsa' and common variations + emergency fallbacks
+      const isAllowed = 
+        normalizedPin === 'allah vorsa' || 
+        normalizedPin === 'allahvorsa' ||
+        normalizedPin === 'allah bharosa' ||
+        normalizedPin === 'allahbharosa' ||
+        normalizedPin === 'allah vorosa' ||
+        normalizedPin === 'allahvorosa' ||
+        normalizedPin === 'admin123' ||
+        normalizedPin === 'admin' ||
+        normalizedPin === 'kraflyn' ||
+        normalizedPin === '2026';
+
+      if (isAllowed) {
+        sessionStorage.setItem('kraflyn_admin_session', 'authenticated');
         sessionStorage.setItem('eduquest_admin_session', 'authenticated');
         onAuthenticated();
       } else {
-        setError(language === 'bn' ? 'ভুল পাসকোড! সঠিক এডমিন কোড দিন।' : 'Invalid Admin Passcode! Please try again.');
+        setError(language === 'bn' ? 'ভুল পাসকোড! সঠিক এডমিন পাসকোড "Allah Vorsa" দিন।' : 'Invalid Admin Passcode! Please use "Allah Vorsa".');
         setIsLoading(false);
       }
-    }, 400);
-  };
-
-  const handleQuickUnlock = () => {
-    sessionStorage.setItem('eduquest_admin_session', 'authenticated');
-    onAuthenticated();
+    }, 350);
   };
 
   return (
@@ -87,12 +96,12 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onAuthenticated }) => {
               <ShieldCheck className="w-8 h-8" />
             </div>
             <h1 className="text-xl sm:text-2xl font-black text-white tracking-tight">
-              {language === 'bn' ? 'এডমিন পোর্টাল অ্যাক্সেস' : 'Admin Portal Access'}
+              {language === 'bn' ? 'ক্র্যাফলিন টেকনোলজিস এডমিন পোর্টাল' : 'Kraflyn Technologies Admin Portal'}
             </h1>
             <p className="text-xs text-slate-400 mt-1.5">
               {language === 'bn' 
-                ? 'শুধুমাত্র Edu Quest একাডেমিক অপারেশন্স এবং মেন্টর টিম মেম্বারদের জন্য' 
-                : 'Restricted to Edu Quest academic management & operations team'}
+                ? 'শুধুমাত্র ক্র্যাফলিন টেকনোলজিস (Kraflyn Technologies) অপারেশন্স ও ম্যানেজমেন্ট টিমের জন্য' 
+                : 'Restricted to Kraflyn Technologies operations & management team'}
             </p>
           </div>
 
@@ -117,7 +126,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onAuthenticated }) => {
                   type="password"
                   value={pin}
                   onChange={(e) => setPin(e.target.value)}
-                  placeholder={language === 'bn' ? 'পাসকোড লিখুন (যেমন: admin123)' : 'Enter passcode (e.g. admin123)'}
+                  placeholder={language === 'bn' ? 'পাসকোড লিখুন (যেমন: Allah Vorsa)' : 'Enter passcode (e.g. Allah Vorsa)'}
                   className="w-full pl-10 pr-4 py-3 bg-slate-950/80 border border-slate-700 rounded-2xl text-sm text-white placeholder-slate-500 focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                   autoFocus
                 />
@@ -140,26 +149,12 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onAuthenticated }) => {
               )}
             </button>
           </form>
-
-          {/* Quick Demo Access Bypass Button */}
-          <div className="mt-6 pt-6 border-t border-slate-800">
-            <button
-              onClick={handleQuickUnlock}
-              className="w-full py-2.5 px-4 rounded-2xl bg-slate-800/80 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700/80 text-xs font-bold flex items-center justify-between transition-colors cursor-pointer group"
-            >
-              <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-amber-400" />
-                <span>{language === 'bn' ? '⚡ ১-ক্লিক ইনস্ট্যান্ট ডেমো লগইন' : '⚡ 1-Click Instant Demo Login'}</span>
-              </div>
-              <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:translate-x-1 transition-transform" />
-            </button>
-          </div>
         </motion.div>
       </main>
 
       {/* Footer info */}
       <footer className="py-6 text-center text-xs text-slate-600 z-10 border-t border-slate-900">
-        <p>© {new Date().getFullYear()} Edu Quest Operations Console. All actions are logged.</p>
+        <p>© {new Date().getFullYear()} Kraflyn Technologies (ক্র্যাফলিন টেকনোলজিস) Operations Console. All actions are logged.</p>
       </footer>
 
     </div>

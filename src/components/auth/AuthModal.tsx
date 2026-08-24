@@ -75,7 +75,7 @@ export const AuthModal: React.FC = () => {
             <GraduationCap className="w-7 h-7" />
           </div>
           <h2 className="text-xl font-bold text-slate-900">
-            {authModalMode === 'login' ? 'Welcome Back to EduSolve' : 'Create an EduSolve Account'}
+            {authModalMode === 'login' ? 'Welcome Back to Kraflyn Technologies' : 'Create a Kraflyn Technologies Account'}
           </h2>
           <p className="text-xs text-slate-500 mt-1">
             {authModalMode === 'login'
