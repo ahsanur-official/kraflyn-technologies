@@ -30,7 +30,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onAuthenticated }) => {
         sessionStorage.setItem('eduquest_admin_session', 'authenticated');
         onAuthenticated();
       } else {
-        setError(language === 'bn' ? 'ভুল পাসকোড! সঠিক এডমিন পাসকোড "Allah Vorsa" দিন।' : 'Invalid Admin Passcode! Please use "Allah Vorsa".');
+        setError(language === 'bn' ? 'ভুল পাসকোড! সঠিক এডমিন পাসকোড দিন।' : 'Invalid Admin Passcode! Please use the correct passcode.');
         setIsLoading(false);
       }
     }, 350);
