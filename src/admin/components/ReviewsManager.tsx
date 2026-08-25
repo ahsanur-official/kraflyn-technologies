@@ -65,9 +65,10 @@ export const ReviewsManager: React.FC = () => {
                 </div>
               </div>
 
-              {r.courseSolved && (
-                <div className="my-2 px-2.5 py-1 bg-slate-50 border border-slate-100 rounded-xl text-[11px] font-semibold text-slate-700 truncate">
-                  🎯 {r.courseSolved}
+              {(r.courseSolved || r.serviceTitle) && (
+                <div className="my-2 px-2.5 py-1 bg-slate-50 border border-slate-100 rounded-xl text-[11px] font-semibold text-slate-700 flex items-center justify-between">
+                  <span className="truncate">🎯 {r.courseSolved || r.serviceTitle}</span>
+                  {r.gradeOutcome && <span className="text-emerald-600 font-bold ml-1 shrink-0 text-[10px] bg-emerald-50 px-1.5 py-0.5 rounded">{r.gradeOutcome}</span>}
                 </div>
               )}
 

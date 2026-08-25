@@ -24,7 +24,10 @@ import {
   List,
   RotateCcw,
   Check,
-  Tag
+  Tag,
+  Globe,
+  BarChart3,
+  Database
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -46,13 +49,19 @@ export const ServiceCardGrid: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
-  // Primary 3 Pillars of Kraflyn Technologies
+  const designCount = services.filter(s => s.category === 'Design Services').length;
+  const devCount = services.filter(s => s.category === 'Development Services').length;
+  const wpCount = services.filter(s => s.category === 'WordPress Services').length;
+  const dataCount = services.filter(s => s.category === 'Data Analysis').length;
+  const supportCount = services.filter(s => s.category === 'Student Support').length;
+
+  // Standalone Specialized Pillars / Wings of Kraflyn Technologies
   const pillars = [
     {
       key: 'All',
       icon: Layers,
-      count: 45,
-      label: { bn: 'সকল সার্ভিস (৪৫)', en: 'All Services (45)' },
+      count: services.length,
+      label: { bn: `সকল (${services.length})`, en: `All (${services.length})` },
       subtext: { bn: 'সম্পূর্ণ ক্যাটালগ', en: 'Complete Catalog' },
       accent: 'from-blue-600 to-indigo-600',
       activeColor: 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-blue-500/25 ring-2 ring-blue-500',
@@ -61,43 +70,71 @@ export const ServiceCardGrid: React.FC = () => {
     {
       key: 'Design Services',
       icon: Palette,
-      count: 15,
+      count: designCount,
       label: { bn: '১. ডিজাইন সার্ভিস', en: '1. Design Services' },
-      subtext: { bn: '১৫টি ক্রিয়েটিভ সল্যুশন', en: '15 Creative Solutions' },
+      subtext: { bn: `${designCount}টি সল্যুশন`, en: `${designCount} Creative Solutions` },
       accent: 'from-fuchsia-600 to-pink-600',
       activeColor: 'bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white shadow-fuchsia-500/25 ring-2 ring-fuchsia-500',
       badgeBg: 'bg-fuchsia-100 text-fuchsia-800',
       description: {
-        bn: 'পোস্টার, ব্যানার, প্রেজেন্টেশন স্লাইড, লোগো, সিভি, ইউআই/ইউএক্স এবং রিসার্চ পোস্টার ডিজাইন সহ ১৫টি প্রফেশনাল ক্রিয়েটিভ সল্যুশন।',
-        en: '15 High-impact visual design services: Posters, PPT decks, Brand identity, CV/Resume, UI/UX, and Research posters.'
+        bn: 'ফিগুমা UI/UX, পোস্টার, ব্যানার, প্রেজেন্টেশন স্লাইড, লোগো, সিভি ও রিসার্চ পোস্টার ডিজাইন সহ প্রফেশনাল ক্রিয়েটিভ সল্যুশন।',
+        en: 'High-impact visual design services: Figma UI/UX, Posters, PPT decks, Brand identity, CV/Resume, and Research posters.'
       }
     },
     {
       key: 'Development Services',
       icon: Code2,
-      count: 15,
-      label: { bn: '২. ডেভেলপমেন্ট সার্ভিস', en: '2. Development Services' },
-      subtext: { bn: '১৫টি সফটওয়্যার সেবা', en: '15 Tech Solutions' },
+      count: devCount,
+      label: { bn: '২. ডেভেলপমেন্ট', en: '2. Development' },
+      subtext: { bn: `${devCount}টি সফটওয়্যার সেবা`, en: `${devCount} Tech Solutions` },
       accent: 'from-cyan-600 to-blue-600',
       activeColor: 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-cyan-500/25 ring-2 ring-cyan-500',
       badgeBg: 'bg-cyan-100 text-cyan-800',
       description: {
-        bn: 'পোর্টফোলিও, ক্লাব ওয়েবসাইট, ই-কমার্স, মোবাইল অ্যাপ, ব্যাকএন্ড, এপিআই ও বাগ ফিক্সিং সহ ১৫টি মডার্ন সফটওয়্যার সেবা।',
-        en: '15 Scalable development services: Portfolio, Web apps, Mobile apps, APIs, Bug fixes, and Custom software systems.'
+        bn: 'পোর্টফোলিও, ফুল-স্ট্যাক ওয়েব অ্যাপ্লিকেশন, মোবাইল অ্যাপ, এপিআই, ব্যাকএন্ড ও বাগ ফিক্সিং সহ মডার্ন সফটওয়্যার সেবা।',
+        en: 'Scalable development services: Portfolio, Full-stack Web Apps, Mobile Apps, APIs, Bug fixes, and Custom software systems.'
+      }
+    },
+    {
+      key: 'WordPress Services',
+      icon: Globe,
+      count: wpCount,
+      label: { bn: '৩. ওয়ার্ডপ্রেস', en: '3. WordPress' },
+      subtext: { bn: `${wpCount}টি স্পেশালাইজড সেবা`, en: `${wpCount} Specialized Services` },
+      accent: 'from-blue-700 via-indigo-700 to-sky-700',
+      activeColor: 'bg-gradient-to-r from-blue-700 to-indigo-700 text-white shadow-indigo-500/25 ring-2 ring-indigo-500',
+      badgeBg: 'bg-indigo-100 text-indigo-800',
+      description: {
+        bn: 'সম্পূর্ণ আলাদা ওয়ার্ডপ্রেস উইং: বিজনেস সাইট, উ-কমার্স অনলাইন স্টোর, স্পিড অপ্টিমাইজেশন, সিকিউরিটি ও কাস্টম প্লাগইন ডেভেলপমেন্ট।',
+        en: 'Dedicated standalone WordPress Wing: Business websites, WooCommerce stores, speed optimization, malware cleanup, and custom plugin development.'
+      }
+    },
+    {
+      key: 'Data Analysis',
+      icon: BarChart3,
+      count: dataCount,
+      label: { bn: '৪. ডাটা অ্যানালাইসিস', en: '4. Data Analysis' },
+      subtext: { bn: `${dataCount}টি অ্যানালিটিক্স সেবা`, en: `${dataCount} Analytics Services` },
+      accent: 'from-amber-600 via-orange-600 to-rose-600',
+      activeColor: 'bg-gradient-to-r from-amber-600 to-rose-600 text-white shadow-orange-500/25 ring-2 ring-orange-500',
+      badgeBg: 'bg-orange-100 text-orange-800',
+      description: {
+        bn: 'সম্পূর্ণ আলাদা ডাটা সায়েন্স ও অ্যানালিটিক্স উইং: SPSS স্ট্যাটিস্টিক্যাল টেস্ট, পাইথন/R EDA ও মেশিন লার্নিং, Power BI ড্যাশবোর্ড, এক্সেল মডেলিং ও ওয়েব স্ক্র্যাপিং।',
+        en: 'Dedicated standalone Data Analytics Wing: SPSS hypothesis testing, Python/R machine learning, Power BI dashboards, Excel financial modeling, and web scraping.'
       }
     },
     {
       key: 'Student Support',
       icon: GraduationCap,
-      count: 15,
-      label: { bn: '৩. স্টুডেন্ট সাপোর্ট', en: '3. Student Support' },
-      subtext: { bn: '১৫টি একাডেমিক সেবা', en: '15 Academic Supports' },
+      count: supportCount,
+      label: { bn: '৫. স্টুডেন্ট সাপোর্ট', en: '5. Student Support' },
+      subtext: { bn: `${supportCount}টি একাডেমিক সেবা`, en: `${supportCount} Academic Supports` },
       accent: 'from-emerald-600 to-teal-600',
       activeColor: 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-emerald-500/25 ring-2 ring-emerald-500',
       badgeBg: 'bg-emerald-100 text-emerald-800',
       description: {
-        bn: 'ফাইনাল ইয়ার প্রজেক্ট (FYP), রিসার্চ পেপার ফরম্যাটিং (IEEE/LaTeX), কোডিং গাইডেন্স ও টার্নিটিন চেক সহ ১৫টি একাডেমিক সল্যুশন।',
-        en: '15 Dedicated student mentorship services: FYP guidance, Research formatting, Programming help, and Turnitin assistance.'
+        bn: 'ফাইনাল ইয়ার প্রজেক্ট (FYP) গাইডেন্স, রিসার্চ পেপার ফরম্যাটিং (IEEE/LaTeX), কোডিং হেল্প ও টার্নিটিন চেক সহ একাডেমিক সল্যুশন।',
+        en: 'Dedicated student mentorship services: FYP guidance, Research paper formatting, Programming mentorship, and Turnitin assistance.'
       }
     }
   ];
@@ -325,7 +362,7 @@ export const ServiceCardGrid: React.FC = () => {
               )}
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3">
               {pillars.map((pillar) => {
                 const Icon = pillar.icon;
                 const isSelected = selectedPillar === pillar.key;
@@ -336,41 +373,42 @@ export const ServiceCardGrid: React.FC = () => {
                     whileHover={{ scale: 1.015, y: -2 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => setSelectedPillar(pillar.key)}
-                    className={`relative p-3.5 sm:p-4 rounded-2xl text-left border transition-all duration-200 cursor-pointer flex items-center justify-between gap-3 ${
+                    className={`relative p-3 sm:p-3.5 rounded-2xl text-left border transition-all duration-200 cursor-pointer flex flex-col justify-between gap-2.5 ${
                       isSelected
                         ? `${pillar.activeColor} border-transparent shadow-lg`
                         : 'bg-slate-50 hover:bg-slate-100/90 text-slate-700 border-slate-200 hover:border-slate-300'
                     }`}
                   >
-                    <div className="flex items-center gap-3 min-w-0">
+                    <div className="flex items-center justify-between w-full">
                       <div
-                        className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-all ${
+                        className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center shrink-0 transition-all ${
                           isSelected
                             ? 'bg-white/20 text-white'
                             : 'bg-white text-slate-700 shadow-xs border border-slate-200'
                         }`}
                       >
-                        <Icon className="w-5 h-5" />
+                        <Icon className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
                       </div>
-                      <div className="min-w-0">
-                        <div className="font-extrabold text-xs sm:text-sm truncate">
-                          {pillar.label[language]}
-                        </div>
-                        <div className={`text-[11px] font-medium truncate ${isSelected ? 'text-white/80' : 'text-slate-500'}`}>
-                          {pillar.subtext[language]}
-                        </div>
-                      </div>
+
+                      <span
+                        className={`text-[11px] px-2 py-0.5 rounded-full font-black shrink-0 ${
+                          isSelected
+                            ? 'bg-white text-slate-900 shadow-xs'
+                            : 'bg-slate-200/80 text-slate-700'
+                        }`}
+                      >
+                        {pillar.count}
+                      </span>
                     </div>
 
-                    <span
-                      className={`text-xs px-2.5 py-1 rounded-full font-black shrink-0 ${
-                        isSelected
-                          ? 'bg-white text-slate-900 shadow-xs'
-                          : 'bg-slate-200/80 text-slate-700'
-                      }`}
-                    >
-                      {pillar.count}
-                    </span>
+                    <div className="min-w-0">
+                      <div className="font-extrabold text-xs truncate">
+                        {pillar.label[language]}
+                      </div>
+                      <div className={`text-[10px] font-medium truncate ${isSelected ? 'text-white/80' : 'text-slate-500'}`}>
+                        {pillar.subtext[language]}
+                      </div>
+                    </div>
                   </motion.button>
                 );
               })}
@@ -400,7 +438,7 @@ export const ServiceCardGrid: React.FC = () => {
               </div>
 
               <span className="text-[11px] font-bold bg-white text-slate-900 px-3 py-1 rounded-full shrink-0 shadow-xs">
-                {language === 'bn' ? '১৫টি ডেডিকেটেড সার্ভিস' : '15 Dedicated Services'}
+                {language === 'bn' ? `${activePillarObj.count}টি ডেডিকেটেড সার্ভিস` : `${activePillarObj.count} Dedicated Services`}
               </span>
             </motion.div>
           )}
@@ -554,25 +592,47 @@ export const ServiceCardGrid: React.FC = () => {
               {filteredAndSortedServices.map((item, idx) => {
                 const isDesign = item.category === 'Design Services';
                 const isDev = item.category === 'Development Services';
+                const isWP = item.category === 'WordPress Services';
+                const isData = item.category === 'Data Analysis';
                 const isStudent = item.category === 'Student Support';
 
                 const categoryBadge = isDesign
                   ? 'bg-fuchsia-50 text-fuchsia-700 border-fuchsia-200'
                   : isDev
                   ? 'bg-cyan-50 text-cyan-700 border-cyan-200'
+                  : isWP
+                  ? 'bg-indigo-50 text-indigo-700 border-indigo-200'
+                  : isData
+                  ? 'bg-orange-50 text-orange-700 border-orange-200'
                   : 'bg-emerald-50 text-emerald-700 border-emerald-200';
 
                 const iconBoxBg = isDesign
                   ? 'bg-fuchsia-50 text-fuchsia-600 group-hover:bg-fuchsia-600 group-hover:text-white border-fuchsia-100'
                   : isDev
                   ? 'bg-cyan-50 text-cyan-600 group-hover:bg-cyan-600 group-hover:text-white border-cyan-100'
+                  : isWP
+                  ? 'bg-indigo-50 text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white border-indigo-100'
+                  : isData
+                  ? 'bg-orange-50 text-orange-600 group-hover:bg-orange-600 group-hover:text-white border-orange-100'
                   : 'bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white border-emerald-100';
 
                 const topBarGradient = isDesign
                   ? 'from-fuchsia-500 to-pink-500'
                   : isDev
                   ? 'from-cyan-500 to-blue-500'
+                  : isWP
+                  ? 'from-blue-600 to-indigo-600'
+                  : isData
+                  ? 'from-amber-500 to-rose-500'
                   : 'from-emerald-500 to-teal-500';
+
+                const getCategoryLabel = () => {
+                  if (isDesign) return language === 'bn' ? 'ডিজাইন' : 'Design';
+                  if (isDev) return language === 'bn' ? 'ডেভেলপমেন্ট' : 'Dev';
+                  if (isWP) return language === 'bn' ? 'ওয়ার্ডপ্রেস' : 'WordPress';
+                  if (isData) return language === 'bn' ? 'ডাটা অ্যানালাইসিস' : 'Data Analysis';
+                  return language === 'bn' ? 'স্টুডেন্ট সাপোর্ট' : 'Student Support';
+                };
 
                 return (
                   <motion.div
@@ -608,11 +668,7 @@ export const ServiceCardGrid: React.FC = () => {
                           <span
                             className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold border truncate max-w-[130px] ${categoryBadge}`}
                           >
-                            {item.category === 'Design Services'
-                              ? (language === 'bn' ? 'ডিজাইন' : 'Design')
-                              : item.category === 'Development Services'
-                              ? (language === 'bn' ? 'ডেভেলপমেন্ট' : 'Dev')
-                              : (language === 'bn' ? 'স্টুডেন্ট সাপোর্ট' : 'Support')}
+                            {getCategoryLabel()}
                           </span>
                         </div>
                       </div>
@@ -629,6 +685,18 @@ export const ServiceCardGrid: React.FC = () => {
                       <p className="text-xs text-slate-600 mt-2 leading-relaxed line-clamp-3">
                         {item.shortDesc[language]}
                       </p>
+
+                      {/* Sub-services / Packages Indicator if available */}
+                      {item.subServices && item.subServices.length > 0 && (
+                        <div className="mt-3 flex items-center gap-1.5 flex-wrap">
+                          <span className="text-[10px] font-bold text-blue-700 bg-blue-50 border border-blue-200/80 px-2 py-0.5 rounded-md flex items-center gap-1">
+                            <Layers className="w-3 h-3 text-blue-600" />
+                            {language === 'bn' 
+                              ? `${item.subServices.length}টি কাস্টম প্যাকেজ অপশন` 
+                              : `${item.subServices.length} Sub-Service Packages`}
+                          </span>
+                        </div>
+                      )}
 
                       {/* Deliverables Checklist Preview */}
                       <div className="mt-4 pt-3 border-t border-slate-100 space-y-1.5">
@@ -719,11 +787,28 @@ export const ServiceCardGrid: React.FC = () => {
                   {filteredAndSortedServices.map((item) => {
                     const isDesign = item.category === 'Design Services';
                     const isDev = item.category === 'Development Services';
+                    const isWP = item.category === 'WordPress Services';
+                    const isData = item.category === 'Data Analysis';
+
                     const categoryBadge = isDesign
                       ? 'bg-fuchsia-50 text-fuchsia-700 border-fuchsia-200'
                       : isDev
                       ? 'bg-cyan-50 text-cyan-700 border-cyan-200'
+                      : isWP
+                      ? 'bg-indigo-50 text-indigo-700 border-indigo-200'
+                      : isData
+                      ? 'bg-orange-50 text-orange-700 border-orange-200'
                       : 'bg-emerald-50 text-emerald-700 border-emerald-200';
+
+                    const categoryLabel = isDesign
+                      ? (language === 'bn' ? 'ডিজাইন' : 'Design')
+                      : isDev
+                      ? (language === 'bn' ? 'ডেভেলপমেন্ট' : 'Dev')
+                      : isWP
+                      ? (language === 'bn' ? 'ওয়ার্ডপ্রেস' : 'WordPress')
+                      : isData
+                      ? (language === 'bn' ? 'ডাটা অ্যানালাইসিস' : 'Data Analysis')
+                      : (language === 'bn' ? 'স্টুডেন্ট সাপোর্ট' : 'Support');
 
                     return (
                       <tr key={item.id} className="hover:bg-slate-50/80 transition-colors group">
@@ -747,11 +832,7 @@ export const ServiceCardGrid: React.FC = () => {
                         </td>
                         <td className="p-4">
                           <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${categoryBadge}`}>
-                            {item.category === 'Design Services'
-                              ? (language === 'bn' ? 'ডিজাইন' : 'Design')
-                              : item.category === 'Development Services'
-                              ? (language === 'bn' ? 'ডেভেলপমেন্ট' : 'Dev')
-                              : (language === 'bn' ? 'স্টুডেন্ট সাপোর্ট' : 'Support')}
+                            {categoryLabel}
                           </span>
                         </td>
                         <td className="p-4 text-slate-600 font-medium">

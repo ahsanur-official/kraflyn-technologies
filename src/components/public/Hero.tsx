@@ -17,7 +17,9 @@ import {
   Code2,
   ChevronRight,
   Flame,
-  Zap
+  Zap,
+  Globe,
+  BarChart3
 } from 'lucide-react';
 import { motion } from 'motion/react';
 
@@ -116,19 +118,27 @@ export const Hero: React.FC = () => {
               {t.heroSubtitle}
             </motion.p>
 
-            {/* 3 Pillar Quick Pills */}
+            {/* 5 Distinct Service Wings Pills */}
             <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-1">
               <span className="px-3 py-1.5 rounded-xl bg-fuchsia-500/15 border border-fuchsia-400/30 text-fuchsia-300 text-xs font-bold flex items-center gap-1.5">
                 <Palette className="w-3.5 h-3.5 text-fuchsia-400" />
-                <span>{language === 'bn' ? '🎨 ১৫টি ডিজাইন সার্ভিস' : '🎨 15 Design Services'}</span>
+                <span>{language === 'bn' ? '🎨 ডিজাইন' : '🎨 Design'}</span>
               </span>
               <span className="px-3 py-1.5 rounded-xl bg-cyan-500/15 border border-cyan-400/30 text-cyan-300 text-xs font-bold flex items-center gap-1.5">
                 <Code2 className="w-3.5 h-3.5 text-cyan-400" />
-                <span>{language === 'bn' ? '💻 ১৫টি ডেভেলপমেন্ট সার্ভিস' : '💻 15 Development Services'}</span>
+                <span>{language === 'bn' ? '💻 ডেভেলপমেন্ট' : '💻 Development'}</span>
+              </span>
+              <span className="px-3 py-1.5 rounded-xl bg-indigo-500/15 border border-indigo-400/30 text-indigo-300 text-xs font-bold flex items-center gap-1.5">
+                <Globe className="w-3.5 h-3.5 text-indigo-400" />
+                <span>{language === 'bn' ? '🌐 ওয়ার্ডপ্রেস উইং' : '🌐 WordPress Wing'}</span>
+              </span>
+              <span className="px-3 py-1.5 rounded-xl bg-orange-500/15 border border-orange-400/30 text-orange-300 text-xs font-bold flex items-center gap-1.5">
+                <BarChart3 className="w-3.5 h-3.5 text-orange-400" />
+                <span>{language === 'bn' ? '📊 ডাটা অ্যানালাইসিস' : '📊 Data Analysis'}</span>
               </span>
               <span className="px-3 py-1.5 rounded-xl bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 text-xs font-bold flex items-center gap-1.5">
                 <GraduationCap className="w-3.5 h-3.5 text-emerald-400" />
-                <span>{language === 'bn' ? '🎓 ১৫টি স্টুডেন্ট সাপোর্ট' : '🎓 15 Student Support'}</span>
+                <span>{language === 'bn' ? '🎓 স্টুডেন্ট সাপোর্ট' : '🎓 Student Support'}</span>
               </span>
             </motion.div>
 

@@ -350,9 +350,24 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     });
   };
 
-  // Services Catalog State with LocalStorage Persistence
+  // Services Catalog State with LocalStorage Persistence & Auto-merging of new services
   const [services, setServices] = useState<Service[]>(() => {
-    return safeParse<Service[]>(STORAGE_KEYS.SERVICES, SERVICES);
+    const cached = safeParse<Service[]>(STORAGE_KEYS.SERVICES, []);
+    if (!cached || cached.length === 0) return SERVICES;
+    
+    // Ensure all default services (e.g. figma-design, wordpress-development, data-analysis) exist
+    const existingIds = new Set(cached.map(s => s.id));
+    const missing = SERVICES.filter(s => !existingIds.has(s.id));
+    if (missing.length > 0) {
+      const merged = [...cached, ...missing];
+      try {
+        localStorage.setItem(STORAGE_KEYS.SERVICES, JSON.stringify(merged));
+      } catch (e) {
+        console.error(e);
+      }
+      return merged;
+    }
+    return cached;
   });
 
   const updateServicePrice = (serviceId: string, newPrice: number) => {

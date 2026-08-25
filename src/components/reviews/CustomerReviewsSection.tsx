@@ -21,27 +21,41 @@ export const CustomerReviewsSection: React.FC = () => {
 
   const categories = [
     { key: 'All', label: { bn: 'সকল রিভিউ', en: 'All Reviews' } },
-    { key: 'Design', label: { bn: '🎨 ডিজাইন সার্ভিস', en: '🎨 Design Services' } },
-    { key: 'Development', label: { bn: '💻 ডেভেলপমেন্ট সার্ভিস', en: '💻 Development' } },
+    { key: 'Design', label: { bn: '🎨 ডিজাইন', en: '🎨 Design' } },
+    { key: 'Development', label: { bn: '💻 ডেভেলপমেন্ট', en: '💻 Development' } },
+    { key: 'WordPress', label: { bn: '🌐 ওয়ার্ডপ্রেস', en: '🌐 WordPress' } },
+    { key: 'Data Analysis', label: { bn: '📊 ডাটা অ্যানালাইসিস', en: '📊 Data Analysis' } },
     { key: 'Student Support', label: { bn: '🎓 স্টুডেন্ট সাপোর্ট', en: '🎓 Student Support' } },
-    { key: 'Thesis', label: { bn: 'থিসিস ও FYP', en: 'Thesis & FYP' } }
+    { key: 'Thesis', label: { bn: '📚 থিসিস ও FYP', en: '📚 Thesis & FYP' } }
   ];
 
   const filteredReviews = selectedCategory === 'All'
     ? reviews
     : reviews.filter(r => {
         const cat = selectedCategory.toLowerCase();
-        const srvTitle = r.serviceTitle.toLowerCase();
+        const srvTitle = (r.serviceTitle || '').toLowerCase();
+        const crsSolved = (r.courseSolved || '').toLowerCase();
+        const combined = `${srvTitle} ${crsSolved}`;
+        
         if (cat === 'design') {
-          return srvTitle.includes('poster') || srvTitle.includes('banner') || srvTitle.includes('design') || srvTitle.includes('ui') || srvTitle.includes('cv') || srvTitle.includes('logo') || srvTitle.includes('presentation');
+          return combined.includes('poster') || combined.includes('banner') || combined.includes('design') || combined.includes('ui') || combined.includes('cv') || combined.includes('logo') || combined.includes('presentation');
         }
         if (cat === 'development') {
-          return srvTitle.includes('website') || srvTitle.includes('web') || srvTitle.includes('app') || srvTitle.includes('code') || srvTitle.includes('portfolio') || srvTitle.includes('api') || srvTitle.includes('bug');
+          return combined.includes('website') || combined.includes('web') || combined.includes('app') || combined.includes('code') || combined.includes('portfolio') || combined.includes('api') || combined.includes('bug');
+        }
+        if (cat === 'wordpress') {
+          return combined.includes('wordpress') || combined.includes('woocommerce') || combined.includes('elementor') || combined.includes('plugin') || combined.includes('seo');
+        }
+        if (cat === 'data analysis') {
+          return combined.includes('data') || combined.includes('spss') || combined.includes('python') || combined.includes('power bi') || combined.includes('powerbi') || combined.includes('excel') || combined.includes('scraping') || combined.includes('stats');
         }
         if (cat === 'student support') {
-          return srvTitle.includes('fyp') || srvTitle.includes('thesis') || srvTitle.includes('support') || srvTitle.includes('paper') || srvTitle.includes('research') || srvTitle.includes('turnitin');
+          return combined.includes('fyp') || combined.includes('thesis') || combined.includes('support') || combined.includes('paper') || combined.includes('research') || combined.includes('turnitin');
         }
-        return srvTitle.includes(cat);
+        if (cat === 'thesis') {
+          return combined.includes('thesis') || combined.includes('fyp') || combined.includes('paper') || combined.includes('research') || combined.includes('ieee') || combined.includes('latex');
+        }
+        return combined.includes(cat);
       });
 
   const handleHelpfulClick = (revId: string) => {

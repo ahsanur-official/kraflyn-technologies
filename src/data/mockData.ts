@@ -364,6 +364,79 @@ export const SERVICES: Service[] = [
       'Full commercial usage rights'
     ]
   },
+  {
+    id: 'figma-design',
+    title: 'Figma UI/UX & Prototype Design',
+    iconName: 'Figma',
+    shortDesc: 'Professional Figma wireframes, responsive mobile & web interfaces, design tokens, and interactive clickable prototypes.',
+    fullDesc: 'Bring your digital product, startup idea, or academic capstone project to life with pixel-perfect Figma UI/UX designs. Includes user research, user flows, low-to-high fidelity wireframes, auto-layout responsive components, scalable design systems (design tokens, colors, typography hierarchy), interactive clickable prototypes, and seamless developer handoff specs.',
+    category: 'Design Services',
+    startingPrice: 1200,
+    typicalTurnaround: '24 - 72 Hours',
+    deliverables: [
+      'Complete Editable Figma Source File (.fig) with Auto-Layout',
+      'Interactive Clickable Prototype Link for Live User Testing & Defense',
+      'Modern Responsive Screens (Desktop, Tablet & Mobile Views)',
+      'Design System with Reusable Component Library & Typography Tokens',
+      'Production Developer Handoff with SVG/PNG Asset Exports',
+      'Unlimited revisions until final satisfaction'
+    ],
+    subServices: [
+      {
+        id: 'figma-mobile-app',
+        title: 'Mobile App UI/UX Design (iOS & Android)',
+        price: 1500,
+        turnaround: '24 - 48 Hours',
+        recommendedFor: 'Startup MVPs, Capstone Projects & Student App Submissions',
+        deliverables: [
+          '5-10 High-Fidelity Mobile App Screens (Light/Dark Mode)',
+          'Interactive Clickable Prototype with transitions & gestures',
+          'Auto-Layout 5.0 components & SVG vector icons pack',
+          'Full .fig source file + export-ready slices for Flutter/React Native'
+        ]
+      },
+      {
+        id: 'figma-web-dashboard',
+        title: 'Web App & Admin Dashboard UI/UX',
+        price: 2000,
+        turnaround: '48 - 72 Hours',
+        recommendedFor: 'SaaS Platforms, University Portals & Management Systems',
+        deliverables: [
+          'Responsive Desktop, Tablet & Mobile Breakpoints',
+          'Complex Data Tables, Charts, Analytics & Filter Modals',
+          'Reusable Component Variants, Forms & Interactive States',
+          'Pixel-perfect developer handoff specifications'
+        ]
+      },
+      {
+        id: 'figma-landing-page',
+        title: 'High-Converting Landing Page Design',
+        price: 1200,
+        turnaround: '24 - 36 Hours',
+        recommendedFor: 'Product Launches, Club Events & Tech Startups',
+        deliverables: [
+          'Custom Hero Section, Feature Grids, Pricing & FAQ modules',
+          'Modern Glassmorphism / Clean Minimalist styling',
+          'Desktop + Mobile Adaptive Layouts',
+          'Interactive Figma prototype with hover & scroll animations'
+        ]
+      },
+      {
+        id: 'figma-design-system',
+        title: 'Design System & Component Library Creation',
+        price: 1800,
+        turnaround: '48 Hours',
+        recommendedFor: 'Scaling Engineering Teams & Production Codebases',
+        deliverables: [
+          'Color Tokens, Semantic Hierarchy & WCAG AA Contrast Ratios',
+          'Typography System (H1-H6, Body, Caption, Display)',
+          'Atomic Components (Buttons, Inputs, Modals, Cards, Badges)',
+          'Auto-Layout & Variants Guidelines Documentation'
+        ]
+      }
+    ],
+    tag: 'Trending'
+  },
 
   // ==========================================
   // 2. DEVELOPMENT SERVICES (15 Services)
@@ -630,6 +703,325 @@ export const SERVICES: Service[] = [
       'Disaster recovery documentation and 1-click restore plan'
     ]
   },
+  {
+    id: 'wordpress-development',
+    title: 'WordPress Website & Customization',
+    iconName: 'Wordpress',
+    shortDesc: 'Custom WordPress development, Elementor/Gutenberg page building, WooCommerce online store setup, and speed optimization.',
+    fullDesc: 'End-to-end WordPress web development and customization for businesses, blogs, club portals, portfolio sites, and full-scale WooCommerce stores. Built with modern Elementor Pro or Gutenberg block editors, mobile-first responsiveness, custom post types, local payment gateways (bKash/Nagad/Cards), Yoast/RankMath SEO configuration, 90+ PageSpeed optimization, and enterprise security firewall protection.',
+    category: 'WordPress Services',
+    startingPrice: 2000,
+    typicalTurnaround: '2 - 5 Days',
+    deliverables: [
+      'Complete Custom WordPress Website with Premium Responsive Layout',
+      'WooCommerce Store Setup with Product Variations, Cart & Checkout',
+      'Local & Global Payment Gateway Integration (bKash, Nagad, SSLCommerz, Stripe)',
+      '90+ Google Core Web Vitals Speed Optimization & Caching Setup',
+      'On-Page SEO Configuration (RankMath/Yoast) & Security Firewall',
+      'Easy-to-manage Drag & Drop Admin Dashboard + Video Tutorial Guide'
+    ],
+    subServices: [
+      {
+        id: 'wp-business-corporate',
+        title: 'Business, Club & Corporate Website',
+        price: 2000,
+        turnaround: '2 - 3 Days',
+        recommendedFor: 'Startups, Agencies, University Clubs & Department Portals',
+        deliverables: [
+          '5-8 Custom Designed Pages with Elementor Pro / Block Theme',
+          'Contact & Inquiry Forms with WhatsApp and Email Notifications',
+          'Social Media Feeds, Photo Gallery & Event Management',
+          'SSL Setup, Mobile Optimization & Basic SEO'
+        ]
+      },
+      {
+        id: 'wp-woocommerce-store',
+        title: 'Full WooCommerce Online Store Setup',
+        price: 3500,
+        turnaround: '3 - 5 Days',
+        recommendedFor: 'Clothing Brands, Electronics, Bookstores & Multi-Product Vendors',
+        deliverables: [
+          'Product Inventory, Variations (Size/Color) & Stock Management',
+          'bKash, Nagad, Rocket & Credit Card Gateway Integration',
+          'Automated Invoicing, Coupon System & Delivery Zone Rates',
+          'Customer Order Tracking & Email Notification Flow'
+        ]
+      },
+      {
+        id: 'wp-speed-security-cleanup',
+        title: 'Speed Optimization & Malware Cleanup',
+        price: 1000,
+        turnaround: '12 - 24 Hours',
+        recommendedFor: 'Slow Loading Sites & Hacked / Compromised Installations',
+        deliverables: [
+          '90+ Google PageSpeed / GTmetrix Performance Optimization',
+          'Redis/Memcached, WebP Image Compression & CDN Setup',
+          'Malware, Backdoor & Blacklist Removal + Clean Backup',
+          'Cloudflare WAF & Login Brute Force Hardening'
+        ]
+      },
+      {
+        id: 'wp-custom-theme-plugin',
+        title: 'Custom Plugin, ACF & Bug Fixing',
+        price: 1500,
+        turnaround: '24 - 48 Hours',
+        recommendedFor: 'Custom Features, PHP Errors & Database Migration',
+        deliverables: [
+          'Advanced Custom Fields (ACF Pro) & Custom Post Types (CPT)',
+          'PHP/JavaScript Conflicts & Critical Error Debugging',
+          'Seamless Server-to-Server / Domain Migration (Zero Downtime)',
+          'REST API Endpoints & Third-party Webhook Integration'
+        ]
+      }
+    ],
+    tag: 'Popular'
+  },
+  {
+    id: 'wordpress-woocommerce',
+    title: 'WooCommerce Store & Payment Gateway',
+    iconName: 'ShoppingBag',
+    shortDesc: 'Complete WooCommerce store setup, automated bKash/Nagad/Cards checkout, inventory & PDF invoices.',
+    fullDesc: 'High-converting end-to-end WooCommerce e-commerce development. Product variations, local payment gateways (bKash/Nagad/Cards/SSLCommerz), dynamic shipping calculation, automated PDF invoice generation, coupon system, and WhatsApp order alerts.',
+    category: 'WordPress Services',
+    startingPrice: 3500,
+    typicalTurnaround: '3 - 6 Days',
+    deliverables: [
+      'Fully Responsive WooCommerce Shop & Conversion-Optimized Checkout',
+      'Automated bKash, Nagad, Rocket & Cards Payment Gateway Integration',
+      'Product Variations (Color/Size), Custom Filters & Category Taxonomy',
+      'Automated PDF Invoicing & Real-Time Customer Order Tracking',
+      'Instant Admin WhatsApp & Email Order Notification Flow',
+      'Comprehensive Store Inventory & Product Management Video Tutorial'
+    ],
+    subServices: [
+      {
+        id: 'wp-woo-starter',
+        title: 'Starter Online Boutique / Store',
+        price: 2500,
+        turnaround: '2 - 3 Days',
+        recommendedFor: 'F-Commerce brands, single-product dropshippers & boutiques',
+        deliverables: [
+          '10-20 Product Catalog Listings with Categories',
+          'bKash & Nagad Payment Integration',
+          'City/Suburban Delivery Rate Calculations',
+          'WhatsApp Chat & Order Notifications'
+        ]
+      },
+      {
+        id: 'wp-woo-full-enterprise',
+        title: 'Full-Scale Multi-Variation E-Commerce',
+        price: 4500,
+        turnaround: '4 - 6 Days',
+        recommendedFor: 'Apparel brands, tech gear stores & retail merchants',
+        deliverables: [
+          'Color/Size Swatches, Custom Attributes & Unlimited Items',
+          'SSLCommerz / Shurjopay / Stripe Gateway Integration',
+          'Coupon Engines, Flash Sale Timers & Slide Cart Drawer',
+          'Automated PDF Invoices & Courier API Integration Preparation'
+        ]
+      },
+      {
+        id: 'wp-woo-gateway-pos',
+        title: 'Payment Gateway & POS/Invoice Setup',
+        price: 1800,
+        turnaround: '24 - 48 Hours',
+        recommendedFor: 'Existing WordPress sites needing bKash/Nagad & POS',
+        deliverables: [
+          'bKash / Nagad Merchant API & Tokenized Checkout',
+          'Automated Order Confirmation SMS Notification Gateway',
+          'WooCommerce POS & Barcode Scanner Integration',
+          'Checkout Security Audit & Strict SSL Verification'
+        ]
+      }
+    ],
+    tag: 'Popular'
+  },
+  {
+    id: 'wordpress-speed-seo',
+    title: 'Speed Optimization & Technical SEO',
+    iconName: 'Zap',
+    shortDesc: '90+ Google PageSpeed, LiteSpeed/WP Rocket caching, WebP conversion & RankMath/Yoast SEO.',
+    fullDesc: 'Accelerate your WordPress site to under 1 second loading time and score 90+ on Google PageSpeed Insights & GTmetrix. Includes LiteSpeed/WP Rocket caching, WebP image conversion, CSS/JS minification, database bloat purge, and RankMath/Yoast on-page schema configuration.',
+    category: 'WordPress Services',
+    startingPrice: 1000,
+    typicalTurnaround: '12 - 24 Hours',
+    deliverables: [
+      '90+ Performance Score on Google PageSpeed Insights & GTmetrix',
+      'Google Core Web Vitals (LCP, INP, CLS) Green Thresholds',
+      'WP Rocket / LiteSpeed Cache & Redis Object Cache Configuration',
+      'Next-Gen WebP Image Compression & Smart Lazy-Loading',
+      'Database Optimization & Unused CSS/JS Deferral / Minification',
+      'RankMath / Yoast SEO, XML Sitemap & Rich Schema Markup Setup'
+    ],
+    subServices: [
+      {
+        id: 'wp-speed-core',
+        title: '90+ Google PageSpeed Boost',
+        price: 1000,
+        turnaround: '12 - 18 Hours',
+        recommendedFor: 'Slow sites needing fast mobile & desktop loading',
+        deliverables: [
+          '90+ Mobile & Desktop PageSpeed Guaranteed',
+          'Advanced Cache & CDN Setup',
+          'Lossless WebP Compression',
+          'Before / After Benchmark Report'
+        ]
+      },
+      {
+        id: 'wp-tech-seo-schema',
+        title: 'Technical SEO & Rich Schema Setup',
+        price: 1200,
+        turnaround: '24 Hours',
+        recommendedFor: 'Websites aiming for high Google organic ranking',
+        deliverables: [
+          'Google Search Console & GA4 Setup',
+          'XML Sitemap, Robots.txt & Canonical Rules',
+          'Organization, FAQ & Product Schema Markup',
+          'Broken Links & 404 Redirect Audit'
+        ]
+      }
+    ],
+    tag: 'Fast 12h'
+  },
+  {
+    id: 'wordpress-security-malware',
+    title: 'Malware Removal & Security Hardening',
+    iconName: 'ShieldCheck',
+    shortDesc: 'Emergency hacked site recovery, virus cleanup, blacklist removal & Wordfence firewall setup.',
+    fullDesc: 'Immediate recovery from hacks, Japanese spam injections, crypto-miners, and phishing redirects. Complete file-system scan, backdoor elimination, Google Safe Browsing blacklist de-listing, Cloudflare WAF setup, and hardened login security.',
+    category: 'WordPress Services',
+    startingPrice: 1500,
+    typicalTurnaround: '6 - 24 Hours',
+    deliverables: [
+      'Deep-level File System & SQL Database Malware Scan',
+      'Complete Eradication of Backdoors, Trojans & Phishing Shells',
+      'Google Safe Browsing & Security Blacklist De-listing Request',
+      'Wordfence WAF & Two-Factor Authentication (2FA) Setup',
+      'wp-config.php & .htaccess Strict Security Hardening',
+      'Clean Encrypted Off-Site Backup to Google Drive / Cloud'
+    ],
+    subServices: [
+      {
+        id: 'wp-emergency-cleanup',
+        title: 'Emergency Malware & Backdoor Cleanup',
+        price: 1500,
+        turnaround: '6 - 12 Hours',
+        recommendedFor: 'Compromised websites with malware warnings or redirects',
+        deliverables: [
+          '100% Infected File Sanitization & Core Reinstallation',
+          'Database Injected Spam & PHP Backdoor Removal',
+          'Google Red Screen Blacklist De-listing Application',
+          'Upload Directory Shell Cleanup'
+        ]
+      },
+      {
+        id: 'wp-security-hardening',
+        title: 'Security Hardening & WAF Protection',
+        price: 1000,
+        turnaround: '12 Hours',
+        recommendedFor: 'Preventing future brute-force attacks & zero-day exploits',
+        deliverables: [
+          'Cloudflare WAF Custom Security Rules',
+          'Custom Admin Login URL & Brute-Force Rate Limiting',
+          'Disable XML-RPC & File Editor Lockout',
+          'Automated Off-site Daily Backup Routine'
+        ]
+      }
+    ],
+    tag: 'Emergency'
+  },
+  {
+    id: 'wordpress-custom-theme-plugin',
+    title: 'Custom Plugin, ACF & PHP Development',
+    iconName: 'Code',
+    shortDesc: 'Tailored WordPress plugin development, ACF Pro, Custom Post Types & REST API integration.',
+    fullDesc: 'Custom WordPress PHP development for bespoke functionality. Advanced Custom Fields (ACF Pro), custom post types, taxonomy architectures, external REST API integrations, webhooks, and custom shortcodes.',
+    category: 'WordPress Services',
+    startingPrice: 1800,
+    typicalTurnaround: '2 - 4 Days',
+    deliverables: [
+      'Bespoke WordPress Plugin Coded to WP Coding Standards',
+      'Advanced Custom Fields (ACF Pro) & Custom Post Type Architecture',
+      'Custom REST API Endpoints & Third-Party Webhook Syncing',
+      'Custom Checkout Actions & Payment Gateway Callbacks',
+      'Child Theme Development & Template Hierarchy Overrides',
+      'PHP Conflict Resolution & Memory Limit Debugging'
+    ],
+    subServices: [
+      {
+        id: 'wp-plugin-dev',
+        title: 'Custom Plugin from Scratch',
+        price: 2500,
+        turnaround: '2 - 3 Days',
+        recommendedFor: 'Unique business logic, custom calculators & portals',
+        deliverables: [
+          'Modular WP Plugin Structure & Admin Options Panel',
+          'Custom Database Tables & Nonce Security Verification',
+          'Dynamic Shortcodes & Custom Elementor Widgets',
+          'Technical Documentation & Clean Codebase'
+        ]
+      },
+      {
+        id: 'wp-acf-cpt',
+        title: 'ACF Pro & Custom Post Types',
+        price: 1400,
+        turnaround: '24 - 48 Hours',
+        recommendedFor: 'Real estate, car directory, case studies & team listings',
+        deliverables: [
+          'Custom Post Types & Custom Taxonomies',
+          'ACF Pro Repeaters & Flexible Content Fields',
+          'Frontend Single & Archive Layout Templates',
+          'Dynamic AJAX Filter & Search Integration'
+        ]
+      }
+    ],
+    tag: 'Advanced'
+  },
+  {
+    id: 'wordpress-migration-redesign',
+    title: 'Zero-Downtime Migration & UI Redesign',
+    iconName: 'Layers',
+    shortDesc: 'Seamless hosting transfer, domain migration, and modern responsive UI/UX redesign.',
+    fullDesc: 'Zero-downtime server migration, cPanel to VPS transfer, domain URL update without broken links or SEO loss, plus modern aesthetic redesign from legacy themes to sleek Elementor / Block templates.',
+    category: 'WordPress Services',
+    startingPrice: 1200,
+    typicalTurnaround: '12 - 36 Hours',
+    deliverables: [
+      '100% Data Integrity Server Migration with Zero Downtime',
+      'cPanel, Plesk, VPS, Hostinger & Cloudways Migration',
+      'Domain Change & Serialized Database URL Safe Replacement',
+      'Legacy Theme Overhaul into Modern Ultra-Fast Responsive Design',
+      'Business Email Accounts & DNS / Cloudflare Records Setup',
+      'Comprehensive Post-Migration Functionality & Form Testing'
+    ],
+    subServices: [
+      {
+        id: 'wp-host-migration',
+        title: 'Hosting & Server Migration',
+        price: 800,
+        turnaround: '6 - 12 Hours',
+        recommendedFor: 'Moving to a faster host or dedicated VPS',
+        deliverables: [
+          'Complete Database & Media Files Transfer',
+          'SSL Certificate Setup & DNS Propagation',
+          'Zero Downtime & Zero Data Loss Guarantee'
+        ]
+      },
+      {
+        id: 'wp-ui-redesign-overhaul',
+        title: 'Full Modern UI/UX Redesign',
+        price: 2200,
+        turnaround: '2 - 3 Days',
+        recommendedFor: 'Modernizing outdated templates with modern aesthetics',
+        deliverables: [
+          'Modern Color Palette, Typography & Mobile Layouts',
+          'Elementor Pro / Block Lightweight Architecture',
+          'Preserving Existing Content & SEO URL Slugs'
+        ]
+      }
+    ],
+    tag: 'Safe'
+  },
 
   // ==========================================
   // 3. STUDENT SUPPORT (15 Services)
@@ -895,6 +1287,318 @@ export const SERVICES: Service[] = [
       'Guidance on open-source contributions & internship applications',
       'Direct networking connection with professional alumni network'
     ]
+  },
+  {
+    id: 'data-analysis',
+    title: 'Data Analysis & Statistical Modeling',
+    iconName: 'LineChart',
+    shortDesc: 'Comprehensive data cleaning, Exploratory Data Analysis (EDA), statistical modeling, Power BI/Tableau dashboards, and research visualization.',
+    fullDesc: 'Transform raw tabular data into actionable statistical insights, publication-ready visual charts, and predictive models. Expert analysis across Python (Pandas, NumPy, Scikit-learn, Seaborn), R, IBM SPSS, and Advanced Excel. Covers data sanitization, outlier filtering, hypothesis testing (ANOVA, T-tests, Regression), correlation matrices, interactive Power BI/Tableau dashboards, and comprehensive summary reports with interpretation notes.',
+    category: 'Data Analysis',
+    startingPrice: 800,
+    typicalTurnaround: '12 - 36 Hours',
+    deliverables: [
+      'Fully Commented Source Code & Scripts (Python Jupyter / R / SPSS syntax)',
+      'Cleaned & Preprocessed Dataset (CSV / XLSX / SPSS .sav)',
+      'High-Resolution Statistical Charts & Publication-Ready Visualizations',
+      'Comprehensive Summary Report with Key Findings & Hypothesis Interpretation',
+      'Interactive Dashboard (Power BI / Tableau / Excel Pivot)',
+      '1-on-1 Methodology Walkthrough & Results Defense Coaching'
+    ],
+    subServices: [
+      {
+        id: 'data-spss-stats',
+        title: 'IBM SPSS Statistical Analysis & Hypothesis Testing',
+        price: 800,
+        turnaround: '12 - 24 Hours',
+        recommendedFor: 'Thesis Questionnaires, Social Science & Business Research',
+        deliverables: [
+          'Cronbach’s Alpha Reliability & Normality Testing (Shapiro-Wilk)',
+          'Independent T-Tests, Paired T-Tests, Chi-Square & One-Way ANOVA',
+          'Linear / Multiple / Logistic Regression Analysis',
+          'SPSS .sav Output files & APA-style summary table writeup'
+        ]
+      },
+      {
+        id: 'data-python-r-eda',
+        title: 'Python / R Data Cleaning, EDA & Machine Learning',
+        price: 1500,
+        turnaround: '24 - 48 Hours',
+        recommendedFor: 'Computer Science, Data Engineering & AI Capstone Projects',
+        deliverables: [
+          'Missing Value Imputation, Outlier Treatment & Feature Engineering',
+          'Pandas, NumPy, Seaborn & Matplotlib Visualization Suite',
+          'Supervised / Unsupervised ML Classification & Regression Models',
+          'Jupyter Notebook (.ipynb) with clean markdown explanations'
+        ]
+      },
+      {
+        id: 'data-powerbi-tableau',
+        title: 'Power BI & Tableau Interactive Dashboard',
+        price: 1200,
+        turnaround: '24 - 36 Hours',
+        recommendedFor: 'Business Intelligence, Corporate Reports & Live Presentations',
+        deliverables: [
+          'Interactive Drill-Down Visuals, KPI Cards & Custom Slicers',
+          'DAX Formulas, Calculated Measures & Power Query ETL Pipelines',
+          'Automated Refresh Config & Mobile Layout Optimization',
+          '.pbix / Tableau Package File + Video Walkthrough'
+        ]
+      },
+      {
+        id: 'data-excel-pivot-modeling',
+        title: 'Advanced Excel Analytics & Financial Modeling',
+        price: 600,
+        turnaround: '6 - 18 Hours',
+        recommendedFor: 'Accounting, Finance & MBA Coursework Assignments',
+        deliverables: [
+          'Dynamic Pivot Tables, VLOOKUP/XLOOKUP & Nested Logic Formulas',
+          'What-If Analysis, Scenario Manager & Solver Optimization',
+          'Professional Corporate Presentation Charts & Automated Macros (VBA)',
+          'Clean, error-free Excel workbook (.xlsx)'
+        ]
+      }
+    ],
+    tag: 'High Demand'
+  },
+  {
+    id: 'data-python-eda-ml',
+    title: 'Python Data Science, EDA & Machine Learning',
+    iconName: 'Binary',
+    shortDesc: 'Jupyter Notebook, Pandas, NumPy, Scikit-learn ML models, feature engineering & Seaborn plots.',
+    fullDesc: 'End-to-end Python data science pipelines for thesis, capstones, and industry research. Comprehensive preprocessing, outlier elimination, exploratory data analysis (EDA) with Seaborn/Matplotlib, supervised/unsupervised ML algorithms (Random Forest, XGBoost, SVM, KMeans), and performance evaluation metrics.',
+    category: 'Data Analysis',
+    startingPrice: 1500,
+    typicalTurnaround: '24 - 48 Hours',
+    deliverables: [
+      'Fully Documented Jupyter Notebook (.ipynb) with Clean Markdown Explanations',
+      'Sanitized & Normalized Dataset (CSV / Parquet / Pandas Dataframe)',
+      'Publication-Quality Seaborn/Matplotlib Visualizations & Correlation Heatmaps',
+      'Supervised / Unsupervised Machine Learning Model Training & Tuning',
+      'Performance Evaluation Suite (Accuracy, Precision, Recall, F1-Score, ROC-AUC)',
+      'Methodology Defense Documentation & Technical Walkthrough'
+    ],
+    subServices: [
+      {
+        id: 'data-py-eda-viz',
+        title: 'Data Cleaning & Exploratory Analysis (EDA)',
+        price: 1000,
+        turnaround: '12 - 24 Hours',
+        recommendedFor: 'Raw datasets needing cleaning & exploratory graphs',
+        deliverables: [
+          'Missing Value Imputation & Outlier Detection',
+          'Distribution Plots, Boxplots & Heatmaps',
+          'Clean Jupyter Notebook & Data Dictionary'
+        ]
+      },
+      {
+        id: 'data-py-ml-classification',
+        title: 'Machine Learning & Predictive Modeling',
+        price: 1800,
+        turnaround: '24 - 48 Hours',
+        recommendedFor: 'Final year thesis, prediction models & benchmarking',
+        deliverables: [
+          'Multi-Algorithm Benchmarking (RF, XGBoost, SVM, Logistic)',
+          'Hyperparameter Tuning via GridSearchCV',
+          'Confusion Matrix, Classification Report & ROC Curves',
+          'Trained Serialized Model Files (.pkl / .joblib)'
+        ]
+      },
+      {
+        id: 'data-py-nlp-sentiment',
+        title: 'NLP Text Analysis & Sentiment Classification',
+        price: 2200,
+        turnaround: '2 - 3 Days',
+        recommendedFor: 'Social media sentiments, review classification & text mining',
+        deliverables: [
+          'Text Tokenization, Stopwords Removal & Lemmatization',
+          'TF-IDF & Word Embeddings Vector Space Pipeline',
+          'Sentiment Classification & Topic Modeling (LDA)',
+          'Wordclouds & Frequency Distribution Plots'
+        ]
+      }
+    ],
+    tag: 'ML & AI'
+  },
+  {
+    id: 'data-powerbi-tableau-standalone',
+    title: 'Power BI & Tableau Interactive Dashboards',
+    iconName: 'BarChart',
+    shortDesc: 'Drill-through KPI dashboards, advanced DAX measures, Power Query ETL & executive visual storytelling.',
+    fullDesc: 'Executive-level interactive Business Intelligence dashboards built with Microsoft Power BI and Tableau. Advanced Power Query ETL data blending, complex DAX measures, custom KPI scorecards, mobile layout optimization, and interactive drill-through capabilities.',
+    category: 'Data Analysis',
+    startingPrice: 1200,
+    typicalTurnaround: '24 - 48 Hours',
+    deliverables: [
+      'Full Interactive Source File (.pbix / .twbx) with Embedded Modeling',
+      'Custom DAX Calculated Columns, Dynamic Measures & Time Intelligence',
+      'Automated Power Query ETL Data Cleansing & Refresh Architecture',
+      'Executive KPI Scorecards, Gauge Visuals & Drill-Through Filters',
+      'Mobile Device View Layout & Seamless Navigation Bookmarks',
+      'Comprehensive Video Walkthrough & Presentation Documentation'
+    ],
+    subServices: [
+      {
+        id: 'bi-sales-finance-dashboard',
+        title: 'Sales & Financial KPI Dashboard',
+        price: 1500,
+        turnaround: '24 - 36 Hours',
+        recommendedFor: 'E-commerce, Retail, Sales Teams & Financial Reporting',
+        deliverables: [
+          'Month-over-Month (MoM) & Year-over-Year (YoY) Growth Metrics',
+          'Product-wise Revenue, Discounts & Net Margin Visuals',
+          'Customer Acquisition & Churn Visual Indicators'
+        ]
+      },
+      {
+        id: 'bi-hr-ops-dashboard',
+        title: 'HR & Operational Analytics Dashboard',
+        price: 1200,
+        turnaround: '24 Hours',
+        recommendedFor: 'Employee metrics, payroll, attendance & operational workflows',
+        deliverables: [
+          'Employee Performance, Attrition Rate & Demographics',
+          'Departmental Budget Utilization & Headcount Tracking',
+          'Dynamic Date Range & Department Slicers'
+        ]
+      }
+    ],
+    tag: 'Popular'
+  },
+  {
+    id: 'data-excel-modeling',
+    title: 'Advanced Excel Analytics & Financial Modeling',
+    iconName: 'FileSpreadsheet',
+    shortDesc: 'Dynamic Pivot tables, XLOOKUP, What-If scenarios, Solver optimization & automated VBA macros.',
+    fullDesc: 'Professional Excel spreadsheet modeling and analytical automation for MBA assignments, business plans, and corporate accounting. Complex nested formula structures, dynamic pivot dashboards, discounted cash flow (DCF) valuations, sensitivity matrices, and automated VBA macros.',
+    category: 'Data Analysis',
+    startingPrice: 600,
+    typicalTurnaround: '6 - 18 Hours',
+    deliverables: [
+      'Error-Free Formatted Excel Workbook (.xlsx / .xlsm)',
+      'Dynamic Pivot Tables, Slicers & Timeline Filter Dashboards',
+      'XLOOKUP, Nested INDEX-MATCH, SUMIFS & Complex Logic Formulas',
+      'What-If Scenario Manager, Goal Seek & Solver Optimization Models',
+      'Corporate Presentation Charts (Waterfall, Tornado, Combo Visuals)',
+      'Custom VBA Macro Automation Routines (as requested)'
+    ],
+    subServices: [
+      {
+        id: 'excel-pivot-formula',
+        title: 'Pivot Dashboards & Advanced Formulas',
+        price: 600,
+        turnaround: '6 - 12 Hours',
+        recommendedFor: 'Data organization, sales summary & student coursework',
+        deliverables: [
+          'Clean Pivot Summary Tables & Charts',
+          'XLOOKUP & Dynamic Array Calculations',
+          'Conditional Color Formatting & Dropdown Validations'
+        ]
+      },
+      {
+        id: 'excel-financial-valuation',
+        title: 'Financial Valuation & Budgeting Model',
+        price: 1200,
+        turnaround: '12 - 24 Hours',
+        recommendedFor: 'MBA finance projects, startup pitch decks & DCF models',
+        deliverables: [
+          '3-Statement Integrated Model (P&L, Balance Sheet, Cash Flow)',
+          'DCF Valuation & WACC Sensitivity Analysis',
+          'Break-Even & Scenario Matrix Tables'
+        ]
+      }
+    ],
+    tag: 'Fast Turnaround'
+  },
+  {
+    id: 'data-research-survey',
+    title: 'Survey Data Cleaning & Qualitative Analysis',
+    iconName: 'Search',
+    shortDesc: 'Likert scale cleaning, demographic profiling, outlier purging & NVivo thematic coding.',
+    fullDesc: 'Specialized data sanitization and thematic analysis for academic research questionnaires and interviews. Cleans raw exports from Google Forms, KoboToolbox, Qualtrics, handles reverse-coded Likert questions, cross-tabulates demographics, and executes NVivo thematic coding for qualitative datasets.',
+    category: 'Data Analysis',
+    startingPrice: 700,
+    typicalTurnaround: '12 - 24 Hours',
+    deliverables: [
+      'Sanitized & Formatted Survey Dataset (.xlsx / .sav / .csv)',
+      'Reverse-Coded Item Scoring & Variable Codebook Documentation',
+      'Demographic Frequency Tables & Chi-Square Cross-Tabulations',
+      'Qualitative Open-Ended Interview Thematic Coding Matrix',
+      'Descriptive Methodology Section Summary Writeup',
+      'Outlier & Incomplete Response Purging Audit'
+    ],
+    subServices: [
+      {
+        id: 'survey-quant-cleaning',
+        title: 'Survey Coding & Cross-Tabulation',
+        price: 700,
+        turnaround: '12 Hours',
+        recommendedFor: 'Google Forms / KoboToolbox raw survey exports',
+        deliverables: [
+          'Numerical Variable Coding & Label Dictionary',
+          'Demographic Frequency Breakdown Tables',
+          'Clean Publication Bar & Pie Charts'
+        ]
+      },
+      {
+        id: 'survey-qual-thematic',
+        title: 'Qualitative Thematic Analysis (NVivo)',
+        price: 1100,
+        turnaround: '24 Hours',
+        recommendedFor: 'In-depth interviews & focus group discussions',
+        deliverables: [
+          'Transcript Coding & Node Categorization',
+          'Theme Hierarchy Diagrams & Quotation Matrix',
+          'Methodological Thematic Summary Writeup'
+        ]
+      }
+    ],
+    tag: 'Research'
+  },
+  {
+    id: 'data-scraping-automation',
+    title: 'Web Scraping, Data Mining & Pipelines',
+    iconName: 'Database',
+    shortDesc: 'Automated data extraction using Python BeautifulSoup, Selenium, Scrapy & clean CSV/JSON pipelines.',
+    fullDesc: 'Automated web scraping and data harvesting tailored for research datasets, market intelligence, directory aggregation, and competitor pricing. Built using Python BeautifulSoup, Scrapy, and Selenium with anti-bot rate-limiting and structured CSV/JSON/SQL output.',
+    category: 'Data Analysis',
+    startingPrice: 1000,
+    typicalTurnaround: '12 - 36 Hours',
+    deliverables: [
+      'Sanitized & Normalized Dataset Output (CSV / Excel / JSON / SQL)',
+      'Complete Python Web Scraping Script & Executable Notebook',
+      'E-Commerce Catalogs, Pricing, Reviews, Emails & Image Links Extraction',
+      'Dynamic JavaScript Pagination & Infinite Scroll Handling via Selenium',
+      'Duplicate Purging & Regular Expression Data Sanitization',
+      'Scheduled Automation Cron Guide & Database Integration'
+    ],
+    subServices: [
+      {
+        id: 'scraping-ecommerce-leads',
+        title: 'E-Commerce & Directory Scraping',
+        price: 1000,
+        turnaround: '12 - 18 Hours',
+        recommendedFor: 'Product pricing, competitor research & business leads',
+        deliverables: [
+          '1,000 to 50,000+ Clean Extracted Rows',
+          'Product Titles, Pricing, Specs, Ratings & Media Links',
+          'Structured Excel / CSV File Delivery'
+        ]
+      },
+      {
+        id: 'scraping-selenium-custom',
+        title: 'Dynamic Selenium Scraper & Bot',
+        price: 1600,
+        turnaround: '24 - 36 Hours',
+        recommendedFor: 'JavaScript dynamic platforms, authentication & custom forms',
+        deliverables: [
+          'Headless Selenium Crawler with Session Storage',
+          'Automated Dropdown Interactions & Pagination Traversal',
+          'Reusable Python Source Code & Video Tutorial'
+        ]
+      }
+    ],
+    tag: 'Automated'
   }
 ];
 
@@ -962,6 +1666,46 @@ export const PROBLEM_TRIGGERS: ProblemTrigger[] = [
     icon: 'Search',
     description: 'Turnitin similarity report analysis, ethical paraphrasing, and citation corrections.',
     defaultExpectation: 'Need similarity report breakdown with citation check and guidance to lower similarity index.'
+  },
+  {
+    id: 'figma-ui-ux-trigger',
+    text: "Need Figma UI/UX prototype & app/web design",
+    serviceId: 'figma-design',
+    icon: 'Figma',
+    description: 'Interactive wireframing, mobile app & web screens, design systems, and clickable prototype testing.',
+    defaultExpectation: 'Need high-fidelity Figma UI/UX screens with interactive prototyping, component design system, and developer assets.'
+  },
+  {
+    id: 'wordpress-site-trigger',
+    text: "Need WordPress website / WooCommerce online shop",
+    serviceId: 'wordpress-development',
+    icon: 'Wordpress',
+    description: 'Elementor Pro/Gutenberg design, e-commerce setup, local bKash/Nagad checkout, and speed optimization.',
+    defaultExpectation: 'Need complete responsive WordPress site with modern layout, payment gateways, and drag-and-drop admin panel.'
+  },
+  {
+    id: 'wordpress-speed-malware-trigger',
+    text: "WordPress site is slow, hacked, or has malware",
+    serviceId: 'wordpress-speed-seo',
+    icon: 'Zap',
+    description: '90+ Google PageSpeed boost, Core Web Vitals optimization, hack cleanup, and Wordfence firewall.',
+    defaultExpectation: 'Need urgent WordPress speed optimization to score 90+ PageSpeed and eliminate all malware/backdoors.'
+  },
+  {
+    id: 'data-analysis-trigger',
+    text: "Need SPSS / R statistical thesis analysis & hypothesis testing",
+    serviceId: 'data-analysis',
+    icon: 'LineChart',
+    description: 'Data cleaning, ANOVA, T-Tests, regression modeling, APA-7 tables, and findings interpretation.',
+    defaultExpectation: 'Need statistical data analysis in SPSS/R, clean dataset, high-res publication charts, and detailed APA interpretation report.'
+  },
+  {
+    id: 'data-python-ml-trigger',
+    text: "Need Python Machine Learning, EDA or Power BI dashboard",
+    serviceId: 'data-python-eda-ml',
+    icon: 'Binary',
+    description: 'Pandas/Seaborn EDA, predictive ML models, confusion matrices, and interactive Power BI drill-through dashboards.',
+    defaultExpectation: 'Need documented Jupyter Notebook with clean EDA visuals, machine learning model benchmarks, and interactive KPI visuals.'
   }
 ];
 

@@ -10,6 +10,8 @@ import {
   Sparkles,
   Palette,
   Code2,
+  Globe,
+  BarChart3,
   CheckCircle2,
   Users,
   Layers,
@@ -112,71 +114,117 @@ export const AboutUs: React.FC = () => {
           ))}
         </div>
 
-        {/* 3 Main Offering Pillars Overview */}
+        {/* 5 Main Offering Wings Overview */}
         <div className="mb-16">
           <div className="text-center max-w-2xl mx-auto mb-8">
             <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
-              {language === 'bn' ? 'Kraflyn Technologies-এর ৩টি প্রধান স্তম্ভ' : 'The 3 Pillars of Kraflyn Technologies'}
+              {language === 'bn' ? 'Kraflyn Technologies-এর ৫টি প্রধান উইং' : 'The 5 Core Wings of Kraflyn Technologies'}
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 mt-1">
               {language === 'bn' ? '৪৫টি সুনির্দিষ্ট সার্ভিসের মাধ্যমে পূর্ণাঙ্গ সমাধান' : '45 Specialized Services Tailored for Excellence'}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4.5">
             
             {/* 1. Design Services */}
-            <div className="p-6 rounded-3xl bg-gradient-to-b from-fuchsia-50/60 to-white border border-fuchsia-200/80 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 rounded-2xl bg-fuchsia-600 text-white flex items-center justify-center mb-4 shadow-md shadow-fuchsia-500/20">
-                <Palette className="w-6 h-6" />
+            <div className="p-5 rounded-3xl bg-gradient-to-b from-fuchsia-50/60 to-white border border-fuchsia-200/80 hover:shadow-lg transition-all flex flex-col justify-between">
+              <div>
+                <div className="w-11 h-11 rounded-2xl bg-fuchsia-600 text-white flex items-center justify-center mb-3.5 shadow-md shadow-fuchsia-500/20">
+                  <Palette className="w-5 h-5" />
+                </div>
+                <h3 className="text-base font-black text-slate-900 mb-1">
+                  {language === 'bn' ? '১. ক্রিয়েটিভ ডিজাইন' : '1. Creative Design'}
+                </h3>
+                <span className="text-[11px] font-bold text-fuchsia-600 block mb-2">
+                  {language === 'bn' ? '১৫টি স্পেশালাইজড সার্ভিস' : '15 Specialized Services'}
+                </span>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  {language === 'bn'
+                    ? 'পোস্টার, ব্যানার, ফ্লায়ার, প্রেজেন্টেশন স্লাইড, লোগো, সিভি, সার্টিফিকেট ও ইউআই/ইউএক্স প্রোটোটাইপ।'
+                    : 'Posters, flyers, event banners, premium pitch decks, branding, ATS CVs, and Figma UI/UX.'}
+                </p>
               </div>
-              <h3 className="text-lg font-black text-slate-900 mb-1">
-                {language === 'bn' ? '১. ক্রিয়েটিভ ডিজাইন সার্ভিস' : '1. Creative Design Services'}
-              </h3>
-              <span className="text-xs font-bold text-fuchsia-600 block mb-2">
-                {language === 'bn' ? '১৫টি স্পেশালাইজড সার্ভিস' : '15 Specialized Services'}
-              </span>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                {language === 'bn'
-                  ? 'পোস্টার, ব্যানার, ফ্লায়ার, প্রেজেন্টেশন স্লাইড, লোগো ও ব্র্যান্ড আইডেন্টিটি, সিভি ও রিজিউম, সার্টিফিকেট, রিসার্চ পোস্টার এবং ইউআই/ইউএক্স প্রোটোটাইপ।'
-                  : 'Posters, flyers, event banners, premium pitch decks, branding, ATS CVs, research posters (A0/A1), and Figma UI/UX.'}
-              </p>
             </div>
 
             {/* 2. Development Services */}
-            <div className="p-6 rounded-3xl bg-gradient-to-b from-cyan-50/60 to-white border border-cyan-200/80 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 rounded-2xl bg-cyan-600 text-white flex items-center justify-center mb-4 shadow-md shadow-cyan-500/20">
-                <Code2 className="w-6 h-6" />
+            <div className="p-5 rounded-3xl bg-gradient-to-b from-cyan-50/60 to-white border border-cyan-200/80 hover:shadow-lg transition-all flex flex-col justify-between">
+              <div>
+                <div className="w-11 h-11 rounded-2xl bg-cyan-600 text-white flex items-center justify-center mb-3.5 shadow-md shadow-cyan-500/20">
+                  <Code2 className="w-5 h-5" />
+                </div>
+                <h3 className="text-base font-black text-slate-900 mb-1">
+                  {language === 'bn' ? '২. ওয়েব ও সফটওয়্যার' : '2. Web & Software Dev'}
+                </h3>
+                <span className="text-[11px] font-bold text-cyan-600 block mb-2">
+                  {language === 'bn' ? '১০টি স্পেশালাইজড সার্ভিস' : '10 Specialized Services'}
+                </span>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  {language === 'bn'
+                    ? 'পোর্টফোলিও ওয়েবসাইট, ফুল-স্ট্যাক ওয়েব ও মোবাইল অ্যাপ, এপিআই, ব্যাকএন্ড ডাটাবেস ও বাগ ফিক্সিং।'
+                    : 'Portfolio sites, SaaS applications, mobile apps, custom APIs, database schemas, and bug fixes.'}
+                </p>
               </div>
-              <h3 className="text-lg font-black text-slate-900 mb-1">
-                {language === 'bn' ? '২. ওয়েব ও সফটওয়্যার ডেভেলপমেন্ট' : '2. Web & Software Development'}
-              </h3>
-              <span className="text-xs font-bold text-cyan-600 block mb-2">
-                {language === 'bn' ? '১৫টি স্পেশালাইজড সার্ভিস' : '15 Specialized Services'}
-              </span>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                {language === 'bn'
-                  ? 'পোর্টফোলিও ওয়েবসাইট, ক্লাব ওয়েবসাইট, ই-কমার্স ও সাস অ্যাপ, মোবাইল অ্যাপ (Flutter/React Native), এপিআই, ব্যাকএন্ড ডাটাবেস ও বাগ ফিক্সিং।'
-                  : 'Portfolio sites, club portals, SaaS applications, mobile apps, custom APIs, database schemas, bug fixes, and speed optimization.'}
-              </p>
             </div>
 
-            {/* 3. Student Support */}
-            <div className="p-6 rounded-3xl bg-gradient-to-b from-emerald-50/60 to-white border border-emerald-200/80 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center mb-4 shadow-md shadow-emerald-500/20">
-                <GraduationCap className="w-6 h-6" />
+            {/* 3. WordPress Services */}
+            <div className="p-5 rounded-3xl bg-gradient-to-b from-indigo-50/60 to-white border border-indigo-200/80 hover:shadow-lg transition-all flex flex-col justify-between">
+              <div>
+                <div className="w-11 h-11 rounded-2xl bg-indigo-600 text-white flex items-center justify-center mb-3.5 shadow-md shadow-indigo-500/20">
+                  <Globe className="w-5 h-5" />
+                </div>
+                <h3 className="text-base font-black text-slate-900 mb-1">
+                  {language === 'bn' ? '৩. ওয়ার্ডপ্রেস উইং' : '3. WordPress Wing'}
+                </h3>
+                <span className="text-[11px] font-bold text-indigo-600 block mb-2">
+                  {language === 'bn' ? '৫টি স্পেশালাইজড সার্ভিস' : '5 Specialized Services'}
+                </span>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  {language === 'bn'
+                    ? 'বিজনেস সাইট, উ-কমার্স ই-শপ, এলিমেন্টর কাস্টমাইজেশন, স্পিড অপ্টিমাইজেশন ও সিকিউরিটি।'
+                    : 'Business sites, WooCommerce shops, Elementor layouts, 95+ PageSpeed tuning, and security.'}
+                </p>
               </div>
-              <h3 className="text-lg font-black text-slate-900 mb-1">
-                {language === 'bn' ? '৩. একাডেমিক ও টেকনিক্যাল সাপোর্ট' : '3. Student & Academic Support'}
-              </h3>
-              <span className="text-xs font-bold text-emerald-600 block mb-2">
-                {language === 'bn' ? '১৫টি স্পেশালাইজড সার্ভিস' : '15 Specialized Services'}
-              </span>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                {language === 'bn'
-                  ? 'ফাইনাল ইয়ার প্রজেক্ট (FYP) গাইডেন্স, রিসার্চ পেপার ফরম্যাটিং (IEEE/LaTeX), প্রোগ্রামিং সাপোর্ট, টার্নিটিন সিমিলারিটি চেক এবং স্কলারশিপ এসওপি প্রস্তুতি।'
-                  : 'FYP project mentorship, IEEE/Springer/LaTeX formatting, programming assistance, Turnitin checks, and scholarship SOP guidance.'}
-              </p>
+            </div>
+
+            {/* 4. Data Analysis */}
+            <div className="p-5 rounded-3xl bg-gradient-to-b from-orange-50/60 to-white border border-orange-200/80 hover:shadow-lg transition-all flex flex-col justify-between">
+              <div>
+                <div className="w-11 h-11 rounded-2xl bg-orange-600 text-white flex items-center justify-center mb-3.5 shadow-md shadow-orange-500/20">
+                  <BarChart3 className="w-5 h-5" />
+                </div>
+                <h3 className="text-base font-black text-slate-900 mb-1">
+                  {language === 'bn' ? '৪. ডাটা অ্যানালাইসিস' : '4. Data Analytics'}
+                </h3>
+                <span className="text-[11px] font-bold text-orange-600 block mb-2">
+                  {language === 'bn' ? '৫টি স্পেশালাইজড সার্ভিস' : '5 Specialized Services'}
+                </span>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  {language === 'bn'
+                    ? 'SPSS হাইপোথিসিস টেস্ট, পাইথন/R ডাটা সায়েন্স, পাওয়ার বিআই ড্যাশবোর্ড ও এক্সেল মডেলিং।'
+                    : 'SPSS statistical testing, Python/R machine learning, Power BI dashboards, and Excel modeling.'}
+                </p>
+              </div>
+            </div>
+
+            {/* 5. Student Support */}
+            <div className="p-5 rounded-3xl bg-gradient-to-b from-emerald-50/60 to-white border border-emerald-200/80 hover:shadow-lg transition-all flex flex-col justify-between">
+              <div>
+                <div className="w-11 h-11 rounded-2xl bg-emerald-600 text-white flex items-center justify-center mb-3.5 shadow-md shadow-emerald-500/20">
+                  <GraduationCap className="w-5 h-5" />
+                </div>
+                <h3 className="text-base font-black text-slate-900 mb-1">
+                  {language === 'bn' ? '৫. স্টুডেন্ট সাপোর্ট' : '5. Student Support'}
+                </h3>
+                <span className="text-[11px] font-bold text-emerald-600 block mb-2">
+                  {language === 'bn' ? '১০টি স্পেশালাইজড সার্ভিস' : '10 Specialized Services'}
+                </span>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  {language === 'bn'
+                    ? 'ফাইনাল ইয়ার প্রজেক্ট (FYP) গাইডেন্স, IEEE/LaTeX পেপার ফরম্যাটিং, কোডিং হেল্প ও টার্নিটিন চেক।'
+                    : 'FYP mentorship, IEEE/LaTeX paper formatting, programming assistance, and Turnitin checks.'}
+                </p>
+              </div>
             </div>
 
           </div>

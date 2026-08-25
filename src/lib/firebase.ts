@@ -18,6 +18,15 @@ const databaseId = firebaseConfigJson.firestoreDatabaseId && firebaseConfigJson.
   ? firebaseConfigJson.firestoreDatabaseId
   : undefined;
 
-export const db = databaseId 
-  ? getFirestore(app, databaseId)
-  : getFirestore(app);
+let firestoreInstance;
+try {
+  firestoreInstance = initializeFirestore(app, {
+    experimentalAutoDetectLongPolling: true,
+  }, databaseId);
+} catch {
+  firestoreInstance = databaseId 
+    ? getFirestore(app, databaseId)
+    : getFirestore(app);
+}
+
+export const db = firestoreInstance;

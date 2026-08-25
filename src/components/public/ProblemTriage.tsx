@@ -9,7 +9,9 @@ import {
   GraduationCap,
   Palette,
   FileText,
-  Clock
+  Clock,
+  Globe,
+  BarChart3
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -56,10 +58,46 @@ export const ProblemTriage: React.FC = () => {
     },
     {
       id: 'issue-3',
+      matchedServiceId: 'wordpress-development',
+      category: {
+        bn: '৩. ওয়ার্ডপ্রেস সার্ভিস',
+        en: '3. WordPress Services'
+      },
+      title: {
+        bn: 'বিজনেস ওয়েবসাইট, ই-কমার্স স্টোর বা স্পিড অপ্টিমাইজেশন প্রয়োজন?',
+        en: 'Need Custom WordPress Website, E-Commerce, or Speed Optimization?'
+      },
+      description: {
+        bn: 'ফুল কাস্টম এলিমেন্টর/উ-কমার্স ডিজাইন, সিকিউরিটি অডিট ও ৯৫+ গুগল পেজস্পিড স্কোর।',
+        en: 'Custom Elementor/WooCommerce setups, malware cleanup, and 95+ PageSpeed scores.'
+      },
+      icon: Globe,
+      color: 'text-indigo-600 bg-indigo-50'
+    },
+    {
+      id: 'issue-4',
+      matchedServiceId: 'data-analysis',
+      category: {
+        bn: '৪. ডাটা অ্যানালাইসিস',
+        en: '4. Data Analysis'
+      },
+      title: {
+        bn: 'থিসিসের জন্য SPSS, পাইথন বা পাওয়ার বিআই ডাটা অ্যানালাইসিস প্রয়োজন?',
+        en: 'Need SPSS, Python, or Power BI Data Analysis for Thesis / Research?'
+      },
+      description: {
+        bn: 'রিগ্রেশন, ANOVA, হাইপোথিসিস টেস্ট, ভিজ্যুয়াল ড্যাশবোর্ড ও মেথডলজি ইন্টারপ্রিটেশন।',
+        en: 'Regression, ANOVA, statistical hypothesis testing, and publication charts.'
+      },
+      icon: BarChart3,
+      color: 'text-orange-600 bg-orange-50'
+    },
+    {
+      id: 'issue-5',
       matchedServiceId: 'fyp-guidance',
       category: {
-        bn: '৩. স্টুডেন্ট সাপোর্ট',
-        en: '3. Student Support'
+        bn: '৫. স্টুডেন্ট সাপোর্ট',
+        en: '5. Student Support'
       },
       title: {
         bn: 'ফাইনাল ইয়ার প্রজেক্ট (FYP) বা থিসিস মেথডলজিতে আটকে আছেন?',
@@ -73,11 +111,11 @@ export const ProblemTriage: React.FC = () => {
       color: 'text-emerald-600 bg-emerald-50'
     },
     {
-      id: 'issue-4',
+      id: 'issue-6',
       matchedServiceId: 'research-paper-formatting',
       category: {
-        bn: '৩. স্টুডেন্ট সাপোর্ট',
-        en: '3. Student Support'
+        bn: '৫. স্টুডেন্ট সাপোর্ট',
+        en: '5. Student Support'
       },
       title: {
         bn: 'IEEE / Springer / LaTeX রিসার্চ পেপার ফরম্যাটিং ও ক্যামেরা-রেডি',

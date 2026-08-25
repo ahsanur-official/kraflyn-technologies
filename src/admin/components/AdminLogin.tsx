@@ -21,16 +21,17 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onAuthenticated }) => {
 
     setTimeout(() => {
       const normalizedPin = pin.trim().toLowerCase().replace(/\s+/g, ' ');
-      // Support 'Allah Vorsa' and common variations + emergency fallbacks
+      // Passcode is strictly "Allah Vorsa"
       const isAllowed = 
-        normalizedPin === 'Allah_Vorsa';
+        normalizedPin === 'allah vorsa' || 
+        normalizedPin === 'allahvorsa';
 
       if (isAllowed) {
         sessionStorage.setItem('kraflyn_admin_session', 'authenticated');
         sessionStorage.setItem('eduquest_admin_session', 'authenticated');
         onAuthenticated();
       } else {
-        setError(language === 'bn' ? 'ভুল পাসকোড! সঠিক এডমিন পাসকোড দিন।' : 'Invalid Admin Passcode! Please use the correct passcode.');
+        setError(language === 'bn' ? 'ভুল পাসকোড! সঠিক এডমিন সিকিউরিটি পাসকোড দিন।' : 'Invalid Admin Passcode! Access Denied.');
         setIsLoading(false);
       }
     }, 350);
@@ -117,7 +118,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onAuthenticated }) => {
                   type="password"
                   value={pin}
                   onChange={(e) => setPin(e.target.value)}
-                  placeholder={language === 'bn' ? 'পাসকোড লিখুন' : 'Enter passcode'}
+                  placeholder={language === 'bn' ? 'এডমিন পাসকোড লিখুন...' : 'Enter security passcode...'}
                   className="w-full pl-10 pr-4 py-3 bg-slate-950/80 border border-slate-700 rounded-2xl text-sm text-white placeholder-slate-500 focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                   autoFocus
                 />

@@ -20,12 +20,23 @@ export interface User {
 export type ServiceCategory = 
   | 'Design Services'
   | 'Development Services'
+  | 'WordPress Services'
+  | 'Data Analysis'
   | 'Student Support'
   | 'Academic Support'
   | 'Technical Support'
   | 'Communication'
   | 'Research'
   | 'Final Year';
+
+export interface SubService {
+  id: string;
+  title: string;
+  price: number; // in BDT
+  turnaround: string;
+  deliverables: string[];
+  recommendedFor?: string;
+}
 
 export interface Service {
   id: string;
@@ -36,6 +47,7 @@ export interface Service {
   category: ServiceCategory;
   startingPrice: number; // in BDT
   deliverables: string[];
+  subServices?: SubService[];
   tag?: string;
   typicalTurnaround: string;
   popularProblemPrompt?: string;
