@@ -69,11 +69,11 @@ export const OrderActionDrawer: React.FC<OrderActionDrawerProps> = ({ order, onC
     let text = '';
 
     if (type === 'welcome') {
-      text = `Hello ${order.customerName}! Greetings from Kraflyn Technologies Support. We have received your order (${order.id}) for "${order.courseName}". Our team is reviewing the requirements and will assign a subject specialist shortly.`;
+      text = `Hello ${order.customerName}! Greetings from Kraflyn Technologies. We have received your project order (${order.id}) for "${order.courseName}". Our engineering & design lead is reviewing your requirements and will reach out with sprint milestones shortly.`;
     } else if (type === 'mentor_assigned') {
-      text = `Hi ${order.customerName}, great news! Specialized mentor "${mentorInput || 'Subject Specialist'}" from Kraflyn Technologies has been assigned to your order ${order.id}. We are working on your requirements with deadline ${order.deadline}.`;
+      text = `Hi ${order.customerName}, great news! Specialist lead "${mentorInput || 'Project Specialist'}" from Kraflyn Technologies has been assigned to your order ${order.id}. We are actively developing your solution with target delivery: ${order.deadline}.`;
     } else {
-      text = `Hello ${order.customerName}! Your deliverable for order ${order.id} (${order.courseName}) from Kraflyn Technologies is ready. Please check the solution and let us know if you need any clarification or revision.`;
+      text = `Hello ${order.customerName}! Your deliverable for order ${order.id} (${order.courseName}) from Kraflyn Technologies is ready for review and deployment. Please inspect the deliverables and let us know if you need any adjustments.`;
     }
 
     return `https://wa.me/${cleanPhone.startsWith('88') ? cleanPhone : '88' + cleanPhone}?text=${encodeURIComponent(text)}`;
@@ -172,12 +172,12 @@ export const OrderActionDrawer: React.FC<OrderActionDrawerProps> = ({ order, onC
               </select>
             </div>
 
-            {/* Mentor Assignment */}
+            {/* Specialist Assignment */}
             <div className="space-y-1.5">
               <div className="flex items-center justify-between">
                 <label className="text-xs font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1.5">
                   <UserCheck className="w-3.5 h-3.5 text-blue-600" />
-                  <span>{language === 'bn' ? 'মেন্টর নিযুক্ত করুন' : 'Assign / Reassign Lead Mentor'}</span>
+                  <span>{language === 'bn' ? 'স্পেশালিস্ট নিযুক্ত করুন' : 'Assign / Reassign Lead Specialist'}</span>
                 </label>
                 {mentors.length > 0 && (
                   <select
@@ -187,10 +187,10 @@ export const OrderActionDrawer: React.FC<OrderActionDrawerProps> = ({ order, onC
                     className="text-[10px] sm:text-[11px] font-bold text-blue-600 bg-blue-50 border border-blue-200 rounded-lg px-2 py-1"
                     defaultValue=""
                   >
-                    <option value="" disabled>{language === 'bn' ? 'রোস্টার থেকে বাছাই' : 'Select from Roster'}</option>
+                    <option value="" disabled>{language === 'bn' ? 'টিম রোস্টার থেকে বাছাই' : 'Select from Team'}</option>
                     {mentors.map(m => (
-                      <option key={m.id} value={`${m.name} (${m.institution})`}>
-                        {m.name} - {m.institution} ({m.status})
+                      <option key={m.id} value={`${m.name} (${m.roleTitle || m.degree || 'Specialist'})`}>
+                        {m.name} - {m.roleTitle || m.degree} ({m.status})
                       </option>
                     ))}
                   </select>
@@ -200,7 +200,7 @@ export const OrderActionDrawer: React.FC<OrderActionDrawerProps> = ({ order, onC
                 type="text"
                 value={mentorInput}
                 onChange={(e) => setMentorInput(e.target.value)}
-                placeholder="e.g. Engr. Tanvir Ahmed (BUET CSE)"
+                placeholder="e.g. Md. Ahsanur Rahaman (Principal Architect)"
                 className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-base sm:text-sm focus:ring-2 focus:ring-blue-500 font-semibold"
               />
             </div>
@@ -228,15 +228,15 @@ export const OrderActionDrawer: React.FC<OrderActionDrawerProps> = ({ order, onC
                 rows={2}
                 value={adminNoteInput}
                 onChange={(e) => setAdminNoteInput(e.target.value)}
-                placeholder="e.g. Student requested draft delivery by 5 PM. Mentor notified."
+                placeholder="e.g. Client requested initial Figma prototype by Tuesday. Team notified."
                 className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-base sm:text-xs focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
-            {/* Student Requirements Content */}
+            {/* Client Requirements Content */}
             <div className="space-y-1.5 bg-blue-50/60 border border-blue-100 rounded-2xl p-3.5 sm:p-4">
               <span className="text-[11px] font-bold uppercase text-blue-900 block">
-                {language === 'bn' ? 'শিক্ষার্থীর রিকোয়ারমেন্ট' : 'Student Requirements Details'}
+                {language === 'bn' ? 'ক্লায়েন্টের রিকোয়ারমেন্ট' : 'Client Requirements & Specs'}
               </span>
               <p className="text-xs text-slate-700 whitespace-pre-wrap leading-relaxed">
                 {order.requirements}

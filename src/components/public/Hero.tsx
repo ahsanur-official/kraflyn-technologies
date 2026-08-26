@@ -118,27 +118,23 @@ export const Hero: React.FC = () => {
               {t.heroSubtitle}
             </motion.p>
 
-            {/* 5 Distinct Service Wings Pills */}
+            {/* 4 Distinct Service Pillars */}
             <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-1">
-              <span className="px-3 py-1.5 rounded-xl bg-fuchsia-500/15 border border-fuchsia-400/30 text-fuchsia-300 text-xs font-bold flex items-center gap-1.5">
+              <span className="px-3.5 py-1.5 rounded-xl bg-fuchsia-500/15 border border-fuchsia-400/30 text-fuchsia-300 text-xs font-bold flex items-center gap-1.5 shadow-xs">
                 <Palette className="w-3.5 h-3.5 text-fuchsia-400" />
-                <span>{language === 'bn' ? '🎨 ডিজাইন' : '🎨 Design'}</span>
+                <span>{language === 'bn' ? '🎨 ডিজাইন ও UI/UX' : '🎨 Design & UI/UX'}</span>
               </span>
-              <span className="px-3 py-1.5 rounded-xl bg-cyan-500/15 border border-cyan-400/30 text-cyan-300 text-xs font-bold flex items-center gap-1.5">
+              <span className="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 border border-cyan-400/30 text-cyan-300 text-xs font-bold flex items-center gap-1.5 shadow-xs">
                 <Code2 className="w-3.5 h-3.5 text-cyan-400" />
-                <span>{language === 'bn' ? '💻 ডেভেলপমেন্ট' : '💻 Development'}</span>
+                <span>{language === 'bn' ? '💻 ওয়েব ও সফটওয়্যার দেব' : '💻 Web & Software Dev'}</span>
               </span>
-              <span className="px-3 py-1.5 rounded-xl bg-indigo-500/15 border border-indigo-400/30 text-indigo-300 text-xs font-bold flex items-center gap-1.5">
+              <span className="px-3.5 py-1.5 rounded-xl bg-indigo-500/15 border border-indigo-400/30 text-indigo-300 text-xs font-bold flex items-center gap-1.5 shadow-xs">
                 <Globe className="w-3.5 h-3.5 text-indigo-400" />
-                <span>{language === 'bn' ? '🌐 ওয়ার্ডপ্রেস উইং' : '🌐 WordPress Wing'}</span>
+                <span>{language === 'bn' ? '🌐 ওয়ার্ডপ্রেস সলিউশনস' : '🌐 WordPress Solutions'}</span>
               </span>
-              <span className="px-3 py-1.5 rounded-xl bg-orange-500/15 border border-orange-400/30 text-orange-300 text-xs font-bold flex items-center gap-1.5">
+              <span className="px-3.5 py-1.5 rounded-xl bg-orange-500/15 border border-orange-400/30 text-orange-300 text-xs font-bold flex items-center gap-1.5 shadow-xs">
                 <BarChart3 className="w-3.5 h-3.5 text-orange-400" />
-                <span>{language === 'bn' ? '📊 ডাটা অ্যানালাইসিস' : '📊 Data Analysis'}</span>
-              </span>
-              <span className="px-3 py-1.5 rounded-xl bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 text-xs font-bold flex items-center gap-1.5">
-                <GraduationCap className="w-3.5 h-3.5 text-emerald-400" />
-                <span>{language === 'bn' ? '🎓 স্টুডেন্ট সাপোর্ট' : '🎓 Student Support'}</span>
+                <span>{language === 'bn' ? '📊 ডাটা অ্যানালাইসিস ও BI' : '📊 Data Analysis & BI'}</span>
               </span>
             </motion.div>
 
@@ -183,7 +179,7 @@ export const Hero: React.FC = () => {
               >
                 <div className="text-lg xs:text-xl sm:text-2xl xl:text-3xl font-black text-white">
                   <CountUpNumber 
-                    end={5000} 
+                    end={350} 
                     duration={2.2} 
                     suffix="+" 
                     formatCommas={true} 
@@ -200,7 +196,7 @@ export const Hero: React.FC = () => {
               >
                 <div className="text-lg xs:text-xl sm:text-2xl xl:text-3xl font-black text-emerald-400">
                   <CountUpNumber 
-                    end={99.4} 
+                    end={99.8} 
                     decimals={1} 
                     duration={2.2} 
                     suffix="%" 
@@ -217,9 +213,9 @@ export const Hero: React.FC = () => {
               >
                 <div className="text-lg xs:text-xl sm:text-2xl xl:text-3xl font-black text-sky-400">
                   <CountUpNumber 
-                    end={45} 
+                    end={100} 
                     duration={1.8} 
-                    suffix="+" 
+                    suffix="%" 
                     isBengali={language === 'bn'} 
                   />
                 </div>

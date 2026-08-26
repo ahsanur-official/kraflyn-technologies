@@ -1,4 +1,4 @@
-export type Language = 'bn' | 'en';
+export type Language = 'en' | 'bn';
 
 export interface TranslationDictionary {
   // Top Hotline Bar
@@ -11,16 +11,33 @@ export interface TranslationDictionary {
   // Nav
   home: string;
   services: string;
+  portfolio: string;
   howItWorks: string;
   reviews: string;
   trackOrder: string;
   faq: string;
+  team: string;
+  ourTeam: string;
   about: string;
   aboutUs: string;
   contact: string;
   cart: string;
   empty: string;
   orderNow: string;
+
+  // Team Section
+  teamBadge: string;
+  teamHeading: string;
+  teamSubtitle: string;
+  meetTheExperts: string;
+  allSpecialists: string;
+  filterSpecialty: string;
+  viewProfile: string;
+  bookSpecialist: string;
+  specialistExperience: string;
+  specialistProjects: string;
+  specialistRating: string;
+  specialistAvailability: string;
 
   // Hero
   heroBadge: string;
@@ -39,7 +56,7 @@ export interface TranslationDictionary {
   heroStatTurnaround: string;
   heroStatTurnaroundLabel: string;
 
-  // Pillars from Image
+  // Pillars
   pillarsBadge: string;
   pillarsHeading: string;
   pillarsSubtitle: string;
@@ -233,103 +250,368 @@ export interface TranslationDictionary {
 }
 
 export const DICTIONARY: Record<Language, TranslationDictionary> = {
+  en: {
+    // Top Hotline Bar
+    hotlineText: 'Kraflyn Technologies • Digital Engineering & Data Lab: +880 1712-345678 (WhatsApp Support 24/7)',
+    trackOrderStatus: 'Live Project Tracker',
+    directWhatsApp: 'Direct WhatsApp',
+    adminPortalBtn: 'Admin Dashboard',
+    backToStudentWeb: '← Return to Public Site',
+
+    // Nav
+    home: 'Home',
+    services: 'Services',
+    portfolio: 'Portfolio & Case Studies',
+    howItWorks: 'Workflow',
+    reviews: 'Client Testimonials',
+    trackOrder: 'Track Project',
+    faq: 'FAQ',
+    team: 'Our Team',
+    ourTeam: 'Specialist Team',
+    about: 'About Us',
+    aboutUs: 'About Us',
+    contact: 'Contact Us',
+    cart: 'Project Cart',
+    empty: 'Empty',
+    orderNow: 'Start Project',
+
+    // Team Section
+    teamBadge: 'Meet Our Experts',
+    teamHeading: 'The Minds Behind Kraflyn Technologies',
+    teamSubtitle: 'A multidisciplinary team of senior software architects, UI/UX designers, WordPress engineers, and data scientists dedicated to building exceptional digital products.',
+    meetTheExperts: 'Explore All Specialists',
+    allSpecialists: 'All Disciplines',
+    filterSpecialty: 'Filter by Department / Domain:',
+    viewProfile: 'View Full Profile',
+    bookSpecialist: 'Consult / Hire Specialist',
+    specialistExperience: 'Experience',
+    specialistProjects: 'Completed Projects',
+    specialistRating: 'Rating',
+    specialistAvailability: 'Availability',
+
+    // Hero
+    heroBadge: '✨ CREATIVE DESIGN • FULL-STACK DEV • WORDPRESS • DATA ANALYSIS',
+    heroTitle1: 'Architecting High-Impact',
+    heroTitleHighlight: 'Web & Data Solutions',
+    heroTitle2: 'For Modern Businesses',
+    heroSubtitle: 'Kraflyn Technologies delivers end-to-end digital craftsmanship: modern UI/UX design, custom full-stack web engineering, high-performance WordPress systems, and deep business data analytics for startups, enterprises, and innovators.',
+    heroBrowseBtn: 'Explore Services & Pricing',
+    heroDirectOrderBtn: 'Launch Your Project 🚀',
+    heroStatStudents: '350+',
+    heroStatStudentsLabel: 'Delivered Projects',
+    heroStatSatisfaction: '99.8%',
+    heroStatSatisfactionLabel: 'Client Satisfaction',
+    heroStatUniversities: '100%',
+    heroStatUniversitiesLabel: 'On-Time Delivery',
+    heroStatTurnaround: '24-48 hrs',
+    heroStatTurnaroundLabel: 'Rapid Sprint Start',
+
+    // Pillars
+    pillarsBadge: 'Core Principles',
+    pillarsHeading: 'Engineering Excellence & Precision',
+    pillarsSubtitle: 'The foundational pillars powering every digital product, web system, and analytical dashboard we construct.',
+    missionTitle: 'Our Mission',
+    missionDesc: 'To empower organizations and creators with scalable web applications, compelling UI/UX design, robust WordPress architectures, and actionable data intelligence.',
+    visionTitle: 'Our Vision',
+    visionDesc: 'To be the most reliable, modern tech and design engineering partner globally, accelerating digital transformation through clean code and data-driven insights.',
+    valuesTitle: 'Our Core Values',
+    whyNexoraTitle: 'Why Partner with Kraflyn Technologies?',
+    whyNexoraDesc: 'We merge technical excellence with business strategy. Clean architecture, rigorous testing, pixel precision, and proactive communication guaranteed on every sprint.',
+
+    // Problem Triage
+    triageBadge: 'Solution Matcher',
+    triageHeading: 'What Digital Solution Do You Need?',
+    triageSubtitle: 'Select your immediate technical requirement below to explore deliverables, tech stacks, and direct timelines.',
+    triageAll: 'All Domains',
+    triageClickToOrder: 'Get Started with Solution →',
+
+    // Services
+    servicesBadge: 'Core Capabilities',
+    servicesHeading: 'OUR SPECIALIZED SERVICE SUITE',
+    servicesSubtitle: 'Explore our 4 core engineering wings: Design & UI/UX, Full-Stack Web Development, WordPress Solutions, and Data Analysis & BI.',
+    startingPrice: 'Starting from',
+    turnaround: 'Timeline:',
+    addToCart: 'Add to Scope',
+    viewDetails: 'View Details',
+    directOrder: 'Quick Order',
+    allCategories: 'All Domains',
+    filterByDept: 'Filter by Core Domain:',
+
+    // Categories
+    catDesign: '1. Design & UI/UX',
+    catDev: '2. Web & Software Dev',
+    catWordPress: '3. WordPress Solutions',
+    catDataAnalysis: '4. Data Analysis & BI',
+    catStudent: 'All Capabilities',
+
+    // How It Works
+    howItWorksBadge: 'Project Lifecycle',
+    howItWorksHeading: 'From Concept to Production in 4 Steps',
+    howItWorksSubtitle: 'A structured, agile development process designed for rapid turnaround, quality assurance, and transparent updates.',
+    step1Title: '1. Scope & Requirement Analysis',
+    step1Desc: 'Choose your desired service, submit project specifications, Figma links, or dataset requirements.',
+    step2Title: '2. Architecture & Technical Plan',
+    step2Desc: 'Our lead engineer aligns with you on WhatsApp / Google Meet to confirm timeline, milestones, and deliverables.',
+    step3Title: '3. Agile Execution & Milestones',
+    step3Desc: 'We build with clean code, modern stacks, and live staging previews with real-time feedback loops.',
+    step4Title: '4. Testing, Delivery & Launch',
+    step4Desc: 'Final QA, performance audits, full source code / dashboard handoff, and complimentary post-launch support.',
+
+    // Reviews
+    reviewsBadge: 'Client Success',
+    reviewsHeading: 'What Our Clients & Partners Say',
+    reviewsSubtitle: 'Real feedback and business outcomes achieved with our design, web development, and data analysis solutions.',
+    aggregateRating: '4.98 / 5.0',
+    basedOnReviews: 'Based on 250+ verified project deliveries',
+    verifiedStudent: 'Verified Client / Business',
+    writeReviewBtn: 'Submit Feedback ✍️',
+    filterAllReviews: 'All Reviews',
+    submitReview: 'Submit Review',
+
+    // FAQ
+    faqBadge: 'Got Questions?',
+    faqHeading: 'Frequently Asked Questions',
+    faqSubtitle: 'Everything you need to know about our tech stacks, pricing models, revisions, source code ownership, and timelines.',
+
+    // Cart
+    cartTitle: 'Project Scope Cart',
+    cartEmptyTitle: 'Your Scope Cart is Empty',
+    cartEmptySubtitle: 'Browse our Design, Web Development, WordPress, and Data Analysis services to build your project bundle.',
+    supportTier: 'Delivery Sprint Tier:',
+    tierStandard: 'Standard Sprint (Regular Pace)',
+    tierExpress: 'Express Fast-Track (+৳1,500)',
+    tierVip: 'Dedicated Priority Lead (+৳3,000)',
+    urgencyFee: 'Sprint Priority Fee:',
+    total: 'Estimated Total:',
+    proceedToOrder: 'Proceed to Project Initiation →',
+    clearCart: 'Clear Scope',
+    removeItem: 'Remove',
+
+    // Order Modal
+    orderModalHeading: 'Project Initiation Form',
+    orderModalTitle: 'Start Your Project',
+    orderModalSubtitle: 'Provide your technical requirements below. Our lead specialist will reach out within 15 minutes.',
+    trackOrderHeading: 'Live Project Tracker',
+    trackOrderSubtitle: 'Track your project status in real-time with Project ID or Phone Number',
+    orderIdOrPhonePlaceholder: 'Enter Project ID (e.g. KT-ORD-...) or Phone Number',
+    stepContact: '1. Client Details',
+    stepAcademic: '2. Project Scope & Stack',
+    stepRequirements: '3. Technical Specs & Files',
+    fullName: 'Client / Representative Name *',
+    fullNamePlaceholder: 'e.g. John Doe / Tech Lead',
+    phoneNumber: 'Phone Number *',
+    phonePlaceholder: '017xxxxxxxx',
+    whatsappNumber: 'WhatsApp Number *',
+    whatsappPlaceholder: '017xxxxxxxx (for instant milestone updates)',
+    universityName: 'Company / Organization / Brand *',
+    selectUniversity: 'Enter company or brand name',
+    departmentName: 'Industry / Business Domain *',
+    selectDepartment: 'Select your industry or field',
+    semesterOrBatch: 'Project Type / Platform',
+    semesterPlaceholder: 'e.g. SaaS MVP, E-Commerce, Dashboard, Redesign',
+    courseTitle: 'Project Title / Goal *',
+    coursePlaceholder: 'e.g. Next.js SaaS Web App / Power BI Sales Dashboard',
+    courseCode: 'Tech Stack / Tools Preference (Optional)',
+    courseCodePlaceholder: 'e.g. React, Tailwind, Python, WordPress, PostgreSQL',
+    deadlineDate: 'Target Delivery Deadline *',
+    problemDetails: 'Detailed Project Scope & Feature Requirements *',
+    problemDetailsPlaceholder: 'Describe the core features, design requirements, dataset columns, page count, or technical requirements...',
+    preferredContactMethod: 'Preferred Communication Channel:',
+    uploadFiles: 'Attach Brief, Wireframes, Datasets, or PRD (Optional)',
+    uploadFilesHint: 'PDF, DOCX, ZIP, CSV, JSON, PNG, Figma Link (Max 50 MB)',
+    confirmOrderBtn: 'Initiate Project ✨',
+    cancelBtn: 'Cancel',
+
+    // Order Success
+    orderSuccessTitle: '🎉 Project Request Received!',
+    orderSuccessSubtitle: 'Our technical lead will review your specifications and connect with you on WhatsApp within 15 minutes.',
+    orderIdLabel: 'Your Unique Project Tracking ID:',
+    whatsappCoordinatorBtn: 'Chat Directly with Technical Lead',
+    whatsappCoordinatorHint: 'Click to start instant WhatsApp discussion regarding project architecture and milestones.',
+    trackOrderBtn: 'Track Project Progress',
+    backHomeBtn: 'Return to Home',
+
+    // Order Tracker
+    trackerTitle: 'Live Project Status Tracker',
+    trackerSubtitle: 'Check the real-time engineering and design progress of your project.',
+    trackerInputPlaceholder: 'Enter Project ID (e.g. KT-ORD-...) or Phone Number',
+    searchBtn: 'Search',
+    statusOrderReceived: '1. Brief Received',
+    statusMentorAssigned: '2. Lead Assigned',
+    statusStudentContacted: '3. Architecture Finalized',
+    statusInProgress: '4. Development & Design',
+    statusDelivered: '5. QA & Delivered',
+    noOrderFound: 'No Project Found',
+    noOrderFoundHint: 'Please verify your Project ID or phone number and try again.',
+    orderDetails: 'Project Scope & Details',
+    assignedMentor: 'Assigned Lead Specialist:',
+    notYetAssigned: 'Assigning domain specialist',
+    orderAmount: 'Estimated Value:',
+    studentInfo: 'Client & Company Information',
+    latestUpdates: 'Milestone Progress',
+
+    // Write Review Modal
+    writeReviewTitle: 'Share Your Experience',
+    writeReviewSubtitle: 'How was the quality, communication, and turnaround of our team on your project?',
+    yourRating: 'Your Overall Rating *',
+    gradeOutcomeLabel: 'Business Outcome / Result Achieved (Optional)',
+    gradeOutcomePlaceholder: 'e.g. 10x Faster Load Speed / Seamless Product Launch',
+    reviewCommentLabel: 'Detailed Feedback *',
+    reviewCommentPlaceholder: 'Share your thoughts on the code quality, design precision, and responsiveness of the team...',
+    submitReviewBtn: 'Submit Testimonial ✨',
+
+    // Footer
+    footerAbout: 'Kraflyn Technologies is a full-service digital engineering and design agency specializing in modern Web Development, UI/UX Design, custom WordPress architectures, and advanced Data Analytics. Create. Connect. Grow.',
+    quickLinks: 'Quick Links',
+    popularServices: 'Featured Capabilities',
+    directContact: 'Direct Contact',
+    confidentialMentorship: '100% NDA & Code Ownership Guaranteed',
+    copyright: 'All Rights Reserved © 2026 Kraflyn Technologies. Create. Connect. Grow.',
+
+    // Admin Portal
+    adminHeaderTitle: 'Kraflyn Technologies Control Panel',
+    adminHeaderSubtitle: 'Manage client orders, engineering assignments, portfolio showcases, services, and live inquiries.',
+    adminStatTotalOrders: 'Total Client Projects',
+    adminStatTodayOrders: 'New Orders Today',
+    adminStatInProgress: 'Active Sprints',
+    adminStatDelivered: 'Delivered Projects',
+    adminStatTotalRevenue: 'Total Pipeline Value',
+    adminStatAvgOrderValue: 'Average Project Size',
+    tabAllOrders: 'Client Projects',
+    tabReviewsManagement: 'Reviews & Feedback',
+    searchOrdersPlaceholder: 'Search by Project ID, Client, Company, or Tech Stack...',
+    filterStatusAll: 'All Statuses',
+    orderTableId: 'Project ID',
+    orderTableStudent: 'Client & Contact',
+    orderTableUniversity: 'Company & Domain',
+    orderTableCourse: 'Scope & Tech Stack',
+    orderTableDeadline: 'Deadline',
+    orderTableMentor: 'Assigned Lead',
+    orderTableAmount: 'Value',
+    orderTableStatus: 'Status',
+    orderTableAction: 'Actions',
+    manageOrderBtn: 'Manage ⚙️',
+    editOrderTitle: 'Update Project & Assign Specialist',
+    saveChangesBtn: 'Save Changes',
+    assignMentorLabel: 'Assigned Lead Specialist:',
+    updateStatusLabel: 'Update Sprint Status:',
+    adminNoteLabel: 'Internal Technical Notes:',
+    deleteOrderConfirm: 'Are you sure you want to delete this project order?'
+  },
   bn: {
     // Top Hotline Bar
-    hotlineText: 'ক্র্যাফলিন টেকনোলজিস সাপোর্ট হটলাইন: +৮৮০ ১৭১২-৩৪৫৬৭৮ (সকাল ৮:০০ - রাত ১১:৩০ WhatsApp এক্টিভ)',
-    trackOrderStatus: 'অর্ডার স্ট্যাটাস ট্র্যাক করুন',
+    hotlineText: 'ক্র্যাফলিন টেকনোলজিস • ডিজিটাল ইঞ্জিনিয়ারিং ও ডাটা ল্যাব: +৮৮০ ১৭১২-৩৪৫৬৭৮ (২৪/৭ WhatsApp সাপোর্ট)',
+    trackOrderStatus: 'লাইভ প্রজেক্ট ট্র্যাকার',
     directWhatsApp: 'সরাসরি WhatsApp হেল্প',
-    adminPortalBtn: 'অ্যাডমিন পোর্টাল',
+    adminPortalBtn: 'অ্যাডমিন ড্যাশবোর্ড',
     backToStudentWeb: '← মূল ওয়েবসাইটে ফিরে যান',
 
     // Nav
     home: 'হোম',
     services: 'সকল সার্ভিসসমূহ',
-    howItWorks: 'কীভাবে কাজ করে',
-    reviews: 'শিক্ষার্থীদের রিভিউ',
-    trackOrder: 'অর্ডার ট্র্যাকিং',
+    portfolio: 'পোর্টফোলিও ও কেস স্টাডি',
+    howItWorks: 'কাজের ধাপ',
+    reviews: 'ক্লায়েন্ট রিভিউ',
+    trackOrder: 'প্রজেক্ট ট্র্যাকিং',
     faq: 'প্রশ্নোত্তর (FAQ)',
+    team: 'আমাদের টিম',
+    ourTeam: 'টিম মেম্বার ও স্পেশালিস্ট',
     about: 'আমাদের সম্পর্কে',
     aboutUs: 'আমাদের সম্পর্কে',
     contact: 'যোগাযোগ',
-    cart: 'কার্ট',
+    cart: 'প্রজেক্ট কার্ট',
     empty: 'খালি',
-    orderNow: 'অর্ডার করুন',
+    orderNow: 'প্রজেক্ট শুরু করুন',
+
+    // Team Section
+    teamBadge: 'আমাদের অভিজ্ঞ টিম',
+    teamHeading: 'ক্র্যাফলিন টেকনোলজিসের বিশেষজ্ঞ টিম',
+    teamSubtitle: 'অভিজ্ঞ ফুল-স্ট্যাক ইঞ্জিনিয়ার, UI/UX ডিজাইনার, ওয়ার্ডপ্রেস বিশেষজ্ঞ এবং ডাটা সায়েন্টিস্টদের সমন্বয়ে গঠিত শক্তিশালী টিম।',
+    meetTheExperts: 'সকল স্পেশালিস্ট দেখুন',
+    allSpecialists: 'সকল ডিপার্টমেন্ট',
+    filterSpecialty: 'ডোমেন অনুযায়ী ফিল্টার করুন:',
+    viewProfile: 'সম্পূর্ণ প্রোফাইল দেখুন',
+    bookSpecialist: 'পরামর্শ / স্পেশালিস্ট বুক করুন',
+    specialistExperience: 'অভিজ্ঞতা',
+    specialistProjects: 'সম্পন্ন প্রজেক্ট',
+    specialistRating: 'রেটিং',
+    specialistAvailability: 'উপলব্ধতা',
 
     // Hero
-    heroBadge: '✨ DESIGN • DEV • WORDPRESS • DATA ANALYSIS • STUDENT SUPPORT',
-    heroTitle1: 'Create. Connect. Grow.',
-    heroTitleHighlight: 'ক্র্যাফলিন টেকনোলজিস',
-    heroTitle2: 'ডিজিটাল সল্যুশন ও টেক প্ল্যাটফর্ম',
-    heroSubtitle: 'ক্র্যাফলিন টেকনোলজিস (Kraflyn Technologies) হল একটি ওয়ান-স্টপ ডিজিটাল প্ল্যাটফর্ম যা শিক্ষার্থী, ক্লাব, গবেষক এবং তরুণ পেশাদারদের জন্য ক্রিয়েটিভ ডিজাইন, আধুনিক ওয়েব ও সফটওয়্যার ডেভেলপমেন্ট, ওয়ার্ডপ্রেস সল্যুশন, ডাটা অ্যানালাইসিস এবং সম্পূর্ণ একাডেমিক ও টেকনিক্যাল সাপোর্ট প্রদান করে।',
-    heroBrowseBtn: 'সকল সার্ভিস এক্সপ্লোর করুন',
-    heroDirectOrderBtn: 'সরাসরি অর্ডার করুন 🚀',
-    heroStatStudents: '৫,০০০+',
-    heroStatStudentsLabel: 'সন্তুষ্ট শিক্ষার্থী ও প্রজেক্ট',
-    heroStatSatisfaction: '৯৯.৪%',
-    heroStatSatisfactionLabel: 'সফল ক্লায়েন্ট সন্তুষ্টি',
-    heroStatUniversities: '৪৫+',
-    heroStatUniversitiesLabel: 'ক্যাম্পাস ও স্টুডেন্ট ক্লাব',
-    heroStatTurnaround: '২-২৪ ঘণ্টা',
-    heroStatTurnaroundLabel: 'সুপার ফাস্ট ডেলিভারি',
+    heroBadge: '✨ ক্রিয়েটিভ ডিজাইন • ফুল-স্ট্যাক ডেভেলপমেন্ট • ওয়ার্ডপ্রেস • ডাটা অ্যানালাইসিস',
+    heroTitle1: 'আধুনিক ব্যবসা ও স্টার্টআপের জন্য',
+    heroTitleHighlight: 'ওয়েব ও ডাটা সল্যুশন',
+    heroTitle2: 'প্রফেশনাল ডিজিটাল প্ল্যাটফর্ম',
+    heroSubtitle: 'ক্র্যাফলিন টেকনোলজিস (Kraflyn Technologies) প্রদান করে বিশ্বমানের ক্রিয়েটিভ UI/UX ডিজাইন, আধুনিক ফুল-স্ট্যাক ওয়েব অ্যাপ্লিকেশন, হাই-পারফরম্যান্স ওয়ার্ডপ্রেস সল্যুশন এবং গভীর বিজনেস ডাটা অ্যানালাইসিস।',
+    heroBrowseBtn: 'সার্ভিস ও প্রাইসিং দেখুন',
+    heroDirectOrderBtn: 'প্রজেক্ট শুরু করুন 🚀',
+    heroStatStudents: '৩৫০+',
+    heroStatStudentsLabel: 'সফলভাবে সম্পন্ন প্রজেক্ট',
+    heroStatSatisfaction: '৯৯.৮%',
+    heroStatSatisfactionLabel: 'ক্লায়েন্ট সন্তুষ্টির হার',
+    heroStatUniversities: '১০০%',
+    heroStatUniversitiesLabel: 'অন-টাইম ডেলিভারি',
+    heroStatTurnaround: '২৪-৪৮ ঘণ্টা',
+    heroStatTurnaroundLabel: 'দ্রুত স্প্রিন্ট শুরু',
 
-    // Pillars from Image
+    // Pillars
     pillarsBadge: 'আমাদের লক্ষ্য ও নীতিমালা',
-    pillarsHeading: 'আমাদের মিশন, ভিশন ও মূল্যবোধ',
-    pillarsSubtitle: 'যে আদর্শ ও প্রতিশ্রুতির উপর ভিত্তি করে ক্র্যাফলিন টেকনোলজিস শিক্ষা ও পেশাগত যাত্রাকে সফল করে তুলছে।',
+    pillarsHeading: 'ইঞ্জিনিয়ারিং এক্সিলেন্স ও প্রিসিশন',
+    pillarsSubtitle: 'যে মানসম্মত প্রযুক্তির ওপর ভিত্তি করে ক্র্যাফলিন টেকনোলজিস প্রতিটি সফটওয়্যার ও ডাটা ড্যাশবোর্ড নির্মাণ করে।',
     missionTitle: 'আমাদের মিশন',
-    missionDesc: 'ডিজাইন, ডেভেলপমেন্ট, ওয়ার্ডপ্রেস, ডাটা অ্যানালাইসিস ও একাডেমিক সাপোর্টে সুলভ, মানসম্মত এবং নির্ভরযোগ্য ডিজিটাল সমাধান দিয়ে শিক্ষার্থীদের ক্ষমতায়ন করা।',
+    missionDesc: 'স্কেলেবল ওয়েব অ্যাপ্লিকেশন, চমৎকার UI/UX ডিজাইন, নির্ভরযোগ্য ওয়ার্ডপ্রেস আর্কিটেকচার এবং বিজনেস ডাটা অ্যানালাইসিসের মাধ্যমে ক্লায়েন্টদের প্রবৃদ্ধি ত্বরান্বিত করা।',
     visionTitle: 'আমাদের ভিশন',
-    visionDesc: 'বাংলাদেশ এবং বহির্বিশ্বের শিক্ষার্থী ও প্রফেশনাল কমিউনিটির কাছে সবচেয়ে বিশ্বস্ত ডিজিটাল সাপোর্ট প্ল্যাটফর্ম হিসেবে প্রতিষ্ঠিত হওয়া।',
+    visionDesc: 'বাংলাদেশ ও আন্তর্জাতিক পরিমণ্ডলে সবচেয়ে নির্ভরযোগ্য ও আধুনিক ডিজিটাল ইঞ্জিনিয়ারিং পার্টনার হিসেবে সুপরিচিত হওয়া।',
     valuesTitle: 'আমাদের মূল্যবোধ',
-    whyNexoraTitle: 'কেন ক্র্যাফলিন টেকনোলজিস (Kraflyn Technologies)?',
-    whyNexoraDesc: 'আমরা শুধু কাজ সম্পন্ন করি না, আমরা শিক্ষার্থীদের তাদের একাডেমিক ও প্রফেশনাল যাত্রায় শিখতে, তৈরি করতে এবং এগিয়ে যেতে সক্ষম করে তুলি।',
+    whyNexoraTitle: 'কেন ক্র্যাফলিন টেকনোলজিসের সাথে কাজ করবেন?',
+    whyNexoraDesc: 'আমরা শুধু কোড লিখি না, আপনার বিজনেসের জন্য স্কেলেবল সমাধান এবং নিখুঁত ইউজার এক্সপেরিয়েন্স নিশ্চিত করি।',
 
     // Problem Triage
-    triageBadge: 'সহজ সমস্যা সমাধান ফাইন্ডার',
-    triageHeading: 'আপনার প্রয়োজন কী? ২ ক্লিকে সার্ভিস নিন',
-    triageSubtitle: 'ডিজাইন, ডেভেলপমেন্ট, ওয়ার্ডপ্রেস, ডাটা অ্যানালাইসিস কিংবা একাডেমিক জটিলতা—নিচে আপনার প্রয়োজন সিলেক্ট করুন এবং সরাসরি সমাধান নিন।',
-    triageAll: 'সকল ক্যাটাগরি',
-    triageClickToOrder: 'সরাসরি অর্ডার করতে ক্লিক করুন →',
+    triageBadge: 'সহজ সল্যুশন ফাইন্ডার',
+    triageHeading: 'আপনার কি ধরনের ডিজিটাল সমাধান প্রয়োজন?',
+    triageSubtitle: 'ডিজাইন, ফুল-স্ট্যাক ডেভেলপমেন্ট, ওয়ার্ডপ্রেস কিংবা ডাটা অ্যানালাইসিস—নিচে সিলেক্ট করে সরাসরি সমাধান নিন।',
+    triageAll: 'সকল ডোমেন',
+    triageClickToOrder: 'সরাসরি প্রজেক্ট শুরু করতে ক্লিক করুন →',
 
     // Services
     servicesBadge: 'আমাদের কোর সার্ভিসসমূহ',
-    servicesHeading: 'OUR CORE SERVICES (A to Z)',
-    servicesSubtitle: 'ডিজাইন, সফটওয়্যার ডেভেলপমেন্ট, ওয়ার্ডপ্রেস, ডাটা অ্যানালাইসিস এবং স্টুডেন্ট সাপোর্ট—সকল ৫টি উইংয়ের ৪৫টি স্পেশালাইজড সার্ভিস এক প্ল্যাটফর্মে।',
+    servicesHeading: 'OUR SPECIALIZED SERVICE SUITE',
+    servicesSubtitle: 'ডিজাইন ও UI/UX, সফটওয়্যার ডেভেলপমেন্ট, ওয়ার্ডপ্রেস সল্যুশন এবং ডাটা অ্যানালাইসিস—সবকিছু এক প্ল্যাটফর্মে।',
     startingPrice: 'শুরু মাত্র',
     turnaround: 'ডেলিভারি টাইম:',
     addToCart: 'কার্টে যোগ করুন',
     viewDetails: 'বিস্তারিত দেখুন',
     directOrder: 'সরাসরি অর্ডার',
-    allCategories: 'সকল সার্ভিস (৪৫)',
-    filterByDept: 'ক্যাটাগরি অনুযায়ী ফিল্টার:',
+    allCategories: 'সকল সার্ভিস',
+    filterByDept: 'ক্যাটাগরি ফিল্টার:',
 
     // Categories
-    catDesign: '১. ডিজাইন সার্ভিস (১৫)',
-    catDev: '২. ডেভেলপমেন্ট সার্ভিস (১০)',
-    catWordPress: '৩. ওয়ার্ডপ্রেস উইং (৫)',
-    catDataAnalysis: '৪. ডাটা অ্যানালাইসিস (৫)',
-    catStudent: '৫. স্টুডেন্ট সাপোর্ট (১০)',
+    catDesign: '১. ডিজাইন ও UI/UX',
+    catDev: '২. ওয়েব ও সফটওয়্যার ডেভ',
+    catWordPress: '৩. ওয়ার্ডপ্রেস সল্যুশন',
+    catDataAnalysis: '৪. ডাটা অ্যানালাইসিস ও BI',
+    catStudent: 'সকল ডোমেন',
 
     // How It Works
-    howItWorksBadge: 'অর্ডার প্রক্রিয়া',
-    howItWorksHeading: 'মাত্র ৪টি সহজ ধাপে সার্ভিস গ্রহণ করুন',
-    howItWorksSubtitle: 'কোনো দীর্ঘ রেজিস্ট্রেশন ছাড়াই অতি দ্রুত আপনার প্রজেক্ট বা অ্যাসাইনমেন্টের সমাধান পান।',
-    step1Title: '১. সার্ভিস সিলেক্ট করুন',
-    step1Desc: 'ডিজাইন, ডেভেলপমেন্ট বা স্টুডেন্ট সাপোর্ট থেকে প্রয়োজনীয় সার্ভিস বেছে নিন বা কার্টে যোগ করুন।',
-    step2Title: '২. রিকোয়ারমেন্ট দিন',
-    step2Desc: 'আপনার নাম, WhatsApp নম্বর, ডেডলাইন ও কাজের বিস্তারিত দিয়ে অর্ডার ফর্মটি সাবমিট করুন।',
-    step3Title: '৩. কো-অর্ডিনেটর কানেকশন',
-    step3Desc: 'অর্ডার দেওয়ার ৫-১৫ মিনিটের মধ্যে আমাদের কো-অর্ডিনেটর WhatsApp-এ আপনার সাথে মেন্টর ও প্রজেক্ট ফাইনাল করবেন।',
-    step4Title: '৪. ডেলিভারি ও সাপোর্ট',
-    step4Desc: 'নির্ধারিত ডেডলাইনের মধ্যে মানসম্মত ডেলিভারি, সোর্স ফাইল ও প্রয়োজনীয় রিভিশন সাপোর্ট নিশ্চিত করা হবে।',
+    howItWorksBadge: 'কাজের ধাপ',
+    howItWorksHeading: 'মাত্র ৪টি ধাপে প্রজেক্ট বাস্তবায়ন',
+    howItWorksSubtitle: 'কোনো দীর্ঘ জটিলতা ছাড়াই দ্রুত সময়ে প্রজেক্ট ডেলিভারি ও মান নিয়ন্ত্রণ নিশ্চিত করার আধুনিক অ্যাজাইল পদ্ধতি।',
+    step1Title: '১. রিকোয়ারমেন্ট সাবমিট',
+    step1Desc: 'প্রয়োজনীয় সার্ভিস সিলেক্ট করে প্রজেক্টের বর্ণনা, ফিগমা লিংক বা ডাটা ফাইল দিয়ে অর্ডার দিন।',
+    step2Title: '২. টেকনিক্যাল প্ল্যান ও আলোচনা',
+    step2Desc: '১৫ মিনিটের মধ্যে আমাদের টেকনিক্যাল লিড WhatsApp-এ ডেডলাইন ও আর্কিটেকচার চূড়ান্ত করবেন।',
+    step3Title: '৩. ডেভেলপমেন্ট ও ডিজাইন স্প্রিন্ট',
+    step3Desc: 'ক্লিন কোড ও আধুনিক ফ্রেমওয়ার্ক দিয়ে কাজ এগিয়ে নেওয়া এবং লাইভ স্ট্যাজিং প্রিভিউ প্রদর্শন।',
+    step4Title: '৪. টেস্টিং, ডেলিভারি ও সাপোর্ট',
+    step4Desc: 'সম্পূর্ণ সোর্স কোড/ড্যাশবোর্ড হ্যান্ডওভার এবং প্রজেক্ট পরবর্তী ফ্রি সাপোর্ট ও রিভিশন।',
 
     // Reviews
-    reviewsBadge: 'গ্রাহক ও শিক্ষার্থী মন্তব্য',
-    reviewsHeading: 'শিক্ষার্থী ও ক্লায়েন্টরা কী বলছেন?',
-    reviewsSubtitle: 'দেশের শীর্ষ বিশ্ববিদ্যালয় ও ক্লাবের শিক্ষার্থী ও তরুণ পেশাদারদের বাস্তব অভিজ্ঞতা।',
-    aggregateRating: '৪.৯৫ / ৫.০',
-    basedOnReviews: '১,২০০+ ভেরিফাইড প্রজেক্ট ও রিভিউর ওপর ভিত্তি করে',
-    verifiedStudent: 'ভেরিফাইড শিক্ষার্থী / ক্লায়েন্ট',
+    reviewsBadge: 'ক্লায়েন্ট মন্তব্য',
+    reviewsHeading: 'আমাদের ক্লায়েন্ট ও পার্টনারদের অভিজ্ঞতা',
+    reviewsSubtitle: 'দেশ-বিদেশের বিভিন্ন স্টার্টআপ, কোম্পানি ও প্রফেশনালদের বাস্তব প্রজেক্টের ফিডব্যাক।',
+    aggregateRating: '৪.৯৮ / ৫.০',
+    basedOnReviews: '২৫০+ ভেরিফাইড প্রজেক্ট ডেলিভারির ওপর ভিত্তি করে',
+    verifiedStudent: 'ভেরিফাইড ক্লায়েন্ট / বিজনেস',
     writeReviewBtn: 'রিভিউ লিখুন ✍️',
     filterAllReviews: 'সকল রিভিউ',
     submitReview: 'রিভিউ সাবমিট করুন',
@@ -337,363 +619,132 @@ export const DICTIONARY: Record<Language, TranslationDictionary> = {
     // FAQ
     faqBadge: 'সাধারণ জিজ্ঞাসা',
     faqHeading: 'সচরাচর জিজ্ঞাসিত প্রশ্নসমূহ',
-    faqSubtitle: 'ক্র্যাফলিন টেকনোলজিসের সার্ভিস, ডেলিভারি টাইম, নিরাপত্তা ও পেমেন্ট নিয়ে সাধারণ প্রশ্নের উত্তর।',
+    faqSubtitle: 'ক্র্যাফলিন টেকনোলজিসের টেক স্ট্যাক, প্রাইসিং, সোর্স কোড ওরিজিনালিটি এবং সাপোর্ট নিয়ে যাবতীয় উত্তর।',
 
     // Cart
-    cartTitle: 'আপনার সার্ভিস কার্ট',
+    cartTitle: 'আপনার প্রজেক্ট স্কোপ কার্ট',
     cartEmptyTitle: 'আপনার কার্ট খালি রয়েছে',
-    cartEmptySubtitle: 'প্রয়োজনীয় ডিজাইন, ডেভেলপমেন্ট বা একাডেমিক সার্ভিস বেছে নিয়ে কার্টে যোগ করুন।',
-    supportTier: 'সার্ভিস প্যাকেজ টিয়ার:',
-    tierStandard: 'স্ট্যান্ডার্ড সাপোর্ট (সাধারণ ডেলিভারি)',
-    tierExpress: 'এক্সপ্রেস ২৪ ঘণ্টা সুপার ফাস্ট (+৳১৫০)',
-    tierVip: 'ভিআইপি ১-অন-১ লাইভ গাইডেন্স (+৳৩০০)',
-    urgencyFee: 'জরুরি ডেলিভারি ফি:',
-    total: 'সর্বমোট প্রদেয়:',
-    proceedToOrder: 'অর্ডার নিশ্চিত করতে এগিয়ে যান →',
+    cartEmptySubtitle: 'ডিজাইন, ডেভেলপমেন্ট, ওয়ার্ডপ্রেস বা ডাটা অ্যানালাইসিস সার্ভিস বেছে নিয়ে কার্টে যোগ করুন।',
+    supportTier: 'স্প্রিন্ট প্যাকেজ টিয়ার:',
+    tierStandard: 'স্ট্যান্ডার্ড স্প্রিন্ট (স্বাভাবিক সময়)',
+    tierExpress: 'এক্সপ্রেস ফাস্ট-ট্র্যাক (+৳১,৫০০)',
+    tierVip: 'ডেডিকেটেড প্রায়োরিটি লিড (+৳৩,০০০)',
+    urgencyFee: 'জরুরি স্প্রিন্ট ফি:',
+    total: 'আনুমানিক সর্বমোট:',
+    proceedToOrder: 'প্রজেক্ট চূড়ান্ত করতে এগিয়ে যান →',
     clearCart: 'কার্ট খালি করুন',
     removeItem: 'মুছে ফেলুন',
 
     // Order Modal
-    orderModalHeading: 'সার্ভিস অর্ডার ফর্ম',
-    orderModalTitle: 'সার্ভিস অর্ডার ফর্ম',
-    orderModalSubtitle: 'নিচের তথ্যগুলো পূরণ করুন। অর্ডার সাবমিট হওয়ামাত্রই WhatsApp-এ যোগাযোগ করা হবে।',
-    trackOrderHeading: 'অর্ডার স্ট্যাটাস ট্র্যাকার',
-    trackOrderSubtitle: 'আপনার অর্ডার আইডি বা ফোন নম্বর দিয়ে লাইভ অগ্রগতি দেখুন',
-    orderIdOrPhonePlaceholder: 'অর্ডার আইডি (যেমন: EQ-ORD-...) অথবা মোবাইল নম্বর লিখুন',
-    stepContact: '১. যোগাযোগ তথ্য',
-    stepAcademic: '২. শিক্ষা ও প্রজেক্ট বিবরণ',
-    stepRequirements: '৩. রিকোয়ারমেন্ট ও ফাইল',
-    fullName: 'আপনার নাম *',
-    fullNamePlaceholder: 'আপনার পূর্ণ নাম লিখুন (যেমন: মো: আহসানুর রহমান)',
+    orderModalHeading: 'প্রজেক্ট অর্ডার ফর্ম',
+    orderModalTitle: 'প্রজেক্ট শুরু করুন',
+    orderModalSubtitle: 'নিচের তথ্যগুলো পূরণ করুন। টেকনিক্যাল লিড দ্রুত যোগাযোগ করে কাজ শুরু করবেন।',
+    trackOrderHeading: 'লাইভ প্রজেক্ট ট্র্যাকার',
+    trackOrderSubtitle: 'আপনার প্রজেক্ট আইডি বা ফোন নম্বর দিয়ে বর্তমান অগ্রগতি পর্যবেক্ষণ করুন',
+    orderIdOrPhonePlaceholder: 'প্রজেক্ট আইডি (যেমন: KT-ORD-...) অথবা মোবাইল নম্বর লিখুন',
+    stepContact: '১. ক্লায়েন্ট ও যোগাযোগের তথ্য',
+    stepAcademic: '২. প্রজেক্টের পরিধি ও টেক স্ট্যাক',
+    stepRequirements: '৩. বিস্তারিত রিকোয়ারমেন্ট ও ফাইল',
+    fullName: 'ক্লায়েন্ট / প্রতিনিধির নাম *',
+    fullNamePlaceholder: 'আপনার পূর্ণ নাম লিখুন',
     phoneNumber: 'মোবাইল নম্বর *',
     phonePlaceholder: '০১৭xxxxxxxx',
     whatsappNumber: 'WhatsApp নম্বর *',
     whatsappPlaceholder: '০১৭xxxxxxxx (সরাসরি আপডেটের জন্য)',
-    universityName: 'বিশ্ববিদ্যালয় / প্রতিষ্ঠান *',
-    selectUniversity: 'আপনার বিশ্ববিদ্যালয় বা প্রতিষ্ঠান নির্বাচন করুন',
-    departmentName: 'ডিপার্টমেন্ট / ফিল্ড *',
-    selectDepartment: 'আপনার বিভাগ নির্বাচন করুন',
-    semesterOrBatch: 'সেমিস্টার / ব্যাচ / পেশা',
-    semesterPlaceholder: 'যেমন: ৮র্থ সেমিস্টার / ব্যাচ ১৮ / প্রফেশনাল',
-    courseTitle: 'কোর্স / প্রজেক্টের নাম *',
-    coursePlaceholder: 'যেমন: ফাইনাল ডিফেন্স স্লাইড / পোর্টফোলিও ওয়েবসাইট',
-    courseCode: 'কোর্স কোড / রেফারেন্স (যদি থাকে)',
-    courseCodePlaceholder: 'যেমন: CSE-4200 / Brand Launch',
-    deadlineDate: 'ডেলিভারি ডেডলাইন তারিখ *',
-    problemDetails: 'কাজের বিস্তারিত বিবরণ ও রিকোয়ারমেন্ট *',
-    problemDetailsPlaceholder: 'কাজের নির্দিষ্ট চাহিদা, কালার চয়েস, পেজ সংখ্যা, ফিচার লিস্ট অথবা যে যে বিষয়ে সহায়তা দরকার তা বিস্তারিত লিখুন...',
-    preferredContactMethod: 'পছন্দসই যোগাযোগের মাধ্যম:',
-    uploadFiles: 'প্রাসঙ্গিক ফাইল বা ড্রাফট আপলোড (ঐচ্ছিক)',
-    uploadFilesHint: 'PDF, DOCX, ZIP, PNG, JPG (সর্বোচ্চ ২৫ MB)',
-    confirmOrderBtn: 'অর্ডার নিশ্চিত করুন ✨',
+    universityName: 'কোম্পানি / প্রতিষ্ঠান / ব্র্যান্ড *',
+    selectUniversity: 'আপনার প্রতিষ্ঠান বা ব্র্যান্ডের নাম লিখুন',
+    departmentName: 'ইন্ডাস্ট্রি / বিজনেসের ধরন *',
+    selectDepartment: 'আপনার ইন্ডাস্ট্রির ধরন নির্বাচন করুন',
+    semesterOrBatch: 'প্রজেক্টের ধরন',
+    semesterPlaceholder: 'যেমন: SaaS MVP, E-Commerce, Dashboard, Redesign',
+    courseTitle: 'প্রজেক্টের নাম বা লক্ষ্য *',
+    coursePlaceholder: 'যেমন: Next.js SaaS Web App / Power BI Sales Dashboard',
+    courseCode: 'পছন্দের টেক স্ট্যাক (যদি থাকে)',
+    courseCodePlaceholder: 'যেমন: React, Tailwind, Python, WordPress, PostgreSQL',
+    deadlineDate: 'টার্গেট ডেলিভারি ডেডলাইন *',
+    problemDetails: 'কাজের বিস্তারিত রিকোয়ারমেন্ট ও ফিচার লিস্ট *',
+    problemDetailsPlaceholder: 'প্রজেক্টের মূল ফিচার, পেজ সংখ্যা, ডিজাইন পছন্দ বা ডাটা রিকোয়ারমেন্ট বিস্তারিত লিখুন...',
+    preferredContactMethod: 'যোগাযোগের মাধ্যম:',
+    uploadFiles: 'ফাইল, ড্রাফট বা ব্রিফ আপলোড (ঐচ্ছিক)',
+    uploadFilesHint: 'PDF, DOCX, ZIP, CSV, JSON, PNG (সর্বোচ্চ ৫০ MB)',
+    confirmOrderBtn: 'প্রজেক্ট নিশ্চিত করুন ✨',
     cancelBtn: 'বাতিল',
 
     // Order Success
-    orderSuccessTitle: '🎉 অভিনন্দন! আপনার অর্ডার সফলভাবে গ্রহণ করা হয়েছে।',
-    orderSuccessSubtitle: 'অর্ডার গ্রহণের পর আমাদের টিম ৫-১৫ মিনিটের মধ্যে WhatsApp-এ সরাসরি যোগাযোগ করে আপনার প্রজেক্ট শুরু করবে।',
-    orderIdLabel: 'আপনার ইউনিক অর্ডার ট্র্যাকিং আইডি:',
-    whatsappCoordinatorBtn: 'সরাসরি WhatsApp কো-অর্ডিনেটরের সাথে চ্যাট করুন',
-    whatsappCoordinatorHint: 'দ্রুত প্রসেসিং নিশ্চিত করতে উপরের বাটনে ক্লিক করে WhatsApp-এ আপনার অর্ডার আইডি পাঠান।',
-    trackOrderBtn: 'অর্ডার স্ট্যাটাস ট্র্যাক করুন',
+    orderSuccessTitle: '🎉 আপনার প্রজেক্ট রিকোয়েস্ট গ্রহণ করা হয়েছে!',
+    orderSuccessSubtitle: 'আমাদের টেকনিক্যাল লিড খুব শীঘ্রই WhatsApp-এ আপনার সাথে যোগাযোগ করবেন।',
+    orderIdLabel: 'আপনার ইউনিক প্রজেক্ট ট্র্যাকিং আইডি:',
+    whatsappCoordinatorBtn: 'সরাসরি WhatsApp টেকনিক্যাল লিডের সাথে চ্যাট করুন',
+    whatsappCoordinatorHint: 'দ্রুত প্রসেসিং নিশ্চিত করতে উপরের বাটনে ক্লিক করে WhatsApp-এ আপনার প্রজেক্ট আইডি পাঠান।',
+    trackOrderBtn: 'প্রজেক্ট অগ্রগতি ট্র্যাক করুন',
     backHomeBtn: 'হোম পেজে ফিরে যান',
 
     // Order Tracker
-    trackerTitle: 'অর্ডার ট্র্যাকিং সিস্টেম',
-    trackerSubtitle: 'আপনার অর্ডার আইডি বা মোবাইল নম্বর দিয়ে সরাসরি বর্তমান অগ্রগতি দেখুন।',
-    trackerInputPlaceholder: 'অর্ডার আইডি (যেমন: NX-ORD-...) বা ফোন নম্বর দিন',
+    trackerTitle: 'প্রজেক্ট ট্র্যাকিং সিস্টেম',
+    trackerSubtitle: 'আপনার প্রজেক্ট আইডি বা ফোন নম্বর দিয়ে লাইভ কোডিং ও ডিজাইনের অগ্রগতি দেখুন।',
+    trackerInputPlaceholder: 'প্রজেক্ট আইডি (যেমন: KT-ORD-...) বা ফোন নম্বর দিন',
     searchBtn: 'খুঁজুন',
-    statusOrderReceived: '১. অর্ডার গ্রহণ',
-    statusMentorAssigned: '২. এক্সপার্ট নিয়োগ',
-    statusStudentContacted: '৩. বিস্তারিত আলোচনা সম্পন্ন',
-    statusInProgress: '৪. কাজ চলছে',
-    statusDelivered: '৫. ডেলিভারি সম্পন্ন',
-    noOrderFound: 'কোনো অর্ডার পাওয়া যায়নি',
-    noOrderFoundHint: 'দয়া করে সঠিক অর্ডার আইডি বা মোবাইল নম্বর টাইপ করুন।',
-    orderDetails: 'অর্ডারের বিবরণ',
-    assignedMentor: 'নিযুক্ত এক্সপার্ট / মেন্টর:',
-    notYetAssigned: 'কো-অর্ডিনেটর যাচাই করছেন',
-    orderAmount: 'মূল্য:',
-    studentInfo: 'শিক্ষার্থী / ক্লায়েন্টের তথ্য',
-    latestUpdates: 'সর্বশেষ আপডেট',
+    statusOrderReceived: '১. ব্রিফ গ্রহণ',
+    statusMentorAssigned: '২. টেক লিড নিয়োগ',
+    statusStudentContacted: '৩. আর্কিটেকচার ফাইনাল',
+    statusInProgress: '৪. ডেভেলপমেন্ট ও ডিজাইন চলমান',
+    statusDelivered: '৫. ডেলিভারি ও লঞ্চ সম্পন্ন',
+    noOrderFound: 'কোনো প্রজেক্ট পাওয়া যায়নি',
+    noOrderFoundHint: 'দয়া করে সঠিক প্রজেক্ট আইডি বা ফোন নম্বর টাইপ করুন।',
+    orderDetails: 'প্রজেক্টের বিবরণ',
+    assignedMentor: 'নিযুক্ত টেকনিক্যাল লিড:',
+    notYetAssigned: 'স্পেশালিস্ট নিয়োগ করা হচ্ছে',
+    orderAmount: 'আনুমানিক ভ্যালু:',
+    studentInfo: 'ক্লায়েন্ট ও কোম্পানির তথ্য',
+    latestUpdates: 'সর্বশেষ অগ্রগতি',
 
     // Write Review Modal
-    writeReviewTitle: 'আপনার মূল্যবান মতামত দিন',
-    writeReviewSubtitle: 'ক্র্যাফলিন টেকনোলজিস (Kraflyn Technologies)-এর সাপোর্ট ও ডেলিভারি কেমন ছিল? আপনার মন্তব্য অন্য শিক্ষার্থীদের সাহায্য করবে।',
+    writeReviewTitle: 'আপনার অভিজ্ঞতা শেয়ার করুন',
+    writeReviewSubtitle: 'ক্র্যাফলিন টেকনোলজিসের কোড কোয়ালিটি ও কাজের মান কেমন ছিল?',
     yourRating: 'আপনার রেটিং *',
-    gradeOutcomeLabel: 'প্রাপ্ত ফলাফল / গ্রেড (যদি থাকে)',
-    gradeOutcomePlaceholder: 'যেমন: A+ গ্রেড পেয়েছি / প্রজেক্ট এক্সেপ্টেড',
-    reviewCommentLabel: 'আপনার মন্তব্য *',
-    reviewCommentPlaceholder: 'কাজের মান কেমন ছিল? সময়মতো ডেলিভারি পেয়েছেন কি না? বিস্তারিত লিখুন...',
+    gradeOutcomeLabel: 'বিজনেসের ফলাফল বা আউটকাম (ঐচ্ছিক)',
+    gradeOutcomePlaceholder: 'যেমন: সাইটের স্পিড দ্বিগুণ হয়েছে / সফল প্রোডাক্ট লঞ্চ',
+    reviewCommentLabel: 'আপনার মতামত *',
+    reviewCommentPlaceholder: 'কাজের মান, সময়ানুবর্তিতা এবং টিমের সাপোর্ট কেমন ছিল বিস্তারিত লিখুন...',
     submitReviewBtn: 'রিভিউ সাবমিট করুন ✨',
 
     // Footer
-    footerAbout: 'ক্র্যাফলিন টেকনোলজিস (Kraflyn Technologies) হল একটি সমন্বিত ডিজিটাল প্ল্যাটফর্ম যা শিক্ষার্থী, ক্লাব, গবেষক ও তরুণ পেশাদারদের জন্য ক্রিয়েটিভ ডিজাইন, আধুনিক ডেভেলপমেন্ট এবং পূর্ণাঙ্গ একাডেমিক ও টেকনিক্যাল সাপোর্ট প্রদান করে। Create. Connect. Grow.',
+    footerAbout: 'ক্র্যাফলিন টেকনোলজিস (Kraflyn Technologies) হল একটি আধুনিক ডিজিটাল ইঞ্জিনিয়ারিং স্টুডিও যা ক্রিয়েটিভ ডিজাইন, আধুনিক ওয়েব ডেভেলপমেন্ট, ওয়ার্ডপ্রেস এবং বিজনেস ডাটা অ্যানালাইসিস সেবা প্রদান করে। Create. Connect. Grow.',
     quickLinks: 'দ্রুত লিংক',
     popularServices: 'জনপ্রিয় সার্ভিসসমূহ',
     directContact: 'সরাসরি যোগাযোগ',
-    confidentialMentorship: '১০০% শিক্ষার্থী ও ডেটা গোপনীয়তা সংরক্ষিত',
+    confidentialMentorship: '১০০% কোড মালিকানা ও ডেটা সুরক্ষা গ্যারান্টি',
     copyright: 'সর্বস্বত্ব সংরক্ষিত © ২০২৬ ক্র্যাফলিন টেকনোলজিস (Kraflyn Technologies)। Create. Connect. Grow.',
 
     // Admin Portal
-    adminHeaderTitle: 'ক্র্যাফলিন টেকনোলজিস (Kraflyn Technologies) অ্যাডমিন কন্ট্রোল প্যানেল',
-    adminHeaderSubtitle: 'সকল শিক্ষার্থীর অর্ডার, মেন্টর অ্যাসাইনমেন্ট, পেমেন্ট ও ডেলিভারি অগ্রগতি এক নজরে পর্যবেক্ষণ করুন।',
-    adminStatTotalOrders: 'মোট অর্ডার সংখ্যা',
+    adminHeaderTitle: 'ক্র্যাফলিন টেকনোলজিস অ্যাডমিন কন্ট্রোল প্যানেল',
+    adminHeaderSubtitle: 'সকল ক্লায়েন্ট অর্ডার, টেক লিড অ্যাসাইনমেন্ট, পোর্টফোলিও ও সার্ভিস এক নজরে নিয়ন্ত্রণ করুন।',
+    adminStatTotalOrders: 'মোট প্রজেক্ট সংখ্যা',
     adminStatTodayOrders: 'আজকের নতুন অর্ডার',
-    adminStatInProgress: 'কাজ চলমান',
+    adminStatInProgress: 'চলমান স্প্রিন্ট',
     adminStatDelivered: 'ডেলিভারি সম্পন্ন',
     adminStatTotalRevenue: 'মোট আনুমানিক ভ্যালু',
-    adminStatAvgOrderValue: 'গড় অর্ডার সাইজ',
-    tabAllOrders: 'সকল অর্ডার তালিকা',
+    adminStatAvgOrderValue: 'গড় প্রজেক্ট সাইজ',
+    tabAllOrders: 'ক্লায়েন্ট প্রজেক্ট তালিকা',
     tabReviewsManagement: 'রিভিউ মডারেশন',
-    searchOrdersPlaceholder: 'অর্ডার আইডি, শিক্ষার্থী, ফোন নম্বর বা বিশ্ববিদ্যালয় দিয়ে খুঁজুন...',
+    searchOrdersPlaceholder: 'প্রজেক্ট আইডি, ক্লায়েন্ট, কোম্পানি বা টেক স্ট্যাক দিয়ে খুঁজুন...',
     filterStatusAll: 'সকল স্ট্যাটাস',
-    orderTableId: 'অর্ডার আইডি',
-    orderTableStudent: 'শিক্ষার্থী ও যোগাযোগ',
-    orderTableUniversity: 'প্রতিষ্ঠান ও ডিপার্টমেন্ট',
-    orderTableCourse: 'সার্ভিস ও রিকোয়ারমেন্ট',
+    orderTableId: 'প্রজেক্ট আইডি',
+    orderTableStudent: 'ক্লায়েন্ট ও যোগাযোগ',
+    orderTableUniversity: 'কোম্পানি ও ইন্ডাস্ট্রি',
+    orderTableCourse: 'স্কোপ ও টেক স্ট্যাক',
     orderTableDeadline: 'ডেডলাইন',
-    orderTableMentor: 'নিযুক্ত এক্সপার্ট',
-    orderTableAmount: 'অ্যামাউন্ট',
+    orderTableMentor: 'নিযুক্ত টেক লিড',
+    orderTableAmount: 'ভ্যালু',
     orderTableStatus: 'স্ট্যাটাস',
     orderTableAction: 'অ্যাকশন',
     manageOrderBtn: 'ম্যানেজ করুন ⚙️',
-    editOrderTitle: 'অর্ডার আপডেট ও এক্সপার্ট নিয়োগ',
+    editOrderTitle: 'প্রজেক্ট আপডেট ও টেক লিড নিয়োগ',
     saveChangesBtn: 'সংরক্ষণ করুন',
-    assignMentorLabel: 'এক্সপার্টের নাম দিন:',
-    updateStatusLabel: 'অর্ডার স্ট্যাটাস পরিবর্তন করুন:',
-    adminNoteLabel: 'অ্যাডমিন ইন্টারনাল নোট:',
-    deleteOrderConfirm: 'আপনি কি নিশ্চিত এই অর্ডারটি মুছে ফেলতে চান?'
-  },
-  en: {
-    // Top Hotline Bar
-    hotlineText: 'Kraflyn Technologies Support Hotline: +880 1712-345678 (WhatsApp Active 8:00 AM - 11:30 PM)',
-    trackOrderStatus: 'Track Order Status',
-    directWhatsApp: 'Direct WhatsApp Help',
-    adminPortalBtn: 'Admin Portal',
-    backToStudentWeb: '← Return to Website',
-
-    // Nav
-    home: 'Home',
-    services: 'All Services',
-    howItWorks: 'How It Works',
-    reviews: 'Student Reviews',
-    trackOrder: 'Track Order',
-    faq: 'FAQ',
-    about: 'About Us',
-    aboutUs: 'About Us',
-    contact: 'Contact',
-    cart: 'Cart',
-    empty: 'Empty',
-    orderNow: 'Order Now',
-
-    // Hero
-    heroBadge: '✨ DESIGN • DEV • WORDPRESS • DATA ANALYSIS • STUDENT SUPPORT',
-    heroTitle1: 'Create. Connect. Grow.',
-    heroTitleHighlight: 'Kraflyn Technologies',
-    heroTitle2: 'Digital & Academic Solutions',
-    heroSubtitle: 'Kraflyn Technologies is a premier digital platform providing creative design, modern web & software development, WordPress solutions, data analytics, and comprehensive academic & technical support for students, clubs, researchers and young professionals.',
-    heroBrowseBtn: 'Browse All 45 Services',
-    heroDirectOrderBtn: 'Place Direct Order 🚀',
-    heroStatStudents: '5,000+',
-    heroStatStudentsLabel: 'Satisfied Students & Projects',
-    heroStatSatisfaction: '99.4%',
-    heroStatSatisfactionLabel: 'Client Satisfaction Rate',
-    heroStatUniversities: '45+',
-    heroStatUniversitiesLabel: 'Campuses & Student Clubs',
-    heroStatTurnaround: '2 - 24 Hours',
-    heroStatTurnaroundLabel: 'Super Fast Turnaround',
-
-    // Pillars from Image
-    pillarsBadge: 'Our Guiding Principles',
-    pillarsHeading: 'Our Mission, Vision & Values',
-    pillarsSubtitle: 'The core foundations and principles that empower students and professionals to excel with Kraflyn Technologies.',
-    missionTitle: 'Our Mission',
-    missionDesc: 'Empowering students by providing affordable, quality and reliable digital solutions in design, development, WordPress, data analytics, and academic support.',
-    visionTitle: 'Our Vision',
-    visionDesc: 'To become the most trusted digital support platform for students and educational communities in Bangladesh and beyond.',
-    valuesTitle: 'Our Values',
-    whyNexoraTitle: 'Why Kraflyn Technologies?',
-    whyNexoraDesc: "We don't just complete tasks, we empower students to learn, build, and grow in their academic and professional journey.",
-
-    // Problem Triage
-    triageBadge: 'Quick Problem Triage',
-    triageHeading: 'What Do You Need Help With Today?',
-    triageSubtitle: 'Design, web development, WordPress, data analytics, or academic challenges—select your goal below and get instant expert assistance.',
-    triageAll: 'All Categories',
-    triageClickToOrder: 'Click to Order Directly →',
-
-    // Services
-    servicesBadge: 'Our Core Services',
-    servicesHeading: 'OUR CORE SERVICES (A to Z)',
-    servicesSubtitle: 'Design, Development, WordPress, Data Analysis, and Student Support—explore our 45 specialized services all under one trusted roof.',
-    startingPrice: 'Starting from',
-    turnaround: 'Delivery:',
-    addToCart: 'Add to Cart',
-    viewDetails: 'View Details',
-    directOrder: 'Direct Order',
-    allCategories: 'All Services (45)',
-    filterByDept: 'Filter by Core Pillar:',
-
-    // Categories
-    catDesign: '1. Design Services (15)',
-    catDev: '2. Development Services (10)',
-    catWordPress: '3. WordPress Wing (5)',
-    catDataAnalysis: '4. Data Analysis (5)',
-    catStudent: '5. Student Support (10)',
-
-    // How It Works
-    howItWorksBadge: 'Seamless Workflow',
-    howItWorksHeading: 'Get Your Service in 4 Simple Steps',
-    howItWorksSubtitle: 'No tedious account creation. Quick order placement and rapid WhatsApp coordinator matching.',
-    step1Title: '1. Choose Your Service',
-    step1Desc: 'Browse Design, Development, or Student Support services and select the support tier you need.',
-    step2Title: '2. Provide Requirements',
-    step2Desc: 'Submit your contact info, project deadline, and specific requirements in a quick 2-minute form.',
-    step3Title: '3. Coordinator Matching',
-    step3Desc: 'Within 5-15 minutes, our team connects with you on WhatsApp to finalize scope and assign the best expert.',
-    step4Title: '4. Delivery & Review',
-    step4Desc: 'Receive pristine, high-standard deliverables within your deadline with revisions included.',
-
-    // Reviews
-    reviewsBadge: 'Verified Testimonials',
-    reviewsHeading: 'What Our Students & Clients Say',
-    reviewsSubtitle: 'Real feedback from students, researchers, and club executives across leading universities.',
-    aggregateRating: '4.95 / 5.0',
-    basedOnReviews: 'Based on 1,200+ verified project completions',
-    verifiedStudent: 'Verified Student / Client',
-    writeReviewBtn: 'Write a Review ✍️',
-    filterAllReviews: 'All Reviews',
-    submitReview: 'Submit Review',
-
-    // FAQ
-    faqBadge: 'Frequently Asked Questions',
-    faqHeading: 'Got Questions? We Have Answers',
-    faqSubtitle: 'Everything you need to know about Kraflyn Technologies services, turnaround times, confidentiality, and support.',
-
-    // Cart
-    cartTitle: 'Your Service Cart',
-    cartEmptyTitle: 'Your Cart is Currently Empty',
-    cartEmptySubtitle: 'Browse our Design, Development, and Student Support catalogs to add items to your cart.',
-    supportTier: 'Service Package Tier:',
-    tierStandard: 'Standard Support (Normal Turnaround)',
-    tierExpress: 'Express 24h Super Fast (+৳150)',
-    tierVip: 'VIP 1-on-1 Live Guidance (+৳300)',
-    urgencyFee: 'Urgency / Priority Fee:',
-    total: 'Total Amount:',
-    proceedToOrder: 'Proceed to Secure Order →',
-    clearCart: 'Clear Cart',
-    removeItem: 'Remove',
-
-    // Order Modal
-    orderModalHeading: 'Service Order Form',
-    orderModalTitle: 'Service Order Form',
-    orderModalSubtitle: 'Provide your project details below. Our coordinator will contact you on WhatsApp right away.',
-    trackOrderHeading: 'Live Order Tracker',
-    trackOrderSubtitle: 'Track your project status in real-time with Order ID or Phone',
-    orderIdOrPhonePlaceholder: 'Enter Order ID (e.g. EQ-ORD-...) or Mobile Number',
-    stepContact: '1. Contact Details',
-    stepAcademic: '2. Academic / Project Info',
-    stepRequirements: '3. Requirements & Files',
-    fullName: 'Full Name *',
-    fullNamePlaceholder: 'e.g. Md. Ahsanur Rahaman',
-    phoneNumber: 'Phone Number *',
-    phonePlaceholder: '017xxxxxxxx',
-    whatsappNumber: 'WhatsApp Number *',
-    whatsappPlaceholder: '017xxxxxxxx (for instant coordination)',
-    universityName: 'University / Institution *',
-    selectUniversity: 'Select your university or institution',
-    departmentName: 'Department / Field *',
-    selectDepartment: 'Select your department or field',
-    semesterOrBatch: 'Semester / Batch / Profession',
-    semesterPlaceholder: 'e.g. 8th Semester / Batch 18 / Professional',
-    courseTitle: 'Course / Project Title *',
-    coursePlaceholder: 'e.g. Final Defense Slides / Portfolio Website',
-    courseCode: 'Course Code / Ref (Optional)',
-    courseCodePlaceholder: 'e.g. CSE-4200 / Brand Launch',
-    deadlineDate: 'Target Delivery Deadline *',
-    problemDetails: 'Detailed Problem / Requirements *',
-    problemDetailsPlaceholder: 'Describe your requirements, design preferences, features needed, or specific pain points...',
-    preferredContactMethod: 'Preferred Contact Method:',
-    uploadFiles: 'Attach Files or Drafts (Optional)',
-    uploadFilesHint: 'PDF, DOCX, ZIP, PNG, JPG (Max 25 MB)',
-    confirmOrderBtn: 'Confirm Order ✨',
-    cancelBtn: 'Cancel',
-
-    // Order Success
-    orderSuccessTitle: '🎉 Order Received Successfully!',
-    orderSuccessSubtitle: 'Our academic coordinator will reach out to you via WhatsApp within 5 to 15 minutes.',
-    orderIdLabel: 'Your Unique Order Tracking ID:',
-    whatsappCoordinatorBtn: 'Chat Directly with WhatsApp Coordinator',
-    whatsappCoordinatorHint: 'Click the button above to send your Order ID to our WhatsApp coordinator for instant priority.',
-    trackOrderBtn: 'Track Order Status',
-    backHomeBtn: 'Return to Home',
-
-    // Order Tracker
-    trackerTitle: 'Order Tracking System',
-    trackerSubtitle: 'Enter your Order ID or Phone Number to view live progress in real-time.',
-    trackerInputPlaceholder: 'Enter Order ID (e.g. NX-ORD-...) or Phone Number',
-    searchBtn: 'Search',
-    statusOrderReceived: '1. Order Received',
-    statusMentorAssigned: '2. Expert Assigned',
-    statusStudentContacted: '3. Discussion Completed',
-    statusInProgress: '4. In Progress',
-    statusDelivered: '5. Completed & Delivered',
-    noOrderFound: 'No Order Found',
-    noOrderFoundHint: 'Please check your Order ID or mobile number and try again.',
-    orderDetails: 'Order Details',
-    assignedMentor: 'Assigned Expert / Mentor:',
-    notYetAssigned: 'Coordinator is assigning the best specialist',
-    orderAmount: 'Amount:',
-    studentInfo: 'Student / Client Info',
-    latestUpdates: 'Latest Updates',
-
-    // Write Review Modal
-    writeReviewTitle: 'Share Your Experience',
-    writeReviewSubtitle: 'How was your experience with Kraflyn Technologies? Your feedback helps fellow students and creators.',
-    yourRating: 'Your Rating *',
-    gradeOutcomeLabel: 'Grade / Outcome Achieved (Optional)',
-    gradeOutcomePlaceholder: 'e.g. A+ Grade / Accepted in Conference',
-    reviewCommentLabel: 'Your Review Comment *',
-    reviewCommentPlaceholder: 'How did the specialist assist you? Was delivery on-time? Share your honest thoughts...',
-    submitReviewBtn: 'Submit Review ✨',
-
-    // Footer
-    footerAbout: 'Kraflyn Technologies is a one-stop digital platform providing creative design, modern development and complete academic & technical support for students, clubs, researchers and young professionals. Create. Connect. Grow.',
-    quickLinks: 'Quick Links',
-    popularServices: 'Popular Services',
-    directContact: 'Direct Contact',
-    confidentialMentorship: '100% Student & Data Confidentiality',
-    copyright: 'All Rights Reserved © 2026 Kraflyn Technologies Platform. Create. Connect. Grow.',
-
-    // Admin Portal
-    adminHeaderTitle: 'Kraflyn Technologies Admin Control Panel',
-    adminHeaderSubtitle: 'Monitor all student orders, mentor assignments, payments, and delivery progress in one place.',
-    adminStatTotalOrders: 'Total Orders',
-    adminStatTodayOrders: 'Today New Orders',
-    adminStatInProgress: 'In Progress',
-    adminStatDelivered: 'Delivered',
-    adminStatTotalRevenue: 'Total Value',
-    adminStatAvgOrderValue: 'Avg Order Value',
-    tabAllOrders: 'All Orders List',
-    tabReviewsManagement: 'Reviews Moderation',
-    searchOrdersPlaceholder: 'Search by Order ID, Student, Phone, or University...',
-    filterStatusAll: 'All Statuses',
-    orderTableId: 'Order ID',
-    orderTableStudent: 'Student & Contact',
-    orderTableUniversity: 'Institution & Dept',
-    orderTableCourse: 'Service & Requirements',
-    orderTableDeadline: 'Deadline',
-    orderTableMentor: 'Assigned Expert',
-    orderTableAmount: 'Amount',
-    orderTableStatus: 'Status',
-    orderTableAction: 'Action',
-    manageOrderBtn: 'Manage ⚙️',
-    editOrderTitle: 'Update Order & Assign Specialist',
-    saveChangesBtn: 'Save Changes',
-    assignMentorLabel: 'Specialist Name:',
-    updateStatusLabel: 'Update Status:',
-    adminNoteLabel: 'Admin Internal Note:',
-    deleteOrderConfirm: 'Are you sure you want to delete this order?'
+    assignMentorLabel: 'টেক লিডের নাম দিন:',
+    updateStatusLabel: 'স্প্রিন্ট স্ট্যাটাস পরিবর্তন করুন:',
+    adminNoteLabel: 'ইন্টারনাল নোট:',
+    deleteOrderConfirm: 'আপনি কি নিশ্চিত এই প্রজেক্টটি মুছে ফেলতে চান?'
   }
 };
 
@@ -711,7 +762,7 @@ export interface BilingualSubService {
 export interface BilingualService {
   id: string;
   iconName: string;
-  category: 'Design Services' | 'Development Services' | 'WordPress Services' | 'Data Analysis' | 'Student Support';
+  category: 'Design Services' | 'Development Services' | 'WordPress Services' | 'Data Analysis';
   startingPrice: number;
   typicalTurnaround: string;
   tag?: string;
@@ -724,3088 +775,1309 @@ export interface BilingualService {
 
 export const BILINGUAL_SERVICES: BilingualService[] = [
   // ========================================================
-  // 1. DESIGN SERVICES (15 items)
+  // 1. DESIGN & UI/UX SERVICES
   // ========================================================
-  {
-    id: 'poster-banner-flyer',
-    iconName: 'Layout',
-    category: 'Design Services',
-    startingPrice: 300,
-    typicalTurnaround: '6 - 18 Hours',
-    tag: 'Popular',
-    title: {
-      bn: 'পোস্টার / ব্যানার / ফ্লায়ার ডিজাইন',
-      en: 'Poster / Banner / Flyer'
-    },
-    shortDesc: {
-      bn: 'ইভেন্ট পোস্টার, ফেস্ট ব্যানার, ক্লাব ফ্লায়ার এবং সোশ্যাল রোল-আপ ডিজাইন।',
-      en: 'Eye-catching posters, fest banners, promotional flyers and roll-ups.'
-    },
-    fullDesc: {
-      bn: 'বিশ্ববিদ্যালয়ের ক্লাব ফেস্ট, সেমিনার, হ্যাকাথন ও প্রমোশনাল ক্যাম্পেইনের জন্য হাই-রেজোলিউশন প্রিন্ট ও ওয়েব রেডি ভেক্টর ডিজাইন (CMYK/RGB, 300 DPI)।',
-      en: 'Custom visual designs for department festivals, university events, hackathons, and promotional campaigns with print-ready 300 DPI vector files.'
-    },
-    deliverables: {
-      bn: [
-        'প্রিন্ট-রেডি হাই রেজোলিউশন PDF ও PNG (300 DPI)',
-        'সোশ্যাল মিডিয়া অপটিমাইজড সাইজ (1:1, 4:5, 16:9)',
-        'এডিটেবল সোর্স ফাইল (PSD / AI / Figma)',
-        'আনলিমিটেড রিভিশন ও দ্রুত ডেলিভারি',
-        '৬ থেকে ১৮ ঘণ্টার মধ্যে এক্সপ্রেস ডেলিভারি'
-      ],
-      en: [
-        'High-resolution Print Ready PDF & PNG (300 DPI)',
-        'Social Media optimized aspect ratios (1:1, 4:5, 16:9)',
-        'Editable Source Files (PSD / AI / Canva / Figma)',
-        'Unlimited revisions until final satisfaction',
-        'Fast turnaround within 6 to 18 hours'
-      ]
-    }
-  },
-  {
-    id: 'presentation-ppt-design',
-    iconName: 'Presentation',
-    category: 'Design Services',
-    startingPrice: 350,
-    typicalTurnaround: '12 - 24 Hours',
-    tag: 'High Demand',
-    title: {
-      bn: 'প্রেজেন্টেশন ও PPT ডিজাইন',
-      en: 'Presentation & PPT Design'
-    },
-    shortDesc: {
-      bn: 'ডিফেন্স প্রেজেন্টেশন, পিচ ডেক এবং আকর্ষণীয় অ্যানিমেটেড পাওয়ারপয়েন্ট স্লাইড।',
-      en: 'Modern, high-impact slide decks, defense presentations, and keynote templates.'
-    },
-    fullDesc: {
-      bn: 'থিসিস ডিফেন্স, ক্যাপস্টোন প্রজেক্ট, বিজনেস পিচ ও ক্লাস সেমিনারের জন্য আধুনিক টাইপোগ্রাফি, ইনফোগ্রাফিক ডায়াগ্রাম ও ডায়নামিক ট্রানজিশন স্লাইড।',
-      en: 'Transform dull bullet points into persuasive, beautifully animated presentations for thesis defense, capstone projects, and business pitches.'
-    },
-    deliverables: {
-      bn: [
-        'কাস্টম স্টাইল্ড PPTX / Google Slides ডেক',
-        'ক্লিন টাইপোগ্রাফি, কালার হার্মনি ও ডায়াগ্রাম',
-        'স্মুথ ট্রানজিশন ও স্লাইড মাস্টার টেমপ্লেট',
-        'প্রেজেন্টার স্পিকিং নোটস ও PDF হ্যান্ডআউট',
-        'ফ্রি ভেক্টর আইকন প্যাক ও কমার্শিয়াল ফন্ট'
-      ],
-      en: [
-        'Custom styled PPTX / Keynote / Google Slides deck',
-        'Clean typography, color harmony & visual data charts',
-        'Dynamic transition animations & slide master templates',
-        'Presenter speaking notes formatting & PDF handouts',
-        'Full commercial fonts and vector icon pack'
-      ]
-    }
-  },
-  {
-    id: 'social-media-creatives',
-    iconName: 'Share2',
-    category: 'Design Services',
-    startingPrice: 250,
-    typicalTurnaround: '6 - 12 Hours',
-    title: {
-      bn: 'সোশ্যাল মিডিয়া ক্রিয়েটিভস',
-      en: 'Social Media Creatives'
-    },
-    shortDesc: {
-      bn: 'ফেসবুক, ইনস্টাগ্রাম, লিঙ্কডইন পোস্ট গ্রাফিক্স, স্টোরি কভার ও ক্যারোসেল।',
-      en: 'Engaging post graphics, story covers, carousels, and club social media branding.'
-    },
-    fullDesc: {
-      bn: 'ফেসবুক পেজ, ইনস্টাগ্রাম, লিঙ্কডইন এবং ক্লাব সোশ্যাল মিডিয়ার জন্য নজরকাড়া হাই-কনভার্টিং গ্রাফিক্স ও ক্যারোসেল ডিজাইন।',
-      en: 'High-converting social media creatives for Facebook, Instagram, LinkedIn, and club pages designed with modern aesthetics and typography.'
-    },
-    deliverables: {
-      bn: [
-        'স্কয়ার পোস্ট, ক্যারোসেল ও ৯:১৬ ভার্টিক্যাল স্টোরি',
-        'কাস্টম ব্র্যান্ডিং ও ক্যাম্পেইন হাইলাইটস',
-        'সোর্স ফাইল Figma / Photoshop / Illustrator',
-        'লাইটওয়েট ওয়েব-অপটিমাইজড PNG ও JPG',
-        'কন্টেন্ট কপিরাইটিং গাইডলাইন'
-      ],
-      en: [
-        'Square posts, portrait carousels & 9:16 vertical stories',
-        'Custom club branding & campaign hashtag highlights',
-        'Source files in Figma / Photoshop / Illustrator',
-        'Exported in lightweight web-optimized PNG & JPG',
-        'Content copywriting guidance & aesthetic presets'
-      ]
-    }
-  },
-  {
-    id: 'logo-brand-identity',
-    iconName: 'Sparkles',
-    category: 'Design Services',
-    startingPrice: 600,
-    typicalTurnaround: '24 - 48 Hours',
-    tag: 'Creative Choice',
-    title: {
-      bn: 'লোগো ও ব্র্যান্ড আইডেন্টিটি',
-      en: 'Logo & Brand Identity'
-    },
-    shortDesc: {
-      bn: 'ইউনিক ভেক্টর লোগো, কালার প্যালেট, টাইপোগ্রাফি গাইড ও ফুল ব্র্যান্ড বুক।',
-      en: 'Unique vector logos, brand color palettes, typography guidelines, and brand books.'
-    },
-    fullDesc: {
-      bn: 'স্টার্টআপ, ক্লাব বা ব্যক্তিগত ব্র্যান্ডের জন্য স্মরণীয় লোগো এবং কমপ্লিট ব্র্যান্ড আইডেন্টিটি কিট।',
-      en: 'Establish a memorable identity for your startup, university club, or personal brand with multiple concepts and a full brand book.'
-    },
-    deliverables: {
-      bn: [
-        '৩-৫টি স্বতন্ত্র সৃজনশীল লোগো কনসেপ্ট',
-        'ভেক্টর মাস্টার ফাইলস (SVG, EPS, AI, PDF, PNG)',
-        'সম্পূর্ণ ব্র্যান্ড আইডেন্টিটি গাইডলাইন বুক',
-        'সোশ্যাল মিডিয়া প্রোফাইল ও ব্যানার কিট',
-        '১০০% কপিরাইট ও ওনারশিপ ট্রান্সফার'
-      ],
-      en: [
-        '3-5 distinct creative logo design concepts',
-        'Vector master files (SVG, EPS, AI, PDF, Transparent PNG)',
-        'Comprehensive Brand Identity Guidelines (Colors & Fonts)',
-        'Social media profile avatars & banner kits',
-        'Full intellectual property ownership & copyright transfer'
-      ]
-    }
-  },
-  {
-    id: 'cv-resume-design',
-    iconName: 'FileText',
-    category: 'Design Services',
-    startingPrice: 250,
-    typicalTurnaround: '6 - 12 Hours',
-    tag: 'Must Have',
-    title: {
-      bn: 'CV / রেজুমে ডিজাইন (ATS-Friendly)',
-      en: 'CV / Resume Design'
-    },
-    shortDesc: {
-      bn: 'আধুনিক প্রফেশনাল ATS-কমপ্লায়েন্ট রেজুমে ও LaTeX / Word এক্সিকিউটিভ সিভি।',
-      en: 'Modern, professional, ATS-friendly resumes and LaTeX / Word executive CV templates.'
-    },
-    fullDesc: {
-      bn: 'চাকরি, ইন্টার্নশিপ ও স্কলারশিপ অ্যাপ্লিকেশনে আলাদা নজর কাড়তে পরিষ্কার ফরম্যাটিং, স্কিল ম্যাট্রিক্স ও পারফেক্ট টাইপোগ্রাফি।',
-      en: 'Stand out in job applications, internships, and scholarship screenings with ATS-compliant resumes and LaTeX/Word templates.'
-    },
-    deliverables: {
-      bn: [
-        'ATS-ফ্রেন্ডলি সিঙ্গেল ও ডাবল পেজ রেজুমে',
-        'এডিটেবল Word (.docx), LaTeX সোর্স ও PDF',
-        'ম্যাচিং কভার লেটার টেমপ্লেট স্টাইলিং',
-        'টেক ও কর্পোরেট কি-ওয়ার্ড অপটিমাইজেশন',
-        '৩০ দিনের মধ্যে ফ্রি কন্টাক্ট ইনফো আপডেট'
-      ],
-      en: [
-        'ATS-friendly single & two-page modern resume templates',
-        'Editable Word (.docx), LaTeX source, and print-ready PDF',
-        'Matching cover letter template styling',
-        'Keyword optimization for tech, engineering & business roles',
-        'Free minor contact/experience updates within 30 days'
-      ]
-    }
-  },
-  {
-    id: 'certificate-id-card-design',
-    iconName: 'Award',
-    category: 'Design Services',
-    startingPrice: 200,
-    typicalTurnaround: '6 - 18 Hours',
-    title: {
-      bn: 'সার্টিফিকেট ও আইডি কার্ড ডিজাইন',
-      en: 'Certificate & ID Card Design'
-    },
-    shortDesc: {
-      bn: 'অফিসিয়াল ইভেন্ট পার্টিসিপেশন সার্টিফিকেট, অ্যাওয়ার্ড ও স্টুডেন্ট আইডি কার্ড।',
-      en: 'Official event participation certificates, merit awards, and ID card layouts.'
-    },
-    fullDesc: {
-      bn: 'হ্যাকাথন, ক্লাব ফেস্ট, সেমিনার ও ওয়ার্কশপের সার্টিফিকেট এবং প্রেস্টিজিয়াস আইডি ব্যাজ ডিজাইন।',
-      en: 'Professional certificates for hackathons, club fests, and workshops with custom guilloche patterns and ID badge layouts.'
-    },
-    deliverables: {
-      bn: [
-        'প্রিন্ট-রেডি হাই DPI সার্টিফিকেট লেআউট (A4)',
-        'কাস্টম আইডি কার্ড ও ল্যানিয়ার্ড ব্যাজ টেমপ্লেট',
-        'বাল্ক নেম প্রিন্টিং মেইল-মার্জ কম্প্যাটিবল সেটআপ',
-        'ভেক্টর সিল, রিবন ব্যাজ ও সিকিউরিটি প্যাটার্ন',
-        'এডিটেবল AI / PSD / Canva সোর্স টেমপ্লেট'
-      ],
-      en: [
-        'Print-ready high-DPI certificate layouts (A4 & US Letter)',
-        'Custom lanyard badge & plastic ID card templates (CR80)',
-        'Bulk automated name/ID mail-merge compatible setup',
-        'Vector seals, ribbon badges, and guilloche security patterns',
-        'Editable AI / PSD / Canva source templates'
-      ]
-    }
-  },
-  {
-    id: 'research-poster',
-    iconName: 'Columns',
-    category: 'Design Services',
-    startingPrice: 500,
-    typicalTurnaround: '12 - 24 Hours',
-    title: {
-      bn: 'রিসার্চ পোস্টার ডিজাইন',
-      en: 'Research Poster'
-    },
-    shortDesc: {
-      bn: 'IEEE ও আন্তর্জাতিক কনফারেন্সের সাইন্টিফিক প্রেজেন্টেশন পোস্টার (A0, A1)।',
-      en: 'IEEE/conference scientific presentation posters with data visualizations.'
-    },
-    fullDesc: {
-      bn: 'একাডেমিক কনফারেন্স ও থিসিস সিম্পোজিয়ামের জন্য ডাটা ভিজ্যুয়ালাইজেশন, ডায়াগ্রাম ও LaTeX সমীকরণসহ নিখুঁত পোস্টার।',
-      en: 'Display your research paper findings with academic rigor and visual clarity for academic conferences and symposia (A0, A1, 36x48 inches).'
-    },
-    deliverables: {
-      bn: [
-        'স্ট্যান্ডার্ড কনফারেন্স সাইজ (A0, A1, 36x48 ইঞ্চি)',
-        'হাই-রেজ ভেক্টর ডায়াগ্রাম ও চার্ট ফরম্যাটিং',
-        'ম্যাথমেটিকাল ফর্মুলা ও সমীকরণ প্লেসমেন্ট',
-        'প্রিন্ট-রেডি 300 DPI PDF + এডিটেবল সোর্স',
-        'দূর থেকে পড়ার উপযোগী অপটিমাইজড কালার'
-      ],
-      en: [
-        'Standard conference poster dimensions (A0, A1, 36x48 inch)',
-        'High-res vector diagram integration & chart formatting',
-        'Mathematical formulas & LaTeX equation placement',
-        'Print-ready 300 DPI PDF + editable PowerPoint/Illustrator file',
-        'Color scheme optimized for distance reading'
-      ]
-    }
-  },
   {
     id: 'ui-ux-design',
-    iconName: 'Layers',
+    iconName: 'Layout',
     category: 'Design Services',
-    startingPrice: 1200,
-    typicalTurnaround: '24 - 72 Hours',
-    tag: 'Premium',
-    title: {
-      bn: 'UI/UX ডিজাইন ও প্রোটোটাইপিং',
-      en: 'UI/UX Design'
-    },
-    shortDesc: {
-      bn: 'ওয়েব ও মোবাইল অ্যাপের ইন্টারঅ্যাক্টিভ Figma প্রোটোটাইপ ও ডিজাইন সিস্টেম।',
-      en: 'Interactive web & mobile app prototypes, wireframes, and Figma design systems.'
-    },
-    fullDesc: {
-      bn: 'ডিজিটাল প্রোডাক্ট বা ফাইনাল ইয়ার সফটওয়্যার প্রজেক্টের জন্য নিখুঁত ইউজার ইন্টারফেস ও ক্লিকেবল প্রোটোটাইপ।',
-      en: 'Design intuitive, pixel-perfect user interfaces, interactive Figma clickable prototypes, design systems, and responsive layouts.'
-    },
-    deliverables: {
-      bn: [
-        'ইন্টারঅ্যাক্টিভ Figma ক্লিকেবল প্রোটোটাইপ',
-        'রেসপনসিভ ডেস্কটপ, ট্যাবলেট ও মোবাইল স্ক্রিন',
-        'কম্পোনেন্ট লাইব্রেরি, অটো-লেআউট ও টোকেনস',
-        'ডেভেলপার হ্যান্ডঅফ স্পেক্স ও এসেট এক্সপোর্ট',
-        'ওয়্যারফ্রেম ও ইউজার জার্নি ম্যাপ'
-      ],
-      en: [
-        'Interactive Figma prototypes with clickable user flows',
-        'Responsive desktop, tablet & mobile screen layouts',
-        'Component library, auto-layout, design tokens & typography',
-        'Developer handoff specs with CSS parameters & assets',
-        'User journey maps and wireframe documentation'
-      ]
-    }
-  },
-  {
-    id: 'infographic-design',
-    iconName: 'BarChart2',
-    category: 'Design Services',
-    startingPrice: 400,
-    typicalTurnaround: '12 - 24 Hours',
-    title: {
-      bn: 'ইনফোগ্রাফিক ডিজাইন',
-      en: 'Infographic Design'
-    },
-    shortDesc: {
-      bn: 'ডাটা-ড্রাইভেন ভিজ্যুয়াল স্টোরিটেলিং, প্রসেস রোডম্যাপ ও কনসেপ্ট চার্ট।',
-      en: 'Data-driven visual storytelling, process roadmaps, and breakdown charts.'
-    },
-    fullDesc: {
-      bn: 'জটিল পরিসংখ্যান, সার্ভে ফাইন্ডিংস এবং সিস্টেম ওয়ার্কফ্লোকে আকর্ষণীয় ও সহজবোধ্য ইনফোগ্রাফিকে রূপান্তর করুন।',
-      en: 'Turn intricate statistics, timelines, survey findings, and system workflows into beautiful infographics for reports and papers.'
-    },
-    deliverables: {
-      bn: [
-        'কাস্টম ভেক্টর ইলাস্ট্রেশন ও চার্ট গ্রাফিক্স',
-        'লজিক্যাল হায়ারার্কি ও ভিজ্যুয়াল স্টোরি ফ্লো',
-        'ওয়েব ও আল্ট্রা-হাই রেজোলিউশন প্রিন্ট ফরম্যাট',
-        'Adobe Illustrator / Figma সোর্স ফাইল',
-        'আপনার ব্র্যান্ড কালারের সাথে সামঞ্জস্যপূর্ণ'
-      ],
-      en: [
-        'Custom vector illustrations, icons, and chart graphics',
-        'Logical hierarchy and visual storytelling flow',
-        'Web-optimized and ultra-high-resolution print formats',
-        'Source files in Adobe Illustrator or Figma',
-        'Color palettes aligned with your research or brand theme'
-      ]
-    }
-  },
-  {
-    id: 'brochure-pamphlet-design',
-    iconName: 'BookOpen',
-    category: 'Design Services',
-    startingPrice: 450,
-    typicalTurnaround: '12 - 36 Hours',
-    title: {
-      bn: 'ব্রোশিওর / প্যামফ্লেট ডিজাইন',
-      en: 'Brochure / Pamphlet Design'
-    },
-    shortDesc: {
-      bn: 'বাই-ফোল্ড ও ট্রাই-ফোল্ড ব্রোশিওর, কর্পোরেট বুকলেট ও ইভেন্ট ক্যাটালগ।',
-      en: 'Bi-fold & tri-fold brochures, corporate booklets, and event catalogs.'
-    },
-    fullDesc: {
-      bn: 'ডিপার্টমেন্টাল ম্যাগাজিন, ক্লাব অ্যাডমিশন গাইড এবং কর্পোরেট ব্রোশিওর নিখুঁত প্রিন্ট মার্জিনসহ প্রস্তুত।',
-      en: 'Multi-page event schedules, department magazines, club admission guides, and corporate brochures formatted for press.'
-    },
-    deliverables: {
-      bn: [
-        'বাই-ফোল্ড, ট্রাই-ফোল্ড বা মাল্টি-পেজ বুকলেট লেআউট',
-        'প্রেস প্রিন্টের জন্য ব্লিড, মার্জিন ও ক্রপ মার্কস',
-        'কিউরেটেড স্টক ইমেজ ও ভেক্টর গ্রাফিক্স',
-        'ডিজিটাল শেয়ারিংয়ের জন্য ইন্টারঅ্যাক্টিভ PDF',
-        'এডিটেবল InDesign / Illustrator / Canva সোর্স'
-      ],
-      en: [
-        'Bi-fold, tri-fold, or multi-page booklet layouts',
-        'Exact print bleeds, margins, and crop marks for press',
-        'Curated stock imagery and vector graphic assets',
-        'Interactive clickable PDF version for digital distribution',
-        'Editable Adobe InDesign / Illustrator / Canva source'
-      ]
-    }
-  },
-  {
-    id: 'menu-price-list-design',
-    iconName: 'ListOrdered',
-    category: 'Design Services',
-    startingPrice: 350,
-    typicalTurnaround: '8 - 24 Hours',
-    title: {
-      bn: 'মেনু / প্রাইস লিস্ট ডিজাইন',
-      en: 'Menu / Price List Design'
-    },
-    shortDesc: {
-      bn: 'ক্যাফেটেরিয়া মেনু, ফ্রিল্যান্স রেট শিট এবং ডিজিটাল প্রাইস ক্যাটালগ।',
-      en: 'Clear, modern service rate sheets, digital cafeteria menus, and price catalog layouts.'
-    },
-    fullDesc: {
-      bn: 'ক্যাম্পাস ক্যাফে, স্টুডেন্ট স্টার্টআপ বা সার্ভিস বিজনেসের জন্য পরিপাটি ও সহজবোধ্য রেট চার্ট ও মেনু বোর্ড।',
-      en: 'Clean, organized price lists and menu boards for campus cafes, student business ventures, and freelance services.'
-    },
-    deliverables: {
-      bn: [
-        'সিঙ্গেল-শিট বা ডিজিটাল স্ক্রিন মেনু ফরম্যাট',
-        'সহজে পড়ার উপযোগী প্রাইসিং কলাম ও ক্যাটাগরি',
-        'প্রিন্ট-রেডি ফাইল + ডিজিটাল TV ডিসপ্লে সাইজ',
-        'কন্টাক্টলেস ভিউয়িংয়ের জন্য QR কোড ইন্টিগ্রেশন',
-        'ভবিষ্যতে দাম পরিবর্তনের জন্য সহজে এডিটেবল সোর্স'
-      ],
-      en: [
-        'Single-sheet, multi-page, or digital screen menu formats',
-        'Easy-to-read pricing columns and item categorization',
-        'Print-ready high-resolution files + digital TV display format',
-        'QR code integration for contactless digital viewing',
-        'Easily editable source template for future price updates'
-      ]
-    }
-  },
-  {
-    id: 'tshirt-merchandise-design',
-    iconName: 'Tag',
-    category: 'Design Services',
-    startingPrice: 400,
-    typicalTurnaround: '12 - 24 Hours',
-    title: {
-      bn: 'টি-শার্ট ও মার্চেন্ডাইজ ডিজাইন',
-      en: 'T-shirt & Merchandise Design'
-    },
-    shortDesc: {
-      bn: 'ক্লাব জার্সি, ব্যাচ হুডি, কনফারেন্স টোট ব্যাগ ও মার্চেন্ডাইজ ভেক্টর আর্ট।',
-      en: 'Custom club jerseys, batch hoodies, conference tote bags, and merchandise.'
-    },
-    fullDesc: {
-      bn: 'ব্যাচ টি-শার্ট, গ্র্যাজুয়েশন হুডি, ভার্সিটি জ্যাকেট ও ক্লাবের মার্চেন্ডাইজ প্রিন্টিংয়ের জন্য রেডি ভেক্টর আর্টওয়ার্ক।',
-      en: 'Custom vector artwork tailored specifically for screen printing, DTF, embroidery, and sublimation on batch apparel.'
-    },
-    deliverables: {
-      bn: [
-        'স্ক্রিন প্রিন্টিংয়ের জন্য Pantone/CMYK কালার সেপারেশন',
-        'ব্যাচ প্রিভিউয়ের জন্য রিয়ালিস্টিক 3D মকআপ',
-        'ফ্রন্ট, ব্যাক ও স্লিভ ডিটেইলড প্রিন্ট আর্ট',
-        'স্কেলেবল AI / EPS / SVG / Transparent PNG',
-        'কমার্শিয়াল প্রোডাকশন গাইড'
-      ],
-      en: [
-        'Vector art with exact Pantone/CMYK screen print separations',
-        'Realistic 3D apparel mockups for batch previews',
-        'Front, back, and sleeve detailed print artwork',
-        'Scalable AI / EPS / SVG / Transparent PNG (300 DPI)',
-        'Commercial print release and production guide'
-      ]
-    }
-  },
-  {
-    id: 'photo-editing-retouching',
-    iconName: 'Image',
-    category: 'Design Services',
-    startingPrice: 200,
-    typicalTurnaround: '4 - 12 Hours',
-    title: {
-      bn: 'ফটো এডিটিং ও রিটাচিং',
-      en: 'Photo Editing & Retouching'
-    },
-    shortDesc: {
-      bn: 'গ্র্যাজুয়েশন পোর্ট্রেট রিটাচিং, ব্যাকগ্রাউন্ড রিমুভ ও ইভেন্ট কালার গ্রেডিং।',
-      en: 'Professional portrait retouching, background removal, and color grading.'
-    },
-    fullDesc: {
-      bn: 'গ্র্যাজুয়েশন পোর্ট্রেট, পাসপোর্ট/ভিসা ছবি, ক্লাব ইভেন্ট অ্যালবাম ও প্রোডাক্ট ফটোর জন্য হাই-এন্ড রিটাচিং।',
-      en: 'High-end photo editing for graduation portraits, visa photos, club event albums, and campus events.'
-    },
-    deliverables: {
-      bn: [
-        'ন্যাচারাল স্কিন রিটাচিং ও স্পট রিমুভাল',
-        'ব্যাকগ্রাউন্ড ক্লিনআপ ও স্টুডিও ব্যাকড্রপ রিপ্লেসমেন্ট',
-        'কালার গ্রেডিং, কনট্রাস্ট ও লাইটিং এনহ্যান্সমেন্ট',
-        'কম্প্রেশন লস ছাড়া হাই-রেজ মাস্টার আউটপুট',
-        'ক্যাম্পাস ইভেন্ট অ্যালবামের জন্য ব্যাচ প্রসেসিং'
-      ],
-      en: [
-        'Natural skin tone retouching & blemish removal',
-        'Background cleanup, studio backdrop replacement & isolation',
-        'Color grading, contrast balancing, and lighting enhancement',
-        'High-res master output without compression loss',
-        'Batch processing available for campus event albums'
-      ]
-    }
-  },
-  {
-    id: 'thesis-project-report-design',
-    iconName: 'Book',
-    category: 'Design Services',
-    startingPrice: 500,
-    typicalTurnaround: '12 - 36 Hours',
-    tag: 'Academic Focus',
-    title: {
-      bn: 'থিসিস ও প্রজেক্ট রিপোর্ট ডিজাইন',
-      en: 'Thesis / Project Report Design'
-    },
-    shortDesc: {
-      bn: 'একাডেমিক বুক লেআউট, কভার পেজ স্টাইলিং ও LaTeX ডায়াগ্রাম পলিশ।',
-      en: 'Complete academic book layout, cover page styling, and diagram polish.'
-    },
-    fullDesc: {
-      bn: 'বিশ্ববিদ্যালয়ের কঠোর ফরম্যাটিং গাইডলাইন অনুযায়ী সুন্দর কভার পেজ, সূচিপত্র, ডায়াগ্রাম ও হার্ডবাইন্ডিং মার্জিন সেটআপ।',
-      en: 'Ensure your undergraduate or graduate thesis meets strict university formatting guidelines with elegant cover pages and diagram styling.'
-    },
-    deliverables: {
-      bn: [
-        'বিশ্ববিদ্যালয় স্ট্যান্ডার্ড কভার ও স্পাইন লেআউট',
-        'LaTeX / Word অটোমেটেড টেবিল অফ কন্টেন্টস',
-        'হাই-রেজোলিউশন ডায়াগ্রাম রিড্রয়িং ও পলিশিং',
-        'হার্ডবাইন্ডিংয়ের জন্য পারফেক্ট মার্জিন এডজাস্টমেন্ট',
-        'ডিজিটাল ইন্টারঅ্যাক্টিভ PDF + প্রিন্ট কপি'
-      ],
-      en: [
-        'University-compliant cover page & spine layout design',
-        'LaTeX / Word automated table of contents & header/footer setup',
-        'High-resolution diagram redrawing & chart polishing',
-        'Strict margin adherence for hardcover binding',
-        'Digital interactive PDF with bookmarks + print ready copy'
-      ]
-    }
-  },
-  {
-    id: 'illustration-custom-design',
-    iconName: 'Palette',
-    category: 'Design Services',
-    startingPrice: 600,
-    typicalTurnaround: '24 - 48 Hours',
-    title: {
-      bn: 'ইলাস্ট্রেশন ও কাস্টম ডিজাইন',
-      en: 'Illustration & Custom Design'
-    },
-    shortDesc: {
-      bn: 'কাস্টম ভেক্টর ইলাস্ট্রেশন, ম্যাসকট, ডিজিটাল আর্টওয়ার্ক ও আইকন সেট।',
-      en: 'Custom vector illustrations, mascots, creative digital artwork, and icon sets.'
-    },
-    fullDesc: {
-      bn: 'হাতে তৈরি ভেক্টর আর্ট, ক্যারেক্টার ইলাস্ট্রেশন, ক্লাব ম্যাসকট এবং আপনার আইডিয়া অনুযায়ী ইউনিক ডিজিটাল আর্ট।',
-      en: 'Handcrafted vector artwork, character illustrations, university fest mascots, and bespoke graphics tailored to your vision.'
-    },
-    deliverables: {
-      bn: [
-        'পছন্দসই স্টাইলে ইউনিক কাস্টম ভেক্টর ইলাস্ট্রেশন',
-        'লেয়ার্ড সোর্স ফাইলস (AI, SVG, PSD, High-Res PNG)',
-        'অ্যাপ ও ওয়েবের জন্য ট্রান্সপারেন্ট ব্যাকগ্রাউন্ড ভার্সন',
-        'লাইট ও ডার্ক মোড কালার ভ্যারিয়েশন',
-        'সম্পূর্ণ কমার্শিয়াল ব্যবহার অধিকার'
-      ],
-      en: [
-        'Unique custom vector illustration in your chosen aesthetic',
-        'Layered source files (AI, SVG, PSD, High-Res PNG)',
-        'Transparent background versions for web/app integration',
-        'Color palette variations for light and dark modes',
-        'Full commercial usage rights'
-      ]
-    }
-  },
-  {
-    id: 'figma-design',
-    iconName: 'Figma',
-    category: 'Design Services',
-    startingPrice: 1200,
-    typicalTurnaround: '24 - 72 Hours',
-    tag: 'Trending',
-    title: {
-      bn: 'ফিগমা UI/UX ও প্রোটোটাইপ ডিজাইন',
-      en: 'Figma UI/UX & Prototype Design'
-    },
-    shortDesc: {
-      bn: 'প্রফেশনাল ফিগমা ওয়্যারফ্রেম, রেসপন্সিভ মোবাইল ও ওয়েব ইন্টারফেস, ডিজাইন সিস্টেম ও লাইভ ক্লিকেবল প্রোটোটাইপ।',
-      en: 'Professional Figma wireframes, responsive mobile & web interfaces, design tokens, and interactive clickable prototypes.'
-    },
-    fullDesc: {
-      bn: 'আপনার স্টার্টআপ আইডিয়া, ওয়েব প্ল্যাটফর্ম, মোবাইল অ্যাপ বা একাডেমিক ফাইনাল ইয়ার সফটওয়্যার প্রজেক্টের জন্য নিখুঁত ফিগমা ডিজাইন। ইউজার জার্নি, রেসপন্সিভ অটো-লেআউট কম্পোনেন্ট, ডিজাইন সিস্টেম এবং লাইভ প্রেজেন্টেশনের জন্য ক্লিকেবল প্রোটোটাইপ।',
-      en: 'Bring your digital product, startup idea, or academic capstone project to life with pixel-perfect Figma UI/UX designs. Low-to-high fidelity wireframes, auto-layout responsive components, scalable design systems, interactive prototypes, and developer handoff.'
-    },
-    deliverables: {
-      bn: [
-        'সম্পূর্ণ এডিটেবল ফিগমা (.fig) সোর্স ফাইল ও অটো-লেআউট',
-        'লাইভ ক্লায়েন্ট/ডিফেন্স ডেমোর জন্য ক্লিকেবল প্রোটোটাইপ লিংক',
-        'রেসপন্সিভ স্ক্রিন লেআউট (ডেস্কটপ, ট্যাবলেট ও মোবাইল ভিউ)',
-        'কম্পোনেন্ট লাইব্রেরি, কালার প্যালেট ও টাইপোগ্রাফি ডিজাইন সিস্টেম',
-        'ডেভেলপার হ্যান্ডঅফের জন্য SVG/PNG এসেট এক্সপোর্ট',
-        '১০০% সন্তুষ্টি না হওয়া পর্যন্ত আনলিমিটেড রিভিশন'
-      ],
-      en: [
-        'Complete Editable Figma Source File (.fig) with Auto-Layout',
-        'Interactive Clickable Prototype Link for Live User Testing & Defense',
-        'Modern Responsive Screens (Desktop, Tablet & Mobile Views)',
-        'Design System with Reusable Component Library & Typography Tokens',
-        'Production Developer Handoff with SVG/PNG Asset Exports',
-        'Unlimited revisions until final satisfaction'
-      ]
-    },
-    subServices: [
-      {
-        id: 'figma-mobile-app',
-        price: 1500,
-        turnaround: '24 - 48 Hours',
-        title: {
-          bn: 'মোবাইল অ্যাপ UI/UX ডিজাইন (iOS ও Android)',
-          en: 'Mobile App UI/UX Design (iOS & Android)'
-        },
-        recommendedFor: {
-          bn: 'স্টার্টআপ MVP, ক্যাপস্টোন প্রজেক্ট ও স্টুডেন্ট অ্যাপ সাবমিশন',
-          en: 'Startup MVPs, Capstone Projects & Student App Submissions'
-        },
-        deliverables: {
-          bn: [
-            '৫-১০টি হাই-ফিডেলিটি মোবাইল অ্যাপ স্ক্রিন (লাইট/ডার্ক মোড)',
-            'ট্রানজিশন ও জেসচারসহ ইন্টারেক্টিভ ক্লিকেবল প্রোটোটাইপ',
-            'অটো-লেআউট ৫.০ কম্পোনেন্ট ও SVG ভেক্টর আইকন প্যাক',
-            'সম্পূর্ণ .fig সোর্স ফাইল ও Flutter/React Native এর জন্য এসেট'
-          ],
-          en: [
-            '5-10 High-Fidelity Mobile App Screens (Light/Dark Mode)',
-            'Interactive Clickable Prototype with transitions & gestures',
-            'Auto-Layout 5.0 components & SVG vector icons pack',
-            'Full .fig source file + export-ready slices for Flutter/React Native'
-          ]
-        }
-      },
-      {
-        id: 'figma-web-dashboard',
-        price: 2000,
-        turnaround: '48 - 72 Hours',
-        title: {
-          bn: 'ওয়েব অ্যাপ ও এডমিন ড্যাশবোর্ড UI/UX',
-          en: 'Web App & Admin Dashboard UI/UX'
-        },
-        recommendedFor: {
-          bn: 'SaaS প্ল্যাটফর্ম, ইউনিভার্সিটি পোর্টাল ও ম্যানেজমেন্ট সিস্টেম',
-          en: 'SaaS Platforms, University Portals & Management Systems'
-        },
-        deliverables: {
-          bn: [
-            'রেসপন্সিভ ডেস্কটপ, ট্যাবলেট ও মোবাইল ব্রেকপয়েন্ট',
-            'কমপ্লেক্স ডাটা টেবিল, চার্টস, অ্যানালিটিক্স ও ফিল্টার মডাল',
-            'রিইউজেবল কম্পোনেন্ট ভ্যারিয়েন্ট, ফর্মস ও ইন্টারেক্টিভ স্টেট',
-            'পিক্সেল-পারফেক্ট ডেভেলপার হ্যান্ডঅফ স্পেসিফিকেশন'
-          ],
-          en: [
-            'Responsive Desktop, Tablet & Mobile Breakpoints',
-            'Complex Data Tables, Charts, Analytics & Filter Modals',
-            'Reusable Component Variants, Forms & Interactive States',
-            'Pixel-perfect developer handoff specifications'
-          ]
-        }
-      },
-      {
-        id: 'figma-landing-page',
-        price: 1200,
-        turnaround: '24 - 36 Hours',
-        title: {
-          bn: 'হাই-কনভার্টিং ল্যান্ডিং পেজ ডিজাইন',
-          en: 'High-Converting Landing Page Design'
-        },
-        recommendedFor: {
-          bn: 'প্রোডাক্ট লঞ্চ, ক্লাব ইভেন্ট ও টেক স্টার্টআপ',
-          en: 'Product Launches, Club Events & Tech Startups'
-        },
-        deliverables: {
-          bn: [
-            'কাস্টম হিরো সেকশন, ফিচার গ্রিড, প্রাইসিং ও FAQ মডিউল',
-            'মডার্ন গ্লাসমরফিজম / ক্লিন মিনিমালিস্ট ভিজ্যুয়াল স্টাইলিং',
-            'ডেস্কটপ + মোবাইল অ্যাডাপ্টিভ লেআউট',
-            'হোভার ও স্ক্রোল অ্যানিমেশনসহ ইন্টারেক্টিভ ফিগমা প্রোটোটাইপ'
-          ],
-          en: [
-            'Custom Hero Section, Feature Grids, Pricing & FAQ modules',
-            'Modern Glassmorphism / Clean Minimalist styling',
-            'Desktop + Mobile Adaptive Layouts',
-            'Interactive Figma prototype with hover & scroll animations'
-          ]
-        }
-      },
-      {
-        id: 'figma-design-system',
-        price: 1800,
-        turnaround: '48 Hours',
-        title: {
-          bn: 'ডিজাইন সিস্টেম ও কম্পোনেন্ট লাইব্রেরি তৈরি',
-          en: 'Design System & Component Library Creation'
-        },
-        recommendedFor: {
-          bn: 'স্কেলিং ইঞ্জিনিয়ারিং টিম ও প্রোডাকশন কোডবেস',
-          en: 'Scaling Engineering Teams & Production Codebases'
-        },
-        deliverables: {
-          bn: [
-            'কালার টোকেন, সিম্যান্টিক হায়ারার্কি ও WCAG AA কনট্রাস্ট রেশিও',
-            'টাইপোগ্রাফি সিস্টেম (H1-H6, Body, Caption, Display)',
-            'এটমিক কম্পোনেন্টস (Buttons, Inputs, Modals, Cards, Badges)',
-            'অটো-লেআউট ও ভ্যারিয়েন্টস গাইডলাইন ডকুমেন্টেশন'
-          ],
-          en: [
-            'Color Tokens, Semantic Hierarchy & WCAG AA Contrast Ratios',
-            'Typography System (H1-H6, Body, Caption, Display)',
-            'Atomic Components (Buttons, Inputs, Modals, Cards, Badges)',
-            'Auto-Layout & Variants Guidelines Documentation'
-          ]
-        }
-      }
-    ]
-  },
-
-  // ========================================================
-  // 2. DEVELOPMENT SERVICES (15 items)
-  // ========================================================
-  {
-    id: 'personal-portfolio-website',
-    iconName: 'Globe',
-    category: 'Development Services',
-    startingPrice: 1500,
-    typicalTurnaround: '24 - 48 Hours',
-    tag: 'Best Seller',
-    title: {
-      bn: 'ব্যক্তিগত / পোর্টফোলিও ওয়েবসাইট',
-      en: 'Personal / Portfolio Website'
-    },
-    shortDesc: {
-      bn: 'আপনার প্রজেক্ট, সিভি ও স্কিল প্রদর্শনের জন্য সুপার ফাস্ট মডার্ন পোর্টফোলিও।',
-      en: 'Modern, high-performance personal portfolio showcasing your projects and resume.'
-    },
-    fullDesc: {
-      bn: 'React, Next.js ও Tailwind দিয়ে তৈরি গতিশীল রেসপনসিভ পোর্টফোলিও। লাইভ ডেমো লিংক, সিভি ডাউনলোড ও ফ্রি ডোমেন হোস্টিং সেটআপ।',
-      en: 'Build an impressive personal brand with an ultra-fast, responsive portfolio website built with React/Next.js and Tailwind CSS.'
-    },
-    deliverables: {
-      bn: [
-        'ফুল রেসপনসিভ ও সুপার ফাস্ট মডার্ন ওয়েব পোর্টফোলিও',
-        'লাইভ ডেমো ও সোর্স কোড লিংকযুক্ত প্রজেক্ট গ্যালারি',
-        'WhatsApp ও ইমেইলে সরাসরি কন্টাক্ট ফর্ম',
-        'Vercel / GitHub Pages-এ ফ্রি লাইভ ডেপ্লয়মেন্ট',
-        'ক্লিন TypeScript / Tailwind কোড রিপোজিটরি'
-      ],
-      en: [
-        'Fully responsive, lightning-fast modern web portfolio',
-        'Interactive project gallery with live demo and source links',
-        'Direct contact form integrated with email / WhatsApp',
-        'Free domain connecting & deployment to Vercel / GitHub Pages',
-        'Clean TypeScript / Tailwind source code repository'
-      ]
-    }
-  },
-  {
-    id: 'university-club-website',
-    iconName: 'Users',
-    category: 'Development Services',
-    startingPrice: 2500,
-    typicalTurnaround: '48 - 96 Hours',
-    tag: 'Recommended',
-    title: {
-      bn: 'ইউনিভার্সিটি / ক্লাব ওয়েবসাইট',
-      en: 'University / Club Website'
-    },
-    shortDesc: {
-      bn: 'স্টুডেন্ট ক্লাব পোর্টাল, ইভেন্ট রেজিস্ট্রেশন, মেম্বার ডিরেক্টরি ও ব্লগ।',
-      en: 'Complete portal for student organizations, fest registrations, and blogs.'
-    },
-    fullDesc: {
-      bn: 'ক্লাব ও ফোরামের জন্য অল-ইন-ওয়ান ওয়েব পোর্টাল। ইভেন্ট টিকেট সিস্টেম, এক্সিকিউটিভ ডিরেক্টরি এবং এডমিন ড্যাশবোর্ড।',
-      en: 'All-in-one portal for university clubs and IEEE branches featuring member directories, event registration, and admin panel.'
-    },
-    deliverables: {
-      bn: [
-        'ডায়নামিক ইভেন্ট রেজিস্ট্রেশন ও টিকিট সিস্টেম',
-        'এক্সিকিউটিভ কমিটি ও অ্যালামনাই ডিরেক্টরি',
-        'ক্লাব নিউজ, ব্লগ ও ফটো গ্যালারি',
-        'রেজিস্ট্রেশন ডেটা এক্সেলে এক্সপোর্ট করার অ্যাডমিন প্যানেল',
-        'মোবাইল-ফার্স্ট অপটিমাইজড ডিজাইন'
-      ],
-      en: [
-        'Dynamic event registration & ticket generation system',
-        'Executive committee & alumni directory with filterable roles',
-        'Club news, blog, and past achievements gallery',
-        'Admin dashboard to manage applicants and export Excel sheets',
-        'Mobile-first responsive design with fast loading speeds'
-      ]
-    }
-  },
-  {
-    id: 'business-ecommerce-website',
-    iconName: 'ShoppingBag',
-    category: 'Development Services',
-    startingPrice: 4500,
-    typicalTurnaround: '3 - 7 Days',
-    tag: 'Enterprise',
-    title: {
-      bn: 'বিজনেস / ই-কমার্স ওয়েবসাইট',
-      en: 'Business / E-commerce Website'
-    },
-    shortDesc: {
-      bn: 'ফুল-ফিচার্ড অনলাইন স্টোর, প্রোডাক্ট ক্যাটালগ ও বিকাশ/নগদ পেমেন্ট গেটওয়ে।',
-      en: 'Full-featured online store with product catalog, cart, and payment integration.'
-    },
-    fullDesc: {
-      bn: 'প্রোডাক্ট ফিল্টারিং, শপিং কার্ট, অটোমেটেড ইনভয়েস এবং বিকাশ, নগদ, রকেট ও কার্ড পেমেন্ট গেটওয়ে সম্বলিত ই-কমার্স প্ল্যাটফর্ম।',
-      en: 'Launch your online store with product management, cart, checkout, automated invoicing, and bKash/Nagad/SSLCommerz gateways.'
-    },
-    deliverables: {
-      bn: [
-        'সার্চ ও ফিল্টারযুক্ত সম্পূর্ণ প্রোডাক্ট ক্যাটালগ',
-        'শপিং কার্ট, চেকআউট ও অটো PDF ইনভয়েস',
-        'বিকাশ, নগদ, রকেট ও কার্ড পেমেন্ট ইন্টিগ্রেশন',
-        'স্টক ও অর্ডার ম্যানেজমেন্ট অ্যাডমিন প্যানেল',
-        'এসইও ও গুগল অ্যানালিটিক্স সেটআপ'
-      ],
-      en: [
-        'Complete product catalog with filters, search, and variants',
-        'Shopping cart, secure checkout, and automated PDF invoicing',
-        'Integrated payment gateways (bKash, Nagad, Rocket, Cards)',
-        'Powerful admin panel for stock, order status, and customer logs',
-        'SEO optimization & Google Analytics tracking integration'
-      ]
-    }
-  },
-  {
-    id: 'web-application',
-    iconName: 'Code',
-    category: 'Development Services',
     startingPrice: 3500,
     typicalTurnaround: '3 - 7 Days',
-    tag: 'Custom Built',
-    title: {
-      bn: 'ফুল-স্ট্যাক ওয়েব অ্যাপ্লিকেশন',
-      en: 'Web Application'
-    },
-    shortDesc: {
-      bn: 'কাস্টম SaaS প্ল্যাটফর্ম, ম্যানেজমেন্ট সিস্টেম ও ডায়নামিক রিয়েলটাইম পোর্টাল।',
-      en: 'Full-stack SaaS platforms, custom portals, management systems, and dashboards.'
-    },
-    fullDesc: {
-      bn: 'React, Node.js, Next.js, Express, PostgreSQL/MongoDB দিয়ে স্কেলেবল ও নিরাপদ কাস্টম ওয়েব অ্যাপ্লিকেশন ডেভেলপমেন্ট।',
-      en: 'Custom web application development using modern tech stacks engineered for scalability, security, and delightful UX.'
-    },
-    deliverables: {
-      bn: [
-        'React/Next.js ও Node.js ভিত্তিক আধুনিক আর্কিটেকচার',
-        'রোল-বেসড এক্সেস কন্ট্রোল (RBAC) ও সিকিউর সেশন',
-        'রিলেশনাল বা NoSQL ডাটাবেস ইন্টিগ্রেশন',
-        'সম্পূর্ণ ভ্যালিডেশনযুক্ত REST / GraphQL API',
-        'কমপ্লিট ডকুমেন্টেশন ও গিট রিপোজিটরি হ্যান্ডওভার'
-      ],
-      en: [
-        'Fullstack modern architecture with React/Next.js & Node.js',
-        'Role-based access control (RBAC), authentication & session security',
-        'Robust relational or NoSQL database integration',
-        'Comprehensive REST/GraphQL API layer with automated validation',
-        'Complete documentation and Git repository handover'
-      ]
-    }
-  },
-  {
-    id: 'mobile-application',
-    iconName: 'Smartphone',
-    category: 'Development Services',
-    startingPrice: 5000,
-    typicalTurnaround: '5 - 10 Days',
-    tag: 'Cross-Platform',
-    title: {
-      bn: 'মোবাইল অ্যাপ্লিকেশন (Android/iOS)',
-      en: 'Mobile Application (Android/iOS)'
-    },
-    shortDesc: {
-      bn: 'Flutter বা React Native দিয়ে তৈরি হাই-পারফরম্যান্স ক্রস-প্ল্যাটফর্ম মোবাইল অ্যাপ।',
-      en: 'Cross-platform mobile apps with Flutter or React Native with native performance.'
-    },
-    fullDesc: {
-      bn: 'অ্যান্ড্রয়েড এবং আইওএস প্ল্যাটফর্মের জন্য ৬০ FPS স্মুথ অ্যানিমেশন, পুশ নোটিফিকেশন, অফলাইন স্টোরেজ ও ক্যামেরা/জিপিএস সমন্বিত অ্যাপ।',
-      en: 'Build powerful Android and iOS mobile applications with push notifications, offline storage, camera/GPS integrations, and backend sync.'
-    },
-    deliverables: {
-      bn: [
-        'ক্রস-প্ল্যাটফর্ম Flutter / React Native কোডবেস',
-        'রেডি Android APK / AAB ও iOS বিল্ড বান্ডেল',
-        'Firebase পুশ নোটিফিকেশন, ক্লাউড স্টোরেজ ও Auth',
-        'সকল স্ক্রিনের জন্য রেসপনসিভ UI ও অফলাইন ক্যাশিং',
-        'Play Store / App Store পাবলিশিং সহায়তা'
-      ],
-      en: [
-        'Cross-platform Flutter / React Native codebase',
-        'Ready-to-publish Android APK / AAB and iOS build bundle',
-        'Firebase push notifications, cloud storage & auth setup',
-        'Offline caching & responsive UI for all screen sizes',
-        'Google Play Store / Apple App Store submission assistance'
-      ]
-    }
-  },
-  {
-    id: 'backend-development',
-    iconName: 'Server',
-    category: 'Development Services',
-    startingPrice: 2000,
-    typicalTurnaround: '24 - 72 Hours',
-    title: {
-      bn: 'ব্যাকএন্ড ডেভেলপমেন্ট ও সার্ভার',
-      en: 'Backend Development'
-    },
-    shortDesc: {
-      bn: 'স্কেলেবল সার্ভার আর্কিটেকচার, RESTful API, মাইক্রোসার্ভিস ও Auth সিকিউরিটি।',
-      en: 'Scalable server architecture, RESTful/GraphQL APIs, and secure auth systems.'
-    },
-    fullDesc: {
-      bn: 'Node.js, Express, Python (FastAPI/Django) দিয়ে তৈরি সিকিউর ব্যাকএন্ড, টোকেন রোটেশন, রেট লিমিটার ও রিকোয়েস্ট ভ্যালিডেশন।',
-      en: 'Solid, secure, and well-structured server-side backends built with Node.js, Express, or Python handling async queues and structured logging.'
-    },
-    deliverables: {
-      bn: [
-        'মডুলার Clean Architecture কোড স্ট্রাকচার',
-        'JWT / OAuth2 সিকিউর অথেন্টিকেশন ও রিফ্রেশ টোকেন',
-        'Swagger / Postman ইন্টারেক্টিভ API কালেকশন',
-        'ইনপুট স্যানিটাইজেশন, CORS ও রেট লিমিটিং',
-        'ক্লাউড VPS বা Docker কন্টেইনারে ডেপ্লয়মেন্ট'
-      ],
-      en: [
-        'Clean modular MVC / Clean Architecture code structure',
-        'JWT/OAuth2 secure authentication and token refresh rotation',
-        'Swagger / Postman interactive API documentation collection',
-        'Input sanitization, CORS protection & rate limiting',
-        'Deployment on cloud VPS / Docker containerization'
-      ]
-    }
-  },
-  {
-    id: 'database-development',
-    iconName: 'Database',
-    category: 'Development Services',
-    startingPrice: 1200,
-    typicalTurnaround: '12 - 36 Hours',
-    title: {
-      bn: 'ডাটাবেস ডিজাইন ও অপটিমাইজেশন',
-      en: 'Database Development'
-    },
-    shortDesc: {
-      bn: 'রিলেশনাল (PostgreSQL, MySQL) ও NoSQL স্কিমা ডিজাইন, ইনডেক্সিং ও অপটিমাইজেশন।',
-      en: 'Relational & NoSQL database schema design, indexing, and query optimization.'
-    },
-    fullDesc: {
-      bn: 'নর্মালাইজড ERD স্কিমা তৈরি, কমপ্লেক্স কুয়েরি অপটিমাইজেশন, মাইগ্রেশন স্ক্রিপ্ট এবং ডাটাবেস পারফরম্যান্স বৃদ্ধি।',
-      en: 'Design resilient database architectures in PostgreSQL, MySQL, MongoDB, or Firestore with indexing strategies and query tuning.'
-    },
-    deliverables: {
-      bn: [
-        'নর্মালাইজড ERD ডায়াগ্রাম ও স্কিমা ডেফিনিশন',
-        'অপটিমাইজড SQL কুয়েরি, স্টোরড প্রসিডিউর ও ভিউস',
-        'কুয়েরি বটলেনেক দূর করতে ইনডেক্সিং স্ট্র্যাটেজি',
-        'অটোমেটেড মাইগ্রেশন স্ক্রিপ্টস (Prisma/Drizzle)',
-        'ব্যাকআপ ও সিডিং স্ক্রিপ্টস'
-      ],
-      en: [
-        'Normalized ERD diagrams & database schema definitions',
-        'Optimized SQL queries, stored procedures & views',
-        'Index strategy to eliminate query bottlenecks',
-        'Automated migration scripts (Drizzle, Prisma, TypeORM)',
-        'Backup strategies and data seeding routines'
-      ]
-    }
-  },
-  {
-    id: 'api-development-integration',
-    iconName: 'Network',
-    category: 'Development Services',
-    startingPrice: 1000,
-    typicalTurnaround: '12 - 24 Hours',
-    title: {
-      bn: 'API ডেভেলপমেন্ট ও ইন্টিগ্রেশন',
-      en: 'API Development & Integration'
-    },
-    shortDesc: {
-      bn: 'থার্ড-পার্টি API, SMS গেটওয়ে, পেমেন্ট, Google Maps ও AI মডেল কানেকশন।',
-      en: 'Custom REST/GraphQL APIs and seamless integration with third-party webhooks.'
-    },
-    fullDesc: {
-      bn: 'আপনার অ্যাপে SMS গেটওয়ে, Google Maps, Firebase, OpenAI/Gemini এআই মডেল ও সোশ্যাল লগইন সহজে ইন্টিগ্রেট করুন।',
-      en: 'Connect your applications with external APIs including SMS gateways, Google Maps, Firebase, OpenAI/Gemini AI models, and webhooks.'
-    },
-    deliverables: {
-      bn: [
-        'সিকিউর থার্ড-পার্টি API কানেক্টিভিটি ও ফেইলওভার রিট্রাই',
-        'ওয়েবহুক লিসেনার ও সিগনেচার ভেরিফিকেশন',
-        'ক্লিন এরর হ্যান্ডলিং ও ফরম্যাটেড রেসপন্স',
-        'টিম টেস্টিংয়ের জন্য রেডি Postman কালেকশন',
-        'এনভায়রনমেন্ট ভ্যারিয়েবল ও সিক্রেট প্রোটেকশন'
-      ],
-      en: [
-        'Secure third-party API connectivity with fallback retries',
-        'Webhook listener implementation with signature verification',
-        'Clean error handling & formatted response payloads',
-        'Postman collection for immediate team testing',
-        'Environment variable configuration & secret protection'
-      ]
-    }
-  },
-  {
-    id: 'bug-fixing-maintenance',
-    iconName: 'Wrench',
-    category: 'Development Services',
-    startingPrice: 500,
-    typicalTurnaround: '4 - 12 Hours',
-    tag: 'Quick Fix',
-    title: {
-      bn: 'বাগ ফিক্সিং ও কোড মেইনটেন্যান্স',
-      en: 'Bug Fixing & Maintenance'
-    },
-    shortDesc: {
-      bn: 'রানটাইম এরর সমাধান, স্ট্যাকট্রেস ট্রেসিং, প্যাকেজ আপডেট ও দ্রুত সমাধান।',
-      en: 'Fast debugging, runtime error fixing, dependency upgrades, and code refactoring.'
-    },
-    fullDesc: {
-      bn: 'কনসোল ক্র্যাশ, ব্রোকেন স্টাইল, প্যাকেজ কনফ্লিক্ট বা লজিক বাগ নিমেষেই সমাধান করে কোডের নির্ভরযোগ্যতা ফিরিয়ে আনুন।',
-      en: 'Senior developers quickly trace stack traces, resolve logic flaws, and optimize code reliability with zero side effects.'
-    },
-    deliverables: {
-      bn: [
-        'মূল কারণ নির্ণয় ও স্পষ্ট ব্যাখ্যাসহ রিপোর্ট',
-        'পার্শ্বপ্রতিক্রিয়াহীন ক্লিন কোড ফিক্স',
-        'সিকিউরিটি প্যাচ ও ডিপেনডেন্সি আপগ্রেড',
-        'কনসোল এরর ক্লিনআপ ও পারফরম্যান্স চেক',
-        'স্থায়ী সমাধান নিশ্চিত করতে ফলো-আপ টেস্টিং'
-      ],
-      en: [
-        'Root cause diagnosis with clear explanation',
-        'Clean code fix with zero regression side-effects',
-        'Security patch verification and dependency upgrades',
-        'Performance audit and console error cleanup',
-        'Follow-up testing to ensure permanent resolution'
-      ]
-    }
-  },
-  {
-    id: 'domain-hosting-setup',
-    iconName: 'Cloud',
-    category: 'Development Services',
-    startingPrice: 400,
-    typicalTurnaround: '2 - 6 Hours',
-    title: {
-      bn: 'ডোমেন ও হোস্টিং সেটআপ',
-      en: 'Domain & Hosting Setup'
-    },
-    shortDesc: {
-      bn: 'DNS পয়েন্ট, SSL সার্টিফিকেট ইন্সটল, cPanel/VPS লাইভ ও বিজনেস ইমেইল।',
-      en: 'DNS configuration, SSL certificate installation, and custom domain email.'
-    },
-    fullDesc: {
-      bn: 'আপনার ওয়েবসাইট ঝটপট লাইভ করুন। নেমসার্ভার ম্যাপিং, ফ্রি SSL (HTTPS), Nginx/Node.js কনফিগারেশন ও Vercel/VPS ডেপ্লয়মেন্ট।',
-      en: 'Nameserver pointing, DNS records (A, CNAME, MX), free SSL certificates, and cloud deployment on Vercel, Netlify, or VPS.'
-    },
-    deliverables: {
-      bn: [
-        'ডোমেন DNS ম্যাপিং (A Records, CNAMEs, Nameservers)',
-        'ফ্রি অটো-রিনিউয়িং Let\'s Encrypt SSL (HTTPS)',
-        'প্রফেশনাল বিজনেস ইমেইল কনফিগারেশন',
-        'ওয়েব সার্ভার হোস্টিং সেটআপ (Nginx, Node.js)',
-        'GitHub থেকে অটোমেটেড ডেপ্লয়মেন্ট পাইপলাইন'
-      ],
-      en: [
-        'Domain DNS mapping (Nameservers, A Records, CNAMEs)',
-        'Free Let\'s Encrypt SSL/TLS Certificate setup (HTTPS)',
-        'Professional business email configuration (e.g. info@yourdomain)',
-        'Web server hosting configuration (Nginx, Apache, Node.js)',
-        'Automated deployment pipeline setup from GitHub'
-      ]
-    }
-  },
-  {
-    id: 'payment-gateway-integration',
-    iconName: 'CreditCard',
-    category: 'Development Services',
-    startingPrice: 1200,
-    typicalTurnaround: '12 - 24 Hours',
-    tag: 'Essential',
-    title: {
-      bn: 'পেমেন্ট গেটওয়ে ইন্টিগ্রেশন',
-      en: 'Payment Gateway Integration'
-    },
-    shortDesc: {
-      bn: 'বিকাশ, নগদ, রকেট, SSLCommerz ও Stripe অটোমেটেড পেমেন্ট সিস্টেম।',
-      en: 'Integration of local (bKash, Nagad, Rocket, SSLCommerz) & Stripe gateways.'
-    },
-    fullDesc: {
-      bn: 'বিকাশ মার্চেন্ট API, নগদ PGW, SSLCommerz, ShurjoPay বা আন্তর্জাতিক Stripe সহজে আপনার ওয়েবসাইটে সংযুক্ত করুন।',
-      en: 'Accept online payments seamlessly with official merchant APIs for bKash Checkout, Nagad, SSLCommerz, and Stripe with instant IPN callbacks.'
-    },
-    deliverables: {
-      bn: [
-        'অফিসিয়াল মার্চেন্ট API ও ব্যাকএন্ড ভেরিফিকেশন',
-        'ইনস্ট্যান্ট পেমেন্ট IPN / ওয়েবহুক ট্রানজ্যাকশন লগ',
-        'অটোমেটেড অর্ডার কনফার্মেশন ও রিসিপ্ট',
-        'স্যান্ডবক্স টেস্টিং থেকে সরাসরি প্রোডাকশনে সুইচ',
-        'ফেইল্ড ট্রানজ্যাকশন ও রিফান্ড হ্যান্ডলিং লজিক'
-      ],
-      en: [
-        'Official Merchant API integration with secure backend verification',
-        'Instant payment IPN / Webhook callback transaction recording',
-        'Automated order confirmation and SMS/Email receipts',
-        'Sandbox testing mode + seamless production switchover',
-        'Refund and failed transaction handling logic'
-      ]
-    }
-  },
-  {
-    id: 'admin-dashboard-development',
-    iconName: 'LayoutDashboard',
-    category: 'Development Services',
-    startingPrice: 2500,
-    typicalTurnaround: '2 - 4 Days',
-    title: {
-      bn: 'অ্যাডমিন ড্যাশবোর্ড ডেভেলপমেন্ট',
-      en: 'Admin Dashboard Development'
-    },
-    shortDesc: {
-      bn: 'অ্যানালিটিক্স চার্ট, ফিল্টারেবল ডেটা টেবিল, এক্সেল এক্সপোর্ট ও রোল কন্ট্রোল।',
-      en: 'Feature-packed administration panels with analytics charts and user management.'
-    },
-    fullDesc: {
-      bn: 'আপনার বিজনেস বা প্রজেক্ট পরিচালনার জন্য ইন্টারঅ্যাক্টিভ চার্ট, ইউজার ম্যানেজমেন্ট ও রিপোর্ট এক্সপোর্টসহ অ্যাডমিন প্যানেল।',
-      en: 'Manage your operations with a custom admin control center featuring interactive analytics charts, paginated tables, CSV export, and role permissions.'
-    },
-    deliverables: {
-      bn: [
-        'ডায়নামিক চার্ট ভিজ্যুয়ালাইজার (Recharts / Chart.js)',
-        'সার্চ, ফিল্টার ও পেজিনেশনযুক্ত অ্যাডভান্সড টেবিল',
-        'এক ক্লিকে Excel / CSV / PDF ডেটা এক্সপোর্ট',
-        'মাল্টি-রোল পারমিশন কন্ট্রোল (Admin, Manager)',
-        'ডার্ক মোড / লাইট মোড সাপোর্টেড ক্লিন UI'
-      ],
-      en: [
-        'Dynamic data visualizer charts (Recharts / Chart.js)',
-        'Advanced data tables with search, filter, sort & pagination',
-        'Export data to Excel / CSV / PDF with one click',
-        'Multi-role permission controls (Admin, Manager, Viewer)',
-        'Dark mode / Light mode responsive user interface'
-      ]
-    }
-  },
-  {
-    id: 'custom-feature-development',
-    iconName: 'Cpu',
-    category: 'Development Services',
-    startingPrice: 1000,
-    typicalTurnaround: '12 - 48 Hours',
-    title: {
-      bn: 'কাস্টম ফিচার ডেভেলপমেন্ট',
-      en: 'Custom Feature Development'
-    },
-    shortDesc: {
-      bn: 'কাস্টম অ্যালগরিদম, অটোমেটেড স্ক্রিপ্ট, ওয়েব স্ক্র্যাপিং ও স্পেশাল টুলস।',
-      en: 'Custom algorithmic modules, automated scripts, web scraping, and bespoke tools.'
-    },
-    fullDesc: {
-      bn: 'স্ট্যান্ডার্ড টেমপ্লেটে না থাকা যেকোনো জটিল ফিচার, ব্যাকগ্রাউন্ড ক্রন জব, স্ক্র্যাপার বা এআই ইন্টিগ্রেশন কাস্টম কোডিং।',
-      en: 'Build custom calculators, background schedulers, web scrapers (Puppeteer/BeautifulSoup), PDF report generators, and AI integrations.'
-    },
-    deliverables: {
-      bn: [
-        'আপনার সুনির্দিষ্ট চাহিদা অনুযায়ী কাস্টম কোডেড ফিচার',
-        'মডুলার, রিইউজেবল ও ডকুমেন্টেড সোর্স কোড',
-        'বিদ্যমান অ্যাপ্লিকেশনে সহজে ইন্টিগ্রেশন',
-        'ইউনিট টেস্টিং ও এজ-কেস ভ্যালিডেশন',
-        'লাইভ ডেমো ও ওয়াকথ্রু গাইড'
-      ],
-      en: [
-        'Bespoke feature coded to your exact functional specification',
-        'Modular, reusable, and thoroughly documented code',
-        'Integration into your existing application codebase',
-        'Unit testing and edge-case validation',
-        'Deployment walkthrough and live demonstration'
-      ]
-    }
-  },
-  {
-    id: 'website-speed-optimization',
-    iconName: 'Zap',
-    category: 'Development Services',
-    startingPrice: 600,
-    typicalTurnaround: '6 - 18 Hours',
-    title: {
-      bn: 'ওয়েবসাইট স্পিড অপটিমাইজেশন',
-      en: 'Website Speed Optimization'
-    },
-    shortDesc: {
-      bn: 'Core Web Vitals উন্নয়ন, ইমেজ কম্প্রেশন, ক্যাশিং ও ৯০+ গুগল স্কোর।',
-      en: 'Core Web Vitals enhancement, image compression, caching, and 90+ score.'
-    },
-    fullDesc: {
-      bn: 'ধীরগতির ওয়েবসাইটকে বিদ্যুৎগতির করে তুলুন। ইমেজ WebP ফরম্যাট রূপান্তর, স্ক্রিপ্ট মিনিফিকেশন ও ক্লাউডফেয়ার CDN সেটআপ।',
-      en: 'Speed up your website by optimizing Core Web Vitals (LCP, FID, CLS), compressing media assets to WebP/AVIF, lazy loading, and CDN caching.'
-    },
-    deliverables: {
-      bn: [
-        'Google PageSpeed Insights & GTmetrix অডিট',
-        'এসেট কম্প্রেশন, কোড স্প্লিটিং ও স্ক্রিপ্ট ডিফারাল',
-        'ডাটাবেস কুয়েরি অপটিমাইজেশন ও ক্যাশিং সেটআপ',
-        'Cloudflare CDN ইন্টিগ্রেশন',
-        'বিফোর ও আফটার পারফরম্যান্স রিপোর্ট'
-      ],
-      en: [
-        'Comprehensive Google PageSpeed Insights & GTmetrix audit',
-        'Asset compression, code splitting & script deferral',
-        'Database query optimization & object caching setup',
-        'CDN integration (Cloudflare) for global low latency',
-        'Before-and-after performance metrics report'
-      ]
-    }
-  },
-  {
-    id: 'website-security-backup',
-    iconName: 'ShieldCheck',
-    category: 'Development Services',
-    startingPrice: 800,
-    typicalTurnaround: '12 - 24 Hours',
-    title: {
-      bn: 'ওয়েবসাইট সিকিউরিটি ও ব্যাকআপ',
-      en: 'Website Security & Backup'
-    },
-    shortDesc: {
-      bn: 'ম্যালওয়্যার রিমুভাল, SQLi/XSS প্রোটেকশন, ফায়ারওয়াল ও অটো ক্লাউড ব্যাকআপ।',
-      en: 'Malware removal, SQLi/XSS patching, automated cloud backups, and firewall setup.'
-    },
-    fullDesc: {
-      bn: 'আপনার মূল্যবান ওয়েবসাইট ও ডাটা সুরক্ষিত রাখুন। DDoS প্রোটেকশন, সিকিউরিটি হেডার ও সাপ্তাহিক ক্লাউড এনক্রিপ্টেড ব্যাকআপ।',
-      en: 'Protect your valuable digital assets. Vulnerability audits, HTTPS enforcement, Cloudflare DDoS mitigation, and automated cloud backups.'
-    },
-    deliverables: {
-      bn: [
-        'সম্পূর্ণ সিকিউরিটি ভালনারেবিলিটি স্ক্যান ও ম্যালওয়্যার রিমুভ',
-        'ফায়ারওয়াল ও ব্রুট-ফোর্স প্রোটেকশন সেটআপ',
-        'অটোমেটেড এনক্রিপ্টেড ক্লাউড ব্যাকআপ রুটিন',
-        'সিকিউরিটি হেডার্স (CSP, HSTS) কনফিগারেশন',
-        'ডিজাস্টার রিকভারি ও ১-ক্লিক রিস্টোর গাইড'
-      ],
-      en: [
-        'Complete security vulnerability scan & malware cleanup',
-        'Firewall, brute-force protection & rate-limit configuration',
-        'Automated daily/weekly encrypted cloud backup routines',
-        'Security headers (CSP, HSTS, X-Frame-Options) configuration',
-        'Disaster recovery documentation and 1-click restore plan'
-      ]
-    }
-  },
-  {
-    id: 'wordpress-development',
-    iconName: 'Wordpress',
-    category: 'WordPress Services',
-    startingPrice: 2000,
-    typicalTurnaround: '2 - 5 Days',
-    tag: 'Popular',
-    title: {
-      bn: 'ওয়ার্ডপ্রেস ওয়েবসাইট ও কাস্টমাইজেশন',
-      en: 'WordPress Website & Customization'
-    },
-    shortDesc: {
-      bn: 'রেসপন্সিভ ওয়ার্ডপ্রেস ওয়েবসাইট, এলিমেন্টর/গুটেনবার্গ ডিজাইন, উ-কমার্স অনলাইন শপ ও স্পিড অপ্টিমাইজেশন।',
-      en: 'Custom WordPress development, Elementor/Gutenberg page building, WooCommerce online store setup, and speed optimization.'
-    },
-    fullDesc: {
-      bn: 'প্রফেশনাল, দ্রুতগতির ও ইউজার-ফ্রেন্ডলি ওয়ার্ডপ্রেস ওয়েবসাইট ডেভেলপমেন্ট। পার্সোনাল ব্লগ, নিউজ পোর্টাল, ক্লাব ওয়েবসাইট বা সম্পূর্ণ উ-কমার্স (WooCommerce) ই-কমার্স শপ। এলিমেন্টর প্রো ডিজাইন, বিকাশ/নগদ পেমেন্ট গেটওয়ে, SEO এবং ৯৯.৯% আপটাইম কনফিগারেশন।',
-      en: 'End-to-end WordPress web development and customization for businesses, blogs, club portals, portfolio sites, and full-scale WooCommerce stores. Mobile-first responsiveness, local payment gateways (bKash/Nagad/Cards), SEO setup, and PageSpeed optimization.'
-    },
-    deliverables: {
-      bn: [
-        'সম্পূর্ণ কাস্টম প্রিমিয়াম রেসপন্সিভ ওয়ার্ডপ্রেস ওয়েবসাইট',
-        'উ-কমার্স (WooCommerce) অনলাইন স্টোর সেটআপ ও প্রোডাক্ট ক্যাটালগ',
-        'লোকাল ও গ্লোবাল পেমেন্ট গেটওয়ে ইন্টিগ্রেশন (bKash, Nagad, SSLCommerz, Stripe)',
-        '৯০+ গুগল স্পিড স্কোর অপ্টিমাইজেশন ও ক্যাশিং কনফিগারেশন',
-        'অন-পেজ এসইও (RankMath/Yoast) ও ক্লাউডফ্লেয়ার সিকিউরিটি',
-        'সহজে ম্যানেজ করার মতো ড্র্যাগ-অ্যান্ড-ড্রপ এডমিন প্যানেল + ভিডিও টিউটোরিয়াল'
-      ],
-      en: [
-        'Complete Custom WordPress Website with Premium Responsive Layout',
-        'WooCommerce Store Setup with Product Variations, Cart & Checkout',
-        'Local & Global Payment Gateway Integration (bKash, Nagad, SSLCommerz, Stripe)',
-        '90+ Google Core Web Vitals Speed Optimization & Caching Setup',
-        'On-Page SEO Configuration (RankMath/Yoast) & Security Firewall',
-        'Easy-to-manage Drag & Drop Admin Dashboard + Video Tutorial Guide'
-      ]
-    },
-    subServices: [
-      {
-        id: 'wp-business-corporate',
-        price: 2000,
-        turnaround: '2 - 3 Days',
-        title: {
-          bn: 'বিজনেস, ক্লাব ও কর্পোরেট ওয়েবসাইট',
-          en: 'Business, Club & Corporate Website'
-        },
-        recommendedFor: {
-          bn: 'স্টার্টআপ, এজেন্সি, ইউনিভার্সিটি ক্লাব ও ডিপার্টমেন্ট পোর্টাল',
-          en: 'Startups, Agencies, University Clubs & Department Portals'
-        },
-        deliverables: {
-          bn: [
-            '৫-৮টি কাস্টম ডিজাইন পেজ (এলিমেন্টর প্রো / ব্লক থিম)',
-            'WhatsApp ও ইমেইল নোটিফিকেশনসহ কন্টাক্ট ও ইনকোয়ারি ফর্ম',
-            'সোশ্যাল মিডিয়া ফিড, ফটো গ্যালারি ও ইভেন্ট ম্যানেজমেন্ট',
-            'SSL সেটআপ, মোবাইল অপ্টিমাইজেশন ও বেসিক এসইও'
-          ],
-          en: [
-            '5-8 Custom Designed Pages with Elementor Pro / Block Theme',
-            'Contact & Inquiry Forms with WhatsApp and Email Notifications',
-            'Social Media Feeds, Photo Gallery & Event Management',
-            'SSL Setup, Mobile Optimization & Basic SEO'
-          ]
-        }
-      },
-      {
-        id: 'wp-woocommerce-store',
-        price: 3500,
-        turnaround: '3 - 5 Days',
-        title: {
-          bn: 'সম্পূর্ণ উ-কমার্স অনলাইন স্টোর সেটআপ',
-          en: 'Full WooCommerce Online Store Setup'
-        },
-        recommendedFor: {
-          bn: 'পোশাক ব্র্যান্ড, গ্যাজেট শপ, বুকস্টোর ও অনলাইন মার্চেন্ট',
-          en: 'Clothing Brands, Electronics, Bookstores & Multi-Product Vendors'
-        },
-        deliverables: {
-          bn: [
-            'প্রোডাক্ট ইনভেন্টরি, ভ্যারিয়েশন (সাইজ/কালার) ও স্টক ম্যানেজমেন্ট',
-            'বিকাশ, নগদ, রকেট ও ক্রেডিট কার্ড অটোমেটেড পেমেন্ট ইন্টিগ্রেশন',
-            'ইনভয়েসিং সিস্টেম, কুপন ডিসকাউন্ট ও ডেলিভারি চার্জ ক্যালকুলেটর',
-            'কাস্টমার অর্ডার ট্র্যাকিং ও ইমেইল নোটিফিকেশন ফ্লো'
-          ],
-          en: [
-            'Product Inventory, Variations (Size/Color) & Stock Management',
-            'bKash, Nagad, Rocket & Credit Card Gateway Integration',
-            'Automated Invoicing, Coupon System & Delivery Zone Rates',
-            'Customer Order Tracking & Email Notification Flow'
-          ]
-        }
-      },
-      {
-        id: 'wp-speed-security-cleanup',
-        price: 1000,
-        turnaround: '12 - 24 Hours',
-        title: {
-          bn: 'ওয়ার্ডপ্রেস স্পিড অপ্টিমাইজেশন ও ম্যালওয়্যার ক্লিনআপ',
-          en: 'Speed Optimization & Malware Cleanup'
-        },
-        recommendedFor: {
-          bn: 'ধীরগতির ওয়েবসাইট ও হ্যাকড/ভাইরাস আক্রান্ত সাইট',
-          en: 'Slow Loading Sites & Hacked / Compromised Installations'
-        },
-        deliverables: {
-          bn: [
-            '৯০+ গুগল পেজস্পিড ও GTmetrix পারফরম্যান্স অপ্টিমাইজেশন',
-            'Redis/Memcached, WebP ইমেজ কনভার্সন ও ক্লাউডফ্লেয়ার CDN',
-            'ম্যালওয়্যার ও ব্ল্যাকলিস্ট রিমুভাল + ক্লিন ব্যাকআপ তৈরি',
-            'লগইন ব্রুট-ফোর্স প্রোটেকশন ও ফায়ারওয়াল হার্ডেনিং'
-          ],
-          en: [
-            '90+ Google PageSpeed / GTmetrix Performance Optimization',
-            'Redis/Memcached, WebP Image Compression & CDN Setup',
-            'Malware, Backdoor & Blacklist Removal + Clean Backup',
-            'Cloudflare WAF & Login Brute Force Hardening'
-          ]
-        }
-      },
-      {
-        id: 'wp-custom-theme-plugin',
-        price: 1500,
-        turnaround: '24 - 48 Hours',
-        title: {
-          bn: 'কাস্টম প্লাগইন, ACF ও বাগ ফিক্সিং',
-          en: 'Custom Plugin, ACF & Bug Fixing'
-        },
-        recommendedFor: {
-          bn: 'কাস্টম ফিচার রিকোয়ারমেন্ট, PHP এরর ও ডাটাবেস মাইগ্রেশন',
-          en: 'Custom Features, PHP Errors & Database Migration'
-        },
-        deliverables: {
-          bn: [
-            'Advanced Custom Fields (ACF Pro) ও কাস্টম পোস্ট টাইপ (CPT)',
-            'PHP/JavaScript এরর ও থিম প্লাগইন কনফ্লিক্ট ফিক্সিং',
-            'জিরো ডাউনটাইমে সার্ভার টু সার্ভার ডোমেন মাইগ্রেশন',
-            'REST API ও থার্ড-পার্টি ওয়েবহুক ইন্টিগ্রেশন'
-          ],
-          en: [
-            'Advanced Custom Fields (ACF Pro) & Custom Post Types (CPT)',
-            'PHP/JavaScript Conflicts & Critical Error Debugging',
-            'Seamless Server-to-Server / Domain Migration (Zero Downtime)',
-            'REST API Endpoints & Third-party Webhook Integration'
-          ]
-        }
-      }
-    ]
-  },
-  {
-    id: 'wordpress-woocommerce',
-    iconName: 'ShoppingBag',
-    category: 'WordPress Services',
-    startingPrice: 3500,
-    typicalTurnaround: '3 - 6 Days',
-    tag: 'Popular',
-    title: {
-      bn: 'উ-কমার্স অনলাইন স্টোর ও পেমেন্ট ইন্টিগ্রেশন',
-      en: 'WooCommerce Store & Payment Gateway'
-    },
-    shortDesc: {
-      bn: 'সম্পূর্ণ ই-কমার্স শপ সেটআপ, বিকাশ/নগদ/কার্ড অটোমেটেড পেমেন্ট, স্টক ট্র্যাকিং ও অর্ডার ইনভয়েস।',
-      en: 'Complete WooCommerce store setup, automated bKash/Nagad/Cards checkout, inventory & PDF invoices.'
-    },
-    fullDesc: {
-      bn: 'একটি পূর্ণাঙ্গ, হাই-কনভার্টিং ই-কমার্স অনলাইন শপ তৈরির কমপ্লিট সল্যুশন। প্রোডাক্ট আপলোড, ভ্যারিয়েশন (সাইজ/কালার), স্টক ট্র্যাকিং, বিকাশ/নগদ/রকেট/এসএসএলকমার্স পেমেন্ট গেটওয়ে, কুপন ডিসকাউন্ট, অটোমেটেড পিডিএফ ইনভয়েস এবং হোয়াটসঅ্যাপে অর্ডার নোটিফিকেশন সিস্টেম।',
-      en: 'High-converting end-to-end WooCommerce e-commerce development. Product variations, local payment gateways (bKash/Nagad/Cards/SSLCommerz), dynamic shipping calculation, automated PDF invoice generation, coupon system, and WhatsApp order alerts.'
-    },
-    deliverables: {
-      bn: [
-        'সম্পূর্ণ মোবাইল-রেসপন্সিভ উ-কমার্স শপ ও চেকআউট ফানেল',
-        'বিকাশ, নগদ, রকেট ও ভিসা/মাস্টারকার্ড অটো পেমেন্ট সেটআপ',
-        'আনলিমিটেড প্রোডাক্ট ক্যাটাগরি, ফিল্টারিং ও ভ্যারিয়েশন সাপোর্ট',
-        'অটোমেটেড কাস্টমার ইনভয়েস (PDF) ও অর্ডার ট্র্যাকিং সিস্টেম',
-        'হোয়াটসঅ্যাপ ও ইমেইলে ইনস্ট্যান্ট নিউ অর্ডার অ্যালার্ট',
-        'প্রোডাক্ট আপলোড ও স্টক ম্যানেজমেন্ট ভিডিও গাইডলাইন'
-      ],
-      en: [
-        'Fully Responsive WooCommerce Shop & Conversion-Optimized Checkout',
-        'Automated bKash, Nagad, Rocket & Cards Payment Gateway Integration',
-        'Product Variations (Color/Size), Custom Filters & Category Taxonomy',
-        'Automated PDF Invoicing & Real-Time Customer Order Tracking',
-        'Instant Admin WhatsApp & Email Order Notification Flow',
-        'Comprehensive Store Inventory & Product Management Video Tutorial'
-      ]
-    },
-    subServices: [
-      {
-        id: 'wp-woo-starter',
-        price: 2500,
-        turnaround: '2 - 3 Days',
-        title: {
-          bn: 'স্টার্টার অনলাইন বুটিক / শপ',
-          en: 'Starter Online Boutique / Store'
-        },
-        recommendedFor: {
-          bn: 'এফ-কমার্স পেজ, সিঙ্গেল প্রোডাক্ট ব্র্যান্ড ও হোমমেড শপ',
-          en: 'F-Commerce brands, single-product dropshippers & boutiques'
-        },
-        deliverables: {
-          bn: [
-            '১০-২০টি প্রোডাক্ট ক্যাটালগ আপলোড ও ক্যাটাগরি সেটআপ',
-            'বিকাশ ও নগদ ম্যানুয়াল/অটো পেমেন্ট গেটওয়ে',
-            'ডেলিভারি চার্জ ক্যালকুলেটর (ঢাকা ও ঢাকার বাইরে)',
-            'সোশ্যাল মিডিয়া চ্যাট ও অর্ডার অ্যালার্ট'
-          ],
-          en: [
-            '10-20 Product Catalog Listings with Categories',
-            'bKash & Nagad Payment Integration',
-            'City/Suburban Delivery Rate Calculations',
-            'WhatsApp Chat & Order Notifications'
-          ]
-        }
-      },
-      {
-        id: 'wp-woo-full-enterprise',
-        price: 4500,
-        turnaround: '4 - 6 Days',
-        title: {
-          bn: 'ফুল-স্কেল মাল্টি-ভ্যারিয়েশন ই-কমার্স প্ল্যাটফর্ম',
-          en: 'Full-Scale Multi-Variation E-Commerce'
-        },
-        recommendedFor: {
-          bn: 'পোশাক ব্র্যান্ড, গ্যাজেট স্টোর ও সুপারশপ মার্চেন্ট',
-          en: 'Apparel brands, tech gear stores & retail merchants'
-        },
-        deliverables: {
-          bn: [
-            'কালার/সাইজ সুইচার, কাস্টম অ্যাট্রিবিউটস ও আনলিমিটেড প্রোডাক্টস',
-            'এসএসএলকমার্স / সূর্যপে / স্ট্রাইপ গেটওয়ে কনফিগারেশন',
-            'কুপন কোড, ফ্ল্যাশ সেল ব্যানার ও ডায়নামিক কার্ট ড্রয়ার',
-            'অটোমেটেড ইনভয়েস প্রিন্টিং ও কুরিয়ার API ইন্টিগ্রেশন প্রিপারেশন'
-          ],
-          en: [
-            'Color/Size Swatches, Custom Attributes & Unlimited Items',
-            'SSLCommerz / Shurjopay / Stripe Gateway Integration',
-            'Coupon Engines, Flash Sale Timers & Slide Cart Drawer',
-            'Automated PDF Invoices & Courier API Integration Preparation'
-          ]
-        }
-      },
-      {
-        id: 'wp-woo-gateway-pos',
-        price: 1800,
-        turnaround: '24 - 48 Hours',
-        title: {
-          bn: 'পেমেন্ট গেটওয়ে ও POS/ইনভয়েস সেটআপ',
-          en: 'Payment Gateway & POS/Invoice Setup'
-        },
-        recommendedFor: {
-          bn: 'বিদ্যমান ওয়ার্ডপ্রেস সাইটে পেমেন্ট ও ইনভয়েস যুক্ত করতে',
-          en: 'Existing WordPress sites needing bKash/Nagad & POS'
-        },
-        deliverables: {
-          bn: [
-            'bKash / Nagad মার্চেন্ট API ও টোকেনাইজড পেমেন্ট',
-            'অটোমেটেড অর্ডার কনফার্মেশন SMS নোটিফিকেশন',
-            'POS সিস্টেম সেটআপ ও বারকোড প্রিন্টিং সাপোর্ট',
-            'নিরাপদ চেকআউট অডিট ও SSL এনক্রিপশন'
-          ],
-          en: [
-            'bKash / Nagad Merchant API & Tokenized Checkout',
-            'Automated Order Confirmation SMS Notification Gateway',
-            'WooCommerce POS & Barcode Scanner Integration',
-            'Checkout Security Audit & Strict SSL Verification'
-          ]
-        }
-      }
-    ]
-  },
-  {
-    id: 'wordpress-speed-seo',
-    iconName: 'Zap',
-    category: 'WordPress Services',
-    startingPrice: 1000,
-    typicalTurnaround: '12 - 24 Hours',
-    tag: 'Fast 12h',
-    title: {
-      bn: 'ওয়ার্ডপ্রেস স্পিড অপ্টিমাইজেশন ও টেকনিক্যাল এসইও',
-      en: 'Speed Optimization & Technical SEO'
-    },
-    shortDesc: {
-      bn: '৯০+ গুগল পেজস্পিড স্কোর, ক্যাশিং, WebP ইমেজ কনভার্সন ও RankMath/Yoast এসইও সেটআপ।',
-      en: '90+ Google PageSpeed, LiteSpeed/WP Rocket caching, WebP conversion & RankMath/Yoast SEO.'
-    },
-    fullDesc: {
-      bn: 'ধীরগতির ওয়েবসাইট কাস্টমার হারায় ও গুগলে র‍্যাংক পায় না। আমরা Core Web Vitals মেনে আপনার সাইটের স্পিড ১ সেকেন্ডের নিচে নিয়ে আসব এবং ৯০+ Google PageSpeed স্কোর অর্জন করব। সাথে সম্পূর্ণ অন-পেজ ও টেকনিক্যাল এসইও কনফিগারেশন।',
-      en: 'Accelerate your WordPress site to under 1 second loading time and score 90+ on Google PageSpeed Insights & GTmetrix. Includes LiteSpeed/WP Rocket caching, WebP image conversion, CSS/JS minification, database bloat purge, and RankMath/Yoast on-page schema configuration.'
-    },
-    deliverables: {
-      bn: [
-        'গুগল পেজস্পিড ও GTmetrix-এ ৯০+ পারফরম্যান্স স্কোর গ্যারান্টি',
-        'Core Web Vitals (LCP, FID, CLS) অপ্টিমাইজেশন',
-        'WP Rocket / LiteSpeed Cache ও Redis অবজেক্ট ক্যাশ কনফিগারেশন',
-        'WebP ফরম্যাটে অটোমেটিক ইমেজ কম্প্রেশন ও লেজি-লোডিং',
-        'ডাটাবেস ক্লিনআপ ও অপ্রয়োজনীয় CSS/JS কোড রিমুভাল',
-        'RankMath / Yoast এসইও, XML সাইটম্যাপ ও স্কিমা মার্কআপ সেটআপ'
-      ],
-      en: [
-        '90+ Performance Score on Google PageSpeed Insights & GTmetrix',
-        'Google Core Web Vitals (LCP, INP, CLS) Green Thresholds',
-        'WP Rocket / LiteSpeed Cache & Redis Object Cache Configuration',
-        'Next-Gen WebP Image Compression & Smart Lazy-Loading',
-        'Database Optimization & Unused CSS/JS Deferral / Minification',
-        'RankMath / Yoast SEO, XML Sitemap & Rich Schema Markup Setup'
-      ]
-    },
-    subServices: [
-      {
-        id: 'wp-speed-core',
-        price: 1000,
-        turnaround: '12 - 18 Hours',
-        title: {
-          bn: '৯০+ গুগল পেজস্পিড বুস্ট',
-          en: '90+ Google PageSpeed Boost'
-        },
-        recommendedFor: {
-          bn: 'স্লো লোডিং ওয়েবসাইট ও মোবাইল ট্রাফিক স্পিড ফিক্স',
-          en: 'Slow sites needing fast mobile & desktop loading'
-        },
-        deliverables: {
-          bn: [
-            'মোবাইল ও ডেস্কটপ দুই ভার্সনেই ৯০+ স্কোর',
-            'ক্যাশ প্লাগইন ও অবজেক্ট ক্যাশিং কনফিগারেশন',
-            'ইমেজ অপ্টিমাইজেশন ও WebP কনভার্সন',
-            'বিফোর/আফটার স্পিড কম্প্যারিজন রিপোর্ট'
-          ],
-          en: [
-            '90+ Mobile & Desktop PageSpeed Guaranteed',
-            'Advanced Cache & CDN Setup',
-            'Lossless WebP Compression',
-            'Before / After Benchmark Report'
-          ]
-        }
-      },
-      {
-        id: 'wp-tech-seo-schema',
-        price: 1200,
-        turnaround: '24 Hours',
-        title: {
-          bn: 'কমপ্লিট টেকনিক্যাল এসইও ও স্কিমা',
-          en: 'Technical SEO & Rich Schema Setup'
-        },
-        recommendedFor: {
-          bn: 'গুগল সার্চে র‍্যাংক বৃদ্ধি ও সার্চ কনসোল এরর ফিক্স',
-          en: 'Websites aiming for high Google organic ranking'
-        },
-        deliverables: {
-          bn: [
-            'Google Search Console ও Analytics 4 সেটআপ',
-            'XML সাইটম্যাপ, Robots.txt ও ক্যানোনিকাল ট্যাগ কনফিগ',
-            'অর্গানাইজেশন, লোকাল বিজনেস ও প্রোডাক্ট রিচ স্কিমা',
-            'Broken Links ও 404 এরর রিডাইরেক্ট ফিক্স'
-          ],
-          en: [
-            'Google Search Console & GA4 Setup',
-            'XML Sitemap, Robots.txt & Canonical Rules',
-            'Organization, FAQ & Product Schema Markup',
-            'Broken Links & 404 Redirect Audit'
-          ]
-        }
-      }
-    ]
-  },
-  {
-    id: 'wordpress-security-malware',
-    iconName: 'ShieldCheck',
-    category: 'WordPress Services',
-    startingPrice: 1500,
-    typicalTurnaround: '6 - 24 Hours',
-    tag: 'Emergency',
-    title: {
-      bn: 'ম্যালওয়্যার ক্লিনআপ ও সিকিউরিটি ফায়ারওয়াল',
-      en: 'Malware Removal & Security Hardening'
-    },
-    shortDesc: {
-      bn: 'হ্যাকড সাইট রিকভারি, ভাইরাস ও ব্যাকডোর ক্লিনআপ, গুগল ব্ল্যাকলিস্ট রিমুভাল ও ফায়ারওয়াল প্রোটেকশন।',
-      en: 'Emergency hacked site recovery, virus cleanup, blacklist removal & Wordfence firewall setup.'
-    },
-    fullDesc: {
-      bn: 'আপনার ওয়েবসাইট হ্যাকড হলে, গুগল রেড ওয়ার্নিং (Deceptive Site Ahead) দেখালে বা অনাকাঙ্ক্ষিত রিডাইরেক্ট হলে আমরা দ্রুততম সময়ে সকল ভাইরাস, ব্যাকডোর ও ম্যালওয়্যার কোড সম্পূর্ণ ক্লিন করব এবং ফায়ারওয়াল দিয়ে ভবিষ্যৎ আক্রমণ বন্ধ করব।',
-      en: 'Immediate recovery from hacks, Japanese spam injections, crypto-miners, and phishing redirects. Complete file-system scan, backdoor elimination, Google Safe Browsing blacklist de-listing, Cloudflare WAF setup, and hardened login security.'
-    },
-    deliverables: {
-      bn: [
-        'সম্পূর্ণ ফাইল সিস্টেম ও ডাটাবেস ডিপ ভাইরাস স্ক্যান',
-        'সকল ব্যাকডোর, হিডেন ট্রোজান ও ম্যালওয়্যার স্ক্রিপ্ট রিমুভ',
-        'Google Safe Browsing & McAfee ব্ল্যাকলিস্ট থেকে সাইট রিমুভাল রিকোয়েস্ট',
-        'ওয়ার্ডফেন্স (Wordfence) প্রোটেকশন ও 2FA টু-ফ্যাক্টর অথেন্টিকেশন',
-        'wp-config ও .htaccess সিকিউরিটি রুলস হার্ডেনিং',
-        'ক্লাউড স্টোরেজে সম্পূর্ণ ক্লিন ডাটাবেস ও ফাইল ব্যাকআপ'
-      ],
-      en: [
-        'Deep-level File System & SQL Database Malware Scan',
-        'Complete Eradication of Backdoors, Trojans & Phishing Shells',
-        'Google Safe Browsing & Security Blacklist De-listing Request',
-        'Wordfence WAF & Two-Factor Authentication (2FA) Setup',
-        'wp-config.php & .htaccess Strict Security Hardening',
-        'Clean Encrypted Off-Site Backup to Google Drive / Cloud'
-      ]
-    },
-    subServices: [
-      {
-        id: 'wp-emergency-cleanup',
-        price: 1500,
-        turnaround: '6 - 12 Hours',
-        title: {
-          bn: 'ইমার্জেন্সি ম্যালওয়্যার ও ব্যাকডোর ক্লিনআপ',
-          en: 'Emergency Malware & Backdoor Cleanup'
-        },
-        recommendedFor: {
-          bn: 'রিডাইরেক্ট ভাইরাস, হ্যাক হওয়া বা গুগল ওয়ার্নিং পাওয়া ওয়েবসাইট',
-          en: 'Compromised websites with malware warnings or redirects'
-        },
-        deliverables: {
-          bn: [
-            '১০০% ইনফেক্টেড ফাইল ক্লিন ও কোর রিপ্লেসমেন্ট',
-            'ডাটাবেস ইনজেকশন স্প্যাম ও ব্যাকডোর ডিলিট',
-            'গুগল রেড স্ক্রিন রিমুভাল অ্যাপ্লিকেশন',
-            'ক্লিন আপলোড ফোল্ডার অডিট'
-          ],
-          en: [
-            '100% Infected File Sanitization & Core Reinstallation',
-            'Database Injected Spam & PHP Backdoor Removal',
-            'Google Red Screen Blacklist De-listing Application',
-            'Upload Directory Shell Cleanup'
-          ]
-        }
-      },
-      {
-        id: 'wp-security-hardening',
-        price: 1000,
-        turnaround: '12 Hours',
-        title: {
-          bn: 'প্রিমিয়াম সিকিউরিটি হার্ডেনিং ও ফায়ারওয়াল',
-          en: 'Security Hardening & WAF Protection'
-        },
-        recommendedFor: {
-          bn: 'ভবিষ্যতের সাইবার আক্রমণ ও ব্রুট-ফোর্স রোধ করতে',
-          en: 'Preventing future brute-force attacks & zero-day exploits'
-        },
-        deliverables: {
-          bn: [
-            'Cloudflare Web Application Firewall (WAF) রুলস',
-            'কাস্টম এডমিন লগইন URL ও ব্রুট-ফোর্স ব্লকার',
-            'XML-RPC ডিজেবল ও ফাইল এডিটিং লক',
-            'দৈনিক অটোমেটেড ক্লাউড ব্যাকআপ কনফিগারেশন'
-          ],
-          en: [
-            'Cloudflare WAF Custom Security Rules',
-            'Custom Admin Login URL & Brute-Force Rate Limiting',
-            'Disable XML-RPC & File Editor Lockout',
-            'Automated Off-site Daily Backup Routine'
-          ]
-        }
-      }
-    ]
-  },
-  {
-    id: 'wordpress-custom-theme-plugin',
-    iconName: 'Code',
-    category: 'WordPress Services',
-    startingPrice: 1800,
-    typicalTurnaround: '2 - 4 Days',
-    tag: 'Advanced',
-    title: {
-      bn: 'কাস্টম প্লাগইন, ACF ও PHP ডেভেলপমেন্ট',
-      en: 'Custom Plugin, ACF & PHP Development'
-    },
-    shortDesc: {
-      bn: 'টেলর-মেড ওয়ার্ডপ্রেস প্লাগইন, Advanced Custom Fields (ACF Pro), কাস্টম পোস্ট টাইপ ও REST API।',
-      en: 'Tailored WordPress plugin development, ACF Pro, Custom Post Types & REST API integration.'
-    },
-    fullDesc: {
-      bn: 'প্রস্তুতকৃত প্লাগইন যখন আপনার চাহিদামত কাজ করে না, তখন আমাদের কাস্টম ওয়ার্ডপ্রেস ডেভেলপমেন্ট সার্ভিস নিন। কাস্টম পোস্ট টাইপ, মেটাবক্স, ACF Pro কাস্টম ফিল্ডস, থার্ড-পার্টি REST API ও ওয়েবহুক অটোমেশন।',
-      en: 'Custom WordPress PHP development for bespoke functionality. Advanced Custom Fields (ACF Pro), custom post types, taxonomy architectures, external REST API integrations, webhooks, and custom shortcodes.'
-    },
-    deliverables: {
-      bn: [
-        'ক্লিন ও স্ট্যান্ডার্ড কোডিং মেনে কাস্টম ওয়ার্ডপ্রেস প্লাগইন',
-        'Advanced Custom Fields (ACF Pro) ও কাস্টম পোস্ট টাইপস (CPT)',
-        'REST API এন্ডপয়েন্ট ও থার্ড-পার্টি সার্ভিস ইন্টিগ্রেশন',
-        'কাস্টম পেমেন্ট গেটওয়ে হুকস ও অটোমেটেড ডাটা সিংক',
-        'থিম ওভাররাইড ও চাইল্ড থিম ডেভেলপমেন্ট',
-        'সিকিউর PHP/JS বাগ ও মেমোরি লিমিট ফিক্সিং'
-      ],
-      en: [
-        'Bespoke WordPress Plugin Coded to WP Coding Standards',
-        'Advanced Custom Fields (ACF Pro) & Custom Post Type Architecture',
-        'Custom REST API Endpoints & Third-Party Webhook Syncing',
-        'Custom Checkout Actions & Payment Gateway Callbacks',
-        'Child Theme Development & Template Hierarchy Overrides',
-        'PHP Conflict Resolution & Memory Limit Debugging'
-      ]
-    },
-    subServices: [
-      {
-        id: 'wp-plugin-dev',
-        price: 2500,
-        turnaround: '2 - 3 Days',
-        title: {
-          bn: 'স্ক্র্যাচ থেকে কাস্টম প্লাগইন তৈরি',
-          en: 'Custom Plugin from Scratch'
-        },
-        recommendedFor: {
-          bn: 'ইউনিক বিজনেস লজিক, বুকিং সিস্টেম ও মেম্বারশিপ টুলস',
-          en: 'Unique business logic, custom calculators & portals'
-        },
-        deliverables: {
-          bn: [
-            'স্ট্যান্ডার্ড WP প্লাগইন স্ট্রাকচার ও এডমিন সেটিংস পেজ',
-            'ডাটাবেস টেবিল ক্রিয়েশন ও সিকিউর কোয়েরি',
-            'শর্টকোড ও এলিমেন্টর কাস্টম উইজেট',
-            'ডকুমেন্টেশন ও লাইফটাইম বাগ-ফ্রি গ্যারান্টি'
-          ],
-          en: [
-            'Modular WP Plugin Structure & Admin Options Panel',
-            'Custom Database Tables & Nonce Security Verification',
-            'Dynamic Shortcodes & Custom Elementor Widgets',
-            'Technical Documentation & Clean Codebase'
-          ]
-        }
-      },
-      {
-        id: 'wp-acf-cpt',
-        price: 1400,
-        turnaround: '24 - 48 Hours',
-        title: {
-          bn: 'ACF Pro ও কাস্টম পোস্ট টাইপ আর্কিটেকচার',
-          en: 'ACF Pro & Custom Post Types'
-        },
-        recommendedFor: {
-          bn: 'রিয়েল এস্টেট লিস্টিং, ডিরেক্টরি, কেস স্টাডি ও টিম মেম্বার শোকেস',
-          en: 'Real estate, car directory, case studies & team listings'
-        },
-        deliverables: {
-          bn: [
-            'কাস্টম পোস্ট টাইপ ও হায়ারার্কিকাল ট্যাক্সোনমি',
-            'ACF Pro রিপিটার ও ফ্লেক্সিবল কন্টেন্ট ফিল্ডস',
-            'ফ্রন্টএন্ড সিঙ্গেল ও আর্কাইভ পেজ টেমপ্লেট ডিজাইন',
-            'ইন্টারেক্টিভ সার্চ ও ফিল্টারিং সিস্টেম'
-          ],
-          en: [
-            'Custom Post Types & Custom Taxonomies',
-            'ACF Pro Repeaters & Flexible Content Fields',
-            'Frontend Single & Archive Layout Templates',
-            'Dynamic AJAX Filter & Search Integration'
-          ]
-        }
-      }
-    ]
-  },
-  {
-    id: 'wordpress-migration-redesign',
-    iconName: 'Layers',
-    category: 'WordPress Services',
-    startingPrice: 1200,
-    typicalTurnaround: '12 - 36 Hours',
-    tag: 'Safe',
-    title: {
-      bn: 'জিরো-ডাউনটাইম মাইগ্রেশন ও আধুনিক রিডিজাইন',
-      en: 'Zero-Downtime Migration & UI Redesign'
-    },
-    shortDesc: {
-      bn: 'নিরাপদ হোস্টিং/সার্ভার মাইগ্রেশন, ডোমেন ট্রান্সফার এবং পুরনো ওয়েবসাইটের আধুনিক UI/UX রিডিজাইন।',
-      en: 'Seamless hosting transfer, domain migration, and modern responsive UI/UX redesign.'
-    },
-    fullDesc: {
-      bn: 'এক হোস্টিং থেকে অন্য হোস্টিংয়ে (cPanel, VPS, Cloudways, Hostinger) সাইট ট্রান্সফার করতে চান জিরো ডাউনটাইমে? অথবা পুরনো সাইটকে আধুনিক ও আকর্ষণীয় করতে চান? আমরা কোনো ডাটা লস ছাড়া দ্রুততম সময়ে মাইগ্রেশন ও রিডিজাইন সম্পন্ন করি।',
-      en: 'Zero-downtime server migration, cPanel to VPS transfer, domain URL update without broken links or SEO loss, plus modern aesthetic redesign from legacy themes to sleek Elementor / Block templates.'
-    },
-    deliverables: {
-      bn: [
-        '১০০% ডাটা ইন্টিগ্রিটি ও জিরো ডাউনটাইমে সার্ভার মাইগ্রেশন',
-        'cPanel, Plesk, VPS বা ক্লাউডওয়েজ ট্রান্সফার',
-        'ডোমেন নেম চেঞ্জ ও ডাটাবেস সিরিয়ালাইজড URL রিপ্লেসমেন্ট',
-        'পুরনো থিম থেকে মডার্ন ক্লিন ইউজার ইন্টারফেসে রিডিজাইন',
-        'ইমেইল একাউন্টস ও DNS রেকর্ডস কনফিগারেশন',
-        'মাইগ্রেশন পরবর্তী পুঙ্খানুপুঙ্খ ফাংশনালিটি টেস্ট'
-      ],
-      en: [
-        '100% Data Integrity Server Migration with Zero Downtime',
-        'cPanel, Plesk, VPS, Hostinger & Cloudways Migration',
-        'Domain Change & Serialized Database URL Safe Replacement',
-        'Legacy Theme Overhaul into Modern Ultra-Fast Responsive Design',
-        'Business Email Accounts & DNS / Cloudflare Records Setup',
-        'Comprehensive Post-Migration Functionality & Form Testing'
-      ]
-    },
-    subServices: [
-      {
-        id: 'wp-host-migration',
-        price: 800,
-        turnaround: '6 - 12 Hours',
-        title: {
-          bn: 'হোস্টিং ও সার্ভার মাইগ্রেশন',
-          en: 'Hosting & Server Migration'
-        },
-        recommendedFor: {
-          bn: 'নতুন হোস্টিং বা ভিপিএস-এ সাইট সরানো',
-          en: 'Moving to a faster host or dedicated VPS'
-        },
-        deliverables: {
-          bn: [
-            'সম্পূর্ণ ডাটাবেস ও মিডিয়া ফাইল ট্রান্সফার',
-            'SSL সার্টিফিকেট সেটআপ ও DNS প্রপাগেশন',
-            'জিরো ডাউনটাইম ও কোনো ডাটা লস ছাড়া হ্যান্ডওভার'
-          ],
-          en: [
-            'Complete Database & Media Files Transfer',
-            'SSL Certificate Setup & DNS Propagation',
-            'Zero Downtime & Zero Data Loss Guarantee'
-          ]
-        }
-      },
-      {
-        id: 'wp-ui-redesign-overhaul',
-        price: 2200,
-        turnaround: '2 - 3 Days',
-        title: {
-          bn: 'সম্পূর্ণ আধুনিক UI/UX রিডিজাইন',
-          en: 'Full Modern UI/UX Redesign'
-        },
-        recommendedFor: {
-          bn: 'পুরনো ও স্লো সাইটকে প্রফেশনাল লুক দিতে',
-          en: 'Modernizing outdated templates with modern aesthetics'
-        },
-        deliverables: {
-          bn: [
-            'আধুনিক কালার প্যালেট, টাইপোগ্রাফি ও মোবাইল লেআউট',
-            'এলিমেন্টর প্রো বা ব্লক বেসড লাইটওয়েট স্ট্রাকচার',
-            'সকল কন্টেন্ট ও এসইও র‍্যাংকিং অক্ষুণ্ণ রাখা'
-          ],
-          en: [
-            'Modern Color Palette, Typography & Mobile Layouts',
-            'Elementor Pro / Block Lightweight Architecture',
-            'Preserving Existing Content & SEO URL Slugs'
-          ]
-        }
-      }
-    ]
-  },
-
-  // ========================================================
-  // 3. STUDENT SUPPORT (15 items)
-  // ========================================================
-  {
-    id: 'final-year-project-guidance',
-    iconName: 'CheckSquare',
-    category: 'Student Support',
-    startingPrice: 1500,
-    typicalTurnaround: '24 - 72 Hours',
     tag: 'Flagship',
     title: {
-      bn: 'ফাইনাল ইয়ার প্রজেক্ট গাইডেন্স (FYP)',
-      en: 'Final Year Project Guidance'
+      en: 'UI/UX Design for Web & Mobile Apps',
+      bn: 'ওয়েব ও মোবাইল অ্যাপ UI/UX ডিজাইন'
     },
     shortDesc: {
-      bn: 'ক্যাপস্টোন প্রজেক্টের সিস্টেম আর্কিটেকচার, SRS ডকুমেন্টেশন ও ডিফেন্স প্রিপারেশন।',
-      en: 'End-to-end guidance for capstone projects, system architecture, SRS, and defense.'
+      en: 'Pixel-perfect interactive Figma prototypes, user journeys, wireframes, and scalable design systems.',
+      bn: 'ইউজার-সেন্ট্রিক ইন্টারেক্টিভ ফিগমা প্রোটোটাইপ, ওয়্যারফ্রেম, ইউজার জার্নি এবং স্কেলেবল ডিজাইন সিস্টেম।'
     },
     fullDesc: {
-      bn: 'আপনার আন্ডারগ্রাজুয়েট ফাইনাল ইয়ার ক্যাপস্টোন প্রজেক্টে এআই, ওয়েব, মোবাইল বা আইওটি আর্কিটেকচার, SRS ডকুমেন্টেশন ও ডিফেন্স রিহার্সাল সাপোর্ট।',
-      en: 'Turn your capstone project into a standout achievement. Guidance on system architecture, SRS documentation, milestone execution, and defense.'
+      en: 'End-to-end user experience and user interface engineering for modern SaaS, web platforms, and mobile apps. We deliver comprehensive Figma files with auto-layouts, responsive variants, typography scales, design tokens, and developer handoff specs.',
+      bn: 'আধুনিক SaaS, ওয়েব অ্যাপ্লিকেশন ও মোবাইল অ্যাপের জন্য কমপ্লিট UI/UX ডিজাইন। অটো-লেআউট, রেসপনসিভ ভ্যারিয়েন্ট, ডিজাইন টোকেন ও ডেভেলপার হ্যান্ডঅফ সহ ফুল ফিগমা প্রজেক্ট ফাইল।'
     },
     deliverables: {
-      bn: [
-        'সিস্টেম আর্কিটেকচার ও ERD / UML ডায়াগ্রাম রিভিউ',
-        'সফটওয়্যার রিকোয়ারমেন্টস স্পেসিফিকেশন (SRS) পলিশিং',
-        'স্প্রিন্ট প্ল্যানিং ও মাইলস্টোন প্রগ্রেস গাইডেন্স',
-        'প্রোটোটাইপ ট্রাবলশুটিং ও ফিচার ডেমোস্ট্রেশন প্রিপারেশন',
-        'ফাইনাল ডিফেন্সের মক কাউন্টার-কোয়েশ্চেনিং রিহার্সাল'
-      ],
       en: [
-        'System Architecture & ERD / UML diagramming review',
-        'Software Requirements Specification (SRS) review & polish',
-        'Sprint planning & milestone progress guidance',
-        'Prototype troubleshooting and feature demonstration prep',
-        'Final project defense mock questioning rehearsal'
+        'Interactive Figma prototype with realistic clickable flows',
+        'Responsive screen layouts (Desktop, Tablet & Mobile)',
+        'Comprehensive Design System (Tokens, Icons, Colors, Typography)',
+        'Developer handoff documentation & asset exports (SVG/PNG)',
+        'User testing flows and wireframe architecture'
+      ],
+      bn: [
+        'ক্লিকেবল ফ্লো সহ ফুল ইন্টারেক্টিভ ফিগমা প্রোটোটাইপ',
+        'ডেস্কটপ, ট্যাবলেট ও মোবাইলের জন্য ফুল রেসপনসিভ লেআউট',
+        'সম্পূর্ণ ডিজাইন সিস্টেম ও কম্পোনেন্ট লাইব্রেরি',
+        'ডেভেলপার হ্যান্ডঅফ স্পেক্স এবং অপটিমাইজড অ্যাসেট এক্সপোর্ট',
+        'ইউজার টেস্টিং ওয়্যারফ্রেম ও আর্কিটেকচার ডায়েরি'
       ]
-    }
+    },
+    subServices: [
+      {
+        id: 'uiux-starter',
+        price: 3500,
+        turnaround: '3 Days',
+        title: { en: 'Landing Page / 3 Core Screens', bn: 'ল্যান্ডিং পেজ / ৩টি কোর স্ক্রিন' },
+        deliverables: {
+          en: ['Up to 3 high-fidelity responsive screens', 'Figma source file with auto-layout', '2 rounds of revisions'],
+          bn: ['৩টি হাই-ফিডেলিটি রেসপনসিভ স্ক্রিন', 'অটো-লেআউট সহ ফিগমা সোর্স ফাইল', '২ রাউন্ড রিভিশন']
+        }
+      },
+      {
+        id: 'uiux-fullapp',
+        price: 8500,
+        turnaround: '7 Days',
+        title: { en: 'Complete Web / Mobile App UI (10-15 Screens)', bn: 'সম্পূর্ণ ওয়েব বা মোবাইল অ্যাপ UI (১০-১৫ স্ক্রিন)' },
+        deliverables: {
+          en: ['10-15 responsive interactive screens', 'Complete Design System & Components', 'Clickable Figma prototype & handoff specs'],
+          bn: ['১০-১৫টি রেসপনসিভ স্ক্রিন', 'সম্পূর্ণ ডিজাইন সিস্টেম ও টোকেন', 'ক্লিকেবল প্রোটোটাইপ ও ডেভেলপার হ্যান্ডঅফ']
+        }
+      }
+    ]
   },
   {
-    id: 'research-paper-formatting',
-    iconName: 'FileCheck',
-    category: 'Student Support',
-    startingPrice: 500,
-    typicalTurnaround: '12 - 24 Hours',
+    id: 'mobile-app-uiux',
+    iconName: 'Smartphone',
+    category: 'Design Services',
+    startingPrice: 4500,
+    typicalTurnaround: '4 - 8 Days',
     tag: 'High Demand',
     title: {
-      bn: 'রিসার্চ পেপার ফরম্যাটিং (IEEE/Springer)',
-      en: 'Research Paper Formatting'
+      en: 'Mobile App UI/UX Design (iOS & Android)',
+      bn: 'মোবাইল অ্যাপ UI/UX ডিজাইন (iOS ও Android)'
     },
     shortDesc: {
-      bn: 'IEEE, Springer, ACM, Elsevier এবং APA স্ট্যান্ডার্ড LaTeX / Word পেপার ফরম্যাটিং।',
-      en: 'IEEE, Springer, ACM, Elsevier, and APA standard LaTeX / Word paper formatting.'
+      en: 'Native iOS & Android mobile interfaces, Apple Human Interface & Google Material 3 guidelines, and micro-interactions.',
+      bn: 'iOS ও Android প্ল্যাটফর্মের জন্য আধুনিক মোবাইল অ্যাপ ইন্টারফেস, ন্যাভিগেশন ফ্লো ও ফিগমা প্রোটোটাইপ।'
     },
     fullDesc: {
-      bn: 'আপনার রিসার্চ পেপারকে টার্গেট জার্নাল বা কনফারেন্সের গাইডলাইন অনুযায়ী টু-কলাম LaTeX Overleaf বা Word ফরম্যাটে নিখুঁতভাবে সাজিয়ে নিন।',
-      en: 'Ensure your research paper conforms strictly to target journal guidelines. Two-column IEEE/ACM layouts, LaTeX Overleaf templates, and BibTeX citations.'
+      en: 'Modern mobile app UI/UX design tailored for intuitive thumb navigation, seamless bottom sheets, gesture flows, dark/light modes, and interactive component states in Figma. Ready for React Native or Flutter developer handoff.',
+      bn: 'স্মার্টফোন ব্যবহারকারীদের স্বাচ্ছন্দ্যের জন্য আধুনিক মোবাইল অ্যাপ UI/UX ডিজাইন। বটম শীট, জেসচার ন্যাভিগেশন, ডার্ক/লাইট মোড এবং রিয়েল-টাইম ক্লিকেবল প্রোটোটাইপ।'
     },
     deliverables: {
-      bn: [
-        'IEEE, ACM, Springer, Elsevier বা APA স্টাইলের কঠোর অনুসরণ',
-        'সম্পূর্ণ LaTeX / Overleaf সোর্স ফাইল বা প্রিমিয়াম Word ফাইল',
-        'স্ট্যান্ডার্ড BibTeX সাইটেশন ও রেফারেন্স যাচাই',
-        'ভেক্টর ডায়াগ্রাম ও ফিগার ক্যাপশন অ্যালাইনমেন্ট',
-        'গাণিতিক সমীকরণ ও অ্যালগরিদম সিউডোকোড ফরম্যাটিং'
-      ],
       en: [
-        'Strict adherence to IEEE, ACM, Springer, Elsevier, or APA styles',
-        'Complete LaTeX / Overleaf source files or polished Word document',
-        'Standardized BibTeX citations & cross-reference verification',
-        'Vector diagram & figure caption alignment styling',
-        'Mathematical equations & algorithm pseudo-code formatting'
+        '15-30+ high-fidelity mobile application screens in Figma',
+        'Clickable user journeys & interactive screen transitions',
+        'iOS Human Interface & Android Material 3 compliance specs',
+        'Exportable SVG/PNG asset library & typography tokens',
+        'Developer handoff documentation with component variants'
+      ],
+      bn: [
+        '১৫-৩০+ হাই-ফিডেলিটি মোবাইল অ্যাপ স্ক্রিন (Figma)',
+        'ক্লিকেবল ইউজার জার্নি ও স্ক্রিন ট্রানজিশন প্রোটোটাইপ',
+        'Apple iOS এবং Google Material 3 গাইডলাইন স্পেক্স',
+        'এক্সপোর্টেবল ভেক্টর অ্যাসেট লাইব্রেরি ও টাইপোগ্রাফি টোকেন',
+        'React Native বা Flutter ডেভেলপার হ্যান্ডঅফ ফাইল'
       ]
-    }
+    },
+    subServices: [
+      {
+        id: 'mobile-ui-basic',
+        price: 4500,
+        turnaround: '4 Days',
+        title: { en: 'Core MVP Screens (8-12 Screens)', bn: 'কোর MVP স্ক্রিন (৮-১২ স্ক্রিন)' },
+        deliverables: {
+          en: ['8-12 mobile screens (Splash, Auth, Home, Profile, Detail)', 'Clickable Figma prototype', 'Asset export bundle'],
+          bn: ['৮-১২টি মোবাইল স্ক্রিন (অথ, হোম, প্রোফাইল, ডিটেইল)', 'ক্লিকেবল ফিগমা প্রোটোটাইপ', 'অ্যাসেট এক্সপোর্ট বান্ডেল']
+        }
+      },
+      {
+        id: 'mobile-ui-full',
+        price: 9000,
+        turnaround: '8 Days',
+        title: { en: 'Full App Experience (20-30 Screens)', bn: 'ফুল অ্যাপ এক্সপেরিয়েন্স (২০-৩০ স্ক্রিন)' },
+        deliverables: {
+          en: ['20-30 screens with edge cases & error states', 'Design token library & dark mode variants', 'Complete component handoff specs'],
+          bn: ['২০-৩০টি স্ক্রিন সহ এরর ও এম্পটি স্টেট', 'ডিজাইন টোকেন লাইব্রেরি ও ডার্ক মোড ভ্যারিয়েন্ট', 'কম্পোনেন্ট হ্যান্ডঅফ স্পেক্স']
+        }
+      }
+    ]
   },
   {
-    id: 'dataset-technical-guidance',
-    iconName: 'Binary',
-    category: 'Student Support',
-    startingPrice: 600,
-    typicalTurnaround: '12 - 36 Hours',
+    id: 'landing-page-design',
+    iconName: 'Sparkles',
+    category: 'Design Services',
+    startingPrice: 2000,
+    typicalTurnaround: '2 - 4 Days',
+    tag: 'High Conversion',
     title: {
-      bn: 'ডেটাসেট ও টেকনিক্যাল গাইডেন্স',
-      en: 'Dataset & Technical Guidance'
+      en: 'High-Converting Landing Page Design',
+      bn: 'হাই-কনভার্টিং ল্যান্ডিং পেজ ডিজাইন'
     },
     shortDesc: {
-      bn: 'ডাটা সংগ্রহ, ক্লিনিং, এক্সপ্লোরেটরি এনালাইসিস (EDA) ও মেশিন লার্নিং প্রি-প্রসেসিং।',
-      en: 'Data collection methods, cleaning, exploratory analysis (EDA), and ML preprocessing.'
+      en: 'Modern, conversion-focused landing page visual designs optimized for SaaS, products, and lead generation.',
+      bn: 'স্টার্টআপ ও ব্যবসার জন্য সেলস-অপটিমাইজড দৃষ্টিনন্দন ল্যান্ডিং পেজ ডিজাইন।'
     },
     fullDesc: {
-      bn: 'রিসার্চ বেঞ্চমার্ক ডাটা সংগ্রহ, ওয়েব স্ক্র্যাপিং, মিসিং ভ্যালু হ্যান্ডলিং, EDA ও পাইথন/SPSS-এ ডাটা প্রসেসিং কৌশল।',
-      en: 'Expert guidance on sourcing benchmarks, web scraping datasets, data cleaning, exploratory data analysis (EDA), and preparing ML datasets.'
+      en: 'Crafting persuasive, visually captivating landing page layouts designed to maximize user engagement and conversions. Includes hero sections, feature grids, social proof testimonials, pricing matrices, and CTA sections.',
+      bn: 'ক্লায়েন্ট কনভার্সন বাড়ানোর জন্য আধুনিক হিরো সেকশন, ফিচার গ্রিড, সোশ্যাল প্রুফ এবং কল-টু-অ্যাকশন সমৃদ্ধ ল্যান্ডিং পেজ ডিজাইন।'
     },
     deliverables: {
-      bn: [
-        'ডেটাসেট কিউরেশন ও বেঞ্চমার্ক সোর্সিং কৌশল',
-        'ডাটা ক্লিনিং, নরমালাইজেশন ও ফিচার ইঞ্জিনিয়ারিং পাইপলাইন',
-        'Exploratory Data Analysis (EDA) চার্ট ও ম্যাট্রিক্স',
-        'Python (Pandas, NumPy, Scikit-learn) / SPSS স্ক্রিপ্ট',
-        'পাবলিকেশন মানের হাই-রেজোলিউশন ডাটা প্লট'
-      ],
       en: [
-        'Dataset curation & benchmark sourcing strategies',
-        'Data cleaning, normalization & feature engineering pipelines',
-        'Exploratory Data Analysis (EDA) charts and correlation matrices',
-        'Python (Pandas, NumPy, Scikit-learn) / SPSS scripts',
-        'Data visualization plots formatted for publication'
+        'Full page visual design in Figma (Desktop & Mobile)',
+        'Copywriting layout structure & visual hierarchy',
+        'Custom 2D/3D visual graphics and icon styling',
+        'Optimized for fast front-end coding',
+        'Unlimited minor revisions until launch'
+      ],
+      bn: [
+        'ফিগমায় ডেস্কটপ ও মোবাইলের জন্য ফুল পেজ ভিজ্যুয়াল ডিজাইন',
+        'কনভার্শন অপটিমাইজড কনটেন্ট স্ট্রাকচার ও ভিজ্যুয়াল হায়ারার্কি',
+        'কাস্টম গ্রাফিক্স ও ভেক্টর আইকন কালেকশন',
+        'ফ্রন্টএন্ড ডেভেলপমেন্টের জন্য প্রস্তুত হ্যান্ডঅফ ফাইল',
+        'আনলিমিটেড রিভিশন ও প্রজেক্ট সাপোর্ট'
       ]
     }
   },
   {
-    id: 'programming-support',
-    iconName: 'Terminal',
-    category: 'Student Support',
-    startingPrice: 400,
-    typicalTurnaround: '6 - 18 Hours',
+    id: 'design-system-tokens',
+    iconName: 'Layers',
+    category: 'Design Services',
+    startingPrice: 5000,
+    typicalTurnaround: '5 - 10 Days',
+    tag: 'Scale Ready',
+    title: {
+      en: 'Design System & Component Library (Figma to Code)',
+      bn: 'ডিজাইন সিস্টেম ও কম্পোনেন্ট লাইব্রেরি আর্কিটেকচার'
+    },
+    shortDesc: {
+      en: 'Scalable design tokens, auto-layout component library, typography scale, and developer handoff specs.',
+      bn: 'স্কেলেবল ডিজাইন টোকেন, কালার ও টাইপোগ্রাফি স্কেল, পুনঃব্যবহারযোগ্য ৪০+ UI কম্পোনেন্ট ও রুলবুক।'
+    },
+    fullDesc: {
+      en: 'Standardize your product UI across your entire engineering team. We architect structured Figma design systems with semantic color tokens, typography scales, 40+ atomic components with interactive variants, spacing grids, and Storybook/Tailwind alignment.',
+      bn: 'আপনার প্রোডাক্ট ও ডেভেলপার টিমের জন্য সার্বজনীন ডিজাইন সিস্টেম। সেমান্টিক কালার টোকেন, ৪০+ কাস্টম UI কম্পোনেন্ট (বাটন, ইনপুট, মোডাল, টেবিল), লাইট/ডার্ক মোড এবং Tailwind CSS ফ্রেন্ডলি ভ্যারিয়েবল গাইড।'
+    },
+    deliverables: {
+      en: [
+        'Master Figma component library with Auto-Layout 5.0 and variables',
+        'Semantic color, typography, spacing, and elevation tokens',
+        '40+ atomic UI components (Buttons, Inputs, Modals, Tables, Badges)',
+        'Light and Dark mode variant system',
+        'Developer handoff style guide & Storybook ready token JSON'
+      ],
+      bn: [
+        'অটো-লেআউট ৫.০ ও ভ্যারিয়েবল সহ মাস্টার ফিগমা কম্পোনেন্ট লাইব্রেরি',
+        'সেমান্টিক কালার, টাইপোগ্রাফি, স্পেসিং ও এলিভেশন টোকেন',
+        '৪০+ এটমিক UI কম্পোনেন্ট (বাটন, ইনপুট, মোডাল, টেবিল, ড্রপডাউন)',
+        'লাইট ও ডার্ক মোড ভ্যারিয়েন্ট সিস্টেম',
+        'ডেভেলপার স্টাইলগাইড ও Storybook-রেডি JSON এক্সপোর্ট'
+      ]
+    }
+  },
+  {
+    id: 'saas-dashboard-ux',
+    iconName: 'LayoutDashboard',
+    category: 'Design Services',
+    startingPrice: 4200,
+    typicalTurnaround: '4 - 7 Days',
+    tag: 'SaaS Specialist',
+    title: {
+      en: 'SaaS Dashboard & Web Application UX Design',
+      bn: 'SaaS ড্যাশবোর্ড ও ওয়েব প্ল্যাটফর্ম UX/UI ডিজাইন'
+    },
+    shortDesc: {
+      en: 'Data-dense web application interfaces, complex table filters, multi-role views, and executive metrics UX.',
+      bn: 'কমপ্লেক্স ডাটা টেবিল, মাল্টি-রোল পারমিশন ভিউ, অ্যানালিটিক্স উইজেট ও ইন্টারেক্টিভ SaaS ড্যাশবোর্ড ডিজাইন।'
+    },
+    fullDesc: {
+      en: 'Design user-friendly dashboards for complex B2B SaaS, CRM, or administrative platforms. We map out intuitive navigation hierarchies, dense data tables with filtering and bulk actions, customizable widgets, and responsive layouts.',
+      bn: 'জটিল B2B SaaS, CRM বা ERP প্ল্যাটফর্মের জন্য ক্লান্তিহীন ড্যাশবোর্ড ইন্টারফেস ডিজাইন। ফিল্টারিং সহ ডাটা টেবিল, অ্যাকশন মোডাল, রিয়েল-টাইম মেট্রিক কার্ড এবং মাল্টি-রোল পারমিশন ভিউ।'
+    },
+    deliverables: {
+      en: [
+        'Multi-screen SaaS dashboard workflows in Figma',
+        'Data-dense table design with sorting, pagination, and action modals',
+        'Analytics visual charts, KPI metric cards & quick actions',
+        'Role-based permissions UI states (Admin, Manager, Member)',
+        'Interactive Figma prototypes with realistic dashboard interactions'
+      ],
+      bn: [
+        'ফিগমায় মাল্টি-স্ক্রিন SaaS ড্যাশবোর্ড ওয়ার্কফ্লো',
+        'ডাটা-ডেনস টেবিল ডিজাইন (সর্টিং, ফিল্টারিং ও বালক অ্যাকশন)',
+        'অ্যানালিটিক্স ভিজ্যুয়াল চার্ট ও কেপিআই কার্ড লেআউট',
+        'রোল-বেসড পারমিশন ইন্টারফেস স্টেট (এডমিন, ম্যানেজার, মেম্বার)',
+        'ইন্টারেক্টিভ ফিগমা প্রোটোটাইপ'
+      ]
+    }
+  },
+  {
+    id: 'brand-identity-logo',
+    iconName: 'Layers',
+    category: 'Design Services',
+    startingPrice: 2500,
+    typicalTurnaround: '3 - 5 Days',
+    tag: 'Brand Suite',
+    title: {
+      en: 'Brand Identity & Logo Suite',
+      bn: 'ব্র্যান্ড আইডেন্টিটি ও লোগো স্যুট'
+    },
+    shortDesc: {
+      en: 'Distinctive vector logo marks, color harmony, typography guides, and complete brand stylebooks.',
+      bn: 'অনন্য ভেক্টর লোগো, ব্র্যান্ড কালার প্যালেট, টাইপোগ্রাফি গাইড এবং পূর্ণাঙ্গ স্টাইলবুক।'
+    },
+    fullDesc: {
+      en: 'Establish a powerful, cohesive brand identity that commands attention in your market. We deliver multiple unique conceptual directions, complete vector source files (SVG, EPS, AI, PDF), brand color codes (HEX, RGB, CMYK), and stationery templates.',
+      bn: 'আপনার ব্যবসা বা স্টার্টআপের জন্য প্রিমিয়াম ব্র্যান্ড আইডেন্টিটি। ৩-৪টি ইউনিক লোগো কনসেপ্ট, ফুল ভেক্টর মাস্টার ফাইল, কালার গাইডলাইন এবং সোশ্যাল মিডিয়া ব্র্যান্ড কিট।'
+    },
+    deliverables: {
+      en: [
+        '3-5 distinct creative logo concepts with revisions',
+        'Vector master files (SVG, EPS, AI, PDF, Transparent PNG)',
+        'Comprehensive Brand Guidelines (Colors, Typography, Usage rules)',
+        'Social media avatars, banner kits, and favicon assets',
+        'Full intellectual property & commercial rights transfer'
+      ],
+      bn: [
+        '৩-৫টি স্বতন্ত্র ক্রিয়েটিভ লোগো কনসেপ্ট',
+        'মাস্টার ভেক্টর ফাইল (SVG, EPS, AI, PDF, PNG)',
+        'সম্পূর্ণ ব্র্যান্ড গাইডলাইন ডকুমেন্টেশন',
+        'সোশ্যাল মিডিয়া প্রোফাইল ও ব্যানার কিট',
+        '১০০% বাণিজ্যিক কপিরাইট ও ওনারশিপ ট্রান্সফার'
+      ]
+    }
+  },
+  {
+    id: 'pitch-deck-presentation',
+    iconName: 'Presentation',
+    category: 'Design Services',
+    startingPrice: 1800,
+    typicalTurnaround: '2 - 3 Days',
+    title: {
+      en: 'Investor Pitch Deck & Corporate Presentation',
+      bn: 'ইনভেস্টর পিচ ডেক ও কর্পোরেট প্রেজেন্টেশন'
+    },
+    shortDesc: {
+      en: 'Compelling, beautifully formatted presentation decks for fundraising, sales, and executive keynotes.',
+      bn: 'ফান্ডরাইজিং, বিজনেস পিচ এবং এক্সিকিউটিভ মিটিংয়ের জন্য প্রফেশনাল স্লাইড ডেক।'
+    },
+    fullDesc: {
+      en: 'Transform complex business narratives and data metrics into clear, investor-ready slide presentations. Designed in Figma, PowerPoint, or Google Slides with custom data visualizations and master slide templates.',
+      bn: 'ব্যাবসায়িক পরিকল্পনা ও ডাটা চার্টকে দৃষ্টিনন্দন স্লাইড প্রেজেন্টেশনে রূপান্তর। কাস্টম ডাটা ভিজ্যুয়ালাইজেশন, ট্রানজিশন এবং এডিটেবল স্লাইড মাস্টার।'
+    },
+    deliverables: {
+      en: [
+        'Custom styled PPTX / Keynote / Figma presentation deck',
+        'Clean typography, infographic charts & balanced metrics',
+        'Slide master template for easy internal reuse',
+        'Exported high-res PDF handouts and speaker notes',
+        'Commercial vector icon sets included'
+      ],
+      bn: [
+        'কাস্টম স্টাইল্ড PPTX / Google Slides / Figma ডেক',
+        'ইনফোগ্রাফিক চার্ট ও ব্যালান্সড মেট্রিক্স লেআউট',
+        'পরবর্তীতে ব্যবহারের জন্য স্লাইড মাস্টার টেমপ্লেট',
+        'প্রিন্ট-রেডি PDF হ্যান্ডআউট ও স্পিকার নোটস',
+        'ফ্রি ভেক্টর আইকন প্যাক ও কমার্শিয়াল ফন্টস'
+      ]
+    }
+  },
+
+  // ========================================================
+  // 2. WEB & SOFTWARE DEVELOPMENT SERVICES
+  // ========================================================
+  {
+    id: 'custom-fullstack-webapp',
+    iconName: 'Code',
+    category: 'Development Services',
+    startingPrice: 12000,
+    typicalTurnaround: '7 - 21 Days',
+    tag: 'Enterprise Core',
+    title: {
+      en: 'Custom Full-Stack Web Application',
+      bn: 'কাস্টম ফুল-স্ট্যাক ওয়েব অ্যাপ্লিকেশন'
+    },
+    shortDesc: {
+      en: 'Scalable web applications built with React, Next.js, Node.js/Express, TypeScript, and PostgreSQL/MongoDB.',
+      bn: 'React, Next.js, Node.js, TypeScript এবং PostgreSQL/MongoDB দিয়ে স্কেলেবল আধুনিক ওয়েব অ্যাপ।'
+    },
+    fullDesc: {
+      en: 'End-to-end custom software development tailored to your exact business workflow. We architect robust backend microservices/APIs, responsive frontend interfaces with Tailwind CSS, secure authentication (JWT/OAuth), role-based permissions, and automated database migrations.',
+      bn: 'আপনার ব্যবসার জন্য সম্পূর্ণ কাস্টম ফুল-স্ট্যাক ওয়েব অ্যাপ্লিকেশন। সুরক্ষিত অথেন্টিকেশন, রোল-বেসড অ্যাক্সেস কন্ট্রোল, স্পিড অপটিমাইজেশন, REST/GraphQL API এবং ক্লাউড ডিপ্লয়মেন্ট।'
+    },
+    deliverables: {
+      en: [
+        'Production-ready Next.js / React + Node.js codebase',
+        'PostgreSQL / MongoDB database schema & ORM integration',
+        'Secure Authentication, RBAC (Admin, Staff, Customer)',
+        'RESTful / GraphQL APIs with comprehensive Swagger/Postman docs',
+        'Docker containerization, CI/CD pipeline & Cloud deployment',
+        '30 days complimentary post-launch bug fixing & maintenance'
+      ],
+      bn: [
+        'প্রোডাকশন-রেডি Next.js / React + Node.js কোডবেস',
+        'PostgreSQL / MongoDB ডাটাবেস স্কিমা ও ORM ইন্টিগ্রেশন',
+        'সুরক্ষিত অথেনটিকেশন ও রোল-বেসড এক্সেস কন্ট্রোল',
+        'সম্পূর্ণ API ডকুমেন্টেশন (Swagger/Postman)',
+        'ক্লাউড ডিপ্লয়মেন্ট ও CI/CD পাইপলাইন কনফিগারেশন',
+        '৩০ দিনের ফ্রি পোস্ট-লঞ্চ মেইনটেন্যান্স ও বাগ ফিক্সিং'
+      ]
+    },
+    subServices: [
+      {
+        id: 'fullstack-mvp',
+        price: 12000,
+        turnaround: '7 - 10 Days',
+        title: { en: 'SaaS MVP / Core Feature App', bn: 'SaaS MVP / কোর ফিচার অ্যাপ' },
+        deliverables: {
+          en: ['Next.js + Tailwind + Node.js setup', 'Auth + DB CRUD for 3-5 core models', 'Cloud deployment on Vercel / Railway'],
+          bn: ['Next.js + Tailwind + Node.js সেটআপ', 'অথেনটিকেশন + ৩-৫টি কোর মডেল CRUD', 'ক্লাউড হোস্টিং ও ডিপ্লয়মেন্ট']
+        }
+      },
+      {
+        id: 'fullstack-enterprise',
+        price: 25000,
+        turnaround: '15 - 25 Days',
+        title: { en: 'Comprehensive Enterprise Platform', bn: 'পূর্ণাঙ্গ এন্টারপ্রাইজ প্ল্যাটফর্ম' },
+        deliverables: {
+          en: ['Multi-role architecture, payment gateway, background queues', 'Advanced caching, analytics logs, automated tests', 'Full CI/CD & production monitoring setup'],
+          bn: ['মাল্টি-রোল আর্কিটেকচার, পেমেন্ট গেটওয়ে, ব্যাকগ্রাউন্ড কিউ', 'এডভান্সড ক্যাশিং, অ্যানালিটিক্স ও অটোমেটেড টেস্ট', 'কমপ্লিট CI/CD ও মনিটরিং সেটআপ']
+        }
+      }
+    ]
+  },
+  {
+    id: 'mobile-app-development',
+    iconName: 'Smartphone',
+    category: 'Development Services',
+    startingPrice: 14000,
+    typicalTurnaround: '10 - 20 Days',
+    tag: 'Mobile App',
+    title: {
+      en: 'Cross-Platform Mobile App (React Native / Flutter)',
+      bn: 'ক্রস-প্ল্যাটফর্ম মোবাইল অ্যাপ ডেভেলপমেন্ট (React Native / Flutter)'
+    },
+    shortDesc: {
+      en: 'High-performance iOS & Android mobile apps with offline caching, push notifications, and API synchronization.',
+      bn: 'একই কোডবেসে iOS ও Android মোবাইল অ্যাপ, পুশ নোটিফিকেশন, অফলাইন ক্যাশিং ও ব্যাকএন্ড API সিঙ্ক।'
+    },
+    fullDesc: {
+      en: 'Launch native-grade mobile applications with a unified codebase. We build responsive cross-platform apps using React Native or Flutter, complete with Firebase Auth/FCM notifications, camera/storage device APIs, secure token storage, and REST API synchronization.',
+      bn: 'একই সঙ্গে iOS ও Android উভয়ের জন্য হাই-পারফরম্যান্স মোবাইল অ্যাপ্লিকেশন। ফায়ারবেস অথেনটিকেশন, পুশ নোটিফিকেশন, ক্যামেরা ও ডিভাইস পারমিশন, অফলাইন ডাটা স্টোরেজ এবং প্লে স্টোর / অ্যাপ স্টোর ডিপ্লয়মেন্ট সাপোর্ট।'
+    },
+    deliverables: {
+      en: [
+        'Cross-platform iOS and Android production build packages (APK / IPA)',
+        'Clean modular React Native or Flutter codebase with TypeScript/Dart',
+        'Push notifications setup (Firebase Cloud Messaging)',
+        'Offline data caching & biometric authentication integration',
+        'Google Play Console & Apple App Store submission support'
+      ],
+      bn: [
+        'iOS ও Android এর জন্য প্রোডাকশন বিল্ড প্যাকেজ (APK / IPA)',
+        'ক্লিন মডুলার React Native / Flutter কোডবেস',
+        'Firebase ক্লাউড মেসেজিং পুশ নোটিফিকেশন সেটআপ',
+        'বায়োমেট্রিক অথেন্টিকেশন ও অফলাইন ক্যাশিং',
+        'গুগল প্লে স্টোর ও অ্যাপল স্টোর সাবমিশন গাইড ও সাপোর্ট'
+      ]
+    },
+    subServices: [
+      {
+        id: 'mobile-dev-mvp',
+        price: 14000,
+        turnaround: '10 - 14 Days',
+        title: { en: 'MVP Mobile Application', bn: 'MVP মোবাইল অ্যাপ্লিকেশন' },
+        deliverables: {
+          en: ['Core 5-8 screens, Auth + Profile + Main API feeds', 'Android & iOS test builds', 'Firebase setup'],
+          bn: ['কোর ৫-৮টি স্ক্রিন, অথ + প্রোফাইল + মেইন ফিড', 'Android ও iOS টেস্ট বিল্ড', 'Firebase সেটআপ']
+        }
+      },
+      {
+        id: 'mobile-dev-pro',
+        price: 26000,
+        turnaround: '18 - 25 Days',
+        title: { en: 'Full Production App with Store Launch', bn: 'ফুল প্রোডাকশন অ্যাপ ও স্টোর পাবলিশিং' },
+        deliverables: {
+          en: ['Multi-feature app, in-app payments, background sync', 'Push notifications, analytics, crash reporting', 'App Store & Play Store publishing'],
+          bn: ['মাল্টি-ফিচার অ্যাপ, ইন-অ্যাপ পেমেন্ট, ব্যাকগ্রাউন্ড সিঙ্ক', 'পুশ নোটিফিকেশন ও ক্র্যাশ রিপোর্টিং', 'প্লে স্টোর ও অ্যাপ স্টোর পাবলিশিং']
+        }
+      }
+    ]
+  },
+  {
+    id: 'ai-llm-integration',
+    iconName: 'Cpu',
+    category: 'Development Services',
+    startingPrice: 7500,
+    typicalTurnaround: '4 - 8 Days',
+    tag: 'AI Powered',
+    title: {
+      en: 'AI Agent & LLM Chatbot Integration (Gemini / OpenAI / RAG)',
+      bn: 'AI এজেন্ট ও এলএলএম চ্যাটবট ইন্টিগ্রেশন (Gemini / OpenAI)'
+    },
+    shortDesc: {
+      en: 'Custom contextual AI chatbot on your business data, LangChain/Vector DB pipelines, and automated customer workflows.',
+      bn: 'আপনার কোম্পানির ডকে ট্রেইনড কাস্টম AI চ্যাটবট, ভেক্টর ডাটাবেস ও জেনারেটিভ AI অটোমেশন।'
+    },
+    fullDesc: {
+      en: 'Supercharge your platform with conversational generative AI. We integrate Google Gemini or OpenAI LLMs trained on your company knowledge base via Retrieval-Augmented Generation (RAG), Pinecone/pgvector vector stores, token management, function calling, and live streaming web chat widgets.',
+      bn: 'আপনার ব্যবসায় জেনারেটিভ AI এর শক্তি যুক্ত করুন। আপনার নিজস্ব কোম্পানি ডাটা ও পলিসির উপর কাস্টম RAG পাইপলাইন, গুগল জেমিনি / OpenAI ইন্টিগ্রেশন, লাইভ স্ট্রিমিং চ্যাট উইজেট এবং ফাংশন কলিং অটোমেশন।'
+    },
+    deliverables: {
+      en: [
+        'Custom LLM API pipeline (Gemini / OpenAI / Claude) with rate limiting',
+        'Retrieval-Augmented Generation (RAG) vector embeddings on business docs',
+        'Embeddable web chat widget with markdown and streaming responses',
+        'Structured JSON output extraction for automated CRM data entry',
+        'Admin monitoring panel for token usage and conversation logs'
+      ],
+      bn: [
+        'কাস্টম LLM API পাইপলাইন (Gemini / OpenAI) ও রেট লিমিটার',
+        'কোম্পানি ডকুমেন্টের উপর RAG ভেক্টর এমবেডিংস (pgvector/Pinecone)',
+        'ওয়েবসাইটে এমবেডযোগ্য লাইভ স্ট্রিমিং চ্যাট উইজেট',
+        'অটোমেটেড ডাটা এন্ট্রির জন্য স্ট্রাকচার্ড JSON এক্সট্রাকশন',
+        'টোকেন খরচ ও কনভারসেশন হিস্টোরি মনিটরিং প্যানেল'
+      ]
+    },
+    subServices: [
+      {
+        id: 'ai-chatbot-widget',
+        price: 7500,
+        turnaround: '4 - 5 Days',
+        title: { en: 'Knowledge-Base Web Chatbot (RAG)', bn: 'নলেজ-বেস ওয়েব চ্যাটবট (RAG)' },
+        deliverables: {
+          en: ['Vector search on up to 50 company docs/PDFs', 'Web chat widget with markdown formatting', 'Gemini / OpenAI setup with prompt engineering'],
+          bn: ['৫০টি ডকুমেন্ট/PDF এর ওপর ভেক্টর সার্চ', 'ওয়েবসাইটের জন্য লাইভ চ্যাট উইজেট', 'জেমিনি/OpenAI প্রম্পট অপটিমাইজেশন']
+        }
+      },
+      {
+        id: 'ai-workflow-agent',
+        price: 15000,
+        turnaround: '8 - 12 Days',
+        title: { en: 'Autonomous AI Agent & Tool Calling', bn: 'অটোনোমাস AI এজেন্ট ও টুল কলিং' },
+        deliverables: {
+          en: ['Multi-step function calling (DB lookups, Email send, Lead creation)', 'Conversation memory & session persistence', 'Admin analytics dashboard'],
+          bn: ['মাল্টি-স্টেপ ফাংশন কলিং (ডাটাবেস কোয়েরি, ইমেইল প্রেরণ)', 'মেমরি পারসিস্টেন্স ও সেশন হিস্টোরি', 'এডমিন অ্যানালিটিক্স প্যানেল']
+        }
+      }
+    ]
+  },
+  {
+    id: 'saas-mvp-sprint',
+    iconName: 'Zap',
+    category: 'Development Services',
+    startingPrice: 15000,
+    typicalTurnaround: '10 - 14 Days',
+    tag: 'Founder Favorite',
+    title: {
+      en: 'Rapid SaaS MVP Development (Sprint to Launch in 14 Days)',
+      bn: 'র‍্যাপিড SaaS MVP ডেভেলপমেন্ট (১৪ দিনের স্প্রিন্ট)'
+    },
+    shortDesc: {
+      en: 'Launch your startup in 14 days with Next.js, authentication, Stripe/bKash subscription billing, and database CRUD.',
+      bn: '১৪ দিনে স্টার্টআপ লঞ্চ: Next.js + Tailwind + অথেনটিকেশন + সাবস্ক্রিপশন বিলিং ও ডাটাবেস CRUD।'
+    },
+    fullDesc: {
+      en: 'Go from concept to paying customers fast. Designed for startup founders who need a rapid, production-ready MVP. Includes Next.js App Router, Tailwind UI, Supabase / PostgreSQL database, user auth, subscription billing, and email notifications.',
+      bn: 'স্টার্টআপ ফাউন্ডারদের জন্য দ্রুততম সময়ে লাইভ প্রোডাক্ট তৈরি। Next.js অ্যাপ রাউটার, ইউজার অথেন্টিকেশন, সাবস্ক্রিপশন পেমেন্ট গেটওয়ে, ড্যাশবোর্ড এবং অটোমেটেড ইমেইল সহ ১৪ দিনে কমপ্লিট লঞ্চ।'
+    },
+    deliverables: {
+      en: [
+        'Complete end-to-end MVP web application launched on Vercel/Supabase',
+        'User authentication (Email/Password, Google OAuth)',
+        'Recurring subscription billing (Stripe / bKash recurring / SSLCommerz)',
+        'Core user dashboard with full CRUD data workflows',
+        'Transactional email setup (Resend / SendGrid) and analytics tracking'
+      ],
+      bn: [
+        'Vercel ও Supabase এ লাইভ প্রোডাকশন MVP ওয়েব অ্যাপ',
+        'ইউজার অথেন্টিকেশন (ইমেইল/পাসওয়ার্ড ও গুগল লগইন)',
+        'রিকারিং সাবস্ক্রিপশন বিলিং ও পেমেন্ট ইন্টিগ্রেশন',
+        'কাস্টমার ড্যাশবোর্ড ও কোর ফিচার CRUD ওয়ার্কফ্লো',
+        'ট্রানজেকশনাল ইমেইল (Resend) ও ইউজার অ্যানালিটিক্স'
+      ]
+    }
+  },
+  {
+    id: 'frontend-engineering-spa',
+    iconName: 'Monitor',
+    category: 'Development Services',
+    startingPrice: 6000,
+    typicalTurnaround: '4 - 8 Days',
     tag: 'Popular',
     title: {
-      bn: 'প্রোগ্রামিং সাপোর্ট (যেকোনো ল্যাঙ্গুয়েজ)',
-      en: 'Programming Support (Any Language)'
+      en: 'Modern Frontend Web App (React / Next.js / Tailwind)',
+      bn: 'আধুনিক ফ্রন্টএন্ড ওয়েব অ্যাপ (React / Next.js)'
     },
     shortDesc: {
-      bn: 'C++, Java, Python, JS-এ লাইভ ডিবাগিং, অ্যালগরিদম লজিক ও ল্যাব টাস্ক গাইডেন্স।',
-      en: 'Hands-on debugging, algorithm logic breakdown, and conceptual coaching.'
+      en: 'Ultra-fast, responsive, accessible Single Page Applications (SPA) with smooth animations and state management.',
+      bn: 'Tailwind CSS, Framer Motion ও TypeScript দিয়ে দ্রুতগতির রেসপনসিভ ফ্রন্টএন্ড ওয়েব অ্যাপ।'
     },
     fullDesc: {
-      bn: 'ডাটা স্ট্রাকচার (Trees, Graphs, DP), OOP ও ল্যাব প্রবলেমে সেগমেন্টেশন ফল্ট বা রানটাইম এরর সমাধান ও ১-অন-১ লজিক কোচিং।',
-      en: 'Master tricky programming concepts, data structures (Trees, Graphs, DP), OOP, and lab problem sets with live step-by-step logic coaching.'
+      en: 'Convert any Figma or design spec into clean, modular, accessible, and ultra-fast React or Next.js code. Fully responsive across ultra-wide desktops to mobile devices, integrated with API hooks, state managers (Zustand/Redux), and smooth motion transitions.',
+      bn: 'ফিগমা বা যেকোনো ডিজাইন থেকে পিক্সেল-পারফেক্ট মডার্ন React/Next.js ফ্রন্টএন্ড কোডিং। রেসপনসিভ লেআউট, স্মুথ মোশন এনিমেশন এবং স্টেট ম্যানেজমেন্ট ইন্টিগ্রেশন।'
     },
     deliverables: {
-      bn: [
-        'লাইন-বাই-লাইন কোড ব্যাখ্যা ও লজিক ফ্লো ডায়াগ্রাম',
-        'লাইভ ডিবাগিং সহায়তা ও সেগমেন্টেশন ফল্ট সমাধান',
-        'ক্লিন কোডিং প্র্যাকটিস ও টাইম কমপ্লেক্সিটি (Big-O) এনালাইসিস',
-        'এজ-কেস টেস্টিং ও ইনপুট ভ্যালিডেশন',
-        'লিখিত কোডের ওপর ল্যাব ভাইভা প্রস্তুতি'
-      ],
       en: [
-        'Line-by-line logic explanation and concept breakdown',
-        'Live debugging assistance and segmentation fault resolution',
-        'Clean coding practices, time complexity (Big-O) analysis',
-        'Edge-case test scenarios and input validation',
-        'Lab viva questions prep on written code'
+        'Pixel-perfect translation from Figma / Sketch to React + Tailwind',
+        'TypeScript for type safety and clean architecture',
+        'Responsive layout across mobile, tablet, and desktop viewports',
+        'API client integration (Axios/TanStack Query)',
+        'SEO-optimized meta tags, Lighthouse 95+ performance rating'
+      ],
+      bn: [
+        'ফিগমা থেকে পিক্সেল-পারফেক্ট React + Tailwind কোডিং',
+        'টাইপ-সেফ TypeScript ও মডুলার কম্পোনেন্ট আর্কিটেকচার',
+        'মোবাইল, ট্যাবলেট ও ডেস্কটপের জন্য ১০০% রেসপনসিভ',
+        'API ক্লায়েন্ট ইন্টিগ্রেশন (TanStack Query/Axios)',
+        'Lighthouse ৯৫+ পারফরম্যান্স ও SEO অপটিমাইজেশন'
       ]
     }
   },
   {
-    id: 'github-portfolio-setup',
-    iconName: 'GitBranch',
-    category: 'Student Support',
-    startingPrice: 350,
-    typicalTurnaround: '6 - 12 Hours',
+    id: 'backend-api-architecture',
+    iconName: 'Server',
+    category: 'Development Services',
+    startingPrice: 5000,
+    typicalTurnaround: '3 - 7 Days',
     title: {
-      bn: 'GitHub / পোর্টফোলিও সেটআপ',
-      en: 'GitHub / Portfolio Setup'
+      en: 'Backend API & Microservices Architecture',
+      bn: 'ব্যাকএন্ড API ও মাইক্রোসার্ভিসেস আর্কিটেকচার'
     },
     shortDesc: {
-      bn: 'প্রফেশনাল GitHub README, গিট ওয়ার্কফ্লো, প্রজেক্ট শোকেস ও পিনিং স্ট্র্যাটেজি।',
-      en: 'Professional GitHub profile README, Git workflow, repo showcases, and pinning.'
+      en: 'Robust RESTful and GraphQL APIs built with Node.js, Express, Fastify, Python, or Go.',
+      bn: 'Node.js, Express, Python বা Go দিয়ে সুরক্ষিত ও হাই-পারফরম্যান্স REST/GraphQL API।'
     },
     fullDesc: {
-      bn: 'আপনার গিটহাব প্রোফাইলকে রিক্রুটারদের জন্য আকর্ষণীয় করে তুলুন। লাইভ স্ট্যাটস উইজেট, প্রজেক্ট ডেমো ব্যাজ ও প্রফেশনাল গিট ওয়ার্কফ্লো।',
-      en: 'Transform your GitHub into a recruiter magnet with dynamic stats widgets, clean repository structures, compelling READMEs, and PR workflows.'
+      en: 'Secure, high-throughput backend APIs designed to scale under heavy traffic. Includes structured database migrations, input sanitization/validation (Zod/Joi), JWT/OAuth2 security, webhook integrations, rate-limiting, and error telemetry.',
+      bn: 'উচ্চ ট্রাফিকের জন্য সুরক্ষিত ব্যাকএন্ড API। ডাটাবেস মাইগ্রেশন, ইনপুট ভ্যালিডেশন, ওয়েবহুক ইন্টিগ্রেশন, রেট-লিমিটিং এবং বিস্তারিত ডকুমেন্টেশন।'
     },
     deliverables: {
-      bn: [
-        'লাইভ স্ট্যাটসযুক্ত কাস্টম ডাইনামিক GitHub Profile README',
-        'ডেমো GIF ব্যাজযুক্ত প্রফেশনাল প্রজেক্ট README.md',
-        'Git ব্রাঞ্চিং, কমিট হাইজিন ও পুল রিকোয়েস্ট নিয়মাবলী',
-        'ওপেন-সোর্স লাইসেন্স ও ব্যাজসহ রিপোজিটরি সাজানো',
-        'টপ ইঞ্জিনিয়ারিং প্রজেক্ট পিন করার কার্যকর স্ট্র্যাটেজি'
-      ],
       en: [
-        'Custom styled dynamic GitHub profile README with live stats',
-        'Professional project README.md templates with demo GIF badges',
-        'Git branching, commit hygiene, and pull request workflows',
-        'Repository organization with open-source licensing & badges',
-        'Pinning strategy highlighting your best engineering projects'
+        'Modular REST / GraphQL API endpoints with clean routing',
+        'Secure authentication & authorization middleware',
+        'PostgreSQL / MySQL / Redis caching integration',
+        'Postman Collection & interactive OpenAPI/Swagger docs',
+        'Automated unit & integration test coverage'
+      ],
+      bn: [
+        'ক্লিন রাউটিং সহ মডুলার REST / GraphQL API',
+        'সুরক্ষিত অথেনটিকেশন ও অথোরাইজেশন মিডলওয়্যার',
+        'Redis ক্যাশিং ও ডাটাবেস অপটিমাইজেশন',
+        'ইন্টারেক্টিভ Swagger / Postman API ডকস',
+        'ইউনিট টেস্টিং ও ডিপ্লয়মেন্ট স্ক্রিপ্ট'
       ]
     }
   },
   {
-    id: 'cv-linkedin-optimization',
-    iconName: 'UserCheck',
-    category: 'Student Support',
-    startingPrice: 400,
-    typicalTurnaround: '12 - 24 Hours',
-    tag: 'Career Growth',
+    id: 'cloud-devops-cicd',
+    iconName: 'Cloud',
+    category: 'Development Services',
+    startingPrice: 4500,
+    typicalTurnaround: '2 - 5 Days',
+    tag: 'DevOps & Cloud',
     title: {
-      bn: 'CV ও LinkedIn অপটিমাইজেশন',
-      en: 'CV / LinkedIn Optimization'
+      en: 'Cloud Infrastructure, Docker & CI/CD Pipelines (AWS / GCP / Vercel)',
+      bn: 'ক্লাউড ইনফ্রাস্ট্রাকচার, ডকার ও CI/CD অটোমেশন'
     },
     shortDesc: {
-      bn: 'ATS রেজুমে অডিট, LinkedIn হেডলাইন ও সামারি রিভ্যাম্প এবং নেটওয়ার্কিং গাইড।',
-      en: 'ATS resume audit, LinkedIn headline & summary revamp, and networking strategy.'
+      en: 'Automated GitHub Actions deployments, Docker containerization, Nginx reverse proxy, and cloud scaling.',
+      bn: 'GitHub Actions CI/CD অটোমেশন, ডকার কন্টেইনারাইজেশন, AWS/GCP ক্লাউড ডিপ্লয়মেন্ট ও SSL সিকিউরিটি।'
     },
     fullDesc: {
-      bn: 'টেক জব ও ইন্টার্নশিপ পেতে আপনার রেজুমে ও লিঙ্কডইন প্রোফাইলকে আকর্ষণীয় করুন। STAR মেথডোলজি ও রিক্রুটার আউটরিচ কৌশল।',
-      en: 'Optimize your professional profile for tech jobs and internships with keyword audits, captivating headlines, and cold outreach tips.'
+      en: 'Set up reliable, automated cloud environments for your web applications. We configure Docker multi-stage builds, automated testing & deployment pipelines with GitHub Actions, AWS EC2/S3 or GCP Cloud Run hosting, SSL certificate automation, and server monitoring.',
+      bn: 'আপনার অ্যাপের নিরবচ্ছিন্ন আপটাইমের জন্য আধুনিক DevOps সেটআপ। ডকার কন্টেইনারাইজেশন, GitHub Actions অটোমেটেড ডিপ্লয়মেন্ট, AWS / GCP / DigitalOcean কনফিগারেশন, Nginx রিভার্স প্রক্সি এবং ফ্রি SSL সেটআপ।'
     },
     deliverables: {
-      bn: [
-        'ATS স্কোর অডিট ও টেইলর্ড কি-ওয়ার্ড বৃদ্ধি',
-        'LinkedIn প্রোফাইল রিভ্যাম্প (হেডলাইন, অ্যাবাউট ও এক্সপেরিয়েন্স)',
-        'STAR/XYZ মেথডে প্রজেক্টের ইমপ্যাক্ট উপস্থাপন',
-        'এইচআর ও রিক্রুটারদের মেসেজ পাঠানোর কোল্ড আউটরিচ টেমপ্লেট',
-        'ইঞ্জিনিয়ারিং রিক্রুটার আকর্ষণের পার্সোনাল ব্র্যান্ডিং টিপস'
-      ],
       en: [
-        'ATS score audit and tailored keyword enhancement',
-        'LinkedIn profile overhaul (Headline, About, Experience bullets)',
-        'Project impact quantification using STAR/XYZ methodology',
-        'Networking and cold email connection message templates',
-        'Personal branding tips to attract engineering recruiters'
+        'Multi-stage optimized Dockerfile and docker-compose configurations',
+        'Automated CI/CD pipeline with GitHub Actions (Build, Test, Deploy)',
+        'Cloud server deployment (AWS, GCP, DigitalOcean, or Vercel)',
+        'Nginx reverse proxy, automatic SSL certificates (Let\'s Encrypt)',
+        'Uptime telemetry, automated log rotation, and server alerts'
+      ],
+      bn: [
+        'অপটিমাইজড Dockerfile ও docker-compose ফাইল',
+        'GitHub Actions দিয়ে অটোমেটেড CI/CD ডিপ্লয়মেন্ট পাইপলাইন',
+        'AWS, GCP বা DigitalOcean ক্লাউড সার্ভার কনফিগারেশন',
+        'Nginx রিভার্স প্রক্সি ও অটোমেটিক SSL সার্টিফিকেট সেটআপ',
+        'সার্ভার হেলথ মনিটরিং ও ডাউনটাইম অ্যালার্ট সেটআপ'
       ]
     }
   },
   {
-    id: 'presentation-preparation',
-    iconName: 'Mic',
-    category: 'Student Support',
-    startingPrice: 350,
-    typicalTurnaround: '8 - 24 Hours',
+    id: 'ecommerce-custom-platform',
+    iconName: 'ShoppingBag',
+    category: 'Development Services',
+    startingPrice: 9000,
+    typicalTurnaround: '7 - 14 Days',
+    tag: 'E-Commerce',
     title: {
-      bn: 'প্রেজেন্টেশন ও ডিফেন্স প্রিপারেশন',
-      en: 'Presentation Preparation'
+      en: 'Custom E-Commerce Store & Payment Engine',
+      bn: 'কাস্টম ই-কমার্স প্ল্যাটফর্ম ও পেমেন্ট গেটওয়ে'
     },
     shortDesc: {
-      bn: 'স্পিচ রিহার্সাল, স্লাইড ট্রানজিশন এবং ফ্যাকাল্টি কাউন্টার-কোয়েশ্চেনিং প্রস্তুতি।',
-      en: 'Slide structure critique, defense rehearsal, and faculty question simulations.'
+      en: 'Full-featured online store with inventory management, cart, checkout, and local/global payment gateways.',
+      bn: 'প্রোডাক্ট ক্যাটালগ, ইনভেন্টরি, কার্ট এবং bKash/Nagad/Stripe পেমেন্ট গেটওয়ে সহ ই-কমার্স প্ল্যাটফর্ম।'
     },
     fullDesc: {
-      bn: 'প্রেজেন্টেশনের জড়তা কাটিয়ে ক্লাসে ও ডিফেন্সে সেরা বক্তব্য দিন। ১-অন-১ মক ডিফেন্স ও কড়া শিক্ষকদের প্রশ্ন মোকাবিলার কৌশল।',
-      en: 'Conquer presentation anxiety and deliver standout defense talks with structured speaking points, slide rehearsals, and counter-question coaching.'
+      en: 'Launch an online storefront that converts visitors into customers. Includes product catalogs with multi-variant options, coupon & discount engine, automated order invoicing, customer accounts, and automated integration with bKash, Nagad, SSLCommerz, Stripe, and PayPal.',
+      bn: 'আধুনিক ই-কমার্স প্ল্যাটফর্ম। প্রোডাক্ট ভ্যারিয়েন্ট, কার্ট ও চেকআউট, ইনভয়েস জেনারেশন এবং bKash, Nagad, SSLCommerz ও আন্তর্জাতিক কার্ড পেমেন্ট গেটওয়ে ইন্টিগ্রেশন।'
     },
     deliverables: {
-      bn: [
-        '১-অন-১ মক ডিফেন্স রিহার্সালে সম্ভাব্য কঠিন প্রশ্ন সমাধান',
-        'স্লাইড টাইমিং এনালাইসিস ও ট্রানজিশন স্ক্রিপ্ট তৈরি',
-        'স্পিকিং স্ক্রিপ্ট ও বুলেট পয়েন্ট রিফাইনমেন্ট',
-        'কড়া একাডেমিক ডিফেন্স প্যানেল সামলানোর Q&A স্ট্র্যাটেজি',
-        'কনফিডেন্স বিল্ডিং ও বডি ল্যাঙ্গুয়েজ ফিডব্যাক'
-      ],
       en: [
-        '1-on-1 Mock defense rehearsal with difficult counter-questions',
-        'Slide timing analysis and transition cues formulation',
-        'Speaking script formulation & bullet distillation',
-        'Q&A survival tactics for rigorous academic defense panels',
-        'Confidence building and body language feedback'
+        'Custom storefront with lightning-fast catalog search & filters',
+        'Shopping cart & multi-step secure checkout workflow',
+        'Payment gateway integrations (bKash, Nagad, SSLCommerz, Stripe)',
+        'Merchant admin dashboard for orders, stock & sales analytics',
+        'Automated SMS & Email order confirmation notifications'
+      ],
+      bn: [
+        'দ্রুতগতির প্রোডাক্ট সার্চ ও ফিল্টারিং সহ কাস্টম স্টোরফ্রন্ট',
+        'স্মুথ শপিং কার্ট ও সিকিউর চেকআউট ওয়ার্কফ্লো',
+        'bKash, Nagad, SSLCommerz ও Stripe পেমেন্ট ইন্টিগ্রেশন',
+        'অর্ডার ও স্টক ট্র্যাকিংয়ের জন্য মার্চেন্ট এডমিন প্যানেল',
+        'স্বয়ংক্রিয় SMS ও ইমেইল নোটিফিকেশন সিস্টেম'
+      ]
+    }
+  },
+
+  // ========================================================
+  // 3. WORDPRESS SOLUTIONS & WING
+  // ========================================================
+  {
+    id: 'custom-wordpress-dev',
+    iconName: 'Globe',
+    category: 'WordPress Services',
+    startingPrice: 4000,
+    typicalTurnaround: '3 - 7 Days',
+    tag: 'WordPress Core',
+    title: {
+      en: 'Custom WordPress Theme & Site Development',
+      bn: 'কাস্টম ওয়ার্ডপ্রেস থিম ও ওয়েবসাইট ডেভেলপমেন্ট'
+    },
+    shortDesc: {
+      en: 'Tailored WordPress websites, custom PHP/Block themes, Gutenberg blocks, and seamless CMS architectures.',
+      bn: 'ব্যবসায়িক ওয়েবসাইটের জন্য কাস্টম ওয়ার্ডপ্রেস থিম, গুটেনবার্গ ব্লক এবং সম্পূর্ণ CMS সেটআপ।'
+    },
+    fullDesc: {
+      en: 'Ditch bloated third-party themes. We build lightweight, ultra-fast, custom WordPress themes precisely matching your Figma designs. Fully editable from the WP admin without breaking, optimized for Core Web Vitals, and built with modern PHP 8+ and clean modular architecture.',
+      bn: 'কোনো ভারী টেমপ্লেট নয়—ফিগমা থেকে ১০০% কাস্টম কোডেড লাইটওয়েট ওয়ার্ডপ্রেস ওয়েবসাইট। এডমিন প্যানেল থেকে সহজে এডিট করার সুবিধা, স্পিড অপটিমাইজেশন এবং এসইও ফ্রেন্ডলি কাঠামো।'
+    },
+    deliverables: {
+      en: [
+        '100% custom lightweight WordPress theme matching Figma design',
+        'Gutenberg / Elementor editable custom section blocks',
+        'Mobile-first responsive styling and cross-browser testing',
+        'Essential SEO, security & automated backup configuration',
+        'Client video walkthrough on how to edit and manage content'
+      ],
+      bn: [
+        'ফিগমা অনুযায়ী ১০০% কাস্টম লাইটওয়েট ওয়ার্ডপ্রেস থিম',
+        'সহজে কনটেন্ট এডিট করার জন্য কাস্টম গুটেনবার্গ / এলিমেন্টর ব্লক',
+        'মোবাইল-ফার্স্ট রেসপনসিভ ডিজাইন ও ক্রস-ব্রাউজার টেস্টিং',
+        'SEO, সিকিউরিটি ও স্বয়ংক্রিয় ব্যাকআপ কনফিগারেশন',
+        'সাইট ম্যানেজ ও কনটেন্ট আপডেটের জন্য ভিডিও গাইড'
+      ]
+    },
+    subServices: [
+      {
+        id: 'wp-starter',
+        price: 4000,
+        turnaround: '3 Days',
+        title: { en: '1-5 Pages Business Website', bn: '১-৫ পেজ বিজনেস ওয়েবসাইট' },
+        deliverables: {
+          en: ['Up to 5 custom pages, contact forms, mobile responsiveness, basic SEO'],
+          bn: ['৫টি পেজ, কন্টাক্ট ফর্ম, মোবাইল রেসপনসিভনেস ও বেসিক এসইও']
+        }
+      },
+      {
+        id: 'wp-advanced',
+        price: 8000,
+        turnaround: '7 Days',
+        title: { en: 'Full Dynamic Corporate / News Portal', bn: 'ফুল ডাইনামিক কর্পোরেট / নিউজ পোর্টাল' },
+        deliverables: {
+          en: ['Custom Post Types, Advanced Custom Fields (ACF), multi-language, high traffic caching'],
+          bn: ['কাস্টম পোস্ট টাইপস, ACF ইন্টিগ্রেশন, বহুভাষিক সাপোর্ট ও হাই-ট্রাফিক ক্যাশিং']
+        }
+      }
+    ]
+  },
+  {
+    id: 'figma-to-wordpress',
+    iconName: 'Layers',
+    category: 'WordPress Services',
+    startingPrice: 3500,
+    typicalTurnaround: '3 - 5 Days',
+    tag: 'Pixel Perfect',
+    title: {
+      en: 'Figma to WordPress / Elementor / Bricks Builder Conversion',
+      bn: 'ফিগমা থেকে ওয়ার্ডপ্রেস / এলিমেন্টর / ব্রিকস কনভার্শন'
+    },
+    shortDesc: {
+      en: 'Pixel-perfect conversion of Figma UI designs into clean, editable WordPress pages without bloat.',
+      bn: 'ফিগমা ডিজাইন থেকে ১০০% নিখুঁত ওয়ার্ডপ্রেস / এলিমেন্টর / ব্রিকস পেজ বিল্ডার কনভার্শন।'
+    },
+    fullDesc: {
+      en: 'Transform your Figma, Adobe XD, or Sketch designs into clean, high-performance WordPress pages using Elementor Pro, Bricks Builder, or Gutenberg blocks. Every layout is 100% responsive, optimized for fast loading, and easy for non-technical team members to edit.',
+      bn: 'আপনার যে কোনো ফিগমা বা স্কেচ ডিজাইনকে ওয়ার্ডপ্রেসে রূপান্তর। এলিমেন্টর প্রো, ব্রিকস বিল্ডার বা গুটেনবার্গ দিয়ে প্রতিটি সেকশন হুবহু তৈরি করা হয় যেন যে কেউ সহজে টেক্সট ও ছবি পরিবর্তন করতে পারে।'
+    },
+    deliverables: {
+      en: [
+        'Pixel-perfect Figma to WordPress conversion with 100% fidelity',
+        'Clean DOM structure without unnecessary wrapper bloat',
+        'Fully responsive across mobile, tablet, and widescreen desktops',
+        'Global typography and color palette configuration',
+        'Basic on-page SEO tags and asset image optimization'
+      ],
+      bn: [
+        'ফিগমা ডিজাইন থেকে ১০০% নিখুঁত ওয়ার্ডপ্রেস কনভার্শন',
+        'ক্লিন কোড ও আননেসেসারি প্লাগইন মুক্ত লাইটওয়েট স্ট্রাকচার',
+        'মোবাইল, ট্যাবলেট ও বড় স্ক্রিনে পারফেক্ট রেসপনসিভনেস',
+        'গ্লোবাল ফন্ট ও কালার প্যালেট সেটআপ',
+        'ইমেজ অপটিমাইজেশন ও বেসিক অন-পেজ এসইও'
       ]
     }
   },
   {
-    id: 'scholarship-admission-guidance',
+    id: 'woocommerce-store-dev',
+    iconName: 'ShoppingBag',
+    category: 'WordPress Services',
+    startingPrice: 5500,
+    typicalTurnaround: '4 - 9 Days',
+    tag: 'WooCommerce',
+    title: {
+      en: 'WooCommerce E-Commerce Store & Gateway Setup',
+      bn: 'WooCommerce ই-কমার্স স্টোর ও পেমেন্ট সেটআপ'
+    },
+    shortDesc: {
+      en: 'Turnkey WooCommerce online shops with Bangladeshi & international payment gateways, shipping, and inventory.',
+      bn: 'bKash/Nagad পেমেন্ট, কুরিয়ার ইন্টিগ্রেশন ও ইনভেন্টরি সহ কমপ্লিট WooCommerce স্টোর।'
+    },
+    fullDesc: {
+      en: 'Complete WooCommerce store setup built to drive online sales. Includes product catalog setup, variable attributes, cart & customized checkout pages, coupon systems, and seamless integration with bKash, Nagad, Rocket, SSLCommerz, Pathao/Steadfast couriers, and Stripe.',
+      bn: 'অনলাইনে বিক্রয় বাড়ানোর জন্য সম্পূর্ণ WooCommerce অনলাইন স্টোর। প্রোডাক্ট ভ্যারিয়েন্ট, কাস্টমাইজড চেকআউট, কুপন ডিসকাউন্ট এবং bKash, Nagad ও কুরিয়ার ট্র্যাকিং ইন্টিগ্রেশন।'
+    },
+    deliverables: {
+      en: [
+        'Complete WooCommerce installation, theme & catalog setup',
+        'bKash, Nagad, Rocket, Card & Cash on Delivery payment gateways',
+        'Courier shipping calculator & order tracking setup',
+        'Customized frictionless one-page checkout option',
+        'Inventory stock management and low-stock alerts'
+      ],
+      bn: [
+        'কমপ্লিট WooCommerce ইন্সটলেশন ও ক্যাটালগ কনফিগারেশন',
+        'bKash, Nagad, Rocket, কার্ড ও ক্যাশ অন ডেলিভারি গেটওয়ে',
+        'কুরিয়ার শিপিং ও অর্ডার ট্র্যাকিং সেটআপ',
+        'দ্রুত কেনাকাটার জন্য কাস্টম ওয়ান-পেজ চেকআউট',
+        'ইনভেন্টরি স্টক ট্র্যাকিং ও লো-স্টক এলার্ট'
+      ]
+    }
+  },
+  {
+    id: 'lms-membership-portal',
     iconName: 'GraduationCap',
-    category: 'Student Support',
-    startingPrice: 800,
+    category: 'WordPress Services',
+    startingPrice: 6500,
+    typicalTurnaround: '5 - 10 Days',
+    tag: 'EdTech Solution',
+    title: {
+      en: 'LMS (E-Learning) & Membership Portal on WordPress',
+      bn: 'অনলাইন কোর্স (LMS) ও মেম্বারশিপ পোর্টাল ডেভেলপমেন্ট'
+    },
+    shortDesc: {
+      en: 'Complete video course platform, student quizzes, certificates, and recurring membership paywalls.',
+      bn: 'LearnDash / Tutor LMS সেটআপ, ভিডিও লেসন সিকিউরিটি, কুইজ, সার্টিফিকেট ও সাবস্ক্রিপশন মেম্বারশিপ।'
+    },
+    fullDesc: {
+      en: 'Build your own Udemy or Coursera-style e-learning platform or exclusive membership community on WordPress using Tutor LMS, LearnDash, or MemberPress. Includes video security, lesson progression, quizzes, certificates, and bKash/Card payment integrations.',
+      bn: 'ওয়ার্ডপ্রেসে আপনার নিজস্ব ই-লার্নিং একাডেমি তৈরি করুন। সিকিউর ভিডিও প্লেয়ার, কুইজ সিস্টেম, অটোমেটেড কোর্স সার্টিফিকেট এবং বিকাশ/নগদ বা কার্ডের মাধ্যমে পেমেন্ট করে কোর্স এনরোলমেন্ট সিস্টেম।'
+    },
+    deliverables: {
+      en: [
+        'Complete LMS setup (Tutor LMS / LearnDash / MemberPress)',
+        'Protected video lessons with secure embedding (Vimeo/BunnyCDN/YouTube)',
+        'Interactive student quizzes, assignments, and auto-generated certificates',
+        'Payment gateway setup (bKash, Nagad, Stripe) for single or subscription courses',
+        'Instructor & Student front-end account dashboards'
+      ],
+      bn: [
+        'কমপ্লিট LMS সেটআপ (Tutor LMS / LearnDash / MemberPress)',
+        'সুরক্ষিত ভিডিও লেসন প্লেয়ার ইন্টিগ্রেশন (BunnyCDN/Vimeo)',
+        'কুইজ, অ্যাসাইনমেন্ট ও স্বয়ংক্রিয় কোর্স সার্টিফিকেট সিস্টেম',
+        'কোর্স বিক্রির জন্য bKash, Nagad ও আন্তর্জাতিক পেমেন্ট গেটওয়ে',
+        'টিচার ও স্টুডেন্টদের জন্য আলাদা ড্যাশবোর্ড'
+      ]
+    }
+  },
+  {
+    id: 'multivendor-marketplace',
+    iconName: 'ShoppingBag',
+    category: 'WordPress Services',
+    startingPrice: 8500,
+    typicalTurnaround: '7 - 14 Days',
+    tag: 'Marketplace',
+    title: {
+      en: 'Multi-Vendor Marketplace Platform (Dokan / WCFM)',
+      bn: 'মাল্টি-ভেন্ডর মার্কেটপ্লেস ই-কমার্স (Dokan / WCFM)'
+    },
+    shortDesc: {
+      en: 'Amazon/Daraz-style multi-seller marketplace with vendor dashboards, automated commission splits, and payouts.',
+      bn: 'মাল্টিপল সেলার স্টোর, আলাদা ভেন্ডর ড্যাশবোর্ড, অটোমেটেড কমিশন ও উইথড্রয়াল সহ দারাজ/অ্যামাজন স্টাইল মার্কেটপ্লেস।'
+    },
+    fullDesc: {
+      en: 'Create a thriving multi-seller e-commerce marketplace using Dokan Pro or WCFM. Vendors can register, upload their own products, manage inventory, and request payout withdrawals, while the platform owner earns automated commission on every sale.',
+      bn: 'অ্যামাজন বা দারাজের মতো বহু বিক্রেতার মার্কেটপ্লেস প্ল্যাটফর্ম। যে কেউ ভেন্ডর হিসেবে রেজিস্ট্রেশন করে প্রোডাক্ট আপলোড করতে পারবে, আর আপনি প্রতি বিক্রিতে নির্দিষ্ট কমিশন অটোমেটিকভাবে পেয়ে যাবেন।'
+    },
+    deliverables: {
+      en: [
+        'Multi-vendor platform setup with Dokan / WCFM on WooCommerce',
+        'Dedicated vendor registration, front-end dashboard, and store pages',
+        'Automated admin commission deduction per product category or vendor',
+        'Vendor payout withdrawal management (bKash, Bank, PayPal)',
+        'Customer product reviews and verified seller badges'
+      ],
+      bn: [
+        'Dokan / WCFM দিয়ে সম্পূর্ণ মাল্টি-ভেন্ডর মার্কেটপ্লেস কনফিগারেশন',
+        'আলাদা ভেন্ডর রেজিস্ট্রেশন, স্টোর পেজ ও ফ্রন্টএন্ড ড্যাশবোর্ড',
+        'অটোমেটেড এডমিন কমিশন পার্সেন্টেজ ক্যালকুলেশন',
+        'ভেন্ডর উইথড্রয়াল ও পেমেন্ট ডিসবার্সমেন্ট সিস্টেম',
+        'কাস্টমার রিভিউ ও ভেরিফায়েড সেলার ব্যাজ সিস্টেম'
+      ]
+    }
+  },
+  {
+    id: 'wordpress-speed-security-fix',
+    iconName: 'Zap',
+    category: 'WordPress Services',
+    startingPrice: 2500,
     typicalTurnaround: '24 - 48 Hours',
-    tag: 'Global Study',
+    tag: 'Speed & Fix',
     title: {
-      bn: 'স্কলারশিপ ও অ্যাডমিশন গাইডেন্স',
-      en: 'Scholarship / Admission Guidance'
+      en: 'WordPress Speed Optimization & Security Hardening',
+      bn: 'ওয়ার্ডপ্রেস স্পিড অপটিমাইজেশন ও সিকিউরিটি ফিক্স'
     },
     shortDesc: {
-      bn: 'SOP, মোটিভেশন লেটার, প্রফেসর ইমেইল ড্রাফটিং ও উচ্চশিক্ষার আবেদন গাইড।',
-      en: 'Statement of Purpose (SOP), Motivation Letters, and professor email drafting.'
+      en: 'Boost Google PageSpeed scores to 90+, achieve sub-second load times, malware cleanup, and security lockdown.',
+      bn: 'Google PageSpeed ৯০+ স্কোর অর্জন, লোডিং স্পিড বৃদ্ধি, ম্যালওয়্যার ক্লিনআপ ও সিকিউরিটি প্রটেকশন।'
     },
     fullDesc: {
-      bn: 'আমেরিকা, কানাডা, ইউরোপ বা অস্ট্রেলিয়ার উচ্চশিক্ষায় ভর্তির জন্য শক্তিশালী SOP, একাডেমিক সিভি এবং প্রফেসরদের সাথে যোগাযোগ কৌশল।',
-      en: 'Get accepted into top global universities. Draft compelling SOPs, academic CVs, and cold emails to prospective research supervisors.'
+      en: 'Transform slow, vulnerable WordPress websites into lightning-fast, fortress-secure platforms. We optimize databases, minify CSS/JS, configure Redis/LiteSpeed caching, implement WebP image compression, setup Cloudflare CDN, remove malware, and patch security vulnerabilities.',
+      bn: 'আপনার স্লো ও অনিরাপদ ওয়েবসাইটকে সুপার ফাস্ট এবং সুরক্ষিত প্ল্যাটফর্মে রূপান্তর। ডাটাবেস অপটিমাইজেশন, কোড মিনিফিকেশন, Redis/LiteSpeed ক্যাশিং, ক্লাউডফ্লেয়ার CDN এবং ম্যালওয়্যার রিমুভাল।'
     },
     deliverables: {
-      bn: [
-        'Statement of Purpose (SOP) ও মোটিভেশন লেটারের লাইন-বাই-লাইন রিভিউ',
-        'আন্তর্জাতিক অ্যাডমিশনের উপযোগী একাডেমিক সিভি তৈরি',
-        'সম্ভাব্য রিসার্চ সুপারভাইজারদের জন্য কোল্ড ইমেইল টেমপ্লেট',
-        'স্কলারশিপ অ্যাপ্লিকেশন স্ট্র্যাটেজি ও রিকমেন্ডেশন লেটার গাইডেন্স',
-        'ভিসা ও ইউনিভার্সিটি ইন্টারভিউ মক প্রিপারেশন সেশন'
-      ],
       en: [
-        'Line-by-line review of Statement of Purpose (SOP) & Motivation Letters',
-        'Academic CV tailored for international admissions',
-        'Cold email templates for contacting prospective research supervisors',
-        'Scholarship application strategy & recommendation letter guidance',
-        'Visa and university interview mock preparation session'
+        'Google PageSpeed score boosted to 90+ (Desktop & Mobile)',
+        'Server TTFB (Time to First Byte) under 300ms',
+        'Image lossless compression & Next-Gen WebP delivery',
+        'Database table cleaning & transient sweep',
+        'Firewall configuration, brute-force protection & SSL lockdown'
+      ],
+      bn: [
+        'Google PageSpeed স্কোর ৯০+ এ উন্নীত করা',
+        'সার্ভার লোডিং টাইম ও TTFB উল্লেখযোগ্যভাবে কমানো',
+        'ইমেজ কম্প্রেশন ও আধুনিক WebP ফরম্যাটে রূপান্তর',
+        'ডাটাবেস টেবিল ক্লিনআপ ও ক্যাশিং কনফিগারেশন',
+        'ফায়ারওয়াল সেটআপ, ব্রুট-ফোর্স প্রটেকশন ও SSL কনফিগারেশন'
       ]
     }
   },
   {
-    id: 'thesis-report-writing-support',
-    iconName: 'BookOpen',
-    category: 'Student Support',
-    startingPrice: 1000,
-    typicalTurnaround: '24 - 72 Hours',
+    id: 'wordpress-monthly-retainer',
+    iconName: 'ShieldCheck',
+    category: 'WordPress Services',
+    startingPrice: 2500,
+    typicalTurnaround: 'Monthly Retainer',
+    tag: 'Care Plan',
     title: {
-      bn: 'থিসিস ও রিপোর্ট রাইটিং সাপোর্ট',
-      en: 'Thesis / Report Writing Support'
+      en: 'WordPress Maintenance, Backup & Security Retainer Support',
+      bn: 'ওয়ার্ডপ্রেস মাসিক রক্ষণাবেক্ষণ ও সিকিউরিটি সাপোর্ট'
     },
     shortDesc: {
-      bn: 'চ্যাপ্টার স্ট্রাকচারিং, লিটারেচার রিভিউ মেথডোলজি ও একাডেমিক প্রুফরিডিং।',
-      en: 'Chapter structuring, systematic literature reviews, and proofreading.'
+      en: 'Peace of mind for your WordPress website with weekly updates, cloud backups, 24/7 uptime monitoring & quick fixes.',
+      bn: 'ওয়েবসাইটের নিরবচ্ছিন্ন সুরক্ষায় সাপ্তাহিক আপডেট, দৈনিক ক্লাউড ব্যাকআপ, ২৪/৭ মনিটরিং ও টেকনিক্যাল ফিক্স।'
     },
     fullDesc: {
-      bn: 'আন্ডারগ্রাজুয়েট বা মাস্টার্স থিসিস বই লেখার সার্বিক দিকনির্দেশনা। সিস্টেমেটিক লিটারেচার রিভিউ, মেথডোলজি ও একাডেমিক প্রুফরিডিং।',
-      en: 'Comprehensive academic mentorship on structuring your thesis, Systematic Literature Review (SLR) matrices, and academic writing polish.'
+      en: 'Keep your business website always online, updated, and secure. We handle core/plugin/theme updates on staging first to avoid crashes, run daily off-site cloud backups, monitor uptime every 60 seconds, remove security threats, and provide 3 hours of included monthly design/content tweaks.',
+      bn: 'ওয়েবসাইট ক্র্যাশ বা হ্যাক হওয়ার ভয় দূর করুন। আমাদের মাসিক কেয়ার প্ল্যানে পাচ্ছেন নিরাপদ প্লাগইন ও থিম আপডেট, দৈনিক অফ-সাইট ক্লাউড ব্যাকআপ, প্রতি মিনিটে আপটাইম মনিটরিং এবং যেকোনো প্রয়োজনে প্রতি মাসে ৩ ঘণ্টা ফ্রি কনটেন্ট বা ডিজাইন সাপোর্ট।'
     },
     deliverables: {
-      bn: [
-        'চ্যাপ্টার-বাই-চ্যাপ্টার স্ট্রাকচারিং ও একাডেমিক রাইটিং গাইডেন্স',
-        'Systematic Literature Review (SLR) ম্যাট্রিক্স টেমপ্লেট',
-        'মেথডোলজি বর্ণনা ও এক্সপেরিমেন্টাল সেটআপ রাইটিং',
-        'গ্রামার, ফ্লো ও একাডেমিক টোন পরিমার্জন',
-        'সাইটেশন ভেরিফিকেশন ও বিব্লিওগ্রাফি অ্যালাইনমেন্ট'
-      ],
       en: [
-        'Chapter-by-chapter structuring & academic writing guidance',
-        'Systematic Literature Review (SLR) matrix template & synthesis',
-        'Methodology articulation and experimental setup description',
-        'Grammar, flow, and academic tone refinement',
-        'Citation verification and bibliography alignment'
+        'Weekly safe plugin, theme, and WordPress core updates with staging tests',
+        'Daily automated off-site cloud backups (Google Drive / AWS S3)',
+        '24/7 uptime monitoring with instant downtime alert response',
+        'Continuous security scans, malware cleanup, and firewall protection',
+        '3 hours of complimentary content/banner/design adjustments every month'
+      ],
+      bn: [
+        'স্টেজিংয়ে টেস্ট করে নিরাপদ প্লাগইন ও ওয়ার্ডপ্রেস কোর আপডেট',
+        'প্রতিদিনের স্বয়ংক্রিয় ক্লাউড ব্যাকআপ (Google Drive/AWS)',
+        '২৪/৭ নিরবচ্ছিন্ন আপটাইম মনিটরিং ও ইনস্ট্যান্ট অ্যালার্ট রেসপন্স',
+        'নিয়মিত সিকিউরিটি স্ক্যান, ম্যালওয়্যার ক্লিন ও ফায়ারওয়াল রক্ষণাবেক্ষণ',
+        'প্রতি মাসে ৩ ঘণ্টার যেকোনো ডিজাইন বা কনটেন্ট আপডেট সাপোর্ট'
       ]
     }
   },
+
+  // ========================================================
+  // 4. DATA ANALYSIS & BUSINESS INTELLIGENCE
+  // ========================================================
   {
-    id: 'plagiarism-check-assistance',
-    iconName: 'Search',
-    category: 'Student Support',
-    startingPrice: 250,
-    typicalTurnaround: '2 - 6 Hours',
-    tag: 'Fast Delivery',
-    title: {
-      bn: 'প্ল্যাজিয়ারিজম চেক ও সিমিলারিটি সাপোর্ট',
-      en: 'Plagiarism Check Assistance'
-    },
-    shortDesc: {
-      bn: 'অফিসিয়াল Turnitin সিমিলারিটি রিপোর্ট অ্যানালাইসিস ও এথিক্যাল প্যারাফ্রেজিং।',
-      en: 'Official Turnitin similarity report analysis, paraphrasing, and citation alignment.'
-    },
-    fullDesc: {
-      bn: 'আপনার পেপারের প্ল্যাজিয়ারিজম পার্সেন্টেজ যাচাই করুন। টার্নইটিন রিপোর্ট অ্যানালাইসিস, সাইটেশন কারেকশন ও সিমিলারিটি কমানোর গাইড।',
-      en: 'Ensure your manuscript complies with university similarity thresholds. Receive official similarity index reports and ethical paraphrasing guidance.'
-    },
-    deliverables: {
-      bn: [
-        'হাইলাইটেড ম্যাচিং সোর্সসহ পূর্ণাঙ্গ টার্নইটিন সিমিলারিটি রিপোর্ট',
-        'অনাকাঙ্ক্ষিত প্ল্যাজিয়ারিজম বনাম কমন বাক্যাংশ চিহ্নিতকরণ',
-        'সেন্টেন্স রিস্ট্রাকচারিং ও সঠিক প্যারাফ্রেজিং পরামর্শ',
-        'IEEE/APA ফরম্যাটে মিসিং সাইটেশন পুনঃস্থাপন',
-        '২ থেকে ৬ ঘণ্টার মধ্যে সুপার ফাস্ট রিপোর্ট ডেলিভারি'
-      ],
-      en: [
-        'Complete similarity percentage and highlighted matching sources report',
-        'Identification of accidental plagiarism vs common academic phrases',
-        'Guidance on restructuring sentences and proper paraphrasing',
-        'Missing citation restoration in IEEE/APA/Harvard formats',
-        'Fast turnaround within 2 to 6 hours'
-      ]
-    }
-  },
-  {
-    id: 'technical-workshops-courses',
-    iconName: 'Video',
-    category: 'Student Support',
-    startingPrice: 500,
-    typicalTurnaround: 'Scheduled Cohorts',
-    title: {
-      bn: 'টেকনিক্যাল ওয়ার্কশপ ও কোর্স',
-      en: 'Technical Workshops & Courses'
-    },
-    shortDesc: {
-      bn: 'ওয়েব ডেভেলপমেন্ট, AI/ML, UI/UX, Git ও কোডিংয়ের লাইভ হ্যান্ডস-অন মাস্টারক্লাস।',
-      en: 'Live cohort bootcamps on Web Dev, AI/ML, UI/UX, Git, and Programming.'
-    },
-    fullDesc: {
-      bn: 'ইন্ডাস্ট্রি ইঞ্জিনিয়ারদের পরিচালনায় প্রজেক্ট-ভিত্তিক লাইভ টেকনিক্যাল বুটক্যাম্প। হ্যান্ডস-অন কোডিং, অ্যাসাইনমেন্ট ও সার্টিফিকেট।',
-      en: 'Hands-on, project-based technical masterclasses led by industry practitioners. Live coding, assignments, and verified completion certificates.'
-    },
-    deliverables: {
-      bn: [
-        'রিয়েলটাইম Q&A সহ লাইভ ইন্টারঅ্যাক্টিভ ভিডিও সেশন',
-        'সকল রেকর্ডিং, সোর্স কোড ও লেকচার স্লাইডে আজীবন এক্সেস',
-        'হ্যান্ডস-অন ক্যাপস্টোন প্রজেক্ট ও মেন্টর কোড রিভিউ',
-        'যাচাইযোগ্য ভেরিফায়েড সার্টিফিকেট অব কমপ্লিশন',
-        'প্রাইভেট অ্যালামনাই ও পিয়ার কমিউনিটিতে এক্সক্লুসিভ এক্সেস'
-      ],
-      en: [
-        'Live interactive video sessions with real-time Q&A',
-        'Full access to session recordings, source code & lecture slides',
-        'Hands-on capstone project review & feedback from mentors',
-        'Certificate of Completion with verifiable credentials',
-        'Exclusive access to private alumni & peer discord/WhatsApp community'
-      ]
-    }
-  },
-  {
-    id: 'interview-preparation',
-    iconName: 'Briefcase',
-    category: 'Student Support',
-    startingPrice: 600,
-    typicalTurnaround: '12 - 24 Hours',
-    title: {
-      bn: 'ইন্টারভিউ প্রিপারেশন ও মক সেশন',
-      en: 'Interview Preparation'
-    },
-    shortDesc: {
-      bn: 'মক টেকনিক্যাল কোডিং ইন্টারভিউ, সিস্টেম ডিজাইন ও HR ইন্টারভিউ কোচিং।',
-      en: 'Mock technical coding interviews, system design, and behavioral HR coaching.'
-    },
-    fullDesc: {
-      bn: 'সফটওয়্যার ইঞ্জিনিয়ারিং ও কর্পোরেট জবের ইন্টারভিউতে সফল হতে লাইভ হোয়াইটবোর্ড কোডিং, DSA প্র্যাকটিস ও বিহেভিওরাল ফিডব্যাক।',
-      en: 'Ace software engineering job interviews with live DSA coding, basic system design discussions, and structured STAR feedback.'
-    },
-    deliverables: {
-      bn: [
-        'টপ টেক কোম্পানির মতো ১-অন-১ লাইভ মক কোডিং ইন্টারভিউ',
-        'প্রবলেম সলভিং স্পিড, কোড কোয়ালিটি ও কমিউনিকেশন ফিডব্যাক',
-        'সিস্টেম ডিজাইন বেসিকস ও আর্কিটেকচারাল ট্রেড-অফ ডিসকাশন',
-        'STAR ফ্রেমওয়ার্কে বিহেভিওরাল ইন্টারভিউ কোচিং',
-        'টার্গেট কোম্পানির প্যাটার্ন অনুযায়ী বাছাইকৃত DSA প্রশ্নব্যাংক'
-      ],
-      en: [
-        '1-on-1 Mock coding interview session simulating top tech companies',
-        'Detailed feedback report on problem-solving speed, code quality & communication',
-        'System design basics & architectural trade-offs discussion',
-        'Behavioral interview coaching using the STAR framework',
-        'Curated DSA question bank tailored to target company patterns'
-      ]
-    }
-  },
-  {
-    id: 'study-plan-academic-guidance',
-    iconName: 'Calendar',
-    category: 'Student Support',
-    startingPrice: 300,
-    typicalTurnaround: '6 - 12 Hours',
-    title: {
-      bn: 'স্টাডি প্ল্যান ও একাডেমিক গাইডেন্স',
-      en: 'Study Plan & Academic Guidance'
-    },
-    shortDesc: {
-      bn: 'ব্যক্তিগত সেমিস্টার স্টাডি রোডম্যাপ, CGPA রিকভারি প্ল্যান ও টাইম ম্যানেজমেন্ট।',
-      en: 'Personalized semester study roadmap, CGPA recovery, and time management.'
-    },
-    fullDesc: {
-      bn: 'ক্রেডিট ও ল্যাবের চাপ সামলাতে টপ পারফর্মিং মেন্টরদের সহায়তায় সিলেবাস অডিট, সাপ্তাহিক রুটিন এবং স্ট্র্যাটেজিক CGPA উন্নয়ন প্ল্যান।',
-      en: 'Audit your syllabus, design a realistic weekly study routine, and execute a strategic CGPA improvement plan with top university alumni.'
-    },
-    deliverables: {
-      bn: [
-        'ক্লাস, ল্যাব ও সেলফ-স্টাডির ভারসাম্যপূর্ণ সাপ্তাহিক টাইমটেবিল',
-        'আসন্ন পরীক্ষার জন্য হাই-ইল্ড টপিক প্রায়োরিটাইজেশন রোডম্যাপ',
-        'CGPA রিকভারি ক্যালকুলেশন মডেল ও টার্গেট গ্রেড মাইলস্টোন',
-        'বাছাইকৃত টেক্সটবুক চ্যাপ্টার ও ভিডিও লেকচার রিসোর্স লিস্ট',
-        'সাপ্তাহিক প্রগ্রেস চেক-ইন ও অ্যাকাউন্টেবিলিটি সাপোর্ট'
-      ],
-      en: [
-        'Tailored weekly timetable balancing classes, labs & self-study',
-        'High-yield topic prioritization roadmap for upcoming exams',
-        'CGPA recovery calculation model & target grade milestones',
-        'Curated textbook chapters, video lecture links & notes list',
-        'Weekly progress check-in & accountability support'
-      ]
-    }
-  },
-  {
-    id: 'problem-solving-debugging',
-    iconName: 'HelpCircle',
-    category: 'Student Support',
-    startingPrice: 350,
-    typicalTurnaround: '3 - 12 Hours',
-    tag: 'Instant Support',
-    title: {
-      bn: 'প্রবলেম সলভিং ও ইনস্ট্যান্ট ডাউট হেল্প',
-      en: 'Problem Solving & Debugging Help'
-    },
-    shortDesc: {
-      bn: 'জরুরি অ্যাসাইনমেন্ট ডাউট, গাণিতিক সমাধান যাচাই ও লজিক জটিলতা নিরসন।',
-      en: 'Urgent troubleshooting, mathematical derivations, logic resolution, and doubt help.'
-    },
-    fullDesc: {
-      bn: 'অ্যাসাইনমেন্ট বা ল্যাব টাস্ক নিয়ে আটকে গেছেন? সরাসরি মেন্টরের সাথে যুক্ত হয়ে স্পষ্ট ব্যাখ্যার মাধ্যমে দ্রুত সমাধান পেয়ে যান।',
-      en: 'Get immediate help when stuck on difficult assignments, mathematical proofs, circuit calculations, or programming bugs.'
-    },
-    deliverables: {
-      bn: [
-        'ধাপে ধাপে প্রবলেম ডিসেকশন ও সমাধান লজিক ব্যাখ্যা',
-        'গাণিতিক সূত্র যাচাই ও ডেরিভেশন স্টেপস চেকিং',
-        'মূল থিওরি ও কনসেপ্টের সার্বিক ধারণা স্পষ্টকরণ',
-        'WhatsApp / Google Meet-এ সরাসরি ডাউট ক্লিয়ারিং',
-        'ধারণা দৃঢ় করতে প্রাসঙ্গিক প্র্যাকটিস প্রবলেম'
-      ],
-      en: [
-        'Direct, step-by-step problem dissection and solution logic',
-        'Mathematical formula verification and derivation steps',
-        'Comprehensive explanation of underlying core theorems',
-        'Interactive doubt clearing on WhatsApp / Google Meet',
-        'Related practice problems to solidify understanding'
-      ]
-    }
-  },
-  {
-    id: 'mentorship-career-guidance',
-    iconName: 'Compass',
-    category: 'Student Support',
-    startingPrice: 500,
-    typicalTurnaround: '12 - 24 Hours',
-    title: {
-      bn: 'মেন্টরশিপ ও ক্যারিয়ার গাইডেন্স',
-      en: 'Mentorship & Career Guidance'
-    },
-    shortDesc: {
-      bn: 'ইন্ডাস্ট্রি সফটওয়্যার ইঞ্জিনিয়ার ও গবেষকদের সাথে ১-অন-১ ক্যারিয়ার ম্যাপিং।',
-      en: '1-on-1 career mapping with industry software engineers and researchers.'
-    },
-    fullDesc: {
-      bn: 'সফটওয়্যার ইঞ্জিনিয়ারিং, এআই/ডাটা সায়েন্স, সাইবার সিকিউরিটি বা বিদেশের উচ্চশিক্ষা নিয়ে ক্যারিয়ার পথরেখা ও স্কিল অর্জনের সঠিক দিকনির্দেশনা।',
-      en: 'Discuss career pathways in Software Engineering, Data Science/AI, Cyber Security, or Higher Studies with seasoned industry professionals.'
-    },
-    deliverables: {
-      bn: [
-        'ইন্ডাস্ট্রি স্পেশালিস্টের সাথে ১-অন-১ প্রাইভেট ভিডিও মেন্টরশিপ সেশন',
-        'ব্যক্তিগত ৬ মাসের স্কিল ডেভেলপমেন্ট ও পোর্টফোলিও রোডম্যাপ',
-        'বর্তমান টেকনিক্যাল স্কিলের ওপর গঠনমূলক ফিডব্যাক',
-        'ওপেন-সোর্স কন্ট্রিবিউশন ও ইন্টার্নশিপ অ্যাপ্লিকেশন স্ট্র্যাটেজি',
-        'প্রফেশনাল অ্যালামনাই নেটওয়ার্কের সাথে সরাসরি কানেকশন'
-      ],
-      en: [
-        '1-on-1 private video mentorship session with industry specialist',
-        'Personalized 6-month skill development and portfolio roadmap',
-        'Honest feedback on current technical skill strengths & gaps',
-        'Guidance on open-source contributions & internship applications',
-        'Direct networking connection with professional alumni network'
-      ]
-    }
-  },
-  {
-    id: 'data-analysis',
-    iconName: 'LineChart',
+    id: 'bi-interactive-dashboard',
+    iconName: 'BarChart2',
     category: 'Data Analysis',
-    startingPrice: 800,
-    typicalTurnaround: '12 - 36 Hours',
-    tag: 'High Demand',
+    startingPrice: 4500,
+    typicalTurnaround: '3 - 7 Days',
+    tag: 'BI Flagship',
     title: {
-      bn: 'ডাটা অ্যানালাইসিস ও স্ট্যাটিস্টিক্যাল মডেলিং',
-      en: 'Data Analysis & Statistical Modeling'
+      en: 'Interactive BI Dashboards (Power BI / Tableau / Streamlit)',
+      bn: 'ইন্টারেক্টিভ BI ড্যাশবোর্ড (Power BI / Tableau)'
     },
     shortDesc: {
-      bn: 'পাইথন, আর, এসপিএসএস ও এক্সেলে সম্পূর্ণ ডাটা ক্লিনিং, ইডিএ, হাইপোথিসিস টেস্ট ও পাওয়ার বিআই ড্যাশবোর্ড।',
-      en: 'Comprehensive data cleaning, Exploratory Data Analysis (EDA), statistical modeling, Power BI/Tableau dashboards, and research visualization.'
+      en: 'Dynamic executive dashboards, real-time KPI trackers, interactive filters, and visual business reporting.',
+      bn: 'Power BI, Tableau বা Python দিয়ে আকর্ষণীয় বিজনেস কেপিআই ড্যাশবোর্ড ও ভিজ্যুয়াল রিপোর্ট।'
     },
     fullDesc: {
-      bn: 'রিসার্চ পেপার, থিসিস বা একাডেমিক প্রজেক্টের জন্য নিখুঁত ডাটা অ্যানালাইসিস। পাইথন (Pandas/Scikit-learn), R, SPSS ও এক্সেলে মিসিং ভ্যালু ক্লিনিং, হাইপোথিসিস টেস্ট (ANOVA, Regression, T-test), পাওয়ার বিআই/ট্যাবলো ড্যাশবোর্ড এবং হাই-রেজোলিউশন চার্ট ও ইন্টারপ্রিটেশন রিপোর্ট।',
-      en: 'Transform raw tabular data into actionable statistical insights, publication-ready visual charts, and predictive models. Expert analysis across Python (Pandas, NumPy, Scikit-learn, Seaborn), R, IBM SPSS, and Advanced Excel with findings report.'
+      en: 'Turn raw, fragmented business datasets into actionable intelligence. We build intuitive, interactive dashboards in Power BI, Tableau, or Streamlit with dynamic slicers, DAX calculated measures, trend forecasts, executive summary views, and automated refresh pipelines.',
+      bn: 'অগোছালো ডাটাকে স্পষ্ট বিজনেস ইনসাইটে রূপান্তর। Power BI বা Tableau-তে কাস্টম DAX ক্যালকুলেশন, ডাইনামিক ফিল্টার, ট্রেন্ড অ্যানালাইসিস এবং এক্সিকিউটিভ ড্যাশবোর্ড তৈরি।'
     },
     deliverables: {
-      bn: [
-        'সম্পূর্ণ কমেন্টেড সোর্স কোড ও স্ক্রিপ্টস (Jupyter Notebook / R / SPSS syntax)',
-        'ক্লিন করা প্রসেসড ডাটাবেজ (CSV / XLSX / SPSS .sav)',
-        'রিসার্চ জার্নালে প্রকাশের উপযুক্ত হাই-রেজোলিউশন ভিজ্যুয়াল চার্ট',
-        'বিস্তারিত ফাইন্ডিংস সামারি রিপোর্ট ও হাইপোথিসিস ইন্টারপ্রিটেশন',
-        'ইন্টারেক্টিভ ড্যাশবোর্ড (Power BI / Tableau / Excel Pivot)',
-        'মেথডোলজি ব্যাখ্যা ও ডিফেন্সের জন্য ১-অন-১ কনসালটেশন'
-      ],
       en: [
-        'Fully Commented Source Code & Scripts (Python Jupyter / R / SPSS syntax)',
-        'Cleaned & Preprocessed Dataset (CSV / XLSX / SPSS .sav)',
-        'High-Resolution Statistical Charts & Publication-Ready Visualizations',
-        'Comprehensive Summary Report with Key Findings & Hypothesis Interpretation',
-        'Interactive Dashboard (Power BI / Tableau / Excel Pivot)',
-        '1-on-1 Methodology Walkthrough & Results Defense Coaching'
+        'Interactive Power BI (.pbix) / Tableau workbook / Streamlit app',
+        'Complex DAX / Calculated fields and KPI card indicators',
+        'Automated scheduled data refresh and source connector setup',
+        'Executive summary page with exportable PDF/Excel views',
+        'User guide documentation on navigating and filtering insights'
+      ],
+      bn: [
+        'ইন্টারেক্টিভ Power BI (.pbix) বা Tableau ওয়ার্কবুক ফাইল',
+        'কাস্টম DAX পরিমাপক ও ভিজ্যুয়াল কেপিআই ইন্ডিকেটর',
+        'অটোমেটেড ডাটা রিফ্রেশ ও সোর্স কানেকশন সেটআপ',
+        'এক্সিকিউটিভ সামারি পেজ ও এক্সপোর্টেবল রিপোর্ট',
+        'ড্যাশবোর্ড ব্যবহারের বিস্তারিত ইউজার গাইড'
       ]
     },
     subServices: [
       {
-        id: 'data-spss-stats',
-        price: 800,
-        turnaround: '12 - 24 Hours',
-        title: {
-          bn: 'IBM SPSS স্ট্যাটিস্টিক্যাল অ্যানালাইসিস ও হাইপোথিসিস টেস্ট',
-          en: 'IBM SPSS Statistical Analysis & Hypothesis Testing'
-        },
-        recommendedFor: {
-          bn: 'থিসিস প্রশ্নপত্র, সোশ্যাল সায়েন্স ও বিজনেস রিসার্চ',
-          en: 'Thesis Questionnaires, Social Science & Business Research'
-        },
+        id: 'bi-single',
+        price: 4500,
+        turnaround: '3 Days',
+        title: { en: 'Single-Page Executive KPI Dashboard', bn: 'সিঙ্গেল-পেজ এক্সিকিউটিভ KPI ড্যাশবোর্ড' },
         deliverables: {
-          bn: [
-            'ক্রনবাকস আলফা রিলায়েবিলিটি ও নরম্যালিটি টেস্ট (Shapiro-Wilk)',
-            'ইন্ডিপেন্ডেন্ট টি-টেস্ট, পেয়ার্ড টি-টেস্ট, কাই-স্কয়ার ও ওয়ান-ওয়ে ANOVA',
-            'লিনিয়ার / মাল্টিপল / লজিস্টিক রিগ্রেশন মডেলিং',
-            'SPSS .sav আউটপুট ফাইল ও APA-স্টাইল টেবিল রাইটআপ'
-          ],
-          en: [
-            'Cronbach’s Alpha Reliability & Normality Testing (Shapiro-Wilk)',
-            'Independent T-Tests, Paired T-Tests, Chi-Square & One-Way ANOVA',
-            'Linear / Multiple / Logistic Regression Analysis',
-            'SPSS .sav Output files & APA-style summary table writeup'
-          ]
+          en: ['Up to 5 data sources, 8-10 interactive visuals, DAX measures'],
+          bn: ['৫টি পর্যন্ত ডাটা সোর্স, ৮-১০টি ভিজ্যুয়াল ও DAX ক্যালকুলেশন']
         }
       },
       {
-        id: 'data-python-r-eda',
-        price: 1500,
-        turnaround: '24 - 48 Hours',
-        title: {
-          bn: 'পাইথন / R ডাটা ক্লিনিং, EDA ও মেশিন লার্নিং মডেল',
-          en: 'Python / R Data Cleaning, EDA & Machine Learning'
-        },
-        recommendedFor: {
-          bn: 'কম্পিউটার সায়েন্স, ডাটা ইঞ্জিনিয়ারিং ও এআই ক্যাপস্টোন প্রজেক্ট',
-          en: 'Computer Science, Data Engineering & AI Capstone Projects'
-        },
+        id: 'bi-enterprise',
+        price: 9500,
+        turnaround: '7 Days',
+        title: { en: 'Multi-Tab Enterprise BI Suite (3-5 Views)', bn: 'মাল্টি-ট্যাব এন্টারপ্রাইজ BI স্যুট (৩-৫ ভিউ)' },
         deliverables: {
-          bn: [
-            'মিসিং ভ্যালু ইম্পুটেশন, আউটলায়ার ট্রিটমেন্ট ও ফিচার ইঞ্জিনিয়ারিং',
-            'Pandas, NumPy, Seaborn ও Matplotlib ভিজ্যুয়ালাইজেশন সুইট',
-            'সুপারভাইজড / আনসুপারভাইজড ক্লাসিফিকেশন ও রিগ্রেশন মডেল',
-            'পরিচ্ছন্ন মার্কডাউন কমেন্টসহ জুপিটার নোটবুক (.ipynb)'
-          ],
-          en: [
-            'Missing Value Imputation, Outlier Treatment & Feature Engineering',
-            'Pandas, NumPy, Seaborn & Matplotlib Visualization Suite',
-            'Supervised / Unsupervised ML Classification & Regression Models',
-            'Jupyter Notebook (.ipynb) with clean markdown explanations'
-          ]
-        }
-      },
-      {
-        id: 'data-powerbi-tableau',
-        price: 1200,
-        turnaround: '24 - 36 Hours',
-        title: {
-          bn: 'Power BI ও Tableau ইন্টারেক্টিভ বিজনেস ড্যাশবোর্ড',
-          en: 'Power BI & Tableau Interactive Dashboard'
-        },
-        recommendedFor: {
-          bn: 'বিজনেস ইন্টেলিজেন্স, কর্পোরেট রিপোর্ট ও লাইভ প্রেজেন্টেশন',
-          en: 'Business Intelligence, Corporate Reports & Live Presentations'
-        },
-        deliverables: {
-          bn: [
-            'ইন্টারেক্টিভ ড্রিল-ডাউন ভিজ্যুয়াল, কেপিআই কার্ড ও কাস্টম স্লাইসার',
-            'DAX ফর্মুলা, ক্যালকুলেটেড মেজার্স ও পাওয়ার কোয়েরি ETL পাইপলাইন',
-            'অটোমেটেড রিফ্রেশ সেটআপ ও মোবাইল লেআউট অপ্টিমাইজেশন',
-            '.pbix / Tableau প্যাকেজ ফাইল + ভিডিও ওয়াকথ্রু গাইড'
-          ],
-          en: [
-            'Interactive Drill-Down Visuals, KPI Cards & Custom Slicers',
-            'DAX Formulas, Calculated Measures & Power Query ETL Pipelines',
-            'Automated Refresh Config & Mobile Layout Optimization',
-            '.pbix / Tableau Package File + Video Walkthrough'
-          ]
-        }
-      },
-      {
-        id: 'data-excel-pivot-modeling',
-        price: 600,
-        turnaround: '6 - 18 Hours',
-        title: {
-          bn: 'এডভান্সড এক্সেল অ্যানালিটিক্স ও ফিনান্সিয়াল মডেলিং',
-          en: 'Advanced Excel Analytics & Financial Modeling'
-        },
-        recommendedFor: {
-          bn: 'অ্যাকাউন্টিং, ফিন্যান্স ও এমবিএ কোর্সওয়ার্ক অ্যাসাইনমেন্ট',
-          en: 'Accounting, Finance & MBA Coursework Assignments'
-        },
-        deliverables: {
-          bn: [
-            'ডাইনামিক পিভট টেবিল, VLOOKUP/XLOOKUP ও নেস্টেড লজিক ফর্মুলা',
-            'What-If অ্যানালাইসিস, সিনারিও ম্যানেজার ও সলভার অপ্টিমাইজেশন',
-            'প্রফেশনাল কর্পোরেট প্রেজেন্টেশন চার্ট ও অটোমেটেড ম্যাক্রো (VBA)',
-            'ক্লিন ও ত্রুটিহীন এক্সেল ওয়ার্কবুক (.xlsx)'
-          ],
-          en: [
-            'Dynamic Pivot Tables, VLOOKUP/XLOOKUP & Nested Logic Formulas',
-            'What-If Analysis, Scenario Manager & Solver Optimization',
-            'Professional Corporate Presentation Charts & Automated Macros (VBA)',
-            'Clean, error-free Excel workbook (.xlsx)'
-          ]
+          en: ['Sales, Finance, Operations & HR tabs, automated data pipeline, row-level security'],
+          bn: ['সেলস, ফাইন্যান্স ও অপারেশনাল ট্যাব, অটোমেটেড ডাটা পাইপলাইন ও সিকিউরিটি']
         }
       }
     ]
   },
   {
-    id: 'data-python-eda-ml',
-    iconName: 'Binary',
+    id: 'ecommerce-rfm-analytics',
+    iconName: 'Users',
     category: 'Data Analysis',
-    startingPrice: 1500,
-    typicalTurnaround: '24 - 48 Hours',
-    tag: 'ML & AI',
+    startingPrice: 4500,
+    typicalTurnaround: '3 - 6 Days',
+    tag: 'E-Com Growth',
     title: {
-      bn: 'পাইথন ডাটা সায়েন্স, EDA ও মেশিন লার্নিং',
-      en: 'Python Data Science, EDA & Machine Learning'
+      en: 'Customer Analytics & RFM Segmentation for E-Commerce',
+      bn: 'ই-কমার্স কাস্টমার অ্যানালিটিক্স ও RFM সেগমেন্টেশন'
     },
     shortDesc: {
-      bn: 'Jupyter Notebook, Pandas, NumPy, Scikit-learn, ক্লাসিফিকেশন ও রিগ্রেশন মডেল এবং ভিজ্যুয়ালাইজেশন।',
-      en: 'Jupyter Notebook, Pandas, NumPy, Scikit-learn ML models, feature engineering & Seaborn plots.'
+      en: 'Customer Lifetime Value (CLV), churn prediction, RFM clustering, and actionable marketing cohorts.',
+      bn: 'কাস্টমার পার্চেজ বিহেভিয়ার, লয়্যালটি সেগমেন্টেশন, ড্রপ-অফ অ্যানালাইসিস ও রিটার্গেটিং লিস্ট তৈরি।'
     },
     fullDesc: {
-      bn: 'কম্পিউটার সায়েন্স ও ডাটা সায়েন্স ফাইনাল ইয়ার থিসিস এবং এআই প্রজেক্টের জন্য সম্পূর্ণ পাইথন ডাটা সায়েন্স সল্যুশন। ডাটা ক্লিনিং, মিসিং ভ্যালু হ্যান্ডলিং, এক্সপ্লোরেটরি ডাটা অ্যানালাইসিস (EDA), ফিচার সিলেকশন, সুপারভাইজড/আনসুপারভাইজড মেশিন লার্নিং মডেলিং এবং কনফিউশন ম্যাট্রিক্স/ROC ইভ্যালুয়েশন।',
-      en: 'End-to-end Python data science pipelines for thesis, capstones, and industry research. Comprehensive preprocessing, outlier elimination, exploratory data analysis (EDA) with Seaborn/Matplotlib, supervised/unsupervised ML algorithms (Random Forest, XGBoost, SVM, KMeans), and performance evaluation metrics.'
+      en: 'Identify your most valuable shoppers and stop customer churn. We analyze historical transactions to calculate Recency, Frequency, and Monetary (RFM) scores, Customer Lifetime Value (CLV), repurchase cycles, and produce targeted customer cohorts for email and SMS marketing campaigns.',
+      bn: 'আপনার ই-কমার্সের কোন কাস্টমাররা সবচেয়ে বেশি লাভজনক তা নির্ধারণ করুন। RFM মডেলিং ও ক্লাস্টারিং এর মাধ্যমে চ্যাম্পিয়ন, লয়্যাল, ও ড্রপ-আউট ঝুঁকিপূর্ণ কাস্টমারদের আলাদা করে স্পেশাল ক্যাম্পেইনের জন্য টার্গেটেড লিস্ট তৈরি।'
     },
     deliverables: {
-      bn: [
-        'পূর্ণাঙ্গ কমেন্টেড জুপিটার নোটবুক (.ipynb) ও পাইথন স্ক্রিপ্ট',
-        'ক্লিন ও প্রিপ্রসেসড ডাটাবেস ফাইল (CSV / Parquet)',
-        'সিবার্ন (Seaborn) ও ম্যাটপ্লটলিব হাই-রেস চার্টস ও হিটম্যাপ',
-        'মেশিন লার্নিং অ্যালগরিদম ট্রেইনিং ও হাইপারপ্যারামিটার টিউনিং',
-        'মডেল ইভ্যালুয়েশন রিপোর্ট (Accuracy, Precision, Recall, F1, AUC-ROC)',
-        'প্রজেক্ট প্রেজেন্টেশন ও ডিফেন্সের জন্য মেথডলজি গাইডলাইন'
-      ],
       en: [
-        'Fully Documented Jupyter Notebook (.ipynb) with Clean Markdown Explanations',
-        'Sanitized & Normalized Dataset (CSV / Parquet / Pandas Dataframe)',
-        'Publication-Quality Seaborn/Matplotlib Visualizations & Correlation Heatmaps',
-        'Supervised / Unsupervised Machine Learning Model Training & Tuning',
-        'Performance Evaluation Suite (Accuracy, Precision, Recall, F1-Score, ROC-AUC)',
-        'Methodology Defense Documentation & Technical Walkthrough'
+        'RFM customer segmentation model (Champions, Loyal, At-Risk, Lost)',
+        'Customer Lifetime Value (CLV) distribution and cohort retention heatmaps',
+        'Actionable customer list exports tagged for Meta Ads and SMS campaigns',
+        'Interactive Power BI / Python dashboard for customer segment tracking',
+        'Executive summary with 5 high-impact marketing recommendations'
+      ],
+      bn: [
+        'RFM কাস্টমার ক্লাস্টারিং মডেল (চ্যাম্পিয়ন, লয়্যাল, রিস্কি, লস্ট গ্রুপ)',
+        'কাস্টমার লাইফটাইম ভ্যালু (CLV) ও কোহোর্ট রিটেনশন হিটম্যাপ',
+        'Meta Ads এবং SMS ক্যাম্পেইনের জন্য রেডি সেগমেন্টেড কাস্টমার লিস্ট',
+        'গ্রাহক ধরে রাখার স্ট্র্যাটেজি সহ ভিজ্যুয়াল অ্যানালিটিক্স ড্যাশবোর্ড',
+        'সেলস দ্বিগুণ করার জন্য ৫টি কার্যকর ডেটা-ড্রিভেন সুপারিশ'
       ]
-    },
-    subServices: [
-      {
-        id: 'data-py-eda-viz',
-        price: 1000,
-        turnaround: '12 - 24 Hours',
-        title: {
-          bn: 'ডাটা ক্লিনিং ও এক্সপ্লোরেটরি ডাটা অ্যানালাইসিস (EDA)',
-          en: 'Data Cleaning & Exploratory Analysis (EDA)'
-        },
-        recommendedFor: {
-          bn: 'র ডাটা ক্লিনিং, প্যাটার্ন ডিসকভারি ও ভিজ্যুয়াল সামারি',
-          en: 'Raw datasets needing cleaning & exploratory graphs'
-        },
-        deliverables: {
-          bn: [
-            'মিসিং ভ্যালু ইম্পিউটেশন ও আউটলায়ার ট্রিটমেন্ট',
-            'ডিস্ট্রিবিউশন প্লট, বক্সপ্লট ও কোরিলেশন হিটম্যাপ',
-            'ক্লিন জুপিটার নোটবুক ও সামারি স্ট্যাটস'
-          ],
-          en: [
-            'Missing Value Imputation & Outlier Detection',
-            'Distribution Plots, Boxplots & Heatmaps',
-            'Clean Jupyter Notebook & Data Dictionary'
-          ]
-        }
-      },
-      {
-        id: 'data-py-ml-classification',
-        price: 1800,
-        turnaround: '24 - 48 Hours',
-        title: {
-          bn: 'মেশিন লার্নিং ক্লাসিফিকেশন ও প্রেডিক্টিভ মডেলিং',
-          en: 'Machine Learning & Predictive Modeling'
-        },
-        recommendedFor: {
-          bn: 'ফাইনাল ইয়ার থিসিস, প্রেডিকশন মডেল ও অ্যালগরিদম কম্প্যারিজন',
-          en: 'Final year thesis, prediction models & benchmarking'
-        },
-        deliverables: {
-          bn: [
-            'মাল্টিপল অ্যালগরিদম কম্প্যারিজন (RF, XGBoost, SVM, KNN)',
-            'হাইপারপ্যারামিটার অপ্টিমাইজেশন (GridSearchCV)',
-            'কনফিউশন ম্যাট্রিক্স, রিসিভার অপারেটিং কার্ভ (ROC)',
-            'সেভড মডেল ফাইল (.pkl / .joblib)'
-          ],
-          en: [
-            'Multi-Algorithm Benchmarking (RF, XGBoost, SVM, Logistic)',
-            'Hyperparameter Tuning via GridSearchCV',
-            'Confusion Matrix, Classification Report & ROC Curves',
-            'Trained Serialized Model Files (.pkl / .joblib)'
-          ]
-        }
-      },
-      {
-        id: 'data-py-nlp-sentiment',
-        price: 2200,
-        turnaround: '2 - 3 Days',
-        title: {
-          bn: 'NLP টেক্সট অ্যানালাইসিস ও সেন্টিমেন্ট ক্লাসিফিকেশন',
-          en: 'NLP Text Analysis & Sentiment Classification'
-        },
-        recommendedFor: {
-          bn: 'সোশ্যাল মিডিয়া কমেন্ট, রিভিউ ও বাংলা/ইংরেজি টেক্সট এনালাইসিস',
-          en: 'Social media sentiments, review classification & text mining'
-        },
-        deliverables: {
-          bn: [
-            'টেক্সট টোকেনাইজেশন, স্টপওয়ার্ডস রিমুভাল ও লেমাটাইজেশন',
-            'TF-IDF / Word Embeddings ভেক্টরাইজেশন',
-            'সেন্টিমেন্ট ও টপিক মডেলিং (LDA)',
-            'ওয়ার্ডক্লাউড ও ভিজ্যুয়াল সেন্টিমেন্ট ডিস্ট্রিবিউশন'
-          ],
-          en: [
-            'Text Tokenization, Stopwords Removal & Lemmatization',
-            'TF-IDF & Word Embeddings Vector Space Pipeline',
-            'Sentiment Classification & Topic Modeling (LDA)',
-            'Wordclouds & Frequency Distribution Plots'
-          ]
-        }
-      }
-    ]
+    }
   },
   {
-    id: 'data-powerbi-tableau-standalone',
-    iconName: 'BarChart',
-    category: 'Data Analysis',
-    startingPrice: 1200,
-    typicalTurnaround: '24 - 48 Hours',
-    tag: 'Popular',
-    title: {
-      bn: 'পাওয়ার বিআই ও ট্যাবলু ইন্টারেক্টিভ ড্যাশবোর্ড',
-      en: 'Power BI & Tableau Interactive Dashboards'
-    },
-    shortDesc: {
-      bn: 'ড্রিল-থ্রু কেপিআই ড্যাশবোর্ড, DAX ফর্মুলা, পাওয়ার কোয়েরি ETL ও অটোমেটেড এক্সিকিউটিভ রিপোর্টিং।',
-      en: 'Drill-through KPI dashboards, advanced DAX measures, Power Query ETL & executive visual storytelling.'
-    },
-    fullDesc: {
-      bn: 'বিজনেস লিডার, রিসার্চ টিম ও ক্লায়েন্ট প্রেজেন্টেশনের জন্য ডায়নামিক ও ইন্টারেক্টিভ Power BI এবং Tableau ড্যাশবোর্ড। এক্সেল, এসকিউএল বা ক্লাউড ডাটাবেস থেকে ডাটা এক্সট্র্যাক্ট, DAX মেজার্স ক্যালকুলেশন এবং এক ক্লিকে ফিল্টার হওয়া কর্পোরেট ভিজ্যুয়াল স্টোরিটেলিং।',
-      en: 'Executive-level interactive Business Intelligence dashboards built with Microsoft Power BI and Tableau. Advanced Power Query ETL data blending, complex DAX measures, custom KPI scorecards, mobile layout optimization, and interactive drill-through capabilities.'
-    },
-    deliverables: {
-      bn: [
-        'পূর্ণাঙ্গ ইন্টারেক্টিভ .pbix (Power BI) অথবা .twbx (Tableau) ফাইল',
-        'কাস্টম DAX ক্যালকুলেটেড কলামস, মেজার্স ও টাইম ইন্টেলিজেন্স',
-        'পাওয়ার কোয়েরি দিয়ে স্বয়ংক্রিয় ডাটা ক্লিনিং ও রিফ্রেশ পাইপলাইন',
-        'এক্সিকিউটিভ কেপিআই কার্ডস, গেজ চার্ট ও জিওম্যাপ ভিজ্যুয়ালস',
-        'মোবাইল ভিউ অপ্টিমাইজেশন ও ড্যাশবোর্ড ন্যাভিগেশন বাটন',
-        'ড্যাশবোর্ড ব্যবহারের সম্পূর্ণ ভিডিও ওয়াকথ্রু গাইড'
-      ],
-      en: [
-        'Full Interactive Source File (.pbix / .twbx) with Embedded Modeling',
-        'Custom DAX Calculated Columns, Dynamic Measures & Time Intelligence',
-        'Automated Power Query ETL Data Cleansing & Refresh Architecture',
-        'Executive KPI Scorecards, Gauge Visuals & Drill-Through Filters',
-        'Mobile Device View Layout & Seamless Navigation Bookmarks',
-        'Comprehensive Video Walkthrough & Presentation Documentation'
-      ]
-    },
-    subServices: [
-      {
-        id: 'bi-sales-finance-dashboard',
-        price: 1500,
-        turnaround: '24 - 36 Hours',
-        title: {
-          bn: 'সেলস, রেভিনিউ ও ফিনান্সিয়াল ড্যাশবোর্ড',
-          en: 'Sales & Financial KPI Dashboard'
-        },
-        recommendedFor: {
-          bn: 'ই-কমার্স, রিটেল শপ, কর্পোরেট সেলস ও প্রফিট মার্জিন ট্র্যাকিং',
-          en: 'E-commerce, Retail, Sales Teams & Financial Reporting'
-        },
-        deliverables: {
-          bn: [
-            'মান্থ-অন-মান্থ (MoM) ও ইয়ার-ওভার-ইয়ার (YoY) গ্রোথ ট্র্যাকিং',
-            'প্রোডাক্ট ওয়াইজ রেভিনিউ, ডিসকাউন্ট ও নেট প্রফিট মেজার্স',
-            'কাস্টমার অ্যাকুইজিশন ও রিটেনশন মেট্রিক্স'
-          ],
-          en: [
-            'Month-over-Month (MoM) & Year-over-Year (YoY) Growth Metrics',
-            'Product-wise Revenue, Discounts & Net Margin Visuals',
-            'Customer Acquisition & Churn Visual Indicators'
-          ]
-        }
-      },
-      {
-        id: 'bi-hr-ops-dashboard',
-        price: 1200,
-        turnaround: '24 Hours',
-        title: {
-          bn: 'এইচআর ও অপারেশনাল পারফরম্যান্স ড্যাশবোর্ড',
-          en: 'HR & Operational Analytics Dashboard'
-        },
-        recommendedFor: {
-          bn: 'কোম্পানি এইচআর ডাটা, এমপ্লয়ি অ্যাটেনডেন্স ও প্রজেক্ট স্প্রিন্ট ট্র্যাকিং',
-          en: 'Employee metrics, payroll, attendance & operational workflows'
-        },
-        deliverables: {
-          bn: [
-            'এমপ্লয়ি পারফরম্যান্স, টার্নওভার রেট ও ডেমোগ্রাফিক ডিস্ট্রিবিউশন',
-            'ডিপার্টমেন্টাল কস্ট অ্যানালাইসিস ও হেডকাউন্ট ট্র্যাকিং',
-            'ডাইনামিক ডিপার্টমেন্ট ও ইয়ার স্লাইসার'
-          ],
-          en: [
-            'Employee Performance, Attrition Rate & Demographics',
-            'Departmental Budget Utilization & Headcount Tracking',
-            'Dynamic Date Range & Department Slicers'
-          ]
-        }
-      }
-    ]
-  },
-  {
-    id: 'data-excel-modeling',
+    id: 'excel-sheets-automation',
     iconName: 'FileSpreadsheet',
     category: 'Data Analysis',
-    startingPrice: 600,
-    typicalTurnaround: '6 - 18 Hours',
-    tag: 'Fast Turnaround',
+    startingPrice: 2500,
+    typicalTurnaround: '2 - 4 Days',
+    tag: 'Fast Automation',
     title: {
-      bn: 'এডভান্সড এক্সেল অ্যানালিটিক্স ও ফিনান্সিয়াল মডেলিং',
-      en: 'Advanced Excel Analytics & Financial Modeling'
+      en: 'Automated Reporting & Google Sheets / Excel VBA Automation',
+      bn: 'এক্সেল ও গুগল শিটস অটোমেশন ও অটো রিপোর্টিং'
     },
     shortDesc: {
-      bn: 'ডাইনামিক পিভট টেবিল, XLOOKUP, What-If সিনারিও, সলভার অপ্টিমাইজেশন ও অটোমেটেড VBA ম্যাক্রো।',
-      en: 'Dynamic Pivot tables, XLOOKUP, What-If scenarios, Solver optimization & automated VBA macros.'
+      en: 'Automate daily manual spreadsheet tasks with custom Apps Script, VBA macros, dynamic formulas, and PDF reports.',
+      bn: 'গুগল অ্যাপস স্ক্রিপ্ট ও VBA ম্যাক্রো দিয়ে এক্সেল বা শিটসের প্রতিদিনের কাজ স্বয়ংক্রিয় করা ও ওয়ান-ক্লিক রিপোর্ট।'
     },
     fullDesc: {
-      bn: 'এমবিএ অ্যাসাইনমেন্ট, বিজনেস প্রজেক্ট এবং কর্পোরেট অ্যাকাউন্টিংয়ের জন্য এক্সপার্ট এক্সেল সল্যুশন। জটিল নেস্টেড ফর্মুলা, ডায়নামিক পিভট টেবিল ও স্লাইসার, ডিসকাউন্টেড ক্যাশ ফ্লো (DCF) ফিনান্সিয়াল মডেলিং, সিনারিও ম্যানেজার এবং পুনরাবৃত্তিমূলক কাজ অটোমেশনের জন্য VBA ম্যাক্রো স্ক্রিপ্টিং।',
-      en: 'Professional Excel spreadsheet modeling and analytical automation for MBA assignments, business plans, and corporate accounting. Complex nested formula structures, dynamic pivot dashboards, discounted cash flow (DCF) valuations, sensitivity matrices, and automated VBA macros.'
+      en: 'Eliminate hours of repetitive manual data entry. We write robust Google Apps Scripts and Excel VBA macros to automatically import, transform, format, validate, and email PDF reports to management on a daily or weekly schedule.',
+      bn: 'প্রতিদিনের ক্লান্তিকর এক্সেল কাজকে এক ক্লিকে নিয়ে আসুন। কাস্টম Apps Script বা VBA ম্যাক্রোর সাহায্যে অটোমেটেড ডাটা ফরম্যাটিং, ক্যালকুলেশন, ইনভয়েস জেনারেটর এবং স্বয়ংক্রিয় ইমেইল রিপোর্টিং সেটআপ।'
     },
     deliverables: {
-      bn: [
-        'ত্রুটিহীন ও ক্লিন ফর্মুলা সমৃদ্ধ এক্সেল ওয়ার্কবুক (.xlsx / .xlsm)',
-        'ডাইনামিক পিভট টেবিল, টাইমলাইন ও ইন্টারঅ্যাক্টিভ স্লাইসার',
-        'XLOOKUP, INDEX-MATCH, SUMIFS ও লজিক্যাল কন্ডিশনাল ফরমেটিং',
-        'What-If অ্যানালাইসিস, গোল সিক (Goal Seek) ও সলভার অপ্টিমাইজেশন',
-        'কর্পোরেট প্রেজেন্টেশন চার্টস (Waterfall, Tornado, Sunburst)',
-        'অটোমেশনের জন্য কাস্টম VBA ম্যাক্রো স্ক্রিপ্টস (প্রয়োজনে)'
-      ],
       en: [
-        'Error-Free Formatted Excel Workbook (.xlsx / .xlsm)',
-        'Dynamic Pivot Tables, Slicers & Timeline Filter Dashboards',
-        'XLOOKUP, Nested INDEX-MATCH, SUMIFS & Complex Logic Formulas',
-        'What-If Scenario Manager, Goal Seek & Solver Optimization Models',
-        'Corporate Presentation Charts (Waterfall, Tornado, Combo Visuals)',
-        'Custom VBA Macro Automation Routines (as requested)'
+        'Automated Google Apps Script or Excel VBA macro file (.xlsm / Google Sheet)',
+        'One-click data cleanup, consolidation, and PDF report generator',
+        'Automated scheduled email dispatch with PDF attachments',
+        'Advanced formula architecture (QUERY, INDEX/MATCH, LAMBDA, ARRAYFORMULA)',
+        'Video walkthrough demonstrating how the automation runs'
+      ],
+      bn: [
+        'Google Apps Script বা Excel VBA অটোমেশন ফাইল (.xlsm / Sheet)',
+        'এক ক্লিকে ডাটা কনসলিডেশন ও PDF ইনভয়েস/রিপোর্ট তৈরি',
+        'নির্দিষ্ট সময়ে ম্যানেজমেন্টের কাছে স্বয়ংক্রিয় ইমেইল প্রেরক স্ক্রিপ্ট',
+        'উন্নত ফর্মুলা আর্কিটেকচার (QUERY, LAMBDA, ARRAYFORMULA)',
+        'অটোমেশনটি কীভাবে চালাতে হবে তার ভিডিও গাইড'
       ]
-    },
-    subServices: [
-      {
-        id: 'excel-pivot-formula',
-        price: 600,
-        turnaround: '6 - 12 Hours',
-        title: {
-          bn: 'পিভট ড্যাশবোর্ড ও এডভান্সড ফর্মুলা সল্যুশন',
-          en: 'Pivot Dashboards & Advanced Formulas'
-        },
-        recommendedFor: {
-          bn: 'দৈনন্দিন ডাটা অর্গানাইজেশন, সেলস রিপোর্ট ও স্টুডেন্ট অ্যাসাইনমেন্ট',
-          en: 'Data organization, sales summary & student coursework'
-        },
-        deliverables: {
-          bn: [
-            'ক্লিন পিভট সামারি ও ইন্টারঅ্যাক্টিভ চার্টস',
-            'XLOOKUP ও ডায়নামিক অ্যারে ফর্মুলা',
-            'কন্ডিশনাল কালার কোডিং ও ডেটা ভ্যালিডেশন ড্রপডাউন'
-          ],
-          en: [
-            'Clean Pivot Summary Tables & Charts',
-            'XLOOKUP & Dynamic Array Calculations',
-            'Conditional Color Formatting & Dropdown Validations'
-          ]
-        }
-      },
-      {
-        id: 'excel-financial-valuation',
-        price: 1200,
-        turnaround: '12 - 24 Hours',
-        title: {
-          bn: 'ফিনান্সিয়াল ভ্যালুয়েশন ও বাজেট মডেলিং',
-          en: 'Financial Valuation & Budgeting Model'
-        },
-        recommendedFor: {
-          bn: 'এমবিএ ফাইন্যান্স প্রজেক্ট, স্টার্টআপ ইনভেস্টর পিচ ও ক্যাশ ফ্লো মডেল',
-          en: 'MBA finance projects, startup pitch decks & DCF models'
-        },
-        deliverables: {
-          bn: [
-            '৩-স্টেটমেন্ট ফিনান্সিয়াল মডেল (Income, Balance Sheet, Cash Flow)',
-            'DCF ভ্যালুয়েশন ও WACC ক্যালকুলেশন',
-            'সেনসিটিভিটি টেবিল ও ব্রেক-ইভেন অ্যানালাইসিস'
-          ],
-          en: [
-            '3-Statement Integrated Model (P&L, Balance Sheet, Cash Flow)',
-            'DCF Valuation & WACC Sensitivity Analysis',
-            'Break-Even & Scenario Matrix Tables'
-          ]
-        }
-      }
-    ]
+    }
   },
   {
-    id: 'data-research-survey',
-    iconName: 'Search',
+    id: 'financial-sales-forecasting',
+    iconName: 'TrendingUp',
     category: 'Data Analysis',
-    startingPrice: 700,
-    typicalTurnaround: '12 - 24 Hours',
-    tag: 'Research',
+    startingPrice: 5500,
+    typicalTurnaround: '4 - 8 Days',
+    tag: 'Finance & CFO',
     title: {
-      bn: 'রিসার্চ সার্ভে ডাটা ক্লিনিং ও কোয়ালিটেটিভ অ্যানালাইসিস',
-      en: 'Survey Data Cleaning & Qualitative Analysis'
+      en: 'Financial Modeling, Sales Forecasting & Valuation Dashboards',
+      bn: 'ফাইন্যান্সিয়াল মডেলিং ও রেভিনিউ ফোরকাস্টিং ড্যাশবোর্ড'
     },
     shortDesc: {
-      bn: 'লাইকার্ট স্কেল ডাটা স্যানিটাইজেশন, ডেমোগ্রাফিক প্রোফাইলিং ও NVivo থিম্যাটিক কোডিং।',
-      en: 'Likert scale cleaning, demographic profiling, outlier purging & NVivo thematic coding.'
+      en: 'Dynamic financial 3-statement models, runway burn rate, scenario simulations, and valuation decks.',
+      bn: 'বাজেট প্রজেকশন, ক্যাশ-ফ্লো সিমুলেশন, বার্ন রেট এবং ইনভেস্টরদের জন্য আকর্ষণীয় রেভিনিউ ফোরকাস্টিং মডেল।'
     },
     fullDesc: {
-      bn: 'গবেষণা ও থিসিসের জন্য সংগৃহীত সার্ভে প্রশ্নমালার কাঁচা ডাটা সুশৃঙ্খল ও বিশ্লেষণোপযোগী করার বিশেষায়িত সেবা। Google Forms, KoboToolbox বা Qualtrics থেকে এক্সপোর্ট করা ডাটার অসংগতি দূরীকরণ, লাইকার্ট স্কেল কোডিং, ডেমোগ্রাফিক ক্রস-ট্যাবুলেশন এবং ইন্টারভিউ ট্রান্সক্রিপ্টের থিম্যাটিক অ্যানালাইসিস।',
-      en: 'Specialized data sanitization and thematic analysis for academic research questionnaires and interviews. Cleans raw exports from Google Forms, KoboToolbox, Qualtrics, handles reverse-coded Likert questions, cross-tabulates demographics, and executes NVivo thematic coding for qualitative datasets.'
+      en: 'Build clean, transparent financial projections for startup fundraising or corporate budgeting. Includes connected 3-statement models (P&L, Balance Sheet, Cash Flow), dynamic scenario toggles (Best/Base/Worst case), runway burn analysis, and valuation benchmarks.',
+      bn: 'স্টার্টআপ ফান্ডরাইজিং বা বার্ষিক বাজেটের জন্য পেশাদার আর্থিক মডেল। ৩-স্টেটমেন্ট ফোরকাস্টিং (P&L, ব্যালেন্স শীট, ক্যাশ ফ্লো), বেস্ট/ওয়ার্স্ট কেস দৃশ্যকল্প টগল এবং ইনভেস্টরদের সন্তুষ্ট করার মতো ভ্যালুয়েশন প্রেজেন্টেশন।'
     },
     deliverables: {
-      bn: [
-        'সম্পূর্ণ ভ্যালিডেটেড ও ক্লিন সার্ভে ডাটাবেস (.xlsx / .sav)',
-        'রিভার্স-কোডেড প্রশ্নমালার সঠিক স্কোরের রূপান্তর',
-        'ফ্রিকোয়েন্সি ডিস্ট্রিবিউশন ও ডেমোগ্রাফিক ক্রস-ট্যাব টেবিলস',
-        'কোয়ালিটেটিভ ওপেন-এন্ডেড উত্তরের থিম্যাটিক কোডিং সামারি',
-        'রিসার্চ পেপারের মেথডলজি সেকশনের জন্য ডেসক্রিপ্টিভ রাইটআপ',
-        'আউটলায়ার ও ইনকমপ্লিট রেসপন্স ফিল্টারিং রিপোর্ট'
-      ],
       en: [
-        'Sanitized & Formatted Survey Dataset (.xlsx / .sav / .csv)',
-        'Reverse-Coded Item Scoring & Variable Codebook Documentation',
-        'Demographic Frequency Tables & Chi-Square Cross-Tabulations',
-        'Qualitative Open-Ended Interview Thematic Coding Matrix',
-        'Descriptive Methodology Section Summary Writeup',
-        'Outlier & Incomplete Response Purging Audit'
+        'Dynamic 3-statement financial projection model in Excel / Google Sheets',
+        'Scenario analysis toggle (Base, Conservative, Aggressive revenue cases)',
+        'Cash flow runway tracker and monthly burn rate visual charts',
+        'Discounted Cash Flow (DCF) & revenue multiple valuation summaries',
+        'Investor-ready executive summary sheet with key SaaS/unit metrics'
+      ],
+      bn: [
+        'ডাইনামিক ৩-স্টেটমেন্ট ফাইন্যান্সিয়াল মডেল (Excel / Google Sheets)',
+        'সিনেরিও অ্যানালাইসিস টগল (কনজারভেটিভ, বেস ও অপটিমিস্টিক রেভিনিউ ভিউ)',
+        'ক্যাশ রানওয়ে ট্র্যাকার ও মান্থলি বার্ন রেট চার্ট',
+        'DCF ও রেভিনিউ মাল্টিপল ভ্যালুয়েশন সামারি',
+        'ইনভেস্টরদের জন্য আকর্ষণীয় SaaS ইউনিট ইকোনমিক্স শিট'
       ]
-    },
-    subServices: [
-      {
-        id: 'survey-quant-cleaning',
-        price: 700,
-        turnaround: '12 Hours',
-        title: {
-          bn: 'সার্ভে কোডিং ও ডেমোগ্রাফিক ক্রস-ট্যাব',
-          en: 'Survey Coding & Cross-Tabulation'
-        },
-        recommendedFor: {
-          bn: 'গুগল ফর্ম বা কোবো টুলবক্স থেকে সংগ্রহ করা প্রশ্নমালার ডাটা',
-          en: 'Google Forms / KoboToolbox raw survey exports'
-        },
-        deliverables: {
-          bn: [
-            'নিউমেরিক্যাল ভেরিয়েবল কোডিং ও লেবেলিং',
-            'ডেমোগ্রাফিক প্রোফাইল ফ্রিকোয়েন্সি টেবিল',
-            'বার ও পাই চার্ট ভিজ্যুয়ালাইজেশন'
-          ],
-          en: [
-            'Numerical Variable Coding & Label Dictionary',
-            'Demographic Frequency Breakdown Tables',
-            'Clean Publication Bar & Pie Charts'
-          ]
-        }
-      },
-      {
-        id: 'survey-qual-thematic',
-        price: 1100,
-        turnaround: '24 Hours',
-        title: {
-          bn: 'কোয়ালিটেটিভ থিম্যাটিক অ্যানালাইসিস (NVivo)',
-          en: 'Qualitative Thematic Analysis (NVivo)'
-        },
-        recommendedFor: {
-          bn: 'ফোকাস গ্রুপ ডিসকাশন (FGD) ও ইন্টারভিউ ট্রান্সক্রিপ্ট রিসার্চ',
-          en: 'In-depth interviews & focus group discussions'
-        },
-        deliverables: {
-          bn: [
-            'ট্রান্সক্রিপ্ট কোডিং ও থিম ক্যাটাগরাইজেশন',
-            'থিম ডায়াগ্রাম ও কোটেশন ম্যাট্রিক্স',
-            'মেথডলজি থিম্যাটিক সামারি পেপার'
-          ],
-          en: [
-            'Transcript Coding & Node Categorization',
-            'Theme Hierarchy Diagrams & Quotation Matrix',
-            'Methodological Thematic Summary Writeup'
-          ]
-        }
-      }
-    ]
+    }
   },
   {
-    id: 'data-scraping-automation',
+    id: 'nlp-sentiment-analytics',
+    iconName: 'MessageSquare',
+    category: 'Data Analysis',
+    startingPrice: 4000,
+    typicalTurnaround: '3 - 6 Days',
+    tag: 'NLP & Text AI',
+    title: {
+      en: 'NLP & Customer Feedback Sentiment Intelligence',
+      bn: 'NLP কাস্টমার রিভিউ ও সেন্টিমেন্ট অ্যানালাইসিস'
+    },
+    shortDesc: {
+      en: 'Automated sentiment scoring on product reviews, support tickets, and social mentions with BERT/Python.',
+      bn: 'হাজার হাজার কাস্টমার রিভিউ ও ফিডব্যাক থেকে পজিটিভ/নেগেটিভ সেন্টিমেন্ট এবং প্রোডাক্ট ইমপ্রুভমেন্ট ইনসাইট।'
+    },
+    fullDesc: {
+      en: 'Mine unstructured customer text to uncover what your users really think. Using Natural Language Processing (BERT, VADER, RoBERTa), we scrape, clean, and classify thousands of customer reviews or support transcripts to highlight product pain points, sentiment trends, and feature requests.',
+      bn: 'হাজার হাজার টেক্সট রিভিউ বা কাস্টমার সাপোর্ট চ্যাট থেকে লুকানো তথ্য বের করার আধুনিক NLP টেকনোলজি। কাস্টমারদের প্রধান অভিযোগ, পজিটিভ অনুভূতি ও নতুন ফিচার চাহিদার গভীর ইনসাইট রিপোর্ট।'
+    },
+    deliverables: {
+      en: [
+        'Cleaned NLP dataset with positive, neutral, and negative sentiment scores',
+        'Topic modeling (LDA / BERTopic) identifying key customer complaint themes',
+        'Interactive visual sentiment trends over time with WordClouds and heatmaps',
+        'Documented Python Jupyter Notebook (.ipynb) with complete NLP pipeline',
+        'Executive action report on key product and customer experience issues'
+      ],
+      bn: [
+        'পজিটিভ, নিউট্রাল ও নেগেটিভ সেন্টিমেন্ট স্কোর সহ প্রসেসড ডেটাসেট',
+        'টপিক মডেলিং দ্বারা গ্রাহকদের প্রধান সমস্যার ক্যাটাগরি বিশ্লেষণ',
+        'সময়ানুযায়ী সেন্টিমেন্ট পরিবর্তন ও ভিজ্যুয়াল ওয়ার্ড-ক্লাউড চার্ট',
+        'Python Jupyter Notebook (.ipynb) এর কমপ্লিট সোর্স কোড',
+        'প্রোডাক্ট কোয়ালিটি বৃদ্ধির জন্য এক্সিকিউটিভ রিপোর্ট'
+      ]
+    }
+  },
+  {
+    id: 'eda-statistical-modeling',
+    iconName: 'TrendingUp',
+    category: 'Data Analysis',
+    startingPrice: 3500,
+    typicalTurnaround: '3 - 6 Days',
+    title: {
+      en: 'Exploratory Data Analysis (EDA) & Statistical Insights',
+      bn: 'এক্সপ্লোরেটরি ডাটা অ্যানালাইসিস ও স্ট্যাটিস্টিক্যাল রিপোর্ট'
+    },
+    shortDesc: {
+      en: 'In-depth Python/R statistical analysis, data cleaning, correlation matrices, and comprehensive insight reports.',
+      bn: 'Python/R দিয়ে গভীর ডাটা ক্লিনিং, পরিসংখ্যানগত বিশ্লেষণ, কোরিলেশন ও পূর্ণাঙ্গ ইনসাইট রিপোর্ট।'
+    },
+    fullDesc: {
+      en: 'Deep-dive statistical analysis on your company or survey datasets. We clean messy raw data, handle outliers and missing values, perform hypothesis testing, build correlation distributions, and deliver clear visual conclusions with Jupyter Notebooks and executive summaries.',
+      bn: 'জটিল ডাটাবেসের পুঙ্খানুপুঙ্খ পরিসংখ্যানগত বিশ্লেষণ। ডাটা ক্লিনিং, মিসিং ভ্যালু ও আউটলায়ার হ্যান্ডলিং, হাইপোথিসিস টেস্টিং এবং Jupyter Notebook সহ সুনির্দিষ্ট রিপোর্ট প্রদান।'
+    },
+    deliverables: {
+      en: [
+        'Cleaned, normalized dataset (CSV, XLSX, SQL dump)',
+        'Documented Jupyter Notebook (.ipynb) with Python (Pandas/Seaborn/Plotly)',
+        'Statistical distribution charts, heatmaps & correlation analysis',
+        'Executive insights presentation summarizing actionable findings',
+        'Reproducible clean data processing scripts'
+      ],
+      bn: [
+        'পরিশোধিত ও নরমালাইজড ডাটা ফাইল (CSV/Excel/SQL)',
+        'Python কোড সহ কমপ্লিট Jupyter Notebook (.ipynb)',
+        'পরিসংখ্যানগত ডিস্ট্রিবিউশন চার্ট, হিটম্যাপ ও কোরিলেশন গ্রাফ',
+        'সুনির্দিষ্ট ইনসাইট ও সিদ্ধান্ত সমৃদ্ধ প্রেজেন্টেশন রিপোর্ট',
+        'ডাটা প্রসেসিংয়ের অটোমেটেড স্ক্রিপ্ট'
+      ]
+    }
+  },
+  {
+    id: 'ml-predictive-modeling',
+    iconName: 'Cpu',
+    category: 'Data Analysis',
+    startingPrice: 6500,
+    typicalTurnaround: '5 - 10 Days',
+    tag: 'Advanced AI',
+    title: {
+      en: 'Machine Learning & Predictive Analytics Pipeline',
+      bn: 'মেশিন লার্নিং ও প্রেডিক্টিভ অ্যানালিটিক্স পাইপলাইন'
+    },
+    shortDesc: {
+      en: 'Custom ML models for customer churn, sales forecasting, classification, NLP, and automated prediction APIs.',
+      bn: 'সেলস ফোরকাস্টিং, কাস্টমার ক্লাসিফিকেশন ও প্রেডিকশনের জন্য কাস্টম মেশিন লার্নিং মডেল ও API।'
+    },
+    fullDesc: {
+      en: 'Leverage machine learning to predict business outcomes. We engineer features, train and benchmark classification/regression models (Scikit-Learn, XGBoost, TensorFlow, PyTorch), evaluate ROC-AUC/RMSE metrics, and deploy lightweight inference APIs (FastAPI/Flask).',
+      bn: 'আপনার ব্যবসার ভবিষ্যৎ প্রবণতা নির্ধারণে মেশিন লার্নিং মডেল। ফিচার ইঞ্জিনিয়ারিং, মডেল ট্রেইনিং (XGBoost, Scikit-learn), পারফরম্যান্স ইভ্যালুয়েশন এবং FastAPI দিয়ে প্রেডিকশন API ডেভেলপমেন্ট।'
+    },
+    deliverables: {
+      en: [
+        'Trained and validated ML model (.pkl / .onnx / .h5)',
+        'Feature importance analysis & model explainability (SHAP values)',
+        'Model performance benchmarking report (Accuracy, Precision, Recall, F1)',
+        'FastAPI / Flask endpoint for live real-time prediction queries',
+        'Complete training pipeline & Docker configuration'
+      ],
+      bn: [
+        'ট্রেইনড ও ভ্যালিডেটেড ML মডেল (.pkl/.onnx)',
+        'ফিচার ইমপর্ট্যান্স অ্যানালাইসিস ও SHAP ভ্যালু রিপোর্ট',
+        'মডেল এক্যুরেসি ও পারফরম্যান্স মেট্রিক্স বিশ্লেষণ',
+        'লাইভ প্রেডিকশন রিকোয়েস্টের জন্য FastAPI রেডি এন্ডপয়েন্ট',
+        'সম্পূর্ণ ট্রেইনিং পাইপলাইন কোড ও ডকার সেটআপ'
+      ]
+    }
+  },
+  {
+    id: 'web-scraping-etl-automation',
     iconName: 'Database',
     category: 'Data Analysis',
-    startingPrice: 1000,
-    typicalTurnaround: '12 - 36 Hours',
-    tag: 'Automated',
+    startingPrice: 3000,
+    typicalTurnaround: '2 - 4 Days',
     title: {
-      bn: 'ওয়েব স্ক্র্যাপিং, ডাটা মাইনিং ও অটোমেটেড পাইপলাইন',
-      en: 'Web Scraping, Data Mining & Pipelines'
+      en: 'Web Scraping & Automated ETL Pipelines',
+      bn: 'ওয়েব স্ক্র্যাপিং ও অটোমেটেড ETL পাইপলাইন'
     },
     shortDesc: {
-      bn: 'Python BeautifulSoup, Selenium ও Scrapy দিয়ে অটোমেটেড ওয়েবসাইট ডাটা এক্সট্র্যাকশন ও ফরম্যাটিং।',
-      en: 'Automated data extraction using Python BeautifulSoup, Selenium, Scrapy & clean CSV/JSON pipelines.'
+      en: 'Automated data extraction from complex websites, APIs, PDF reports into clean structured databases.',
+      bn: 'যেকোনো ওয়েবসাইট, API বা ডকুমেন্ট থেকে স্বয়ংক্রিয় ডাটা সংগ্রহ এবং ডাটাবেস লোডিং।'
     },
     fullDesc: {
-      bn: 'যেকোনো পাবলিক ওয়েবসাইট, ই-কমার্স ক্যাটালগ, ডিরেক্টরি বা সোশ্যাল মিডিয়া থেকে প্রয়োজনীয় ডাটা নিখুঁতভাবে সংগ্রহ ও স্ট্রাকচার্ড ফাইলে রূপান্তরের পাওয়ারফুল সল্যুশন। পাইথন বিউটিফুল স্যুপ ও সেলেনিয়াম অটোমেশন, ক্যাপচা হ্যান্ডলিং এবং রিয়েল-টাইম এক্সেল/ডাটাবেস এক্সপোর্ট।',
-      en: 'Automated web scraping and data harvesting tailored for research datasets, market intelligence, directory aggregation, and competitor pricing. Built using Python BeautifulSoup, Scrapy, and Selenium with anti-bot rate-limiting and structured CSV/JSON/SQL output.'
+      en: 'Extract high-value market, pricing, lead, and competitor data at scale. Using Python (Scrapy, Playwright, BeautifulSoup, Selenium), we build robust scrapers with proxy rotation, anti-bot bypass, data validation, and automated exports into PostgreSQL, MongoDB, or Google Sheets.',
+      bn: 'মার্কেট ডাটা, প্রোডাক্ট প্রাইসিং ও লিড কালেকশনের জন্য অটোমেটেড স্ক্র্যাপিং। প্রক্সি রোটেশন, ক্লিন ভ্যালিডেশন এবং PostgreSQL, MongoDB বা Google Sheets-এ স্বয়ংক্রিয় ডাটা এক্সপোর্ট।'
     },
     deliverables: {
-      bn: [
-        'সুশৃঙ্খল ও ফিল্টার্ড স্ট্রাকচার্ড ডাটা ফাইল (CSV / Excel / JSON / SQL)',
-        'সম্পূর্ণ পাইথন স্ক্র্যাপিং স্ক্রিপ্ট ও অটোমেটেড পাইপলাইন কোড',
-        'ই-কমার্স প্রোডাক্টস, প্রাইসিং, রিভিউ ও ইমেজ লিঙ্ক এক্সট্র্যাকশন',
-        'জাভাস্ক্রিপ্ট রেন্ডারড ডায়নামিক পেজিনেশন ও ইনফিনিট স্ক্রল ক্রলিং',
-        'ডুপ্লিকেট রিমুভাল ও ডাটা ভ্যালিডেশন ফিল্টারিং',
-        'শিডিউলড অটো-রান ও ডাটাবেস ইনসার্ট গাইডলাইন'
-      ],
       en: [
-        'Sanitized & Normalized Dataset Output (CSV / Excel / JSON / SQL)',
-        'Complete Python Web Scraping Script & Executable Notebook',
-        'E-Commerce Catalogs, Pricing, Reviews, Emails & Image Links Extraction',
-        'Dynamic JavaScript Pagination & Infinite Scroll Handling via Selenium',
-        'Duplicate Purging & Regular Expression Data Sanitization',
-        'Scheduled Automation Cron Guide & Database Integration'
+        'Structured, deduplicated dataset in CSV, JSON, or SQL format',
+        'Automated scraping script with error handling & retry logic',
+        'Proxy rotation & pagination handling for large-scale data pulls',
+        'Scheduled cron job or cloud trigger setup (AWS Lambda / GitHub Actions)',
+        'Comprehensive documentation on running and scaling the scraper'
+      ],
+      bn: [
+        'ক্লিন ও ডুপ্লিকেট-মুক্ত ডাটা ফাইল (CSV, JSON, SQL)',
+        'স্বয়ংক্রিয় এরর হ্যান্ডলিং সহ স্ক্র্যাপিং কোড স্ক্রিপ্ট',
+        'অটোমেটেড পেজিনেশন ও প্রক্সি রোটেশন কনফিগারেশন',
+        'নির্ধারিত সময়ে রান করার জন্য ক্লাউড ক্রন জব সেটআপ',
+        'স্ক্রিপ্ট ব্যবহারের পূর্ণাঙ্গ গাইডলাইন'
       ]
-    },
-    subServices: [
-      {
-        id: 'scraping-ecommerce-leads',
-        price: 1000,
-        turnaround: '12 - 18 Hours',
-        title: {
-          bn: 'ই-কমার্স ও ডিরেক্টরি ডাটা স্ক্র্যাপিং',
-          en: 'E-Commerce & Directory Scraping'
-        },
-        recommendedFor: {
-          bn: 'প্রোডাক্ট রিসার্চ, লিড জেনারেশন ও বিজনেস ডিরেক্টরি ডাটা কালেকশন',
-          en: 'Product pricing, competitor research & business leads'
-        },
-        deliverables: {
-          bn: [
-            '১,০০০ থেকে ৫০,০০০+ রো ডাটা এক্সট্র্যাকশন',
-            'টাইটেল, প্রাইস, রেটিং, স্পেসিফিকেশন ও ছবি লিংক',
-            'ক্লিন এক্সেল / CSV ফাইল ডেলিভারি'
-          ],
-          en: [
-            '1,000 to 50,000+ Clean Extracted Rows',
-            'Product Titles, Pricing, Specs, Ratings & Media Links',
-            'Structured Excel / CSV File Delivery'
-          ]
-        }
-      },
-      {
-        id: 'scraping-selenium-custom',
-        price: 1600,
-        turnaround: '24 - 36 Hours',
-        title: {
-          bn: 'ডায়নামিক সেলেনিয়াম স্ক্র্যাপার ও অটোমেটেড বোট',
-          en: 'Dynamic Selenium Scraper & Bot'
-        },
-        recommendedFor: {
-          bn: 'লগইন-প্রোটেক্টেড, জাভাস্ক্রিপ্ট ড্রপডাউন বা জটিল ওয়েব প্ল্যাটফর্ম',
-          en: 'JavaScript dynamic platforms, authentication & custom forms'
-        },
-        deliverables: {
-          bn: [
-            'সেলেনিয়াম হেডলেস ক্রলার ও সেশন হ্যান্ডলিং',
-            'অটো-ক্লিক, ফিল্টার ড্রপডাউন ও পেজিনেশন স্ক্র্যাপিং',
-            'রিউজেবল পাইথন কোড ও ভিডিও ডেমো'
-          ],
-          en: [
-            'Headless Selenium Crawler with Session Storage',
-            'Automated Dropdown Interactions & Pagination Traversal',
-            'Reusable Python Source Code & Video Tutorial'
-          ]
-        }
-      }
-    ]
+    }
   }
 ];
 
-export const BILINGUAL_FAQS = [
+export interface BilingualFaq {
+  q: { en: string; bn: string };
+  a: { en: string; bn: string };
+}
+
+export const BILINGUAL_FAQS: BilingualFaq[] = [
   {
     q: {
-      bn: 'ক্র্যাফলিন টেকনোলজিস (Kraflyn Technologies) কী এবং এখানে কী কী ধরনের সার্ভিস পাওয়া যায়?',
-      en: 'What is Kraflyn Technologies and what services are offered?'
+      en: 'What core services does Kraflyn Technologies provide?',
+      bn: 'ক্র্যাফলিন টেকনোলজিস কী কী মূল সার্ভিস প্রদান করে?'
     },
     a: {
-      bn: 'ক্র্যাফলিন টেকনোলজিস (Kraflyn Technologies) হল শিক্ষার্থী, ক্লাব, গবেষক ও তরুণ পেশাদারদের জন্য একটি ওয়ান-স্টপ ডিজিটাল প্ল্যাটফর্ম। এখানে ১) ডিজাইন সার্ভিস (পোস্টার, স্লাইড, লোগো, সিভি, UI/UX ইত্যাদি), ২) ডেভেলপমেন্ট সার্ভিস (পোর্টফোলিও, ক্লাব ওয়েবসাইট, ই-কমার্স, মোবাইল অ্যাপ ইত্যাদি), এবং ৩) স্টুডেন্ট সাপোর্ট (FYP গাইডেন্স, পেপার ফরম্যাটিং, কোডিং সাপোর্ট, SOP ইত্যাদি) প্রদান করা হয়।',
-      en: 'Kraflyn Technologies is a premier digital platform providing 1) Design Services (Posters, PPTs, Logos, Resumes, UI/UX), 2) Development Services (Portfolios, Club Websites, E-commerce, Mobile Apps), and 3) Student Support (FYP Guidance, Paper Formatting, Programming, SOPs) for students, clubs, researchers, and creators.'
+      en: 'We specialize in 4 core digital pillars: (1) UI/UX & Digital Product Design (Figma, Design Systems), (2) Custom Full-Stack Web Development (Next.js, React, Node.js, Python), (3) High-Performance WordPress & WooCommerce Solutions, and (4) Data Analysis & Business Intelligence (Power BI, Python, ETL & ML).',
+      bn: 'আমরা ৪টি মূল ডিজিটাল পিলারে বিশেষজ্ঞ: (১) UI/UX ও ডিজিটাল প্রোডাক্ট ডিজাইন (Figma, ডিজাইন সিস্টেম), (২) কাস্টম ফুল-স্ট্যাক ওয়েব ডেভেলপমেন্ট (Next.js, React, Node.js, Python), (৩) হাই-পারফরম্যান্স ওয়ার্ডপ্রেস ও ই-কমার্স সলিউশন, এবং (৪) ডাটা অ্যানালাইসিস ও বিজনেস ইন্টেলিজেন্স (Power BI, Python, ETL ও মেশিন লার্নিং)।'
     }
   },
   {
     q: {
-      bn: 'অর্ডার করার পর কত দ্রুত আপনাদের টিম যোগাযোগ করবে?',
-      en: 'How quickly will your team contact me after placing an order?'
+      en: 'How do you guarantee project delivery timelines and code quality?',
+      bn: 'আপনারা কীভাবে প্রজেক্ট ডেলিভারি টাইমলাইন ও কোডের মান নিশ্চিত করেন?'
     },
     a: {
-      bn: 'আমাদের সাপোর্ট হটলাইন ও WhatsApp প্রতিদিন সকাল ৮:০০ টা থেকে রাত ১১:৩০ টা পর্যন্ত সরাসরি সক্রিয় থাকে। সাধারণত অর্ডার সাবমিট করার ৫ থেকে ১৫ মিনিটের মধ্যেই আমাদের কো-অর্ডিনেটর সরাসরি WhatsApp-এ যোগাযোগ করবেন।',
-      en: 'Our support hotline and WhatsApp are active daily from 8:00 AM to 11:30 PM. Typically, our coordinator reaches out on WhatsApp within 5 to 15 minutes of receiving your order.'
+      en: 'Every project is assigned to a dedicated Lead Specialist. We implement rigorous version control with Git, automated linting, responsive cross-browser testing, and milestone check-ins via WhatsApp and Google Meet to ensure 100% on-time delivery.',
+      bn: 'প্রতিটি প্রজেক্টে একজন ডেডিকেটেড লিড স্পেশালিস্ট নিযুক্ত থাকেন। আমরা কঠোর Git ভার্সন কন্ট্রোল, অটোমেটেড লিন্টিং, ক্রস-ব্রাউজার রেসপনসিভ টেস্টিং এবং WhatsApp ও Google Meet-এ নিয়মিত মাইলস্টোন আপডেটের মাধ্যমে ১০০% অন-টাইম ডেলিভারি নিশ্চিত করি।'
     }
   },
   {
     q: {
-      bn: 'অর্ডার করার জন্য কি কোনো একাউন্ট তৈরি করতে হবে?',
-      en: 'Do I need to create an account to place an order?'
+      en: 'Do you provide post-delivery support and revisions?',
+      bn: 'ডেলিভারির পর আপনারা কি কোনো রিভিশন বা সাপোর্ট প্রদান করেন?'
     },
     a: {
-      bn: 'না, কোনো একাউন্ট বা রেজিস্ট্রেশনের ঝামেলা নেই! শুধু আপনার নাম, মোবাইল, WhatsApp নম্বর এবং কাজের বিস্তারিত দিয়ে সরাসরি ২ মিনিটে অর্ডার করতে পারবেন। সাথে সাথেই আপনাকে একটি ইউনিক Order ID প্রদান করা হবে।',
-      en: 'No account registration is required! You can place an order in under 2 minutes by providing your name, mobile, WhatsApp number, and requirements. You will instantly receive a unique Order ID.'
+      en: 'Yes! All deliverables include free post-launch support and revisions within the project scope. We guide you through server deployment, admin panel training, and source code walkthroughs.',
+      bn: 'হ্যাঁ! আমাদের প্রতিটি সার্ভিসে নির্দিষ্ট মেয়াদে ফ্রি পোস্ট-লঞ্চ সাপোর্ট ও রিভিশন অন্তর্ভুক্ত থাকে। আমরা সার্ভার ডিপ্লয়মেন্ট, অ্যাডমিন প্যানেল ট্রেনিং এবং সোর্স কোড ওয়ান-টু-ওয়ান গাইডেন্স প্রদান করি।'
     }
   },
   {
     q: {
-      bn: 'আমি কীভাবে আমার অর্ডারের অগ্রগতি ট্র্যাক করব?',
-      en: 'How can I track the progress of my order?'
+      en: 'What payment methods do you support in Bangladesh and globally?',
+      bn: 'আপনারা কী কী পেমেন্ট মেথড সাপোর্ট করেন?'
     },
     a: {
-      bn: 'ওয়েবসাইটের উপরের "Track Order" অপশনে গিয়ে আপনার Order ID অথবা মোবাইল নম্বর দিলেই দেখতে পাবেন এক্সপার্ট নিয়োগ, কাজের অগ্রগতি এবং ডেলিভারি স্ট্যাটাস। এছাড়াও WhatsApp-এ সরাসরি লাইভ আপডেট দেওয়া হয়।',
-      en: 'Click "Track Order" in the navigation and enter your Order ID or phone number to view live progress from specialist assignment to final delivery. You will also receive direct updates on WhatsApp.'
+      en: 'We accept local Bangladeshi payments via bKash, Nagad, Rocket, Bank Transfer, as well as international payments via Wise, Payoneer, and Stripe/Credit Cards. You only pay after initial consultation and requirement lock.',
+      bn: 'আমরা bKash, Nagad, Rocket, ব্যাংক ট্রান্সফারের পাশাপাশি আন্তর্জাতিক ক্লায়েন্টদের জন্য Wise, Payoneer এবং Stripe ক্রেডিট কার্ড সাপোর্ট করি। প্রাথমিক কনসালটেশন ও রিকোয়ারমেন্ট কনফার্মেশনের পরেই কেবল পেমেন্ট করতে হয়।'
     }
   },
   {
     q: {
-      bn: 'আমার প্রজেক্ট বা অ্যাকাডেমিক ফাইলের গোপনীয়তা কীভাবে রক্ষা করা হয়?',
-      en: 'How is the privacy and confidentiality of my project files maintained?'
+      en: 'Can I request a custom feature set or enterprise NDA?',
+      bn: 'আমি কি কাস্টম ফিচার বা নন-ডিসক্লোজার চুক্তি (NDA) অনুরোধ করতে পারি?'
     },
     a: {
-      bn: 'ক্র্যাফলিন টেকনোলজিস (Kraflyn Technologies) ১০০% ক্লায়েন্ট ও শিক্ষার্থী গোপনীয়তা ও সুরক্ষা নিশ্চিত করে। আপনার আপলোড করা ফাইল এবং ব্যক্তিগত তথ্য কঠোরভাবে সংরক্ষিত থাকে এবং শুধুমাত্র আপনার নির্ধারিত এক্সপার্ট ছাড়া অন্য কারও সাথে শেয়ার করা হয় না।',
-      en: 'Kraflyn Technologies guarantees 100% confidentiality and data privacy. Your uploaded files and contact information are strictly protected and only shared with your assigned specialist.'
-    }
-  },
-  {
-    q: {
-      bn: 'পেমেন্ট পদ্ধতি কীভাবে সম্পন্ন হয়?',
-      en: 'How does the payment process work?'
-    },
-    a: {
-      bn: 'অর্ডারের পর কো-অর্ডিনেটর WhatsApp-এ আপনার সাথে কাজের পরিধি ও সময় নিয়ে কথা বলে এক্সপার্ট নিয়োগ করবেন। এরপর বিকাশ (bKash), নগদ (Nagad), রকেট বা ব্যাংক ট্রান্সফারের মাধ্যমে সহজ ও নিরাপদভাবে পেমেন্ট সম্পন্ন করতে পারবেন।',
-      en: 'After placing an order, our coordinator confirms the project scope on WhatsApp and assigns your specialist. Payments can then be completed securely via bKash, Nagad, Rocket, or Bank Transfer.'
+      en: 'Absolutely. We regularly sign NDAs with enterprise clients and startup founders to protect proprietary business logic, datasets, and trade secrets with complete confidentiality.',
+      bn: 'অবশ্যই। আমরা এন্টারপ্রাইজ ক্লায়েন্ট ও স্টার্টআপদের সাথে শতভাগ ডাটা প্রাইভেসি এবং প্রোপাইটারি কোড সুরক্ষায় সম্পূর্ণ কনফিডেন্সিয়াল NDA চুক্তি সম্পাদন করি।'
     }
   }
 ];
+

@@ -56,19 +56,23 @@ export const Footer: React.FC = () => {
               {t.footerAbout}
             </p>
 
-            {/* 3 Pillar Summary Badges */}
+            {/* 4 Core Wings Summary Badges */}
             <div className="flex flex-wrap gap-2 pt-1">
-              <span className="px-2.5 py-1 rounded-lg bg-fuchsia-950/60 border border-fuchsia-800/60 text-fuchsia-300 text-[10.5px] font-semibold flex items-center gap-1">
-                <Palette className="w-3 h-3 text-fuchsia-400" />
-                <span>Design (15)</span>
+              <span className="px-2.5 py-1 rounded-lg bg-pink-950/60 border border-pink-800/60 text-pink-300 text-[10.5px] font-semibold flex items-center gap-1">
+                <Palette className="w-3 h-3 text-pink-400" />
+                <span>Design & UI/UX</span>
               </span>
-              <span className="px-2.5 py-1 rounded-lg bg-cyan-950/60 border border-cyan-800/60 text-cyan-300 text-[10.5px] font-semibold flex items-center gap-1">
-                <Code2 className="w-3 h-3 text-cyan-400" />
-                <span>Development (15)</span>
+              <span className="px-2.5 py-1 rounded-lg bg-blue-950/60 border border-blue-800/60 text-blue-300 text-[10.5px] font-semibold flex items-center gap-1">
+                <Code2 className="w-3 h-3 text-blue-400" />
+                <span>Web & Full-Stack</span>
               </span>
-              <span className="px-2.5 py-1 rounded-lg bg-emerald-950/60 border border-emerald-800/60 text-emerald-300 text-[10.5px] font-semibold flex items-center gap-1">
-                <GraduationCap className="w-3 h-3 text-emerald-400" />
-                <span>Student Support (15)</span>
+              <span className="px-2.5 py-1 rounded-lg bg-teal-950/60 border border-teal-800/60 text-teal-300 text-[10.5px] font-semibold flex items-center gap-1">
+                <Sparkles className="w-3 h-3 text-teal-400" />
+                <span>WordPress CMS</span>
+              </span>
+              <span className="px-2.5 py-1 rounded-lg bg-amber-950/60 border border-amber-800/60 text-amber-300 text-[10.5px] font-semibold flex items-center gap-1">
+                <Sparkles className="w-3 h-3 text-amber-400" />
+                <span>Data Analysis & BI</span>
               </span>
             </div>
 
@@ -113,6 +117,14 @@ export const Footer: React.FC = () => {
                   className="hover:text-cyan-400 transition-colors cursor-pointer"
                 >
                   {t.services}
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => handleNavClick('team', 'team-section')}
+                  className="hover:text-cyan-400 transition-colors cursor-pointer"
+                >
+                  {t.team || (language === 'bn' ? 'আমাদের টিম' : 'Our Team')}
                 </button>
               </li>
               <li>

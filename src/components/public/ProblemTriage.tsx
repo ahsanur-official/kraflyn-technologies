@@ -22,111 +22,75 @@ export const ProblemTriage: React.FC = () => {
   const commonIssues = [
     {
       id: 'issue-1',
-      matchedServiceId: 'poster-banner-flyer',
+      matchedServiceId: 'ui-ux-design',
       category: {
-        bn: '১. ডিজাইন সার্ভিস',
-        en: '1. Design Services'
+        bn: '১. ডিজাইন ও UI/UX',
+        en: '1. Design & UI/UX'
       },
       title: {
-        bn: 'ক্লাব ইভেন্ট, ফেস্টের ব্যানার বা ডিজিটাল পোস্টার প্রয়োজন?',
-        en: 'Need Club Event, Fest Banner, or High-Impact Poster?'
+        bn: 'SaaS ওয়েব বা মোবাইল অ্যাপের জন্য মডার্ন UI/UX ও ফিগুমা প্রোটোটাইপ প্রয়োজন?',
+        en: 'Need Modern UI/UX & Interactive Figma Prototypes for Web / Mobile Apps?'
       },
       description: {
-        bn: 'এইচডি প্রিন্ট-রেডি ভেক্টর ব্যানার, ফেসবুক কভার, ফেস্ট প্রমোশন ও আর্টওয়ার্ক সল্যুশন।',
-        en: 'HD print-ready vector banners, social graphics, and custom event branding.'
+        bn: 'পিক্সেল-পারফেক্ট ডিজাইন সিস্টেম, রেসপনসিভ লেআউট, ক্লিকযোগ্য ফ্লো ও ডেভেলপার হ্যান্ডঅফ স্পেক্স।',
+        en: 'Pixel-perfect design systems, responsive screens, clickable user journeys, and developer specs.'
       },
       icon: Palette,
       color: 'text-fuchsia-600 bg-fuchsia-50'
     },
     {
       id: 'issue-2',
-      matchedServiceId: 'portfolio-website',
+      matchedServiceId: 'custom-fullstack-webapp',
       category: {
         bn: '২. ডেভেলপমেন্ট সার্ভিস',
         en: '2. Development Services'
       },
       title: {
-        bn: 'প্রফেশনাল পোর্টফোলিও বা প্রজেক্ট শোকেস ওয়েবসাইট তৈরি',
-        en: 'Build Responsive Developer Portfolio or Showcase Website'
+        bn: 'কাস্টম ফুল-স্ট্যাক ওয়েব অ্যাপ্লিকেশন বা SaaS প্ল্যাটফর্ম তৈরি করতে চান?',
+        en: 'Looking to Build a Scalable Custom Full-Stack Web Application or SaaS?'
       },
       description: {
-        bn: 'মডার্ন রিঅ্যাক্ট/টেইলউইন্ড ডিজাইন, লাইভ ডোমেইন ডিপ্লয়মেন্ট এবং রেসপনসিভ ইউজার ইন্টারফেস।',
-        en: 'Modern React/Tailwind frontend, fast loading speeds, and one-click GitHub hosting.'
+        bn: 'Next.js, React, Node.js, TypeScript ও PostgreSQL দিয়ে তৈরি আল্ট্রা-ফাস্ট ও সিকিউর ওয়েব সফটওয়্যার।',
+        en: 'Production-ready Next.js, React, Node.js, TypeScript, and PostgreSQL with cloud deployment.'
       },
       icon: Code,
       color: 'text-cyan-600 bg-cyan-50'
     },
     {
       id: 'issue-3',
-      matchedServiceId: 'wordpress-development',
+      matchedServiceId: 'custom-wordpress-dev',
       category: {
         bn: '৩. ওয়ার্ডপ্রেস সার্ভিস',
         en: '3. WordPress Services'
       },
       title: {
-        bn: 'বিজনেস ওয়েবসাইট, ই-কমার্স স্টোর বা স্পিড অপ্টিমাইজেশন প্রয়োজন?',
-        en: 'Need Custom WordPress Website, E-Commerce, or Speed Optimization?'
+        bn: 'ফাস্ট ওয়ার্ডপ্রেস সাইট, উ-কমার্স স্টোর বা স্পিড অপ্টিমাইজেশন প্রয়োজন?',
+        en: 'Need High-Performance WordPress Website, WooCommerce, or Speed Boost?'
       },
       description: {
-        bn: 'ফুল কাস্টম এলিমেন্টর/উ-কমার্স ডিজাইন, সিকিউরিটি অডিট ও ৯৫+ গুগল পেজস্পিড স্কোর।',
-        en: 'Custom Elementor/WooCommerce setups, malware cleanup, and 95+ PageSpeed scores.'
+        bn: 'কাস্টম থিম কোডিং, বিকাশ/নগদ পেমেন্ট গেটওয়ে, সিকিউরিটি লকডাউন ও ৯০+ গুগল পেজস্পিড স্কোর।',
+        en: 'Custom theme coding, bKash/Nagad gateways, enterprise security, and 90+ Google PageSpeed.'
       },
       icon: Globe,
       color: 'text-indigo-600 bg-indigo-50'
     },
     {
       id: 'issue-4',
-      matchedServiceId: 'data-analysis',
+      matchedServiceId: 'bi-interactive-dashboard',
       category: {
-        bn: '৪. ডাটা অ্যানালাইসিস',
-        en: '4. Data Analysis'
+        bn: '৪. ডাটা অ্যানালাইসিস ও BI',
+        en: '4. Data Analysis & BI'
       },
       title: {
-        bn: 'থিসিসের জন্য SPSS, পাইথন বা পাওয়ার বিআই ডাটা অ্যানালাইসিস প্রয়োজন?',
-        en: 'Need SPSS, Python, or Power BI Data Analysis for Thesis / Research?'
+        bn: 'বিজনেস ইনসাইটের জন্য Power BI / Tableau ড্যাশবোর্ড বা পাইথন অ্যানালাইসিস প্রয়োজন?',
+        en: 'Need Power BI / Tableau Dashboards or Python Statistical Data Analytics?'
       },
       description: {
-        bn: 'রিগ্রেশন, ANOVA, হাইপোথিসিস টেস্ট, ভিজ্যুয়াল ড্যাশবোর্ড ও মেথডলজি ইন্টারপ্রিটেশন।',
-        en: 'Regression, ANOVA, statistical hypothesis testing, and publication charts.'
+        bn: 'এক্সিকিউটিভ KPI ড্যাশবোর্ড, DAX মেজার্স, স্বয়ংক্রিয় রিফ্রেশ পাইপলাইন ও প্রেডিক্টিভ অ্যানালিটিক্স।',
+        en: 'Executive KPI dashboards, DAX metrics, automated data refresh, and predictive modeling.'
       },
       icon: BarChart3,
       color: 'text-orange-600 bg-orange-50'
-    },
-    {
-      id: 'issue-5',
-      matchedServiceId: 'fyp-guidance',
-      category: {
-        bn: '৫. স্টুডেন্ট সাপোর্ট',
-        en: '5. Student Support'
-      },
-      title: {
-        bn: 'ফাইনাল ইয়ার প্রজেক্ট (FYP) বা থিসিস মেথডলজিতে আটকে আছেন?',
-        en: 'Stuck in Final Year Project (FYP) or Thesis Methodology?'
-      },
-      description: {
-        bn: 'প্রজেক্ট আর্কিটেকচার, রিসার্চ গ্যাপ সিলেকশন, কোড মডিউল ও ডিফেন্স প্রেজেন্টেশন গাইডেন্স।',
-        en: 'Architecture design, systematic methodology, literature review, and defense prep.'
-      },
-      icon: GraduationCap,
-      color: 'text-emerald-600 bg-emerald-50'
-    },
-    {
-      id: 'issue-6',
-      matchedServiceId: 'research-paper-formatting',
-      category: {
-        bn: '৫. স্টুডেন্ট সাপোর্ট',
-        en: '5. Student Support'
-      },
-      title: {
-        bn: 'IEEE / Springer / LaTeX রিসার্চ পেপার ফরম্যাটিং ও ক্যামেরা-রেডি',
-        en: 'IEEE / Springer / LaTeX Research Paper Formatting'
-      },
-      description: {
-        bn: 'কনফারেন্স ও জার্নাল স্ট্যান্ডার্ড টু-কলাম ফরম্যাট, বিবটেক্স রেফারেন্স ও ফিগার এলাইনমেন্ট।',
-        en: 'Camera-ready template conversion, BibTeX citation syncing, and margin optimization.'
-      },
-      icon: FileText,
-      color: 'text-blue-600 bg-blue-50'
     }
   ];
 

@@ -43,11 +43,11 @@ export const OrdersManager: React.FC = () => {
   const getStatusBadge = (status: AcademicOrder['status']) => {
     switch (status) {
       case 'order_received':
-        return <span className="px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold bg-amber-100 text-amber-800 border border-amber-200">🟡 {language === 'bn' ? 'অর্ডার গৃহীত' : 'Received'}</span>;
+        return <span className="px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold bg-amber-100 text-amber-800 border border-amber-200">🟡 {language === 'bn' ? 'অর্ডার গৃহীত' : 'Order Received'}</span>;
       case 'mentor_assigned':
-        return <span className="px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold bg-blue-100 text-blue-800 border border-blue-200">🔵 {language === 'bn' ? 'মেন্টর নিযুক্ত' : 'Mentor Assigned'}</span>;
+        return <span className="px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold bg-blue-100 text-blue-800 border border-blue-200">🔵 {language === 'bn' ? 'স্পেশালিস্ট নিযুক্ত' : 'Specialist Assigned'}</span>;
       case 'contacted_student':
-        return <span className="px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold bg-purple-100 text-purple-800 border border-purple-200">🟣 {language === 'bn' ? 'যোগাযোগ সম্পন্ন' : 'Contacted'}</span>;
+        return <span className="px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold bg-purple-100 text-purple-800 border border-purple-200">🟣 {language === 'bn' ? 'যোগাযোগ সম্পন্ন' : 'Client Contacted'}</span>;
       case 'in_progress':
         return <span className="px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold bg-indigo-100 text-indigo-800 border border-indigo-200">⏳ {language === 'bn' ? 'কাজ চলছে' : 'In Progress'}</span>;
       case 'delivered_completed':
@@ -81,7 +81,7 @@ export const OrdersManager: React.FC = () => {
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder={language === 'bn' ? 'অর্ডার আইডি, শিক্ষার্থী, ফোন, কোর্স...' : 'Search by ID, student, phone, course...'}
+            placeholder={language === 'bn' ? 'অর্ডার আইডি, ক্লায়েন্ট নাম, ফোন, প্রজেক্ট...' : 'Search by ID, client, phone, project...'}
             className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500"
           />
         </div>
@@ -97,20 +97,20 @@ export const OrdersManager: React.FC = () => {
             >
               <option value="All">{language === 'bn' ? 'সকল স্ট্যাটাস' : 'All Statuses'}</option>
               <option value="order_received">Order Received</option>
-              <option value="mentor_assigned">Mentor Assigned</option>
-              <option value="contacted_student">Contacted</option>
+              <option value="mentor_assigned">Specialist Assigned</option>
+              <option value="contacted_student">Client Contacted</option>
               <option value="in_progress">In Progress</option>
               <option value="delivered_completed">Delivered</option>
             </select>
           </div>
 
-          {/* University Filter */}
+          {/* University/Domain Filter */}
           <select
             value={universityFilter}
             onChange={(e) => setUniversityFilter(e.target.value)}
             className="w-full px-2.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 focus:ring-2 focus:ring-blue-500 truncate"
           >
-            <option value="All">{language === 'bn' ? 'সকল বিশ্ববিদ্যালয়' : 'All Universities'}</option>
+            <option value="All">{language === 'bn' ? 'সকল প্রতিষ্ঠান / সেক্টর' : 'All Organizations'}</option>
             {universitiesList.map(u => (
               <option key={u} value={u}>{u}</option>
             ))}
@@ -122,14 +122,14 @@ export const OrdersManager: React.FC = () => {
       <div className="flex items-center justify-between px-1">
         <div className="flex items-center gap-2">
           <h3 className="font-bold text-slate-900 text-sm sm:text-base">
-            {language === 'bn' ? 'অর্ডার তালিকা' : 'Orders Queue'}
+            {language === 'bn' ? 'ক্লায়েন্ট অর্ডার কিউ' : 'Client Orders Queue'}
           </h3>
           <span className="px-2.5 py-0.5 rounded-full text-xs font-black bg-blue-100 text-blue-800">
             {filteredOrders.length}
           </span>
         </div>
         <span className="text-[11px] text-slate-500">
-          {language === 'bn' ? 'ক্লিক করে এডিট করুন' : 'Tap to manage & assign'}
+          {language === 'bn' ? 'ক্লিক করে এডিট ও অ্যাসাইন করুন' : 'Tap to manage & assign specialist'}
         </span>
       </div>
 
@@ -241,11 +241,11 @@ export const OrdersManager: React.FC = () => {
             <thead className="bg-slate-50/80 border-b border-slate-200 text-slate-500 font-bold uppercase text-[10px] tracking-wider">
               <tr>
                 <th className="py-3 px-4">Order ID & Date</th>
-                <th className="py-3 px-4">Student & Contact</th>
-                <th className="py-3 px-4">University & Course</th>
+                <th className="py-3 px-4">Client & Contact</th>
+                <th className="py-3 px-4">Company & Project</th>
                 <th className="py-3 px-4">Services & Fee</th>
                 <th className="py-3 px-4">Deadline</th>
-                <th className="py-3 px-4">Assigned Mentor</th>
+                <th className="py-3 px-4">Assigned Specialist</th>
                 <th className="py-3 px-4">Status</th>
                 <th className="py-3 px-4 text-right">Actions</th>
               </tr>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { AppProvider, useApp } from './context/AppContext';
 import { Navbar } from './components/common/Navbar';
+import { AnnouncementBanner } from './components/common/AnnouncementBanner';
 import { MobileBottomNav } from './components/common/MobileBottomNav';
 import { Footer } from './components/common/Footer';
 
@@ -8,11 +9,13 @@ import { Footer } from './components/common/Footer';
 import { Hero } from './components/public/Hero';
 import { ProblemTriage } from './components/public/ProblemTriage';
 import { ServiceCardGrid } from './components/public/ServiceCardGrid';
+import { PortfolioSection } from './components/public/PortfolioSection';
 import { HowItWorks } from './components/public/HowItWorks';
 import { CustomerReviewsSection } from './components/reviews/CustomerReviewsSection';
 import { FaqSection } from './components/public/FaqSection';
 import { ContactSection } from './components/public/ContactSection';
 import { AboutUs } from './components/public/AboutUs';
+import { TeamSection } from './components/public/TeamSection';
 
 // Admin Dashboard
 import { AdminDashboard } from './admin/AdminDashboard';
@@ -78,7 +81,25 @@ const AppContent: React.FC = () => {
             <Hero />
             <ProblemTriage />
             <ServiceCardGrid />
+            <PortfolioSection />
+            <TeamSection />
             <HowItWorks />
+            <CustomerReviewsSection />
+            <FaqSection />
+          </motion.div>
+        );
+
+      case 'team':
+        return (
+          <motion.div
+            key="team"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="py-4"
+          >
+            <TeamSection />
             <CustomerReviewsSection />
             <FaqSection />
           </motion.div>
@@ -95,6 +116,8 @@ const AppContent: React.FC = () => {
             className="py-6"
           >
             <ServiceCardGrid />
+            <PortfolioSection />
+            <TeamSection />
             <ProblemTriage />
             <HowItWorks />
             <CustomerReviewsSection />
@@ -185,6 +208,9 @@ const AppContent: React.FC = () => {
 
   return (
     <div className="min-h-screen w-full overflow-x-hidden flex flex-col bg-white text-slate-900 font-sans selection:bg-blue-600 selection:text-white pb-16 md:pb-0">
+      {/* Announcement Notice Banner (controlled dynamically from Admin Panel) */}
+      <AnnouncementBanner />
+
       {/* Navigation Header */}
       <Navbar />
 

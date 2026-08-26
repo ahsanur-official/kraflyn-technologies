@@ -1,42 +1,33 @@
-import { Service, ProblemTrigger, SupportRequest, Mentor, Review, User, AcademicOrder } from '../types';
+import { Service, ProblemTrigger, SupportRequest, Mentor, Review, User, AcademicOrder, ProjectItem, SiteSettings } from '../types';
 
 export const UNIVERSITIES: string[] = [
-  'Pundra University of Science and Technology (PUB)',
-  'Bangladesh University of Engineering and Technology (BUET)',
-  'University of Dhaka (DU)',
-  'North South University (NSU)',
-  'BRAC University (BRACU)',
-  'Shahjalal University of Science and Technology (SUST)',
-  'Islamic University of Technology (IUT)',
-  'Rajshahi University of Engineering & Technology (RUET)',
-  'Chittagong University of Engineering & Technology (CUET)',
-  'Khulna University of Engineering & Technology (KUET)',
-  'Ahsanullah University of Science and Technology (AUST)',
-  'American International University-Bangladesh (AIUB)',
-  'United International University (UIU)',
-  'Daffodil International University (DIU)',
-  'East West University (EWU)',
-  'Independent University, Bangladesh (IUB)',
-  'Jahangirnagar University (JU)',
-  'University of Rajshahi (RU)',
-  'Other / International University'
+  'FinTech & Banking',
+  'E-Commerce & Retail',
+  'SaaS & Cloud Platforms',
+  'HealthTech & Medical',
+  'EdTech & E-Learning',
+  'Real Estate & PropTech',
+  'Logistics & Supply Chain',
+  'Media & Publishing',
+  'Marketing & Advertising',
+  'NGO & Non-Profit Organization',
+  'Tech Startup & Innovation Lab',
+  'Corporate Enterprise',
+  'Consulting & Professional Services',
+  'Other Business / Personal Venture'
 ];
 
 export const DEPARTMENTS: string[] = [
-  'Computer Science & Engineering (CSE)',
-  'Software Engineering (SWE)',
-  'Electrical & Electronic Engineering (EEE)',
-  'Information & Communication Technology (ICT)',
-  'Civil Engineering (CE)',
-  'Mechanical Engineering (ME)',
-  'Business Administration (BBA / MBA)',
-  'Economics & Development Studies',
-  'Mathematics & Statistics',
-  'Physics / Applied Physics',
-  'Pharmacy / Biotechnology',
-  'English & Modern Languages',
-  'Design & Architecture',
-  'Other Department'
+  'Full-Stack Web Engineering',
+  'UI/UX & Product Design',
+  'WordPress & CMS Engineering',
+  'Data Science & Business Intelligence',
+  'Mobile App Development',
+  'Cloud Infrastructure & DevOps',
+  'E-Commerce Architecture',
+  'API & Microservices Backend',
+  'Machine Learning & AI Pipelines',
+  'Brand Strategy & Visual Identity'
 ];
 
 export interface BrandPillar {
@@ -52,1858 +43,1212 @@ export interface BrandPillar {
 
 export const KRAFLYN_PILLARS: BrandPillar[] = [
   {
-    id: 'mission',
-    title: 'Our Mission',
-    subtitle: 'Purpose & Commitment',
-    iconName: 'Target',
+    id: 'design',
+    title: 'Design & UI/UX',
+    subtitle: 'Human-Centered Craft',
+    iconName: 'Layout',
     color: 'from-blue-600 to-indigo-600',
-    badge: 'Empowerment',
-    content: 'Empowering students by providing affordable, quality and reliable digital solutions in design, development and academic support.'
-  },
-  {
-    id: 'vision',
-    title: 'Our Vision',
-    subtitle: 'Future Outlook',
-    iconName: 'Eye',
-    color: 'from-purple-600 to-indigo-600',
-    badge: 'Leadership',
-    content: 'To become the most trusted digital support platform for students and educational communities in Bangladesh and beyond.'
-  },
-  {
-    id: 'values',
-    title: 'Our Values',
-    subtitle: 'Core Principles',
-    iconName: 'Diamond',
-    color: 'from-teal-600 to-emerald-600',
-    badge: 'Excellence',
-    content: 'Guided by high ethical standards, precision craftsmanship and customer satisfaction.',
+    badge: 'Pixel Precision',
+    content: 'We craft intuitive, engaging digital experiences, scalable Figma design systems, interactive prototypes, and captivating brand identities that captivate users and elevate market positioning.',
     points: [
-      'Quality First',
-      'Student Focused',
-      'Integrity & Transparency',
-      'Creativity & Innovation',
-      'On-time Delivery'
+      'Interactive Figma Prototypes & User Flows',
+      'Design Systems, Tokens & Component Libraries',
+      'High-Converting SaaS & Landing Page Designs',
+      'Comprehensive Brand Identity & Vector Kits'
     ]
   },
   {
-    id: 'why-kraflyn',
-    title: 'Why Kraflyn Technologies?',
-    subtitle: 'Our Differentiator',
-    iconName: 'Heart',
-    color: 'from-rose-500 to-pink-600',
-    badge: 'Impact',
-    content: "We don't just complete tasks, we empower students to learn, build, and grow in their academic and professional journey."
+    id: 'development',
+    title: 'Web & Software Dev',
+    subtitle: 'Modern Engineering',
+    iconName: 'Code',
+    color: 'from-purple-600 to-indigo-600',
+    badge: 'Clean Code',
+    content: 'Full-stack engineering built for reliability and scale. We utilize React, Next.js, Node.js, TypeScript, PostgreSQL, and cloud infrastructure to create ultra-fast, secure, and production-ready applications.',
+    points: [
+      'Next.js & React Full-Stack Web Applications',
+      'Secure REST & GraphQL APIs with Microservices',
+      'Scalable Database Design & ORM Migrations',
+      'Docker, CI/CD, and Automated Cloud Deployments'
+    ]
+  },
+  {
+    id: 'wordpress',
+    title: 'WordPress Solutions',
+    subtitle: 'Speed & Scalability',
+    iconName: 'Globe',
+    color: 'from-teal-600 to-emerald-600',
+    badge: 'WordPress Wing',
+    content: 'Custom-coded, lightweight WordPress architectures, WooCommerce e-commerce engines, Gutenberg blocks, and comprehensive speed & security hardening without relying on bloated templates.',
+    points: [
+      'Custom PHP 8+ Theme Development from Figma',
+      'WooCommerce Online Stores & Payment Gateways',
+      'Sub-second Speed & 90+ Core Web Vitals Optimization',
+      'Zero-Downtime Migration & Enterprise Security'
+    ]
+  },
+  {
+    id: 'data-analysis',
+    title: 'Data Analysis & BI',
+    subtitle: 'Actionable Intelligence',
+    iconName: 'BarChart2',
+    color: 'from-amber-500 to-orange-600',
+    badge: 'Data Lab',
+    content: 'Transforming complex datasets into clear business insights. We build interactive Power BI/Tableau dashboards, automated ETL pipelines, predictive ML models, and statistical intelligence reports.',
+    points: [
+      'Interactive Power BI, Tableau & Streamlit Dashboards',
+      'Exploratory Data Analysis (EDA) & Statistical Reports',
+      'Predictive Machine Learning & Classification Pipelines',
+      'Automated Web Scraping & Clean ETL Pipelines'
+    ]
   }
 ];
 
 export const NEXORA_PILLARS = KRAFLYN_PILLARS;
 
-// All 45 Comprehensive Services grouped strictly by the 3 Core Pillars from the official Kraflyn Technologies catalog
+// Core Services across the 4 Pillars
 export const SERVICES: Service[] = [
-  // ==========================================
-  // 1. DESIGN SERVICES (15 Services)
-  // ==========================================
-  {
-    id: 'poster-banner-flyer',
-    title: 'Poster / Banner / Flyer',
-    iconName: 'Layout',
-    shortDesc: 'Eye-catching posters, fest banners, promotional flyers and roll-ups designed for print and web.',
-    fullDesc: 'Custom visual designs for department festivals, university events, hackathons, seminars, and promotional campaigns. We deliver print-ready high-resolution vector files (CMYK/RGB, 300 DPI) with source files included.',
-    category: 'Design Services',
-    startingPrice: 300,
-    typicalTurnaround: '6 - 18 Hours',
-    deliverables: [
-      'High-resolution Print Ready PDF & PNG (300 DPI)',
-      'Social Media optimized aspect ratios (1:1, 4:5, 16:9)',
-      'Editable Source Files (PSD / AI / Canva / Figma)',
-      'Unlimited revisions until final satisfaction',
-      'Fast turnaround within 6 to 18 hours'
-    ],
-    tag: 'Popular'
-  },
-  {
-    id: 'presentation-ppt-design',
-    title: 'Presentation & PPT Design',
-    iconName: 'Presentation',
-    shortDesc: 'Modern, high-impact slide decks, defense presentations, and interactive keynote templates.',
-    fullDesc: 'Transform dull bullet points into persuasive, beautifully animated presentations for thesis defense, capstone projects, business pitches, and class seminars with custom vector infographics and balanced layout hierarchy.',
-    category: 'Design Services',
-    startingPrice: 350,
-    typicalTurnaround: '12 - 24 Hours',
-    deliverables: [
-      'Custom styled PPTX / Keynote / Google Slides deck',
-      'Clean typography, color harmony & visual data charts',
-      'Dynamic transition animations & slide master templates',
-      'Presenter speaking notes formatting & PDF handouts',
-      'Full commercial fonts and vector icon pack'
-    ],
-    tag: 'High Demand'
-  },
-  {
-    id: 'social-media-creatives',
-    title: 'Social Media Creatives',
-    iconName: 'Share2',
-    shortDesc: 'Engaging post graphics, story covers, carousels, and club event social media branding.',
-    fullDesc: 'Stop the scroll with high-converting social media creatives for Facebook, Instagram, LinkedIn, and club pages. Designed with modern aesthetics, clean typography, and optimized formats for maximum engagement.',
-    category: 'Design Services',
-    startingPrice: 250,
-    typicalTurnaround: '6 - 12 Hours',
-    deliverables: [
-      'Square posts, portrait carousels & 9:16 vertical stories',
-      'Custom club branding & campaign hashtag highlights',
-      'Source files in Figma / Photoshop / Illustrator',
-      'Exported in lightweight web-optimized PNG & JPG',
-      'Content copywriting guidance & aesthetic presets'
-    ]
-  },
-  {
-    id: 'logo-brand-identity',
-    title: 'Logo & Brand Identity',
-    iconName: 'Sparkles',
-    shortDesc: 'Unique vector logos, brand color palettes, typography guidelines, and complete brand identity.',
-    fullDesc: 'Establish a memorable identity for your startup, university club, personal brand, or project. Includes multiple logo concepts, monochrome variants, typography guidelines, color palettes, and full brand book documentation.',
-    category: 'Design Services',
-    startingPrice: 600,
-    typicalTurnaround: '24 - 48 Hours',
-    deliverables: [
-      '3-5 distinct creative logo design concepts',
-      'Vector master files (SVG, EPS, AI, PDF, Transparent PNG)',
-      'Comprehensive Brand Identity Guidelines (Colors & Fonts)',
-      'Social media profile avatars & banner kits',
-      'Full intellectual property ownership & copyright transfer'
-    ],
-    tag: 'Creative Choice'
-  },
-  {
-    id: 'cv-resume-design',
-    title: 'CV / Resume Design',
-    iconName: 'FileText',
-    shortDesc: 'Modern, professional, ATS-friendly resumes and LaTeX / Word executive CV templates.',
-    fullDesc: 'Stand out in job applications, internships, and scholarship screenings. We craft clean, ATS-compliant resumes with optimal typographic hierarchy, skill matrices, and impactful achievement formatting.',
-    category: 'Design Services',
-    startingPrice: 250,
-    typicalTurnaround: '6 - 12 Hours',
-    deliverables: [
-      'ATS-friendly single & two-page modern resume templates',
-      'Editable Word (.docx), LaTeX source, and print-ready PDF',
-      'Matching cover letter template styling',
-      'Keyword optimization for tech, engineering & business roles',
-      'Free minor contact/experience updates within 30 days'
-    ],
-    tag: 'Must Have'
-  },
-  {
-    id: 'certificate-id-card-design',
-    title: 'Certificate & ID Card Design',
-    iconName: 'Award',
-    shortDesc: 'Official event participation certificates, merit awards, and customized student ID card layouts.',
-    fullDesc: 'Professional certificates for hackathons, club fests, webinars, and workshop completions. Complete with dynamic placeholder fields, custom guilloche security patterns, and matching badge/ID card designs.',
-    category: 'Design Services',
-    startingPrice: 200,
-    typicalTurnaround: '6 - 18 Hours',
-    deliverables: [
-      'Print-ready high-DPI certificate layouts (A4 & US Letter)',
-      'Custom lanyard badge & plastic ID card templates (CR80)',
-      'Bulk automated name/ID mail-merge compatible setup',
-      'Vector seals, ribbon badges, and guilloche security patterns',
-      'Editable AI / PSD / Canva source templates'
-    ]
-  },
-  {
-    id: 'research-poster',
-    title: 'Research Poster',
-    iconName: 'Columns',
-    shortDesc: 'IEEE/conference scientific presentation posters with data visualizations and clean structure.',
-    fullDesc: 'Display your research paper findings with academic rigor and visual clarity. Designed specifically for academic conferences, thesis defense showcases, and symposium poster sessions (A0, A1, 36x48 inches).',
-    category: 'Design Services',
-    startingPrice: 500,
-    typicalTurnaround: '12 - 24 Hours',
-    deliverables: [
-      'Standard conference poster dimensions (A0, A1, 36x48 inch)',
-      'High-res vector diagram integration & chart formatting',
-      'Mathematical formulas & LaTeX equation placement',
-      'Print-ready 300 DPI PDF + editable PowerPoint/Illustrator file',
-      'Color scheme optimized for distance reading'
-    ]
-  },
+  // 1. DESIGN & UI/UX
   {
     id: 'ui-ux-design',
-    title: 'UI/UX Design',
-    iconName: 'Layers',
-    shortDesc: 'Interactive web & mobile app prototypes, wireframes, user journeys, and Figma design systems.',
-    fullDesc: 'Bring your digital product or final year software project to life. We design intuitive, pixel-perfect user interfaces, interactive Figma clickable prototypes, design systems, and responsive web/mobile components.',
-    category: 'Design Services',
-    startingPrice: 1200,
-    typicalTurnaround: '24 - 72 Hours',
-    deliverables: [
-      'Interactive Figma prototypes with clickable user flows',
-      'Responsive desktop, tablet & mobile screen layouts',
-      'Component library, auto-layout, design tokens & typography',
-      'Developer handoff specs with CSS parameters & assets',
-      'User journey maps and wireframe documentation'
-    ],
-    tag: 'Premium'
-  },
-  {
-    id: 'infographic-design',
-    title: 'Infographic Design',
-    iconName: 'BarChart2',
-    shortDesc: 'Data-driven visual storytelling, process roadmaps, and educational concept breakdown charts.',
-    fullDesc: 'Turn intricate statistics, timelines, survey findings, and system workflows into beautiful, easy-to-digest infographics for academic papers, presentations, or business reports.',
-    category: 'Design Services',
-    startingPrice: 400,
-    typicalTurnaround: '12 - 24 Hours',
-    deliverables: [
-      'Custom vector illustrations, icons, and chart graphics',
-      'Logical hierarchy and visual storytelling flow',
-      'Web-optimized and ultra-high-resolution print formats',
-      'Source files in Adobe Illustrator or Figma',
-      'Color palettes aligned with your research or brand theme'
-    ]
-  },
-  {
-    id: 'brochure-pamphlet-design',
-    title: 'Brochure / Pamphlet Design',
-    iconName: 'BookOpen',
-    shortDesc: 'Bi-fold & tri-fold brochures, corporate profile booklets, and department fest event catalogs.',
-    fullDesc: 'Multi-page event schedules, department magazines, club admission guides, and corporate brochures formatted with precise folding margins, bleed areas, and elegant typography.',
+    title: 'UI/UX Design for Web & Mobile Apps',
+    iconName: 'Layout',
+    shortDesc: 'Pixel-perfect interactive Figma prototypes, user journeys, wireframes, and scalable design systems.',
+    fullDesc: 'End-to-end user experience and user interface engineering for modern SaaS, web platforms, and mobile apps. We deliver comprehensive Figma files with auto-layouts, responsive variants, typography scales, design tokens, and developer handoff specs.',
     category: 'Design Services',
     startingPrice: 450,
-    typicalTurnaround: '12 - 36 Hours',
-    deliverables: [
-      'Bi-fold, tri-fold, or multi-page booklet layouts',
-      'Exact print bleeds, margins, and crop marks for press',
-      'Curated stock imagery and vector graphic assets',
-      'Interactive clickable PDF version for digital distribution',
-      'Editable Adobe InDesign / Illustrator / Canva source'
-    ]
-  },
-  {
-    id: 'menu-price-list-design',
-    title: 'Menu / Price List Design',
-    iconName: 'ListOrdered',
-    shortDesc: 'Clear, modern service rate sheets, digital cafeteria menus, and price catalog layouts.',
-    fullDesc: 'Clean, appetizing, and organized price lists and menu boards for campus cafes, student business ventures, and freelance service pricing sheets.',
-    category: 'Design Services',
-    startingPrice: 350,
-    typicalTurnaround: '8 - 24 Hours',
-    deliverables: [
-      'Single-sheet, multi-page, or digital screen menu formats',
-      'Easy-to-read pricing columns and item categorization',
-      'Print-ready high-resolution files + digital TV display format',
-      'QR code integration for contactless digital viewing',
-      'Easily editable source template for future price updates'
-    ]
-  },
-  {
-    id: 'tshirt-merchandise-design',
-    title: 'T-shirt & Merchandise Design',
-    iconName: 'Tag',
-    shortDesc: 'Custom club jerseys, batch hoodies, conference tote bags, mugs, and merchandise vector artwork.',
-    fullDesc: 'Custom vector artwork tailored specifically for screen printing, DTF, embroidery, and sublimation on batch t-shirts, graduation hoodies, varsity jackets, and club merchandise.',
-    category: 'Design Services',
-    startingPrice: 400,
-    typicalTurnaround: '12 - 24 Hours',
-    deliverables: [
-      'Vector art with exact Pantone/CMYK screen print separations',
-      'Realistic 3D apparel mockups for batch previews',
-      'Front, back, and sleeve detailed print artwork',
-      'Scalable AI / EPS / SVG / Transparent PNG (300 DPI)',
-      'Commercial print release and production guide'
-    ]
-  },
-  {
-    id: 'photo-editing-retouching',
-    title: 'Photo Editing & Retouching',
-    iconName: 'Image',
-    shortDesc: 'Professional portrait retouching, background removal, event color grading, and restoration.',
-    fullDesc: 'High-end photo editing for graduation portraits, passport/visa photos, club event albums, product photography, and campus event coverage.',
-    category: 'Design Services',
-    startingPrice: 200,
-    typicalTurnaround: '4 - 12 Hours',
-    deliverables: [
-      'Natural skin tone retouching & blemish removal',
-      'Background cleanup, studio backdrop replacement & isolation',
-      'Color grading, contrast balancing, and lighting enhancement',
-      'High-res master output without compression loss',
-      'Batch processing available for campus event albums'
-    ]
-  },
-  {
-    id: 'thesis-project-report-design',
-    title: 'Thesis / Project Report Design',
-    iconName: 'Book',
-    shortDesc: 'Complete academic book layout, cover page styling, LaTeX template design, and diagram polish.',
-    fullDesc: 'Ensure your undergraduate or graduate thesis meets strict university formatting guidelines with elegant cover pages, preliminary pages, table of contents, list of figures, and vector architecture diagram styling.',
-    category: 'Design Services',
-    startingPrice: 500,
-    typicalTurnaround: '12 - 36 Hours',
-    deliverables: [
-      'University-compliant cover page & spine layout design',
-      'LaTeX / Word automated table of contents & header/footer setup',
-      'High-resolution diagram redrawing & chart polishing',
-      'Strict margin adherence for hardcover binding',
-      'Digital interactive PDF with bookmarks + print ready copy'
-    ],
-    tag: 'Academic Focus'
-  },
-  {
-    id: 'illustration-custom-design',
-    title: 'Illustration & Custom Design',
-    iconName: 'Palette',
-    shortDesc: 'Custom vector illustrations, mascots, creative digital artwork, and icon set development.',
-    fullDesc: 'Handcrafted vector artwork, character illustrations, university fest mascots, custom icon systems, and bespoke graphics tailored to your exact creative vision.',
-    category: 'Design Services',
-    startingPrice: 600,
-    typicalTurnaround: '24 - 48 Hours',
-    deliverables: [
-      'Unique custom vector illustration in your chosen aesthetic',
-      'Layered source files (AI, SVG, PSD, High-Res PNG)',
-      'Transparent background versions for web/app integration',
-      'Color palette variations for light and dark modes',
-      'Full commercial usage rights'
-    ]
-  },
-  {
-    id: 'figma-design',
-    title: 'Figma UI/UX & Prototype Design',
-    iconName: 'Figma',
-    shortDesc: 'Professional Figma wireframes, responsive mobile & web interfaces, design tokens, and interactive clickable prototypes.',
-    fullDesc: 'Bring your digital product, startup idea, or academic capstone project to life with pixel-perfect Figma UI/UX designs. Includes user research, user flows, low-to-high fidelity wireframes, auto-layout responsive components, scalable design systems (design tokens, colors, typography hierarchy), interactive clickable prototypes, and seamless developer handoff specs.',
-    category: 'Design Services',
-    startingPrice: 1200,
-    typicalTurnaround: '24 - 72 Hours',
-    deliverables: [
-      'Complete Editable Figma Source File (.fig) with Auto-Layout',
-      'Interactive Clickable Prototype Link for Live User Testing & Defense',
-      'Modern Responsive Screens (Desktop, Tablet & Mobile Views)',
-      'Design System with Reusable Component Library & Typography Tokens',
-      'Production Developer Handoff with SVG/PNG Asset Exports',
-      'Unlimited revisions until final satisfaction'
-    ],
-    subServices: [
-      {
-        id: 'figma-mobile-app',
-        title: 'Mobile App UI/UX Design (iOS & Android)',
-        price: 1500,
-        turnaround: '24 - 48 Hours',
-        recommendedFor: 'Startup MVPs, Capstone Projects & Student App Submissions',
-        deliverables: [
-          '5-10 High-Fidelity Mobile App Screens (Light/Dark Mode)',
-          'Interactive Clickable Prototype with transitions & gestures',
-          'Auto-Layout 5.0 components & SVG vector icons pack',
-          'Full .fig source file + export-ready slices for Flutter/React Native'
-        ]
-      },
-      {
-        id: 'figma-web-dashboard',
-        title: 'Web App & Admin Dashboard UI/UX',
-        price: 2000,
-        turnaround: '48 - 72 Hours',
-        recommendedFor: 'SaaS Platforms, University Portals & Management Systems',
-        deliverables: [
-          'Responsive Desktop, Tablet & Mobile Breakpoints',
-          'Complex Data Tables, Charts, Analytics & Filter Modals',
-          'Reusable Component Variants, Forms & Interactive States',
-          'Pixel-perfect developer handoff specifications'
-        ]
-      },
-      {
-        id: 'figma-landing-page',
-        title: 'High-Converting Landing Page Design',
-        price: 1200,
-        turnaround: '24 - 36 Hours',
-        recommendedFor: 'Product Launches, Club Events & Tech Startups',
-        deliverables: [
-          'Custom Hero Section, Feature Grids, Pricing & FAQ modules',
-          'Modern Glassmorphism / Clean Minimalist styling',
-          'Desktop + Mobile Adaptive Layouts',
-          'Interactive Figma prototype with hover & scroll animations'
-        ]
-      },
-      {
-        id: 'figma-design-system',
-        title: 'Design System & Component Library Creation',
-        price: 1800,
-        turnaround: '48 Hours',
-        recommendedFor: 'Scaling Engineering Teams & Production Codebases',
-        deliverables: [
-          'Color Tokens, Semantic Hierarchy & WCAG AA Contrast Ratios',
-          'Typography System (H1-H6, Body, Caption, Display)',
-          'Atomic Components (Buttons, Inputs, Modals, Cards, Badges)',
-          'Auto-Layout & Variants Guidelines Documentation'
-        ]
-      }
-    ],
-    tag: 'Trending'
-  },
-
-  // ==========================================
-  // 2. DEVELOPMENT SERVICES (15 Services)
-  // ==========================================
-  {
-    id: 'personal-portfolio-website',
-    title: 'Personal / Portfolio Website',
-    iconName: 'Globe',
-    shortDesc: 'Modern, high-performance personal portfolio showcasing your projects, resume, and skills.',
-    fullDesc: 'Build an impressive personal brand with an ultra-fast, responsive portfolio website built with modern frameworks (React, Next.js, Tailwind CSS). Includes dynamic project showcases, downloadable resume, contact forms, and GitHub integration.',
-    category: 'Development Services',
-    startingPrice: 1500,
-    typicalTurnaround: '24 - 48 Hours',
-    deliverables: [
-      'Fully responsive, lightning-fast modern web portfolio',
-      'Interactive project gallery with live demo and source links',
-      'Direct contact form integrated with email / WhatsApp',
-      'Free domain connecting & deployment to Vercel / GitHub Pages',
-      'Clean TypeScript / Tailwind source code repository'
-    ],
-    tag: 'Best Seller'
-  },
-  {
-    id: 'university-club-website',
-    title: 'University / Club Website',
-    iconName: 'Users',
-    shortDesc: 'Complete portal for student organizations, fest registrations, executive member profiles, and blogs.',
-    fullDesc: 'All-in-one portal for university clubs, IEEE student branches, and departmental forums. Features member directories, event registration forms with payment verification, photo galleries, and announcement blogs.',
-    category: 'Development Services',
-    startingPrice: 2500,
-    typicalTurnaround: '48 - 96 Hours',
-    deliverables: [
-      'Dynamic event registration & ticket generation system',
-      'Executive committee & alumni directory with filterable roles',
-      'Club news, blog, and past achievements gallery',
-      'Admin dashboard to manage applicants and export Excel sheets',
-      'Mobile-first responsive design with fast loading speeds'
-    ],
-    tag: 'Recommended'
-  },
-  {
-    id: 'business-ecommerce-website',
-    title: 'Business / E-commerce Website',
-    iconName: 'ShoppingBag',
-    shortDesc: 'Full-featured online store with product catalog, cart, checkout, and local payment integration.',
-    fullDesc: 'Launch your online store or business website with complete product management, cart, checkout, automated invoice generation, customer accounts, and seamless bKash/Nagad/SSLCommerz payment gateways.',
-    category: 'Development Services',
-    startingPrice: 4500,
     typicalTurnaround: '3 - 7 Days',
     deliverables: [
-      'Complete product catalog with filters, search, and variants',
-      'Shopping cart, secure checkout, and automated PDF invoicing',
-      'Integrated payment gateways (bKash, Nagad, Rocket, Cards)',
-      'Powerful admin panel for stock, order status, and customer logs',
-      'SEO optimization & Google Analytics tracking integration'
-    ],
-    tag: 'Enterprise'
-  },
-  {
-    id: 'web-application',
-    title: 'Web Application',
-    iconName: 'Code',
-    shortDesc: 'Full-stack SaaS platforms, custom portals, management systems, and interactive dashboards.',
-    fullDesc: 'Custom web application development using modern tech stacks (React, Node.js, Next.js, Express, PostgreSQL, MongoDB). Engineered for scalability, security, fast execution, and delightful user experiences.',
-    category: 'Development Services',
-    startingPrice: 3500,
-    typicalTurnaround: '3 - 7 Days',
-    deliverables: [
-      'Fullstack modern architecture with React/Next.js & Node.js',
-      'Role-based access control (RBAC), authentication & session security',
-      'Robust relational or NoSQL database integration',
-      'Comprehensive REST/GraphQL API layer with automated validation',
-      'Complete documentation and Git repository handover'
-    ],
-    tag: 'Custom Built'
-  },
-  {
-    id: 'mobile-application',
-    title: 'Mobile Application (Android/iOS)',
-    iconName: 'Smartphone',
-    shortDesc: 'Cross-platform mobile apps with Flutter or React Native delivering smooth native performance.',
-    fullDesc: 'Build powerful Android and iOS mobile applications for your startup, university capstone project, or client. Features smooth 60 FPS animations, push notifications, offline storage, camera/GPS integrations, and backend sync.',
-    category: 'Development Services',
-    startingPrice: 5000,
-    typicalTurnaround: '5 - 10 Days',
-    deliverables: [
-      'Cross-platform Flutter / React Native codebase',
-      'Ready-to-publish Android APK / AAB and iOS build bundle',
-      'Firebase push notifications, cloud storage & auth setup',
-      'Offline caching & responsive UI for all screen sizes',
-      'Google Play Store / Apple App Store submission assistance'
-    ],
-    tag: 'Cross-Platform'
-  },
-  {
-    id: 'backend-development',
-    title: 'Backend Development',
-    iconName: 'Server',
-    shortDesc: 'Scalable server architecture, RESTful/GraphQL APIs, microservices, and secure auth systems.',
-    fullDesc: 'Solid, secure, and well-structured server-side backends built with Node.js, Express, Python (FastAPI/Django), or Go. Handles heavy traffic, async job queues, rate limiting, and structured logging.',
-    category: 'Development Services',
-    startingPrice: 2000,
-    typicalTurnaround: '24 - 72 Hours',
-    deliverables: [
-      'Clean modular MVC / Clean Architecture code structure',
-      'JWT/OAuth2 secure authentication and token refresh rotation',
-      'Swagger / Postman interactive API documentation collection',
-      'Input sanitization, CORS protection & rate limiting',
-      'Deployment on cloud VPS / Docker containerization'
-    ]
-  },
-  {
-    id: 'database-development',
-    title: 'Database Development',
-    iconName: 'Database',
-    shortDesc: 'Relational & NoSQL database schema design, indexing, complex query optimization, and migrations.',
-    fullDesc: 'Design resilient database architectures in PostgreSQL, MySQL, MongoDB, Redis, or Firestore. We normalize schemas, write complex aggregation pipelines, establish indexing strategies, and optimize slow queries.',
-    category: 'Development Services',
-    startingPrice: 1200,
-    typicalTurnaround: '12 - 36 Hours',
-    deliverables: [
-      'Normalized ERD diagrams & database schema definitions',
-      'Optimized SQL queries, stored procedures & views',
-      'Index strategy to eliminate query bottlenecks',
-      'Automated migration scripts (Drizzle, Prisma, TypeORM)',
-      'Backup strategies and data seeding routines'
-    ]
-  },
-  {
-    id: 'api-development-integration',
-    title: 'API Development & Integration',
-    iconName: 'Network',
-    shortDesc: 'Custom REST/GraphQL APIs and seamless integration with third-party webhooks and services.',
-    fullDesc: 'Connect your applications with external APIs including SMS gateways, Google Maps, Firebase, OpenAI/Gemini AI models, weather APIs, social auth, and webhook event handlers.',
-    category: 'Development Services',
-    startingPrice: 1000,
-    typicalTurnaround: '12 - 24 Hours',
-    deliverables: [
-      'Secure third-party API connectivity with fallback retries',
-      'Webhook listener implementation with signature verification',
-      'Clean error handling & formatted response payloads',
-      'Postman collection for immediate team testing',
-      'Environment variable configuration & secret protection'
-    ]
-  },
-  {
-    id: 'bug-fixing-maintenance',
-    title: 'Bug Fixing & Maintenance',
-    iconName: 'Wrench',
-    shortDesc: 'Fast debugging, runtime error fixing, dependency upgrades, and code refactoring.',
-    fullDesc: 'Encountering cryptic build errors, console crashes, broken styles, or dependency conflicts? Our senior developers quickly trace stack traces, resolve logic flaws, and optimize code reliability.',
-    category: 'Development Services',
-    startingPrice: 500,
-    typicalTurnaround: '4 - 12 Hours',
-    deliverables: [
-      'Root cause diagnosis with clear explanation',
-      'Clean code fix with zero regression side-effects',
-      'Security patch verification and dependency upgrades',
-      'Performance audit and console error cleanup',
-      'Follow-up testing to ensure permanent resolution'
-    ],
-    tag: 'Quick Fix'
-  },
-  {
-    id: 'domain-hosting-setup',
-    title: 'Domain & Hosting Setup',
-    iconName: 'Cloud',
-    shortDesc: 'DNS configuration, SSL certificate installation, cPanel/VPS deployment, and custom domain email.',
-    fullDesc: 'Get your website live without hassle. We handle nameserver pointing, DNS records (A, CNAME, MX, TXT for SPF/DKIM), free auto-renewing SSL certificates, and cloud deployment on Vercel, Netlify, or VPS.',
-    category: 'Development Services',
-    startingPrice: 400,
-    typicalTurnaround: '2 - 6 Hours',
-    deliverables: [
-      'Domain DNS mapping (Nameservers, A Records, CNAMEs)',
-      'Free Let\'s Encrypt SSL/TLS Certificate setup (HTTPS)',
-      'Professional business email configuration (e.g. info@yourdomain)',
-      'Web server hosting configuration (Nginx, Apache, Node.js)',
-      'Automated deployment pipeline setup from GitHub'
-    ]
-  },
-  {
-    id: 'payment-gateway-integration',
-    title: 'Payment Gateway Integration',
-    iconName: 'CreditCard',
-    shortDesc: 'Integration of local (bKash, Nagad, Rocket, SSLCommerz) and international (Stripe) gateways.',
-    fullDesc: 'Accept online payments seamlessly. We integrate official merchant APIs for bKash Tokenized/Checkout API, Nagad PGW, SSLCommerz, ShurjoPay, AamarPay, and international Stripe/PayPal with instant callback verification.',
-    category: 'Development Services',
-    startingPrice: 1200,
-    typicalTurnaround: '12 - 24 Hours',
-    deliverables: [
-      'Official Merchant API integration with secure backend verification',
-      'Instant payment IPN / Webhook callback transaction recording',
-      'Automated order confirmation and SMS/Email receipts',
-      'Sandbox testing mode + seamless production switchover',
-      'Refund and failed transaction handling logic'
-    ],
-    tag: 'Essential'
-  },
-  {
-    id: 'admin-dashboard-development',
-    title: 'Admin Dashboard Development',
-    iconName: 'LayoutDashboard',
-    shortDesc: 'Feature-packed administration panels with analytics charts, data tables, and user management.',
-    fullDesc: 'Manage your operations with a custom admin control center. Includes interactive analytics charts, searchable/sortable paginated tables, CSV export, role permissions, and audit logs.',
-    category: 'Development Services',
-    startingPrice: 2500,
-    typicalTurnaround: '2 - 4 Days',
-    deliverables: [
-      'Dynamic data visualizer charts (Recharts / Chart.js)',
-      'Advanced data tables with search, filter, sort & pagination',
-      'Export data to Excel / CSV / PDF with one click',
-      'Multi-role permission controls (Admin, Manager, Viewer)',
-      'Dark mode / Light mode responsive user interface'
-    ]
-  },
-  {
-    id: 'custom-feature-development',
-    title: 'Custom Feature Development',
-    iconName: 'Cpu',
-    shortDesc: 'Custom algorithmic modules, automated scripts, web scraping, and bespoke business tools.',
-    fullDesc: 'Need a specific feature that standard templates don\'t offer? We build custom calculators, automated background schedulers, web scrapers (Puppeteer/BeautifulSoup), PDF report generators, and AI integrations.',
-    category: 'Development Services',
-    startingPrice: 1000,
-    typicalTurnaround: '12 - 48 Hours',
-    deliverables: [
-      'Bespoke feature coded to your exact functional specification',
-      'Modular, reusable, and thoroughly documented code',
-      'Integration into your existing application codebase',
-      'Unit testing and edge-case validation',
-      'Deployment walkthrough and live demonstration'
-    ]
-  },
-  {
-    id: 'website-speed-optimization',
-    title: 'Website Speed Optimization',
-    iconName: 'Zap',
-    shortDesc: 'Core Web Vitals enhancement, image compression, caching, asset bundling, and 90+ Google Score.',
-    fullDesc: 'Speed up your sluggish website. We optimize Core Web Vitals (LCP, FID, CLS), compress media assets to WebP/AVIF, implement lazy loading, minify JavaScript/CSS, and configure server caching.',
-    category: 'Development Services',
-    startingPrice: 600,
-    typicalTurnaround: '6 - 18 Hours',
-    deliverables: [
-      'Comprehensive Google PageSpeed Insights & GTmetrix audit',
-      'Asset compression, code splitting & script deferral',
-      'Database query optimization & object caching setup',
-      'CDN integration (Cloudflare) for global low latency',
-      'Before-and-after performance metrics report'
-    ]
-  },
-  {
-    id: 'website-security-backup',
-    title: 'Website Security & Backup',
-    iconName: 'ShieldCheck',
-    shortDesc: 'Malware removal, SQLi/XSS vulnerability patching, automated cloud backups, and firewall setup.',
-    fullDesc: 'Protect your valuable digital assets. We audit code vulnerabilities, enforce HTTPS, configure Cloudflare DDoS mitigation, sanitize inputs against SQL injection & XSS, and setup automated cloud backups.',
-    category: 'Development Services',
-    startingPrice: 800,
-    typicalTurnaround: '12 - 24 Hours',
-    deliverables: [
-      'Complete security vulnerability scan & malware cleanup',
-      'Firewall, brute-force protection & rate-limit configuration',
-      'Automated daily/weekly encrypted cloud backup routines',
-      'Security headers (CSP, HSTS, X-Frame-Options) configuration',
-      'Disaster recovery documentation and 1-click restore plan'
-    ]
-  },
-  {
-    id: 'wordpress-development',
-    title: 'WordPress Website & Customization',
-    iconName: 'Wordpress',
-    shortDesc: 'Custom WordPress development, Elementor/Gutenberg page building, WooCommerce online store setup, and speed optimization.',
-    fullDesc: 'End-to-end WordPress web development and customization for businesses, blogs, club portals, portfolio sites, and full-scale WooCommerce stores. Built with modern Elementor Pro or Gutenberg block editors, mobile-first responsiveness, custom post types, local payment gateways (bKash/Nagad/Cards), Yoast/RankMath SEO configuration, 90+ PageSpeed optimization, and enterprise security firewall protection.',
-    category: 'WordPress Services',
-    startingPrice: 2000,
-    typicalTurnaround: '2 - 5 Days',
-    deliverables: [
-      'Complete Custom WordPress Website with Premium Responsive Layout',
-      'WooCommerce Store Setup with Product Variations, Cart & Checkout',
-      'Local & Global Payment Gateway Integration (bKash, Nagad, SSLCommerz, Stripe)',
-      '90+ Google Core Web Vitals Speed Optimization & Caching Setup',
-      'On-Page SEO Configuration (RankMath/Yoast) & Security Firewall',
-      'Easy-to-manage Drag & Drop Admin Dashboard + Video Tutorial Guide'
-    ],
-    subServices: [
-      {
-        id: 'wp-business-corporate',
-        title: 'Business, Club & Corporate Website',
-        price: 2000,
-        turnaround: '2 - 3 Days',
-        recommendedFor: 'Startups, Agencies, University Clubs & Department Portals',
-        deliverables: [
-          '5-8 Custom Designed Pages with Elementor Pro / Block Theme',
-          'Contact & Inquiry Forms with WhatsApp and Email Notifications',
-          'Social Media Feeds, Photo Gallery & Event Management',
-          'SSL Setup, Mobile Optimization & Basic SEO'
-        ]
-      },
-      {
-        id: 'wp-woocommerce-store',
-        title: 'Full WooCommerce Online Store Setup',
-        price: 3500,
-        turnaround: '3 - 5 Days',
-        recommendedFor: 'Clothing Brands, Electronics, Bookstores & Multi-Product Vendors',
-        deliverables: [
-          'Product Inventory, Variations (Size/Color) & Stock Management',
-          'bKash, Nagad, Rocket & Credit Card Gateway Integration',
-          'Automated Invoicing, Coupon System & Delivery Zone Rates',
-          'Customer Order Tracking & Email Notification Flow'
-        ]
-      },
-      {
-        id: 'wp-speed-security-cleanup',
-        title: 'Speed Optimization & Malware Cleanup',
-        price: 1000,
-        turnaround: '12 - 24 Hours',
-        recommendedFor: 'Slow Loading Sites & Hacked / Compromised Installations',
-        deliverables: [
-          '90+ Google PageSpeed / GTmetrix Performance Optimization',
-          'Redis/Memcached, WebP Image Compression & CDN Setup',
-          'Malware, Backdoor & Blacklist Removal + Clean Backup',
-          'Cloudflare WAF & Login Brute Force Hardening'
-        ]
-      },
-      {
-        id: 'wp-custom-theme-plugin',
-        title: 'Custom Plugin, ACF & Bug Fixing',
-        price: 1500,
-        turnaround: '24 - 48 Hours',
-        recommendedFor: 'Custom Features, PHP Errors & Database Migration',
-        deliverables: [
-          'Advanced Custom Fields (ACF Pro) & Custom Post Types (CPT)',
-          'PHP/JavaScript Conflicts & Critical Error Debugging',
-          'Seamless Server-to-Server / Domain Migration (Zero Downtime)',
-          'REST API Endpoints & Third-party Webhook Integration'
-        ]
-      }
-    ],
-    tag: 'Popular'
-  },
-  {
-    id: 'wordpress-woocommerce',
-    title: 'WooCommerce Store & Payment Gateway',
-    iconName: 'ShoppingBag',
-    shortDesc: 'Complete WooCommerce store setup, automated bKash/Nagad/Cards checkout, inventory & PDF invoices.',
-    fullDesc: 'High-converting end-to-end WooCommerce e-commerce development. Product variations, local payment gateways (bKash/Nagad/Cards/SSLCommerz), dynamic shipping calculation, automated PDF invoice generation, coupon system, and WhatsApp order alerts.',
-    category: 'WordPress Services',
-    startingPrice: 3500,
-    typicalTurnaround: '3 - 6 Days',
-    deliverables: [
-      'Fully Responsive WooCommerce Shop & Conversion-Optimized Checkout',
-      'Automated bKash, Nagad, Rocket & Cards Payment Gateway Integration',
-      'Product Variations (Color/Size), Custom Filters & Category Taxonomy',
-      'Automated PDF Invoicing & Real-Time Customer Order Tracking',
-      'Instant Admin WhatsApp & Email Order Notification Flow',
-      'Comprehensive Store Inventory & Product Management Video Tutorial'
-    ],
-    subServices: [
-      {
-        id: 'wp-woo-starter',
-        title: 'Starter Online Boutique / Store',
-        price: 2500,
-        turnaround: '2 - 3 Days',
-        recommendedFor: 'F-Commerce brands, single-product dropshippers & boutiques',
-        deliverables: [
-          '10-20 Product Catalog Listings with Categories',
-          'bKash & Nagad Payment Integration',
-          'City/Suburban Delivery Rate Calculations',
-          'WhatsApp Chat & Order Notifications'
-        ]
-      },
-      {
-        id: 'wp-woo-full-enterprise',
-        title: 'Full-Scale Multi-Variation E-Commerce',
-        price: 4500,
-        turnaround: '4 - 6 Days',
-        recommendedFor: 'Apparel brands, tech gear stores & retail merchants',
-        deliverables: [
-          'Color/Size Swatches, Custom Attributes & Unlimited Items',
-          'SSLCommerz / Shurjopay / Stripe Gateway Integration',
-          'Coupon Engines, Flash Sale Timers & Slide Cart Drawer',
-          'Automated PDF Invoices & Courier API Integration Preparation'
-        ]
-      },
-      {
-        id: 'wp-woo-gateway-pos',
-        title: 'Payment Gateway & POS/Invoice Setup',
-        price: 1800,
-        turnaround: '24 - 48 Hours',
-        recommendedFor: 'Existing WordPress sites needing bKash/Nagad & POS',
-        deliverables: [
-          'bKash / Nagad Merchant API & Tokenized Checkout',
-          'Automated Order Confirmation SMS Notification Gateway',
-          'WooCommerce POS & Barcode Scanner Integration',
-          'Checkout Security Audit & Strict SSL Verification'
-        ]
-      }
-    ],
-    tag: 'Popular'
-  },
-  {
-    id: 'wordpress-speed-seo',
-    title: 'Speed Optimization & Technical SEO',
-    iconName: 'Zap',
-    shortDesc: '90+ Google PageSpeed, LiteSpeed/WP Rocket caching, WebP conversion & RankMath/Yoast SEO.',
-    fullDesc: 'Accelerate your WordPress site to under 1 second loading time and score 90+ on Google PageSpeed Insights & GTmetrix. Includes LiteSpeed/WP Rocket caching, WebP image conversion, CSS/JS minification, database bloat purge, and RankMath/Yoast on-page schema configuration.',
-    category: 'WordPress Services',
-    startingPrice: 1000,
-    typicalTurnaround: '12 - 24 Hours',
-    deliverables: [
-      '90+ Performance Score on Google PageSpeed Insights & GTmetrix',
-      'Google Core Web Vitals (LCP, INP, CLS) Green Thresholds',
-      'WP Rocket / LiteSpeed Cache & Redis Object Cache Configuration',
-      'Next-Gen WebP Image Compression & Smart Lazy-Loading',
-      'Database Optimization & Unused CSS/JS Deferral / Minification',
-      'RankMath / Yoast SEO, XML Sitemap & Rich Schema Markup Setup'
-    ],
-    subServices: [
-      {
-        id: 'wp-speed-core',
-        title: '90+ Google PageSpeed Boost',
-        price: 1000,
-        turnaround: '12 - 18 Hours',
-        recommendedFor: 'Slow sites needing fast mobile & desktop loading',
-        deliverables: [
-          '90+ Mobile & Desktop PageSpeed Guaranteed',
-          'Advanced Cache & CDN Setup',
-          'Lossless WebP Compression',
-          'Before / After Benchmark Report'
-        ]
-      },
-      {
-        id: 'wp-tech-seo-schema',
-        title: 'Technical SEO & Rich Schema Setup',
-        price: 1200,
-        turnaround: '24 Hours',
-        recommendedFor: 'Websites aiming for high Google organic ranking',
-        deliverables: [
-          'Google Search Console & GA4 Setup',
-          'XML Sitemap, Robots.txt & Canonical Rules',
-          'Organization, FAQ & Product Schema Markup',
-          'Broken Links & 404 Redirect Audit'
-        ]
-      }
-    ],
-    tag: 'Fast 12h'
-  },
-  {
-    id: 'wordpress-security-malware',
-    title: 'Malware Removal & Security Hardening',
-    iconName: 'ShieldCheck',
-    shortDesc: 'Emergency hacked site recovery, virus cleanup, blacklist removal & Wordfence firewall setup.',
-    fullDesc: 'Immediate recovery from hacks, Japanese spam injections, crypto-miners, and phishing redirects. Complete file-system scan, backdoor elimination, Google Safe Browsing blacklist de-listing, Cloudflare WAF setup, and hardened login security.',
-    category: 'WordPress Services',
-    startingPrice: 1500,
-    typicalTurnaround: '6 - 24 Hours',
-    deliverables: [
-      'Deep-level File System & SQL Database Malware Scan',
-      'Complete Eradication of Backdoors, Trojans & Phishing Shells',
-      'Google Safe Browsing & Security Blacklist De-listing Request',
-      'Wordfence WAF & Two-Factor Authentication (2FA) Setup',
-      'wp-config.php & .htaccess Strict Security Hardening',
-      'Clean Encrypted Off-Site Backup to Google Drive / Cloud'
-    ],
-    subServices: [
-      {
-        id: 'wp-emergency-cleanup',
-        title: 'Emergency Malware & Backdoor Cleanup',
-        price: 1500,
-        turnaround: '6 - 12 Hours',
-        recommendedFor: 'Compromised websites with malware warnings or redirects',
-        deliverables: [
-          '100% Infected File Sanitization & Core Reinstallation',
-          'Database Injected Spam & PHP Backdoor Removal',
-          'Google Red Screen Blacklist De-listing Application',
-          'Upload Directory Shell Cleanup'
-        ]
-      },
-      {
-        id: 'wp-security-hardening',
-        title: 'Security Hardening & WAF Protection',
-        price: 1000,
-        turnaround: '12 Hours',
-        recommendedFor: 'Preventing future brute-force attacks & zero-day exploits',
-        deliverables: [
-          'Cloudflare WAF Custom Security Rules',
-          'Custom Admin Login URL & Brute-Force Rate Limiting',
-          'Disable XML-RPC & File Editor Lockout',
-          'Automated Off-site Daily Backup Routine'
-        ]
-      }
-    ],
-    tag: 'Emergency'
-  },
-  {
-    id: 'wordpress-custom-theme-plugin',
-    title: 'Custom Plugin, ACF & PHP Development',
-    iconName: 'Code',
-    shortDesc: 'Tailored WordPress plugin development, ACF Pro, Custom Post Types & REST API integration.',
-    fullDesc: 'Custom WordPress PHP development for bespoke functionality. Advanced Custom Fields (ACF Pro), custom post types, taxonomy architectures, external REST API integrations, webhooks, and custom shortcodes.',
-    category: 'WordPress Services',
-    startingPrice: 1800,
-    typicalTurnaround: '2 - 4 Days',
-    deliverables: [
-      'Bespoke WordPress Plugin Coded to WP Coding Standards',
-      'Advanced Custom Fields (ACF Pro) & Custom Post Type Architecture',
-      'Custom REST API Endpoints & Third-Party Webhook Syncing',
-      'Custom Checkout Actions & Payment Gateway Callbacks',
-      'Child Theme Development & Template Hierarchy Overrides',
-      'PHP Conflict Resolution & Memory Limit Debugging'
-    ],
-    subServices: [
-      {
-        id: 'wp-plugin-dev',
-        title: 'Custom Plugin from Scratch',
-        price: 2500,
-        turnaround: '2 - 3 Days',
-        recommendedFor: 'Unique business logic, custom calculators & portals',
-        deliverables: [
-          'Modular WP Plugin Structure & Admin Options Panel',
-          'Custom Database Tables & Nonce Security Verification',
-          'Dynamic Shortcodes & Custom Elementor Widgets',
-          'Technical Documentation & Clean Codebase'
-        ]
-      },
-      {
-        id: 'wp-acf-cpt',
-        title: 'ACF Pro & Custom Post Types',
-        price: 1400,
-        turnaround: '24 - 48 Hours',
-        recommendedFor: 'Real estate, car directory, case studies & team listings',
-        deliverables: [
-          'Custom Post Types & Custom Taxonomies',
-          'ACF Pro Repeaters & Flexible Content Fields',
-          'Frontend Single & Archive Layout Templates',
-          'Dynamic AJAX Filter & Search Integration'
-        ]
-      }
-    ],
-    tag: 'Advanced'
-  },
-  {
-    id: 'wordpress-migration-redesign',
-    title: 'Zero-Downtime Migration & UI Redesign',
-    iconName: 'Layers',
-    shortDesc: 'Seamless hosting transfer, domain migration, and modern responsive UI/UX redesign.',
-    fullDesc: 'Zero-downtime server migration, cPanel to VPS transfer, domain URL update without broken links or SEO loss, plus modern aesthetic redesign from legacy themes to sleek Elementor / Block templates.',
-    category: 'WordPress Services',
-    startingPrice: 1200,
-    typicalTurnaround: '12 - 36 Hours',
-    deliverables: [
-      '100% Data Integrity Server Migration with Zero Downtime',
-      'cPanel, Plesk, VPS, Hostinger & Cloudways Migration',
-      'Domain Change & Serialized Database URL Safe Replacement',
-      'Legacy Theme Overhaul into Modern Ultra-Fast Responsive Design',
-      'Business Email Accounts & DNS / Cloudflare Records Setup',
-      'Comprehensive Post-Migration Functionality & Form Testing'
-    ],
-    subServices: [
-      {
-        id: 'wp-host-migration',
-        title: 'Hosting & Server Migration',
-        price: 800,
-        turnaround: '6 - 12 Hours',
-        recommendedFor: 'Moving to a faster host or dedicated VPS',
-        deliverables: [
-          'Complete Database & Media Files Transfer',
-          'SSL Certificate Setup & DNS Propagation',
-          'Zero Downtime & Zero Data Loss Guarantee'
-        ]
-      },
-      {
-        id: 'wp-ui-redesign-overhaul',
-        title: 'Full Modern UI/UX Redesign',
-        price: 2200,
-        turnaround: '2 - 3 Days',
-        recommendedFor: 'Modernizing outdated templates with modern aesthetics',
-        deliverables: [
-          'Modern Color Palette, Typography & Mobile Layouts',
-          'Elementor Pro / Block Lightweight Architecture',
-          'Preserving Existing Content & SEO URL Slugs'
-        ]
-      }
-    ],
-    tag: 'Safe'
-  },
-
-  // ==========================================
-  // 3. STUDENT SUPPORT (15 Services)
-  // ==========================================
-  {
-    id: 'final-year-project-guidance',
-    title: 'Final Year Project Guidance',
-    iconName: 'CheckSquare',
-    shortDesc: 'End-to-end guidance for capstone projects, system architecture, SRS documentation, and defense.',
-    fullDesc: 'Turn your university capstone project into an outstanding academic achievement. Work with experienced engineering mentors on project feasibility, software architecture, SRS documentation, milestone execution, and defense presentations.',
-    category: 'Student Support',
-    startingPrice: 1500,
-    typicalTurnaround: '24 - 72 Hours',
-    deliverables: [
-      'System Architecture & ERD / UML diagramming review',
-      'Software Requirements Specification (SRS) review & polish',
-      'Sprint planning & milestone progress guidance',
-      'Prototype troubleshooting and feature demonstration prep',
-      'Final project defense mock questioning rehearsal'
+      'Interactive Figma prototype with realistic clickable flows',
+      'Responsive screen layouts (Desktop, Tablet & Mobile)',
+      'Comprehensive Design System (Tokens, Icons, Colors, Typography)',
+      'Developer handoff documentation & asset exports (SVG/PNG)',
+      'User testing flows and wireframe architecture'
     ],
     tag: 'Flagship'
   },
   {
-    id: 'research-paper-formatting',
-    title: 'Research Paper Formatting',
-    iconName: 'FileCheck',
-    shortDesc: 'IEEE, Springer, ACM, Elsevier, and APA standard LaTeX / Word paper formatting and citation styling.',
-    fullDesc: 'Ensure your research paper conforms strictly to target journal and conference author guidelines. We format two-column IEEE/ACM layouts, LaTeX Overleaf templates, bibliography references (BibTeX/Mendeley), and equation alignments.',
-    category: 'Student Support',
+    id: 'mobile-app-uiux',
+    title: 'Mobile App UI/UX Design (iOS & Android)',
+    iconName: 'Smartphone',
+    shortDesc: 'Native iOS & Android mobile interfaces, Apple Human Interface & Google Material 3 guidelines, and micro-interactions.',
+    fullDesc: 'Modern mobile app UI/UX design tailored for intuitive thumb navigation, seamless bottom sheets, gesture flows, dark/light modes, and interactive component states in Figma. Ready for React Native or Flutter developer handoff.',
+    category: 'Design Services',
     startingPrice: 500,
-    typicalTurnaround: '12 - 24 Hours',
+    typicalTurnaround: '4 - 8 Days',
     deliverables: [
-      'Strict adherence to IEEE, ACM, Springer, Elsevier, or APA styles',
-      'Complete LaTeX / Overleaf source files or polished Word document',
-      'Standardized BibTeX citations & cross-reference verification',
-      'Vector diagram & figure caption alignment styling',
-      'Mathematical equations & algorithm pseudo-code formatting'
+      '15-30+ high-fidelity mobile application screens in Figma',
+      'Clickable user journeys & interactive screen transitions',
+      'iOS Human Interface & Android Material 3 compliance specs',
+      'Exportable SVG/PNG asset library & typography tokens',
+      'Developer handoff documentation with component variants'
     ],
     tag: 'High Demand'
   },
   {
-    id: 'dataset-technical-guidance',
-    title: 'Dataset & Technical Guidance',
-    iconName: 'Binary',
-    shortDesc: 'Data collection methods, cleaning, exploratory analysis (EDA), and machine learning preprocessing.',
-    fullDesc: 'Get expert guidance on sourcing benchmarks, web scraping datasets, data cleaning, handling missing values, exploratory data analysis (EDA), feature engineering, and preparing datasets for Machine Learning models in Python/R/SPSS.',
-    category: 'Student Support',
-    startingPrice: 600,
-    typicalTurnaround: '12 - 36 Hours',
-    deliverables: [
-      'Dataset curation & benchmark sourcing strategies',
-      'Data cleaning, normalization & feature engineering pipelines',
-      'Exploratory Data Analysis (EDA) charts and correlation matrices',
-      'Python (Pandas, NumPy, Scikit-learn) / SPSS scripts',
-      'Data visualization plots formatted for publication'
-    ]
-  },
-  {
-    id: 'programming-support',
-    title: 'Programming Support (Any Language)',
-    iconName: 'Terminal',
-    shortDesc: 'Hands-on debugging, algorithm logic breakdown, and conceptual coaching in C++, Java, Python, JS.',
-    fullDesc: 'Master tricky programming concepts, data structures (Trees, Graphs, DP), Object-Oriented Programming (OOP), and lab problem sets in C, C++, Java, Python, JavaScript, PHP, or Assembly with live step-by-step logic coaching.',
-    category: 'Student Support',
-    startingPrice: 400,
-    typicalTurnaround: '6 - 18 Hours',
-    deliverables: [
-      'Line-by-line logic explanation and concept breakdown',
-      'Live debugging assistance and segmentation fault resolution',
-      'Clean coding practices, time complexity (Big-O) analysis',
-      'Edge-case test scenarios and input validation',
-      'Lab viva questions prep on written code'
-    ],
-    tag: 'Popular'
-  },
-  {
-    id: 'github-portfolio-setup',
-    title: 'GitHub / Portfolio Setup',
-    iconName: 'GitBranch',
-    shortDesc: 'Professional GitHub profile README, Git workflow mastery, repository showcases, and pinning.',
-    fullDesc: 'Transform your GitHub into a recruiter magnet. We build dynamic GitHub profile READMEs with live stats widgets, organize clean repository structures, write compelling project documentation, and teach proper branch/PR workflows.',
-    category: 'Student Support',
+    id: 'landing-page-design',
+    title: 'High-Converting Landing Page Design',
+    iconName: 'Sparkles',
+    shortDesc: 'Modern, conversion-focused landing page visual designs optimized for SaaS, products, and lead generation.',
+    fullDesc: 'Crafting persuasive, visually captivating landing page layouts designed to maximize user engagement and conversions. Includes hero sections, feature grids, social proof testimonials, pricing matrices, and CTA sections.',
+    category: 'Design Services',
     startingPrice: 350,
-    typicalTurnaround: '6 - 12 Hours',
+    typicalTurnaround: '2 - 4 Days',
     deliverables: [
-      'Custom styled dynamic GitHub profile README with live stats',
-      'Professional project README.md templates with demo GIF badges',
-      'Git branching, commit hygiene, and pull request workflows',
-      'Repository organization with open-source licensing & badges',
-      'Pinning strategy highlighting your best engineering projects'
-    ]
-  },
-  {
-    id: 'cv-linkedin-optimization',
-    title: 'CV / LinkedIn Optimization',
-    iconName: 'UserCheck',
-    shortDesc: 'ATS resume audit, LinkedIn headline & summary revamp, and recruiter networking strategy.',
-    fullDesc: 'Optimize your professional profile for tech jobs, internships, and research assistantships. We audit your resume keywords, craft captivating LinkedIn headlines/summaries, and coach you on cold outreach to recruiters.',
-    category: 'Student Support',
-    startingPrice: 400,
-    typicalTurnaround: '12 - 24 Hours',
-    deliverables: [
-      'ATS score audit and tailored keyword enhancement',
-      'LinkedIn profile overhaul (Headline, About, Experience bullets)',
-      'Project impact quantification using STAR/XYZ methodology',
-      'Networking and cold email connection message templates',
-      'Personal branding tips to attract engineering recruiters'
+      'Full page visual design in Figma (Desktop & Mobile)',
+      'Copywriting layout structure & visual hierarchy',
+      'Custom 2D/3D visual graphics and icon styling',
+      'Optimized for fast front-end coding',
+      'Unlimited minor revisions until launch'
     ],
-    tag: 'Career Growth'
+    tag: 'High Conversion'
   },
   {
-    id: 'presentation-preparation',
-    title: 'Presentation Preparation',
-    iconName: 'Mic',
-    shortDesc: 'Slide structure critique, defense rehearsal coaching, and faculty counter-question simulations.',
-    fullDesc: 'Conquer presentation anxiety and deliver standout defense talks. We help you structure your speaking points, rehearse transitions, manage time constraints, and anticipate tough cross-examination questions from strict faculty panels.',
-    category: 'Student Support',
-    startingPrice: 350,
-    typicalTurnaround: '8 - 24 Hours',
-    deliverables: [
-      '1-on-1 Mock defense rehearsal with difficult counter-questions',
-      'Slide timing analysis and transition cues formulation',
-      'Speaking script formulation & bullet distillation',
-      'Q&A survival tactics for rigorous academic defense panels',
-      'Confidence building and body language feedback'
-    ]
-  },
-  {
-    id: 'scholarship-admission-guidance',
-    title: 'Scholarship / Admission Guidance',
-    iconName: 'GraduationCap',
-    shortDesc: 'Statement of Purpose (SOP), Motivation Letters, research proposals, and professor email drafting.',
-    fullDesc: 'Get accepted into top global universities (USA, Canada, Europe, Australia, Japan). Work with alumni who have won Erasmus Mundus, Fulbright, and Graduate Assistantships to draft compelling SOPs, CVs, and cold emails to professors.',
-    category: 'Student Support',
-    startingPrice: 800,
-    typicalTurnaround: '24 - 48 Hours',
-    deliverables: [
-      'Line-by-line review of Statement of Purpose (SOP) & Motivation Letters',
-      'Academic CV tailored for international admissions',
-      'Cold email templates for contacting prospective research supervisors',
-      'Scholarship application strategy & recommendation letter guidance',
-      'Visa and university interview mock preparation session'
-    ],
-    tag: 'Global Study'
-  },
-  {
-    id: 'thesis-report-writing-support',
-    title: 'Thesis / Report Writing Support',
-    iconName: 'BookOpen',
-    shortDesc: 'Chapter structuring, systematic literature reviews, methodology synthesis, and proofreading.',
-    fullDesc: 'Comprehensive academic mentorship on structuring your undergraduate/masters thesis. We help formulate research questions, build Systematic Literature Review (SLR) matrices, articulate methodology, and polish academic English.',
-    category: 'Student Support',
-    startingPrice: 1000,
-    typicalTurnaround: '24 - 72 Hours',
-    deliverables: [
-      'Chapter-by-chapter structuring & academic writing guidance',
-      'Systematic Literature Review (SLR) matrix template & synthesis',
-      'Methodology articulation and experimental setup description',
-      'Grammar, flow, and academic tone refinement',
-      'Citation verification and bibliography alignment'
-    ]
-  },
-  {
-    id: 'plagiarism-check-assistance',
-    title: 'Plagiarism Check Assistance',
-    iconName: 'Search',
-    shortDesc: 'Official Turnitin similarity report analysis, ethical paraphrasing, and citation alignment.',
-    fullDesc: 'Ensure your manuscript and reports are 100% compliant with university similarity thresholds. Receive official similarity index breakdown reports, citation corrections, and guidance on ethical paraphrasing.',
-    category: 'Student Support',
-    startingPrice: 250,
-    typicalTurnaround: '2 - 6 Hours',
-    deliverables: [
-      'Complete similarity percentage and highlighted matching sources report',
-      'Identification of accidental plagiarism vs common academic phrases',
-      'Guidance on restructuring sentences and proper paraphrasing',
-      'Missing citation restoration in IEEE/APA/Harvard formats',
-      'Fast turnaround within 2 to 6 hours'
-    ],
-    tag: 'Fast Delivery'
-  },
-  {
-    id: 'technical-workshops-courses',
-    title: 'Technical Workshops & Courses',
-    iconName: 'Video',
-    shortDesc: 'Live cohort bootcamps on Web Development, AI/ML, UI/UX, Git, and Competitive Programming.',
-    fullDesc: 'Hands-on, project-based technical masterclasses led by industry practitioners and top competitive programmers. Learn in-demand skills through live coding, assignments, and personalized mentor code reviews.',
-    category: 'Student Support',
-    startingPrice: 500,
-    typicalTurnaround: 'Scheduled Cohorts',
-    deliverables: [
-      'Live interactive video sessions with real-time Q&A',
-      'Full access to session recordings, source code & lecture slides',
-      'Hands-on capstone project review & feedback from mentors',
-      'Certificate of Completion with verifiable credentials',
-      'Exclusive access to private alumni & peer discord/WhatsApp community'
-    ]
-  },
-  {
-    id: 'interview-preparation',
-    title: 'Interview Preparation',
-    iconName: 'Briefcase',
-    shortDesc: 'Mock technical coding interviews, system design discussions, and behavioral HR interview coaching.',
-    fullDesc: 'Ace your next software engineering or graduate job interview. Practice Data Structures & Algorithms live on whiteboard/coderpad, discuss basic system design, and receive structured feedback on behavioral questions.',
-    category: 'Student Support',
+    id: 'design-system-tokens',
+    title: 'Design System & Component Library (Figma to Code)',
+    iconName: 'Layers',
+    shortDesc: 'Scalable design tokens, auto-layout component library, typography scale, and developer handoff specs.',
+    fullDesc: 'Standardize your product UI across your entire engineering team. We architect structured Figma design systems with semantic color tokens, typography scales, 40+ atomic components with interactive variants, spacing grids, and Storybook/Tailwind alignment.',
+    category: 'Design Services',
     startingPrice: 600,
-    typicalTurnaround: '12 - 24 Hours',
+    typicalTurnaround: '5 - 10 Days',
     deliverables: [
-      '1-on-1 Mock coding interview session simulating top tech companies',
-      'Detailed feedback report on problem-solving speed, code quality & communication',
-      'System design basics & architectural trade-offs discussion',
-      'Behavioral interview coaching using the STAR framework',
-      'Curated DSA question bank tailored to target company patterns'
-    ]
+      'Master Figma component library with Auto-Layout 5.0 and variables',
+      'Semantic color, typography, spacing, and elevation tokens',
+      '40+ atomic UI components (Buttons, Inputs, Modals, Tables, Badges)',
+      'Light and Dark mode variant system',
+      'Developer handoff style guide & Storybook ready token JSON'
+    ],
+    tag: 'Scale Ready'
   },
   {
-    id: 'study-plan-academic-guidance',
-    title: 'Study Plan & Academic Guidance',
-    iconName: 'Calendar',
-    shortDesc: 'Personalized semester study roadmap, CGPA recovery planning, and time management coaching.',
-    fullDesc: 'Feeling overwhelmed by credits, lab deadlines, and exams? Work with top-performing academic mentors to audit your syllabus, design a realistic weekly study routine, and execute a strategic CGPA improvement plan.',
-    category: 'Student Support',
+    id: 'saas-dashboard-ux',
+    title: 'SaaS Dashboard & Web Application UX Design',
+    iconName: 'LayoutDashboard',
+    shortDesc: 'Data-dense web application interfaces, complex table filters, multi-role views, and executive metrics UX.',
+    fullDesc: 'Design user-friendly dashboards for complex B2B SaaS, CRM, or administrative platforms. We map out intuitive navigation hierarchies, dense data tables with filtering and bulk actions, customizable widgets, and responsive layouts.',
+    category: 'Design Services',
+    startingPrice: 550,
+    typicalTurnaround: '4 - 7 Days',
+    deliverables: [
+      'Multi-screen SaaS dashboard workflows in Figma',
+      'Data-dense table design with sorting, pagination, and action modals',
+      'Analytics visual charts, KPI metric cards & quick actions',
+      'Role-based permissions UI states (Admin, Manager, Member)',
+      'Interactive Figma prototypes with realistic dashboard interactions'
+    ],
+    tag: 'SaaS Specialist'
+  },
+  {
+    id: 'brand-identity-logo',
+    title: 'Brand Identity & Logo Suite',
+    iconName: 'Layers',
+    shortDesc: 'Distinctive vector logo marks, color harmony, typography guides, and complete brand stylebooks.',
+    fullDesc: 'Establish a powerful, cohesive brand identity that commands attention in your market. We deliver multiple unique conceptual directions, complete vector source files (SVG, EPS, AI, PDF), brand color codes (HEX, RGB, CMYK), and stationery templates.',
+    category: 'Design Services',
     startingPrice: 300,
-    typicalTurnaround: '6 - 12 Hours',
+    typicalTurnaround: '3 - 5 Days',
     deliverables: [
-      'Tailored weekly timetable balancing classes, labs & self-study',
-      'High-yield topic prioritization roadmap for upcoming exams',
-      'CGPA recovery calculation model & target grade milestones',
-      'Curated textbook chapters, video lecture links & notes list',
-      'Weekly progress check-in & accountability support'
+      '3-5 distinct creative logo concepts with revisions',
+      'Vector master files (SVG, EPS, AI, PDF, Transparent PNG)',
+      'Comprehensive Brand Guidelines (Colors, Typography, Usage rules)',
+      'Social media avatars, banner kits, and favicon assets',
+      'Full intellectual property & commercial rights transfer'
+    ],
+    tag: 'Brand Suite'
+  },
+  {
+    id: 'pitch-deck-presentation',
+    title: 'Investor Pitch Deck & Corporate Presentation',
+    iconName: 'Presentation',
+    shortDesc: 'Compelling, beautifully formatted presentation decks for fundraising, sales, and executive keynotes.',
+    fullDesc: 'Transform complex business narratives and data metrics into clear, investor-ready slide presentations. Designed in Figma, PowerPoint, or Google Slides with custom data visualizations and master slide templates.',
+    category: 'Design Services',
+    startingPrice: 250,
+    typicalTurnaround: '2 - 3 Days',
+    deliverables: [
+      'Custom styled PPTX / Keynote / Figma presentation deck',
+      'Clean typography, infographic charts & balanced metrics',
+      'Slide master template for easy internal reuse',
+      'Exported high-res PDF handouts and speaker notes',
+      'Commercial vector icon sets included'
     ]
   },
+
+  // 2. WEB & SOFTWARE DEVELOPMENT
   {
-    id: 'problem-solving-debugging',
-    title: 'Problem Solving & Debugging Help',
-    iconName: 'HelpCircle',
-    shortDesc: 'Urgent troubleshooting, mathematical derivations, logic resolution, and homework concept guidance.',
-    fullDesc: 'Get immediate help when you are stuck on difficult assignments, mathematical proofs, circuit calculations, or programming bugs. Connect with a mentor to get unstuck with complete conceptual clarity.',
-    category: 'Student Support',
-    startingPrice: 350,
-    typicalTurnaround: '3 - 12 Hours',
+    id: 'custom-fullstack-webapp',
+    title: 'Custom Full-Stack Web Application',
+    iconName: 'Code',
+    shortDesc: 'Scalable web applications built with React, Next.js, Node.js/Express, TypeScript, and PostgreSQL/MongoDB.',
+    fullDesc: 'End-to-end custom software development tailored to your exact business workflow. We architect robust backend microservices/APIs, responsive frontend interfaces with Tailwind CSS, secure authentication (JWT/OAuth), role-based permissions, and automated database migrations.',
+    category: 'Development Services',
+    startingPrice: 1400,
+    typicalTurnaround: '7 - 21 Days',
     deliverables: [
-      'Direct, step-by-step problem dissection and solution logic',
-      'Mathematical formula verification and derivation steps',
-      'Comprehensive explanation of underlying core theorems',
-      'Interactive doubt clearing on WhatsApp / Google Meet',
-      'Related practice problems to solidify understanding'
+      'Production-ready Next.js / React + Node.js codebase',
+      'PostgreSQL / MongoDB database schema & ORM integration',
+      'Secure Authentication, RBAC (Admin, Staff, Customer)',
+      'RESTful / GraphQL APIs with comprehensive Swagger/Postman docs',
+      'Docker containerization, CI/CD pipeline & Cloud deployment',
+      '30 days complimentary post-launch bug fixing & maintenance'
     ],
-    tag: 'Instant Support'
+    tag: 'Enterprise Core'
   },
   {
-    id: 'mentorship-career-guidance',
-    title: 'Mentorship & Career Guidance',
-    iconName: 'Compass',
-    shortDesc: '1-on-1 career mapping with industry software engineers, researchers, and university alumni.',
-    fullDesc: 'Get clarity on your future roadmap (Software Engineering, Data Science/AI, Cyber Security, Higher Studies abroad, or Product Management). Discuss career pathways, skill acquisition timelines, and industry expectations.',
-    category: 'Student Support',
-    startingPrice: 500,
-    typicalTurnaround: '12 - 24 Hours',
+    id: 'mobile-app-development',
+    title: 'Cross-Platform Mobile App (React Native / Flutter)',
+    iconName: 'Smartphone',
+    shortDesc: 'High-performance iOS & Android mobile apps with offline caching, push notifications, and API synchronization.',
+    fullDesc: 'Launch native-grade mobile applications with a unified codebase. We build responsive cross-platform apps using React Native or Flutter, complete with Firebase Auth/FCM notifications, camera/storage device APIs, secure token storage, and REST API synchronization.',
+    category: 'Development Services',
+    startingPrice: 1600,
+    typicalTurnaround: '10 - 20 Days',
     deliverables: [
-      '1-on-1 private video mentorship session with industry specialist',
-      'Personalized 6-month skill development and portfolio roadmap',
-      'Honest feedback on current technical skill strengths & gaps',
-      'Guidance on open-source contributions & internship applications',
-      'Direct networking connection with professional alumni network'
-    ]
+      'Cross-platform iOS and Android production build packages (APK / IPA)',
+      'Clean modular React Native or Flutter codebase with TypeScript/Dart',
+      'Push notifications setup (Firebase Cloud Messaging)',
+      'Offline data caching & biometric authentication integration',
+      'Google Play Console & Apple App Store submission support'
+    ],
+    tag: 'Mobile App'
   },
   {
-    id: 'data-analysis',
-    title: 'Data Analysis & Statistical Modeling',
-    iconName: 'LineChart',
-    shortDesc: 'Comprehensive data cleaning, Exploratory Data Analysis (EDA), statistical modeling, Power BI/Tableau dashboards, and research visualization.',
-    fullDesc: 'Transform raw tabular data into actionable statistical insights, publication-ready visual charts, and predictive models. Expert analysis across Python (Pandas, NumPy, Scikit-learn, Seaborn), R, IBM SPSS, and Advanced Excel. Covers data sanitization, outlier filtering, hypothesis testing (ANOVA, T-tests, Regression), correlation matrices, interactive Power BI/Tableau dashboards, and comprehensive summary reports with interpretation notes.',
-    category: 'Data Analysis',
-    startingPrice: 800,
-    typicalTurnaround: '12 - 36 Hours',
+    id: 'ai-llm-integration',
+    title: 'AI Agent & LLM Chatbot Integration (Gemini / OpenAI / RAG)',
+    iconName: 'Cpu',
+    shortDesc: 'Custom contextual AI chatbot on your business data, LangChain/Vector DB pipelines, and automated customer workflows.',
+    fullDesc: 'Supercharge your platform with conversational generative AI. We integrate Google Gemini or OpenAI LLMs trained on your company knowledge base via Retrieval-Augmented Generation (RAG), Pinecone/pgvector vector stores, token management, function calling, and live streaming web chat widgets.',
+    category: 'Development Services',
+    startingPrice: 850,
+    typicalTurnaround: '4 - 8 Days',
     deliverables: [
-      'Fully Commented Source Code & Scripts (Python Jupyter / R / SPSS syntax)',
-      'Cleaned & Preprocessed Dataset (CSV / XLSX / SPSS .sav)',
-      'High-Resolution Statistical Charts & Publication-Ready Visualizations',
-      'Comprehensive Summary Report with Key Findings & Hypothesis Interpretation',
-      'Interactive Dashboard (Power BI / Tableau / Excel Pivot)',
-      '1-on-1 Methodology Walkthrough & Results Defense Coaching'
+      'Custom LLM API pipeline (Gemini / OpenAI / Claude) with rate limiting',
+      'Retrieval-Augmented Generation (RAG) vector embeddings on business docs',
+      'Embeddable web chat widget with markdown and streaming responses',
+      'Structured JSON output extraction for automated CRM data entry',
+      'Admin monitoring panel for token usage and conversation logs'
     ],
-    subServices: [
-      {
-        id: 'data-spss-stats',
-        title: 'IBM SPSS Statistical Analysis & Hypothesis Testing',
-        price: 800,
-        turnaround: '12 - 24 Hours',
-        recommendedFor: 'Thesis Questionnaires, Social Science & Business Research',
-        deliverables: [
-          'Cronbach’s Alpha Reliability & Normality Testing (Shapiro-Wilk)',
-          'Independent T-Tests, Paired T-Tests, Chi-Square & One-Way ANOVA',
-          'Linear / Multiple / Logistic Regression Analysis',
-          'SPSS .sav Output files & APA-style summary table writeup'
-        ]
-      },
-      {
-        id: 'data-python-r-eda',
-        title: 'Python / R Data Cleaning, EDA & Machine Learning',
-        price: 1500,
-        turnaround: '24 - 48 Hours',
-        recommendedFor: 'Computer Science, Data Engineering & AI Capstone Projects',
-        deliverables: [
-          'Missing Value Imputation, Outlier Treatment & Feature Engineering',
-          'Pandas, NumPy, Seaborn & Matplotlib Visualization Suite',
-          'Supervised / Unsupervised ML Classification & Regression Models',
-          'Jupyter Notebook (.ipynb) with clean markdown explanations'
-        ]
-      },
-      {
-        id: 'data-powerbi-tableau',
-        title: 'Power BI & Tableau Interactive Dashboard',
-        price: 1200,
-        turnaround: '24 - 36 Hours',
-        recommendedFor: 'Business Intelligence, Corporate Reports & Live Presentations',
-        deliverables: [
-          'Interactive Drill-Down Visuals, KPI Cards & Custom Slicers',
-          'DAX Formulas, Calculated Measures & Power Query ETL Pipelines',
-          'Automated Refresh Config & Mobile Layout Optimization',
-          '.pbix / Tableau Package File + Video Walkthrough'
-        ]
-      },
-      {
-        id: 'data-excel-pivot-modeling',
-        title: 'Advanced Excel Analytics & Financial Modeling',
-        price: 600,
-        turnaround: '6 - 18 Hours',
-        recommendedFor: 'Accounting, Finance & MBA Coursework Assignments',
-        deliverables: [
-          'Dynamic Pivot Tables, VLOOKUP/XLOOKUP & Nested Logic Formulas',
-          'What-If Analysis, Scenario Manager & Solver Optimization',
-          'Professional Corporate Presentation Charts & Automated Macros (VBA)',
-          'Clean, error-free Excel workbook (.xlsx)'
-        ]
-      }
-    ],
-    tag: 'High Demand'
+    tag: 'AI Powered'
   },
   {
-    id: 'data-python-eda-ml',
-    title: 'Python Data Science, EDA & Machine Learning',
-    iconName: 'Binary',
-    shortDesc: 'Jupyter Notebook, Pandas, NumPy, Scikit-learn ML models, feature engineering & Seaborn plots.',
-    fullDesc: 'End-to-end Python data science pipelines for thesis, capstones, and industry research. Comprehensive preprocessing, outlier elimination, exploratory data analysis (EDA) with Seaborn/Matplotlib, supervised/unsupervised ML algorithms (Random Forest, XGBoost, SVM, KMeans), and performance evaluation metrics.',
-    category: 'Data Analysis',
-    startingPrice: 1500,
-    typicalTurnaround: '24 - 48 Hours',
+    id: 'saas-mvp-sprint',
+    title: 'Rapid SaaS MVP Development (Sprint to Launch in 14 Days)',
+    iconName: 'Zap',
+    shortDesc: 'Launch your startup in 14 days with Next.js, authentication, Stripe/bKash subscription billing, and database CRUD.',
+    fullDesc: 'Go from concept to paying customers fast. Designed for startup founders who need a rapid, production-ready MVP. Includes Next.js App Router, Tailwind UI, Supabase / PostgreSQL database, user auth, subscription billing, and email notifications.',
+    category: 'Development Services',
+    startingPrice: 1800,
+    typicalTurnaround: '10 - 14 Days',
     deliverables: [
-      'Fully Documented Jupyter Notebook (.ipynb) with Clean Markdown Explanations',
-      'Sanitized & Normalized Dataset (CSV / Parquet / Pandas Dataframe)',
-      'Publication-Quality Seaborn/Matplotlib Visualizations & Correlation Heatmaps',
-      'Supervised / Unsupervised Machine Learning Model Training & Tuning',
-      'Performance Evaluation Suite (Accuracy, Precision, Recall, F1-Score, ROC-AUC)',
-      'Methodology Defense Documentation & Technical Walkthrough'
+      'Complete end-to-end MVP web application launched on Vercel/Supabase',
+      'User authentication (Email/Password, Google OAuth)',
+      'Recurring subscription billing (Stripe / bKash recurring / SSLCommerz)',
+      'Core user dashboard with full CRUD data workflows',
+      'Transactional email setup (Resend / SendGrid) and analytics tracking'
     ],
-    subServices: [
-      {
-        id: 'data-py-eda-viz',
-        title: 'Data Cleaning & Exploratory Analysis (EDA)',
-        price: 1000,
-        turnaround: '12 - 24 Hours',
-        recommendedFor: 'Raw datasets needing cleaning & exploratory graphs',
-        deliverables: [
-          'Missing Value Imputation & Outlier Detection',
-          'Distribution Plots, Boxplots & Heatmaps',
-          'Clean Jupyter Notebook & Data Dictionary'
-        ]
-      },
-      {
-        id: 'data-py-ml-classification',
-        title: 'Machine Learning & Predictive Modeling',
-        price: 1800,
-        turnaround: '24 - 48 Hours',
-        recommendedFor: 'Final year thesis, prediction models & benchmarking',
-        deliverables: [
-          'Multi-Algorithm Benchmarking (RF, XGBoost, SVM, Logistic)',
-          'Hyperparameter Tuning via GridSearchCV',
-          'Confusion Matrix, Classification Report & ROC Curves',
-          'Trained Serialized Model Files (.pkl / .joblib)'
-        ]
-      },
-      {
-        id: 'data-py-nlp-sentiment',
-        title: 'NLP Text Analysis & Sentiment Classification',
-        price: 2200,
-        turnaround: '2 - 3 Days',
-        recommendedFor: 'Social media sentiments, review classification & text mining',
-        deliverables: [
-          'Text Tokenization, Stopwords Removal & Lemmatization',
-          'TF-IDF & Word Embeddings Vector Space Pipeline',
-          'Sentiment Classification & Topic Modeling (LDA)',
-          'Wordclouds & Frequency Distribution Plots'
-        ]
-      }
-    ],
-    tag: 'ML & AI'
+    tag: 'Founder Favorite'
   },
   {
-    id: 'data-powerbi-tableau-standalone',
-    title: 'Power BI & Tableau Interactive Dashboards',
-    iconName: 'BarChart',
-    shortDesc: 'Drill-through KPI dashboards, advanced DAX measures, Power Query ETL & executive visual storytelling.',
-    fullDesc: 'Executive-level interactive Business Intelligence dashboards built with Microsoft Power BI and Tableau. Advanced Power Query ETL data blending, complex DAX measures, custom KPI scorecards, mobile layout optimization, and interactive drill-through capabilities.',
-    category: 'Data Analysis',
-    startingPrice: 1200,
-    typicalTurnaround: '24 - 48 Hours',
+    id: 'frontend-engineering-spa',
+    title: 'Modern Frontend Web App (React / Next.js / Tailwind)',
+    iconName: 'Monitor',
+    shortDesc: 'Ultra-fast, responsive, accessible Single Page Applications (SPA) with smooth animations and state management.',
+    fullDesc: 'Convert any Figma or design spec into clean, modular, accessible, and ultra-fast React or Next.js code. Fully responsive across ultra-wide desktops to mobile devices, integrated with API hooks, state managers (Zustand/Redux), and smooth motion transitions.',
+    category: 'Development Services',
+    startingPrice: 750,
+    typicalTurnaround: '4 - 8 Days',
     deliverables: [
-      'Full Interactive Source File (.pbix / .twbx) with Embedded Modeling',
-      'Custom DAX Calculated Columns, Dynamic Measures & Time Intelligence',
-      'Automated Power Query ETL Data Cleansing & Refresh Architecture',
-      'Executive KPI Scorecards, Gauge Visuals & Drill-Through Filters',
-      'Mobile Device View Layout & Seamless Navigation Bookmarks',
-      'Comprehensive Video Walkthrough & Presentation Documentation'
-    ],
-    subServices: [
-      {
-        id: 'bi-sales-finance-dashboard',
-        title: 'Sales & Financial KPI Dashboard',
-        price: 1500,
-        turnaround: '24 - 36 Hours',
-        recommendedFor: 'E-commerce, Retail, Sales Teams & Financial Reporting',
-        deliverables: [
-          'Month-over-Month (MoM) & Year-over-Year (YoY) Growth Metrics',
-          'Product-wise Revenue, Discounts & Net Margin Visuals',
-          'Customer Acquisition & Churn Visual Indicators'
-        ]
-      },
-      {
-        id: 'bi-hr-ops-dashboard',
-        title: 'HR & Operational Analytics Dashboard',
-        price: 1200,
-        turnaround: '24 Hours',
-        recommendedFor: 'Employee metrics, payroll, attendance & operational workflows',
-        deliverables: [
-          'Employee Performance, Attrition Rate & Demographics',
-          'Departmental Budget Utilization & Headcount Tracking',
-          'Dynamic Date Range & Department Slicers'
-        ]
-      }
+      'Pixel-perfect translation from Figma / Sketch to React + Tailwind',
+      'TypeScript for type safety and clean architecture',
+      'Responsive layout across mobile, tablet, and desktop viewports',
+      'API client integration (Axios/TanStack Query)',
+      'SEO-optimized meta tags, Lighthouse 95+ performance rating'
     ],
     tag: 'Popular'
   },
   {
-    id: 'data-excel-modeling',
-    title: 'Advanced Excel Analytics & Financial Modeling',
+    id: 'backend-api-architecture',
+    title: 'Backend API & Microservices Architecture',
+    iconName: 'Server',
+    shortDesc: 'Robust RESTful and GraphQL APIs built with Node.js, Express, Fastify, Python, or Go.',
+    fullDesc: 'Secure, high-throughput backend APIs designed to scale under heavy traffic. Includes structured database migrations, input sanitization/validation (Zod/Joi), JWT/OAuth2 security, webhook integrations, rate-limiting, and error telemetry.',
+    category: 'Development Services',
+    startingPrice: 800,
+    typicalTurnaround: '3 - 7 Days',
+    deliverables: [
+      'Modular REST / GraphQL API endpoints with clean routing',
+      'Secure authentication & authorization middleware',
+      'PostgreSQL / MySQL / Redis caching integration',
+      'Postman Collection & interactive OpenAPI/Swagger docs',
+      'Automated unit & integration test coverage'
+    ]
+  },
+  {
+    id: 'cloud-devops-cicd',
+    title: 'Cloud Infrastructure, Docker & CI/CD Pipelines (AWS / GCP / Vercel)',
+    iconName: 'Cloud',
+    shortDesc: 'Automated GitHub Actions deployments, Docker containerization, Nginx reverse proxy, and cloud scaling.',
+    fullDesc: 'Set up reliable, automated cloud environments for your web applications. We configure Docker multi-stage builds, automated testing & deployment pipelines with GitHub Actions, AWS EC2/S3 or GCP Cloud Run hosting, SSL certificate automation, and server monitoring.',
+    category: 'Development Services',
+    startingPrice: 450,
+    typicalTurnaround: '2 - 5 Days',
+    deliverables: [
+      'Multi-stage optimized Dockerfile and docker-compose configurations',
+      'Automated CI/CD pipeline with GitHub Actions (Build, Test, Deploy)',
+      'Cloud server deployment (AWS, GCP, DigitalOcean, or Vercel)',
+      'Nginx reverse proxy, automatic SSL certificates (Let\'s Encrypt)',
+      'Uptime telemetry, automated log rotation, and server alerts'
+    ],
+    tag: 'DevOps & Cloud'
+  },
+  {
+    id: 'ecommerce-custom-platform',
+    title: 'Custom E-Commerce Store & Payment Engine',
+    iconName: 'ShoppingBag',
+    shortDesc: 'Full-featured online store with inventory management, cart, checkout, and local/global payment gateways.',
+    fullDesc: 'Launch an online storefront that converts visitors into customers. Includes product catalogs with multi-variant options, coupon & discount engine, automated order invoicing, customer accounts, and automated integration with bKash, Nagad, SSLCommerz, Stripe, and PayPal.',
+    category: 'Development Services',
+    startingPrice: 1500,
+    typicalTurnaround: '7 - 14 Days',
+    deliverables: [
+      'Custom storefront with lightning-fast catalog search & filters',
+      'Shopping cart & multi-step secure checkout workflow',
+      'Payment gateway integrations (bKash, Nagad, SSLCommerz, Stripe)',
+      'Merchant admin dashboard for orders, stock & sales analytics',
+      'Automated SMS & Email order confirmation notifications'
+    ],
+    tag: 'E-Commerce'
+  },
+
+  // 3. WORDPRESS SOLUTIONS
+  {
+    id: 'custom-wordpress-dev',
+    title: 'Custom WordPress Theme & Site Development',
+    iconName: 'Globe',
+    shortDesc: 'Tailored WordPress websites, custom PHP/Block themes, Gutenberg blocks, and seamless CMS architectures.',
+    fullDesc: 'Ditch bloated third-party themes. We build lightweight, ultra-fast, custom WordPress themes precisely matching your Figma designs. Fully editable from the WP admin without breaking, optimized for Core Web Vitals, and built with modern PHP 8+ and clean modular architecture.',
+    category: 'WordPress Services',
+    startingPrice: 450,
+    typicalTurnaround: '3 - 7 Days',
+    deliverables: [
+      '100% custom lightweight WordPress theme matching Figma design',
+      'Gutenberg / Elementor editable custom section blocks',
+      'Mobile-first responsive styling and cross-browser testing',
+      'Essential SEO, security & automated backup configuration',
+      'Client video walkthrough on how to edit and manage content'
+    ],
+    tag: 'WordPress Core'
+  },
+  {
+    id: 'figma-to-wordpress',
+    title: 'Figma to WordPress / Elementor / Bricks Builder Conversion',
+    iconName: 'Layers',
+    shortDesc: 'Pixel-perfect conversion of Figma UI designs into clean, editable WordPress pages without bloat.',
+    fullDesc: 'Transform your Figma, Adobe XD, or Sketch designs into clean, high-performance WordPress pages using Elementor Pro, Bricks Builder, or Gutenberg blocks. Every layout is 100% responsive, optimized for fast loading, and easy for non-technical team members to edit.',
+    category: 'WordPress Services',
+    startingPrice: 350,
+    typicalTurnaround: '3 - 5 Days',
+    deliverables: [
+      'Pixel-perfect Figma to WordPress conversion with 100% fidelity',
+      'Clean DOM structure without unnecessary wrapper bloat',
+      'Fully responsive across mobile, tablet, and widescreen desktops',
+      'Global typography and color palette configuration',
+      'Basic on-page SEO tags and asset image optimization'
+    ],
+    tag: 'Pixel Perfect'
+  },
+  {
+    id: 'woocommerce-store-dev',
+    title: 'WooCommerce E-Commerce Store & Gateway Setup',
+    iconName: 'ShoppingBag',
+    shortDesc: 'Turnkey WooCommerce online shops with Bangladeshi & international payment gateways, shipping, and inventory.',
+    fullDesc: 'Complete WooCommerce store setup built to drive online sales. Includes product catalog setup, variable attributes, cart & customized checkout pages, coupon systems, and seamless integration with bKash, Nagad, Rocket, SSLCommerz, Pathao/Steadfast couriers, and Stripe.',
+    category: 'WordPress Services',
+    startingPrice: 600,
+    typicalTurnaround: '4 - 9 Days',
+    deliverables: [
+      'Complete WooCommerce installation, theme & catalog setup',
+      'bKash, Nagad, Rocket, Card & Cash on Delivery payment gateways',
+      'Courier shipping calculator & order tracking setup',
+      'Customized frictionless one-page checkout option',
+      'Inventory stock management and low-stock alerts'
+    ],
+    tag: 'WooCommerce'
+  },
+  {
+    id: 'lms-membership-portal',
+    title: 'LMS (E-Learning) & Membership Portal on WordPress',
+    iconName: 'GraduationCap',
+    shortDesc: 'Complete video course platform, student quizzes, certificates, and recurring membership paywalls.',
+    fullDesc: 'Build your own Udemy or Coursera-style e-learning platform or exclusive membership community on WordPress using Tutor LMS, LearnDash, or MemberPress. Includes video security, lesson progression, quizzes, certificates, and bKash/Card payment integrations.',
+    category: 'WordPress Services',
+    startingPrice: 750,
+    typicalTurnaround: '5 - 10 Days',
+    deliverables: [
+      'Complete LMS setup (Tutor LMS / LearnDash / MemberPress)',
+      'Protected video lessons with secure embedding (Vimeo/BunnyCDN/YouTube)',
+      'Interactive student quizzes, assignments, and auto-generated certificates',
+      'Payment gateway setup (bKash, Nagad, Stripe) for single or subscription courses',
+      'Instructor & Student front-end account dashboards'
+    ],
+    tag: 'EdTech Solution'
+  },
+  {
+    id: 'multivendor-marketplace',
+    title: 'Multi-Vendor Marketplace Platform (Dokan / WCFM)',
+    iconName: 'ShoppingBag',
+    shortDesc: 'Amazon/Daraz-style multi-seller marketplace with vendor dashboards, automated commission splits, and payouts.',
+    fullDesc: 'Create a thriving multi-seller e-commerce marketplace using Dokan Pro or WCFM. Vendors can register, upload their own products, manage inventory, and request payout withdrawals, while the platform owner earns automated commission on every sale.',
+    category: 'WordPress Services',
+    startingPrice: 950,
+    typicalTurnaround: '7 - 14 Days',
+    deliverables: [
+      'Multi-vendor platform setup with Dokan / WCFM on WooCommerce',
+      'Dedicated vendor registration, front-end dashboard, and store pages',
+      'Automated admin commission deduction per product category or vendor',
+      'Vendor payout withdrawal management (bKash, Bank, PayPal)',
+      'Customer product reviews and verified seller badges'
+    ],
+    tag: 'Marketplace'
+  },
+  {
+    id: 'wordpress-speed-security-fix',
+    title: 'WordPress Speed Optimization & Security Hardening',
+    iconName: 'Zap',
+    shortDesc: 'Boost Google PageSpeed scores to 90+, achieve sub-second load times, malware cleanup, and security lockdown.',
+    fullDesc: 'Transform slow, vulnerable WordPress websites into lightning-fast, fortress-secure platforms. We optimize databases, minify CSS/JS, configure Redis/LiteSpeed caching, implement WebP image compression, setup Cloudflare CDN, remove malware, and patch security vulnerabilities.',
+    category: 'WordPress Services',
+    startingPrice: 250,
+    typicalTurnaround: '24 - 48 Hours',
+    deliverables: [
+      'Google PageSpeed score boosted to 90+ (Desktop & Mobile)',
+      'Server TTFB (Time to First Byte) under 300ms',
+      'Image lossless compression & Next-Gen WebP delivery',
+      'Database table cleaning & transient sweep',
+      'Firewall configuration, brute-force protection & SSL lockdown'
+    ],
+    tag: 'Speed & Fix'
+  },
+  {
+    id: 'wordpress-monthly-retainer',
+    title: 'WordPress Maintenance, Backup & Security Retainer Support',
+    iconName: 'ShieldCheck',
+    shortDesc: 'Peace of mind for your WordPress website with weekly updates, cloud backups, 24/7 uptime monitoring & quick fixes.',
+    fullDesc: 'Keep your business website always online, updated, and secure. We handle core/plugin/theme updates on staging first to avoid crashes, run daily off-site cloud backups, monitor uptime every 60 seconds, remove security threats, and provide 3 hours of included monthly design/content tweaks.',
+    category: 'WordPress Services',
+    startingPrice: 199,
+    typicalTurnaround: 'Monthly Retainer',
+    deliverables: [
+      'Weekly safe plugin, theme, and WordPress core updates with staging tests',
+      'Daily automated off-site cloud backups (Google Drive / AWS S3)',
+      '24/7 uptime monitoring with instant downtime alert response',
+      'Continuous security scans, malware cleanup, and firewall protection',
+      '3 hours of complimentary content/banner/design adjustments every month'
+    ],
+    tag: 'Care Plan'
+  },
+
+  // 4. DATA ANALYSIS & BI
+  {
+    id: 'bi-interactive-dashboard',
+    title: 'Interactive BI Dashboards (Power BI / Tableau / Streamlit)',
+    iconName: 'BarChart2',
+    shortDesc: 'Dynamic executive dashboards, real-time KPI trackers, interactive filters, and visual business reporting.',
+    fullDesc: 'Turn raw, fragmented business datasets into actionable intelligence. We build intuitive, interactive dashboards in Power BI, Tableau, or Streamlit with dynamic slicers, DAX calculated measures, trend forecasts, executive summary views, and automated refresh pipelines.',
+    category: 'Data Analysis',
+    startingPrice: 450,
+    typicalTurnaround: '3 - 7 Days',
+    deliverables: [
+      'Interactive Power BI (.pbix) / Tableau workbook / Streamlit app',
+      'Complex DAX / Calculated fields and KPI card indicators',
+      'Automated scheduled data refresh and source connector setup',
+      'Executive summary page with exportable PDF/Excel views',
+      'User guide documentation on navigating and filtering insights'
+    ],
+    tag: 'BI Flagship'
+  },
+  {
+    id: 'ecommerce-rfm-analytics',
+    title: 'Customer Analytics & RFM Segmentation for E-Commerce',
+    iconName: 'Users',
+    shortDesc: 'Customer Lifetime Value (CLV), churn prediction, RFM clustering, and actionable marketing cohorts.',
+    fullDesc: 'Identify your most valuable shoppers and stop customer churn. We analyze historical transactions to calculate Recency, Frequency, and Monetary (RFM) scores, Customer Lifetime Value (CLV), repurchase cycles, and produce targeted customer cohorts for email and SMS marketing campaigns.',
+    category: 'Data Analysis',
+    startingPrice: 500,
+    typicalTurnaround: '3 - 6 Days',
+    deliverables: [
+      'RFM customer segmentation model (Champions, Loyal, At-Risk, Lost)',
+      'Customer Lifetime Value (CLV) distribution and cohort retention heatmaps',
+      'Actionable customer list exports tagged for Meta Ads and SMS campaigns',
+      'Interactive Power BI / Python dashboard for customer segment tracking',
+      'Executive summary with 5 high-impact marketing recommendations'
+    ],
+    tag: 'E-Com Growth'
+  },
+  {
+    id: 'excel-sheets-automation',
+    title: 'Automated Reporting & Google Sheets / Excel VBA Automation',
     iconName: 'FileSpreadsheet',
-    shortDesc: 'Dynamic Pivot tables, XLOOKUP, What-If scenarios, Solver optimization & automated VBA macros.',
-    fullDesc: 'Professional Excel spreadsheet modeling and analytical automation for MBA assignments, business plans, and corporate accounting. Complex nested formula structures, dynamic pivot dashboards, discounted cash flow (DCF) valuations, sensitivity matrices, and automated VBA macros.',
+    shortDesc: 'Automate daily manual spreadsheet tasks with custom Apps Script, VBA macros, dynamic formulas, and PDF reports.',
+    fullDesc: 'Eliminate hours of repetitive manual data entry. We write robust Google Apps Scripts and Excel VBA macros to automatically import, transform, format, validate, and email PDF reports to management on a daily or weekly schedule.',
+    category: 'Data Analysis',
+    startingPrice: 250,
+    typicalTurnaround: '2 - 4 Days',
+    deliverables: [
+      'Automated Google Apps Script or Excel VBA macro file (.xlsm / Google Sheet)',
+      'One-click data cleanup, consolidation, and PDF report generator',
+      'Automated scheduled email dispatch with PDF attachments',
+      'Advanced formula architecture (QUERY, INDEX/MATCH, LAMBDA, ARRAYFORMULA)',
+      'Video walkthrough demonstrating how the automation runs'
+    ],
+    tag: 'Fast Automation'
+  },
+  {
+    id: 'financial-sales-forecasting',
+    title: 'Financial Modeling, Sales Forecasting & Valuation Dashboards',
+    iconName: 'TrendingUp',
+    shortDesc: 'Dynamic financial 3-statement models, runway burn rate, scenario simulations, and valuation decks.',
+    fullDesc: 'Build clean, transparent financial projections for startup fundraising or corporate budgeting. Includes connected 3-statement models (P&L, Balance Sheet, Cash Flow), dynamic scenario toggles (Best/Base/Worst case), runway burn analysis, and valuation benchmarks.',
     category: 'Data Analysis',
     startingPrice: 600,
-    typicalTurnaround: '6 - 18 Hours',
+    typicalTurnaround: '4 - 8 Days',
     deliverables: [
-      'Error-Free Formatted Excel Workbook (.xlsx / .xlsm)',
-      'Dynamic Pivot Tables, Slicers & Timeline Filter Dashboards',
-      'XLOOKUP, Nested INDEX-MATCH, SUMIFS & Complex Logic Formulas',
-      'What-If Scenario Manager, Goal Seek & Solver Optimization Models',
-      'Corporate Presentation Charts (Waterfall, Tornado, Combo Visuals)',
-      'Custom VBA Macro Automation Routines (as requested)'
+      'Dynamic 3-statement financial projection model in Excel / Google Sheets',
+      'Scenario analysis toggle (Base, Conservative, Aggressive revenue cases)',
+      'Cash flow runway tracker and monthly burn rate visual charts',
+      'Discounted Cash Flow (DCF) & revenue multiple valuation summaries',
+      'Investor-ready executive summary sheet with key SaaS/unit metrics'
     ],
-    subServices: [
-      {
-        id: 'excel-pivot-formula',
-        title: 'Pivot Dashboards & Advanced Formulas',
-        price: 600,
-        turnaround: '6 - 12 Hours',
-        recommendedFor: 'Data organization, sales summary & student coursework',
-        deliverables: [
-          'Clean Pivot Summary Tables & Charts',
-          'XLOOKUP & Dynamic Array Calculations',
-          'Conditional Color Formatting & Dropdown Validations'
-        ]
-      },
-      {
-        id: 'excel-financial-valuation',
-        title: 'Financial Valuation & Budgeting Model',
-        price: 1200,
-        turnaround: '12 - 24 Hours',
-        recommendedFor: 'MBA finance projects, startup pitch decks & DCF models',
-        deliverables: [
-          '3-Statement Integrated Model (P&L, Balance Sheet, Cash Flow)',
-          'DCF Valuation & WACC Sensitivity Analysis',
-          'Break-Even & Scenario Matrix Tables'
-        ]
-      }
-    ],
-    tag: 'Fast Turnaround'
+    tag: 'Finance & CFO'
   },
   {
-    id: 'data-research-survey',
-    title: 'Survey Data Cleaning & Qualitative Analysis',
-    iconName: 'Search',
-    shortDesc: 'Likert scale cleaning, demographic profiling, outlier purging & NVivo thematic coding.',
-    fullDesc: 'Specialized data sanitization and thematic analysis for academic research questionnaires and interviews. Cleans raw exports from Google Forms, KoboToolbox, Qualtrics, handles reverse-coded Likert questions, cross-tabulates demographics, and executes NVivo thematic coding for qualitative datasets.',
+    id: 'nlp-sentiment-analytics',
+    title: 'NLP & Customer Feedback Sentiment Intelligence',
+    iconName: 'MessageSquare',
+    shortDesc: 'Automated sentiment scoring on product reviews, support tickets, and social mentions with BERT/Python.',
+    fullDesc: 'Mine unstructured customer text to uncover what your users really think. Using Natural Language Processing (BERT, VADER, RoBERTa), we scrape, clean, and classify thousands of customer reviews or support transcripts to highlight product pain points, sentiment trends, and feature requests.',
     category: 'Data Analysis',
-    startingPrice: 700,
-    typicalTurnaround: '12 - 24 Hours',
+    startingPrice: 450,
+    typicalTurnaround: '3 - 6 Days',
     deliverables: [
-      'Sanitized & Formatted Survey Dataset (.xlsx / .sav / .csv)',
-      'Reverse-Coded Item Scoring & Variable Codebook Documentation',
-      'Demographic Frequency Tables & Chi-Square Cross-Tabulations',
-      'Qualitative Open-Ended Interview Thematic Coding Matrix',
-      'Descriptive Methodology Section Summary Writeup',
-      'Outlier & Incomplete Response Purging Audit'
+      'Cleaned NLP dataset with positive, neutral, and negative sentiment scores',
+      'Topic modeling (LDA / BERTopic) identifying key customer complaint themes',
+      'Interactive visual sentiment trends over time with WordClouds and heatmaps',
+      'Documented Python Jupyter Notebook (.ipynb) with complete NLP pipeline',
+      'Executive action report on key product and customer experience issues'
     ],
-    subServices: [
-      {
-        id: 'survey-quant-cleaning',
-        title: 'Survey Coding & Cross-Tabulation',
-        price: 700,
-        turnaround: '12 Hours',
-        recommendedFor: 'Google Forms / KoboToolbox raw survey exports',
-        deliverables: [
-          'Numerical Variable Coding & Label Dictionary',
-          'Demographic Frequency Breakdown Tables',
-          'Clean Publication Bar & Pie Charts'
-        ]
-      },
-      {
-        id: 'survey-qual-thematic',
-        title: 'Qualitative Thematic Analysis (NVivo)',
-        price: 1100,
-        turnaround: '24 Hours',
-        recommendedFor: 'In-depth interviews & focus group discussions',
-        deliverables: [
-          'Transcript Coding & Node Categorization',
-          'Theme Hierarchy Diagrams & Quotation Matrix',
-          'Methodological Thematic Summary Writeup'
-        ]
-      }
-    ],
-    tag: 'Research'
+    tag: 'NLP & Text AI'
   },
   {
-    id: 'data-scraping-automation',
-    title: 'Web Scraping, Data Mining & Pipelines',
+    id: 'eda-statistical-modeling',
+    title: 'Exploratory Data Analysis (EDA) & Statistical Insights',
+    iconName: 'TrendingUp',
+    shortDesc: 'In-depth Python/R statistical analysis, data cleaning, correlation matrices, and comprehensive insight reports.',
+    fullDesc: 'Deep-dive statistical analysis on your company or survey datasets. We clean messy raw data, handle outliers and missing values, perform hypothesis testing, build correlation distributions, and deliver clear visual conclusions with Jupyter Notebooks and executive summaries.',
+    category: 'Data Analysis',
+    startingPrice: 350,
+    typicalTurnaround: '3 - 6 Days',
+    deliverables: [
+      'Cleaned, normalized dataset (CSV, XLSX, SQL dump)',
+      'Documented Jupyter Notebook (.ipynb) with Python (Pandas/Seaborn/Plotly)',
+      'Statistical distribution charts, heatmaps & correlation analysis',
+      'Executive insights presentation summarizing actionable findings',
+      'Reproducible clean data processing scripts'
+    ]
+  },
+  {
+    id: 'ml-predictive-modeling',
+    title: 'Machine Learning & Predictive Analytics Pipeline',
+    iconName: 'Cpu',
+    shortDesc: 'Custom ML models for customer churn, sales forecasting, classification, NLP, and automated prediction APIs.',
+    fullDesc: 'Leverage machine learning to predict business outcomes. We engineer features, train and benchmark classification/regression models (Scikit-Learn, XGBoost, TensorFlow, PyTorch), evaluate ROC-AUC/RMSE metrics, and deploy lightweight inference APIs (FastAPI/Flask).',
+    category: 'Data Analysis',
+    startingPrice: 850,
+    typicalTurnaround: '5 - 10 Days',
+    deliverables: [
+      'Trained and validated ML model (.pkl / .onnx / .h5)',
+      'Feature importance analysis & model explainability (SHAP values)',
+      'Model performance benchmarking report (Accuracy, Precision, Recall, F1)',
+      'FastAPI / Flask endpoint for live real-time prediction queries',
+      'Complete training pipeline & Docker configuration'
+    ],
+    tag: 'Advanced AI'
+  },
+  {
+    id: 'web-scraping-etl-automation',
+    title: 'Web Scraping & Automated ETL Pipelines',
     iconName: 'Database',
-    shortDesc: 'Automated data extraction using Python BeautifulSoup, Selenium, Scrapy & clean CSV/JSON pipelines.',
-    fullDesc: 'Automated web scraping and data harvesting tailored for research datasets, market intelligence, directory aggregation, and competitor pricing. Built using Python BeautifulSoup, Scrapy, and Selenium with anti-bot rate-limiting and structured CSV/JSON/SQL output.',
+    shortDesc: 'Automated data extraction from complex websites, APIs, PDF reports into clean structured databases.',
+    fullDesc: 'Extract high-value market, pricing, lead, and competitor data at scale. Using Python (Scrapy, Playwright, BeautifulSoup, Selenium), we build robust scrapers with proxy rotation, anti-bot bypass, data validation, and automated exports into PostgreSQL, MongoDB, or Google Sheets.',
     category: 'Data Analysis',
-    startingPrice: 1000,
-    typicalTurnaround: '12 - 36 Hours',
+    startingPrice: 300,
+    typicalTurnaround: '2 - 4 Days',
     deliverables: [
-      'Sanitized & Normalized Dataset Output (CSV / Excel / JSON / SQL)',
-      'Complete Python Web Scraping Script & Executable Notebook',
-      'E-Commerce Catalogs, Pricing, Reviews, Emails & Image Links Extraction',
-      'Dynamic JavaScript Pagination & Infinite Scroll Handling via Selenium',
-      'Duplicate Purging & Regular Expression Data Sanitization',
-      'Scheduled Automation Cron Guide & Database Integration'
-    ],
-    subServices: [
-      {
-        id: 'scraping-ecommerce-leads',
-        title: 'E-Commerce & Directory Scraping',
-        price: 1000,
-        turnaround: '12 - 18 Hours',
-        recommendedFor: 'Product pricing, competitor research & business leads',
-        deliverables: [
-          '1,000 to 50,000+ Clean Extracted Rows',
-          'Product Titles, Pricing, Specs, Ratings & Media Links',
-          'Structured Excel / CSV File Delivery'
-        ]
-      },
-      {
-        id: 'scraping-selenium-custom',
-        title: 'Dynamic Selenium Scraper & Bot',
-        price: 1600,
-        turnaround: '24 - 36 Hours',
-        recommendedFor: 'JavaScript dynamic platforms, authentication & custom forms',
-        deliverables: [
-          'Headless Selenium Crawler with Session Storage',
-          'Automated Dropdown Interactions & Pagination Traversal',
-          'Reusable Python Source Code & Video Tutorial'
-        ]
-      }
-    ],
-    tag: 'Automated'
+      'Structured, deduplicated dataset in CSV, JSON, or SQL format',
+      'Automated scraping script with error handling & retry logic',
+      'Proxy rotation & pagination handling for large-scale data pulls',
+      'Scheduled cron job or cloud trigger setup (AWS Lambda / GitHub Actions)',
+      'Comprehensive documentation on running and scaling the scraper'
+    ]
   }
 ];
 
 export const PROBLEM_TRIGGERS: ProblemTrigger[] = [
   {
-    id: 'design-flyer-ppt',
-    text: "Need presentation slides or event poster design",
-    serviceId: 'presentation-ppt-design',
-    icon: 'Presentation',
-    description: 'Custom slide decks, defense presentations, and event banners designed with professional aesthetics.',
-    defaultExpectation: 'Need polished presentation slides for class defense and matching event promotional creatives.'
+    id: 'triage-1',
+    text: 'I need a modern SaaS web app or custom frontend in React / Next.js',
+    serviceId: 'custom-fullstack-webapp',
+    icon: 'Code',
+    description: 'Scalable full-stack web engineering, clean TypeScript code, responsive Tailwind design, and database architecture.',
+    defaultCourse: 'Full-Stack Web App',
+    defaultExpectation: 'Production-ready web application with authentication and cloud deployment'
   },
   {
-    id: 'portfolio-website',
-    text: "Want a modern personal portfolio or club website",
-    serviceId: 'personal-portfolio-website',
-    icon: 'Globe',
-    description: 'Fast, responsive, modern websites showcasing your skills, projects, or student club events.',
-    defaultExpectation: 'Need a fast React/Next.js personal portfolio with live demo links and custom domain deployment.'
+    id: 'triage-mobile-app',
+    text: 'I need a cross-platform mobile app (iOS & Android)',
+    serviceId: 'mobile-app-development',
+    icon: 'Smartphone',
+    description: 'Native-feel mobile apps built with React Native or Flutter, push notifications, and backend API integration.',
+    defaultCourse: 'Cross-Platform Mobile App',
+    defaultExpectation: 'Production build APK/IPA packages with Firebase notifications and store submission setup'
   },
   {
-    id: 'final-year-project',
-    text: "My final year capstone project is stuck",
-    serviceId: 'final-year-project-guidance',
-    icon: 'CheckSquare',
-    description: 'Architectural troubleshooting, backend/frontend integration, or ML model guidance.',
-    defaultExpectation: 'Need help resolving architecture bottlenecks, dataset integration, and preparing the SRS report.'
+    id: 'triage-ai-llm',
+    text: 'I want to integrate an AI agent or LLM chatbot (Gemini / OpenAI)',
+    serviceId: 'ai-llm-integration',
+    icon: 'Cpu',
+    description: 'RAG on company documents, conversational customer support bot, and automated generative workflows.',
+    defaultCourse: 'AI Agent & LLM Chatbot Integration',
+    defaultExpectation: 'Embeddable web chat widget trained on custom data with API rate-limiting'
   },
   {
-    id: 'programming-debugging',
-    text: "I have a lab task / coding error",
-    serviceId: 'programming-support',
-    icon: 'Terminal',
-    description: 'Live debugging, logic explanation, and algorithm walkthrough for your CSE/EEE labs.',
-    defaultExpectation: 'Code has logic bugs/runtime errors; need step-by-step guidance on how to fix and explain in lab viva.'
+    id: 'triage-2',
+    text: 'I need high-converting UI/UX design & interactive Figma prototypes',
+    serviceId: 'ui-ux-design',
+    icon: 'Layout',
+    description: 'Pixel-perfect mobile & web interfaces, design tokens, clickable user flows, and developer handoff specs.',
+    defaultCourse: 'UI/UX Product Design',
+    defaultExpectation: 'Interactive Figma prototype with responsive layouts and component library'
   },
   {
-    id: 'research-formatting',
-    text: "Need IEEE / Springer research paper formatting",
-    serviceId: 'research-paper-formatting',
-    icon: 'FileCheck',
-    description: 'Strict IEEE, Springer, ACM, and APA standard LaTeX / Word paper formatting.',
-    defaultExpectation: 'Need paper formatted in IEEE two-column LaTeX style with verified citations and clear diagrams.'
+    id: 'triage-mobile-ui',
+    text: 'I need native mobile app UI/UX design (iOS & Android)',
+    serviceId: 'mobile-app-uiux',
+    icon: 'Smartphone',
+    description: 'Apple Human Interface & Material 3 designs, thumb flows, micro-interactions, and 15-30+ screens.',
+    defaultCourse: 'Mobile App UI/UX Design',
+    defaultExpectation: 'Figma prototype with responsive mobile layouts and developer asset specs'
   },
   {
-    id: 'ats-resume-linkedin',
-    text: "Need ATS-friendly resume & LinkedIn revamp",
-    serviceId: 'cv-resume-design',
-    icon: 'FileText',
-    description: 'High-impact ATS-friendly resume formatting and LinkedIn optimization for job applications.',
-    defaultExpectation: 'Professional resume design with clean layout, keyword optimization, and LaTeX/Word editable source.'
-  },
-  {
-    id: 'ecommerce-web-app',
-    text: "Need custom web application / e-commerce portal",
-    serviceId: 'business-ecommerce-website',
-    icon: 'ShoppingBag',
-    description: 'Full-stack web applications with bKash/Nagad payment gateways, admin panels, and databases.',
-    defaultExpectation: 'Need full-stack web application with secure backend, database schema, and payment integration.'
-  },
-  {
-    id: 'plagiarism-check',
-    text: "Need Turnitin plagiarism check & proofreading",
-    serviceId: 'plagiarism-check-assistance',
-    icon: 'Search',
-    description: 'Turnitin similarity report analysis, ethical paraphrasing, and citation corrections.',
-    defaultExpectation: 'Need similarity report breakdown with citation check and guidance to lower similarity index.'
-  },
-  {
-    id: 'figma-ui-ux-trigger',
-    text: "Need Figma UI/UX prototype & app/web design",
-    serviceId: 'figma-design',
-    icon: 'Figma',
-    description: 'Interactive wireframing, mobile app & web screens, design systems, and clickable prototype testing.',
-    defaultExpectation: 'Need high-fidelity Figma UI/UX screens with interactive prototyping, component design system, and developer assets.'
-  },
-  {
-    id: 'wordpress-site-trigger',
-    text: "Need WordPress website / WooCommerce online shop",
-    serviceId: 'wordpress-development',
-    icon: 'Wordpress',
-    description: 'Elementor Pro/Gutenberg design, e-commerce setup, local bKash/Nagad checkout, and speed optimization.',
-    defaultExpectation: 'Need complete responsive WordPress site with modern layout, payment gateways, and drag-and-drop admin panel.'
-  },
-  {
-    id: 'wordpress-speed-malware-trigger',
-    text: "WordPress site is slow, hacked, or has malware",
-    serviceId: 'wordpress-speed-seo',
+    id: 'triage-saas-mvp',
+    text: 'I need to rapidly launch a SaaS MVP in 14 days',
+    serviceId: 'saas-mvp-sprint',
     icon: 'Zap',
-    description: '90+ Google PageSpeed boost, Core Web Vitals optimization, hack cleanup, and Wordfence firewall.',
-    defaultExpectation: 'Need urgent WordPress speed optimization to score 90+ PageSpeed and eliminate all malware/backdoors.'
+    description: 'Next.js App Router + Supabase + Stripe/bKash billing + Auth launched quickly for paying users.',
+    defaultCourse: 'Rapid SaaS MVP Sprint',
+    defaultExpectation: 'Live deployed web application ready to accept paying subscribers'
   },
   {
-    id: 'data-analysis-trigger',
-    text: "Need SPSS / R statistical thesis analysis & hypothesis testing",
-    serviceId: 'data-analysis',
-    icon: 'LineChart',
-    description: 'Data cleaning, ANOVA, T-Tests, regression modeling, APA-7 tables, and findings interpretation.',
-    defaultExpectation: 'Need statistical data analysis in SPSS/R, clean dataset, high-res publication charts, and detailed APA interpretation report.'
+    id: 'triage-3',
+    text: 'I need a fast WordPress website or WooCommerce online store',
+    serviceId: 'custom-wordpress-dev',
+    icon: 'Globe',
+    description: 'Custom theme coding, WooCommerce checkout setup, bKash/Nagad payment gateways, and 90+ PageSpeed score.',
+    defaultCourse: 'WordPress / WooCommerce Website',
+    defaultExpectation: 'Custom WordPress site with easy content editing and mobile responsiveness'
   },
   {
-    id: 'data-python-ml-trigger',
-    text: "Need Python Machine Learning, EDA or Power BI dashboard",
-    serviceId: 'data-python-eda-ml',
-    icon: 'Binary',
-    description: 'Pandas/Seaborn EDA, predictive ML models, confusion matrices, and interactive Power BI drill-through dashboards.',
-    defaultExpectation: 'Need documented Jupyter Notebook with clean EDA visuals, machine learning model benchmarks, and interactive KPI visuals.'
+    id: 'triage-figma-wp',
+    text: 'I want to convert my Figma design into WordPress / Elementor / Bricks',
+    serviceId: 'figma-to-wordpress',
+    icon: 'Layers',
+    description: 'Pixel-perfect conversion with clean DOM, fast loading speed, and easy visual content editing.',
+    defaultCourse: 'Figma to WordPress Conversion',
+    defaultExpectation: '100% pixel-perfect responsive WordPress website matching Figma designs'
+  },
+  {
+    id: 'triage-lms-platform',
+    text: 'I want an online course (LMS) or membership site on WordPress',
+    serviceId: 'lms-membership-portal',
+    icon: 'GraduationCap',
+    description: 'Video courses, quizzes, certificates, and recurring subscription paywalls with local payment gateways.',
+    defaultCourse: 'LMS E-Learning & Membership Platform',
+    defaultExpectation: 'Complete LMS platform with protected video lessons and bKash/Card payments'
+  },
+  {
+    id: 'triage-wp-speed',
+    text: 'My WordPress site is slow or needs speed optimization and security',
+    serviceId: 'wordpress-speed-security-fix',
+    icon: 'Zap',
+    description: 'Sub-second load times, Core Web Vitals optimization, database cleaning, CDN, and malware removal.',
+    defaultCourse: 'WordPress Speed & Security Optimization',
+    defaultExpectation: 'Google PageSpeed 90+ score and complete security lockdown'
+  },
+  {
+    id: 'triage-4',
+    text: 'I need Power BI / Tableau dashboards or business data analytics',
+    serviceId: 'bi-interactive-dashboard',
+    icon: 'BarChart2',
+    description: 'Transform complex raw data into interactive KPI dashboards, trend forecasting, and executive reporting.',
+    defaultCourse: 'Business Intelligence Dashboard',
+    defaultExpectation: 'Interactive Power BI / Tableau workbook with DAX measures and automated refresh'
+  },
+  {
+    id: 'triage-rfm-analytics',
+    text: 'I need e-commerce customer analytics & RFM segmentation',
+    serviceId: 'ecommerce-rfm-analytics',
+    icon: 'Users',
+    description: 'Customer Lifetime Value (CLV), churn prevention, RFM clustering, and marketing cohorts.',
+    defaultCourse: 'Customer RFM Analytics',
+    defaultExpectation: 'Customer segment cohorts with actionable insights for retargeting campaigns'
+  },
+  {
+    id: 'triage-sheets-automation',
+    text: 'I want to automate Google Sheets / Excel reports with Apps Script / VBA',
+    serviceId: 'excel-sheets-automation',
+    icon: 'FileSpreadsheet',
+    description: 'One-click data cleanup, automated daily PDF report emails, and advanced formula modeling.',
+    defaultCourse: 'Excel / Google Sheets Automation',
+    defaultExpectation: 'Automated spreadsheet script eliminating manual repetitive data entry'
+  },
+  {
+    id: 'triage-5',
+    text: 'I need machine learning models, Python data science, or web scraping',
+    serviceId: 'ml-predictive-modeling',
+    icon: 'Cpu',
+    description: 'Predictive analytics, statistical distributions, customer segmentation, and automated data extraction.',
+    defaultCourse: 'Data Science & Machine Learning',
+    defaultExpectation: 'Jupyter Notebook with cleaned data, trained model, and evaluation report'
   }
 ];
 
-export const INITIAL_REQUESTS: SupportRequest[] = [
+export const MOCK_MENTORS: Mentor[] = [
   {
-    id: 'NX-2026-00125',
-    studentId: 'user-std-1',
-    studentName: 'Md. Ehsanur Rahaman',
-    studentEmail: 'ehsan.cse@pundra.edu.bd',
-    studentPhone: '+880 1712-345678',
-    studentWhatsApp: '+880 1712-345678',
-    studentFacebook: 'https://facebook.com/ehsanur.rahaman',
-    university: 'Pundra University of Science and Technology (PUB)',
-    department: 'Computer Science & Engineering (CSE)',
-    studentUniId: 'CSE-2021-042',
-    batch: 'Batch 18',
-    semester: '8th Semester',
-    serviceId: 'final-year-project-guidance',
-    serviceTitle: 'Final Year Project Guidance',
-    courseName: 'Capstone Project & Defense',
-    courseCode: 'CSE-4200',
-    teacherName: 'Dr. Shah Alam',
-    academicLevel: '4th Year',
-    problemStatement: 'Working on "Deep Learning for Bangla Handwritten Text Recognition". I have gathered raw data from CMATERdb but struggling with transformer-based sequence modeling (TrOCR) and evaluation metrics (WER/CER). Need step-by-step guidance on methodology and writing chapter 3.',
-    whatDoneSoFar: 'Collected 10,000 image samples, resized and augmented. Ran a baseline CNN but accuracy is under 70%.',
-    expectedOutcome: 'Understand how to adapt pre-trained vision encoder-decoder models, calculate CER/WER correctly, and outline Chapter 3 & 4.',
-    deadline: '2026-08-28',
-    preferredContact: 'WhatsApp',
-    preferredTime: 'Evening',
-    expectedBudget: '৳1,000 – ৳3,000',
-    agreedPrice: 2200,
-    attachments: [
-      {
-        id: 'att-1',
-        name: 'Bangla_OCR_Proposal_Draft.pdf',
-        size: '2.4 MB',
-        type: 'PDF',
-        uploadedAt: '2026-08-19'
-      }
-    ],
-    assignedMentorId: 'mentor-1',
-    assignedMentorName: 'Tanvir Ahmed (BUET ML Researcher)',
-    status: 'in_progress',
-    paymentStatus: 'paid',
-    paymentDetails: {
-      id: 'pay-1',
-      requestId: 'NX-2026-00125',
-      amount: 2200,
-      method: 'bKash',
-      transactionId: '9K2L88X19B',
-      senderNumber: '01712345678',
-      status: 'verified',
-      submittedAt: '2026-08-19 14:30',
-      verifiedAt: '2026-08-19 14:45'
-    },
-    adminNotes: [
-      'Student contacted via WhatsApp. Shared baseline Colab notebook.',
-      'Assigned Tanvir Ahmed (BUET CSE alumni). 1st session completed on 20 Aug.'
-    ],
-    createdAt: '2026-08-19 12:10',
-    updatedAt: '2026-08-20 18:00'
+    id: 'lead-eng-1',
+    name: 'Md. Ahsanur Rahaman',
+    email: 'ahsanur@kraflyn.com',
+    phone: '+880 1712-345678',
+    whatsapp: '+880 1712-345678',
+    roleTitle: 'Co-Founder & Lead Full-Stack Architect',
+    roleTitleEn: 'Co-Founder & Lead Full-Stack Architect',
+    roleTitleBn: 'কো-ফাউন্ডার ও লিড ফুল-স্ট্যাক আর্কিটেক্ট',
+    companyOrOrg: 'Kraflyn Technologies',
+    domain: 'Full-Stack Web Engineering',
+    expertise: ['React', 'Next.js 14', 'TypeScript', 'Node.js', 'PostgreSQL', 'Cloud Infrastructure', 'System Architecture', 'REST & GraphQL APIs'],
+    skills: ['Next.js', 'React', 'Node.js', 'PostgreSQL', 'TypeScript', 'Docker', 'AWS', 'Tailwind CSS'],
+    experience: '6+ Years in Enterprise Web Engineering',
+    qualification: 'B.Sc. in Computer Science & Engineering',
+    availableTime: 'Full Time (24/7 Priority Lead)',
+    rating: 5.0,
+    completedProjects: 98,
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80',
+    bio: 'Lead architect directing large-scale SaaS platforms, React ecosystems, and database schemas with extreme focus on code maintainability and performance.',
+    bioEn: 'Architecting scalable web applications, microservices, and enterprise cloud solutions with clean code, sub-second latency, and rock-solid reliability.',
+    bioBn: 'স্কেলেবল ওয়েব অ্যাপ্লিকেশন, মাইক্রোসার্ভিস এবং ক্লাউড আর্কিটেকচার পরিচালনায় অভিজ্ঞ। ক্লিন কোড ও পারফরম্যান্স-ফার্স্ট ইঞ্জিনিয়ারিংয়ের বিশেষজ্ঞ।',
+    achievements: ['98+ Production Web Apps Delivered', '100% On-Time Sprint Record', 'Top Rated Technology Lead'],
+    badge: 'Co-Founder & Lead Architect',
+    featured: true,
+    location: 'Dhaka, Bangladesh',
+    github: 'https://github.com/kraflyn',
+    linkedIn: 'https://linkedin.com/company/kraflyn-tech',
+    portfolio: 'https://kraflyn.com'
+  },
+  {
+    id: 'lead-ds-1',
+    name: 'Md. Masjidul Islam',
+    email: 'masjidul@kraflyn.com',
+    phone: '+880 1611-778899',
+    whatsapp: '+880 1611-778899',
+    roleTitle: 'Lead Data Scientist & AI Systems Specialist',
+    roleTitleEn: 'Lead Data Scientist & AI Systems Specialist',
+    roleTitleBn: 'লিড ডাটা সায়েন্টিস্ট ও এআই সিস্টেমস স্পেশালিস্ট',
+    companyOrOrg: 'Kraflyn Technologies',
+    domain: 'Data Analysis & BI',
+    expertise: ['Power BI', 'Tableau', 'Python', 'Pandas', 'Machine Learning', 'SQL Analytics', 'ETL Pipelines', 'Statistical Modeling', 'DAX Calculations'],
+    skills: ['Power BI', 'Python', 'Tableau', 'SQL Server', 'Pandas', 'Scikit-Learn', 'ETL Pipelines', 'DAX'],
+    experience: '5+ Years in Data Analytics & AI Modeling',
+    qualification: 'M.Sc. in Data Science & Applied Statistics',
+    availableTime: '11:00 AM - 9:00 PM',
+    rating: 4.98,
+    completedProjects: 85,
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80',
+    bio: 'Transforms complex business data into executive Power BI/Tableau dashboards, automated ETL pipelines, and predictive ML models for measurable business growth.',
+    bioEn: 'Empowering C-level executives with real-time business intelligence dashboards, automated reporting pipelines, and predictive statistical analytics.',
+    bioBn: 'বিজনেস ডাটাকে রূপান্তর করে এক্সিকিউটিভ Power BI ও Tableau ড্যাশবোর্ড এবং প্রেডিক্টিভ অ্যানালিটিক্যাল মডেল তৈরি করেন।',
+    achievements: ['85+ Enterprise BI Dashboards Delivered', 'Published AI Researcher', 'Automated 100+ Data Pipelines'],
+    badge: 'Data Intelligence Lead',
+    featured: true,
+    location: 'Dhaka, Bangladesh',
+    linkedIn: 'https://linkedin.com/company/kraflyn-tech',
+    github: 'https://github.com/kraflyn'
+  },
+  {
+    id: 'lead-wp-1',
+    name: 'Md. Atikur Rahman',
+    email: 'atikur@kraflyn.com',
+    phone: '+880 1933-445566',
+    whatsapp: '+880 1933-445566',
+    roleTitle: 'Senior Web Architect & CMS Specialist',
+    roleTitleEn: 'Senior Web Architect & CMS Specialist',
+    roleTitleBn: 'সিনিয়র ওয়েব আর্কিটেক্ট ও সিএমএস স্পেশালিস্ট',
+    companyOrOrg: 'Kraflyn Technologies',
+    domain: 'WordPress Solutions',
+    expertise: ['Custom WordPress', 'PHP 8', 'WooCommerce', 'Payment Gateways', 'Speed Optimization', 'Security Hardening', 'Gutenberg Blocks', 'Database Tuning'],
+    skills: ['WordPress', 'PHP 8.2', 'WooCommerce', 'Payment Gateways', 'MySQL', 'Redis Cache', 'REST API'],
+    experience: '5+ Years in CMS & Store Architecture',
+    qualification: 'B.Sc. in Software Engineering',
+    availableTime: '12:00 PM - 10:00 PM',
+    rating: 4.97,
+    completedProjects: 92,
+    avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80',
+    bio: 'Expert in developing lightweight custom WordPress themes, WooCommerce stores with international & local payment gateways, and sub-second speed optimization.',
+    bioEn: 'Building ultra-fast WooCommerce platforms, custom PHP theme architectures, and robust security setups with zero reliance on bloated page-builders.',
+    bioBn: 'কাস্টম পিএইচপি ৮ ওয়ার্ডপ্রেস থিম, দ্রুতগতির ই-কমার্স স্টোর এবং পেমেন্ট গেটওয়ে ইন্টিগ্রেশনে ৫+ বছরের অভিজ্ঞতা।',
+    achievements: ['90+ Live WooCommerce Stores', '95+ Google PageSpeed Score Specialist', 'Zero Security Breach Record'],
+    badge: 'WordPress & CMS Lead',
+    featured: true,
+    location: 'Dhaka, Bangladesh',
+    github: 'https://github.com/kraflyn',
+    linkedIn: 'https://linkedin.com/company/kraflyn-tech'
+  },
+  {
+    id: 'lead-des-1',
+    name: 'Mst. Somaiya Alom Asha',
+    email: 'somaiya@kraflyn.com',
+    phone: '+880 1822-998877',
+    whatsapp: '+880 1822-998877',
+    roleTitle: 'Lead UI/UX Designer & Product Strategist',
+    roleTitleEn: 'Lead UI/UX Designer & Product Strategist',
+    roleTitleBn: 'লিড UI/UX ডিজাইনার ও প্রোডাক্ট স্ট্র্যাটেজিস্ট',
+    companyOrOrg: 'Kraflyn Technologies',
+    domain: 'Design & UI/UX',
+    expertise: ['Figma', 'UI/UX Design', 'Design Systems', 'Mobile App UX', 'Brand Identity', 'Design Tokens', 'Micro-interactions', 'User Research'],
+    skills: ['Figma', 'Design Systems', 'Auto-Layout 5.0', 'Wireframing', 'Prototyping', 'Design Tokens', 'Adobe CC'],
+    experience: '5+ Years in Digital Product Design',
+    qualification: 'B.Des in Product Design & Multimedia',
+    availableTime: '10:00 AM - 8:00 PM',
+    rating: 4.99,
+    completedProjects: 89,
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80',
+    bio: 'Specialist in crafting high-conversion landing pages, complex SaaS web app interfaces, and cohesive design systems that bridge visual aesthetics with intuitive functionality.',
+    bioEn: 'Crafting user-centered interfaces, scalable Figma component libraries, and interactive SaaS prototypes that convert visitors into loyal customers.',
+    bioBn: 'উচ্চ রূপান্তরশীল ল্যান্ডিং পেজ, জটিল SaaS অ্যাপ্লিকেশন ইন্টারফেস এবং আধুনিক ফিগমা ডিজাইন সিস্টেম তৈরিতে পারদর্শী।',
+    achievements: ['85+ Figma Prototypes Delivered', 'Red Dot Design Recognition', '8 Complete Design Systems Built'],
+    badge: 'Design & Strategy Lead',
+    featured: true,
+    location: 'Dhaka, Bangladesh',
+    linkedIn: 'https://linkedin.com/company/kraflyn-tech',
+    portfolio: 'https://figma.com/@kraflyn'
+  }
+];
+
+export const MOCK_REVIEWS: Review[] = [
+  {
+    id: 'rev-1',
+    clientName: 'Mahmudur Rahman',
+    companyOrOrg: 'Apex Logistics & Freight',
+    serviceTitle: 'Custom Full-Stack Web Application',
+    rating: 5,
+    comment: 'Kraflyn Technologies developed our real-time shipment dispatch portal using Next.js and PostgreSQL. The code quality is top-notch, delivery was 3 days ahead of deadline, and the UI is incredibly snappy.',
+    date: '2026-08-18',
+    impactOutcome: '10x Faster Dispatch & Zero Downtime',
+    verified: true,
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 'rev-2',
+    clientName: 'Sarah Jenkins',
+    companyOrOrg: 'Aura Skincare Inc.',
+    serviceTitle: 'WooCommerce E-Commerce Store & Gateway Setup',
+    rating: 5,
+    comment: 'Our online store conversion rate jumped by 42% after Kraflyn redesigned and rebuilt our WooCommerce site. Payment integration with bKash and Stripe worked seamlessly right out of the box!',
+    date: '2026-08-14',
+    impactOutcome: '+42% Sales Conversion Rate',
+    verified: true,
+    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 'rev-3',
+    clientName: 'Tanvir Chowdhury',
+    companyOrOrg: 'Finova Insights Ltd.',
+    serviceTitle: 'Interactive BI Dashboards (Power BI)',
+    rating: 5,
+    comment: 'The Power BI dashboard built by Dr. Ariful gave our executive board instant visibility across 8 regional branches. Complex DAX calculations and automated data refresh are working flawlessly.',
+    date: '2026-08-10',
+    impactOutcome: 'Real-time Executive Visibility',
+    verified: true,
+    avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 'rev-4',
+    clientName: 'Nusrat Jahan',
+    companyOrOrg: 'TechBridge Ventures',
+    serviceTitle: 'UI/UX Design for Web & Mobile Apps',
+    rating: 5,
+    comment: 'Tasnim and the design team delivered a complete Figma design system for our SaaS platform with 25+ responsive screens. Clean auto-layouts, dark mode tokens, and pristine prototypes.',
+    date: '2026-08-04',
+    impactOutcome: 'Investor Seed Funding Secured',
+    verified: true,
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 'rev-5',
+    clientName: 'Rafiqul Islam',
+    companyOrOrg: 'Daily Bangla News Portal',
+    serviceTitle: 'WordPress Speed Optimization & Security Hardening',
+    rating: 5,
+    comment: 'Our news portal was suffering from 6-second load times under high traffic. Kraflyn optimized the database and caching, bringing load time down to 0.7 seconds with a 98 PageSpeed score!',
+    date: '2026-07-29',
+    impactOutcome: '98 Google PageSpeed Score',
+    verified: true,
+    avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&auto=format&fit=crop&q=80'
+  }
+];
+
+export const MOCK_PROJECTS: ProjectItem[] = [
+  {
+    id: 'proj-1',
+    title: 'PulseFlow - Enterprise Cloud SaaS CRM & Billing Platform',
+    category: 'Full-Stack Web',
+    clientOrStudentName: 'PulseFlow Global',
+    studentOrClient: 'PulseFlow Global',
+    universityOrOrg: 'SaaS & Cloud Platforms',
+    description: 'Comprehensive multi-tenant SaaS application featuring real-time client billing, recurring subscription engine, dynamic permission tiers, and automated analytics dashboard.',
+    technologies: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Prisma ORM', 'Stripe Billing', 'Docker'],
+    deliverables: ['Full Source Code Repository', 'Automated CI/CD Pipeline', 'Swagger API Documentation', 'Docker Production Compose'],
+    imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80',
+    liveDemoUrl: 'https://pulseflow-demo.kraflyn.app',
+    liveUrl: 'https://pulseflow-demo.kraflyn.app',
+    githubUrl: 'https://github.com/kraflyn/pulseflow-saas',
+    featured: true,
+    completionDate: '2026-08-15',
+    rating: 5,
+    gradeOutcome: 'Production Ready & Scaled to 50k Users',
+    price: 3500,
+    createdAt: '2026-08-15T10:00:00Z'
+  },
+  {
+    id: 'proj-2',
+    title: 'NovaPay - FinTech Mobile & Web Banking UI/UX Design System',
+    category: 'Design & UI/UX',
+    clientOrStudentName: 'NovaPay Technologies',
+    studentOrClient: 'NovaPay Technologies',
+    universityOrOrg: 'FinTech & Banking',
+    description: 'End-to-end design system and interactive prototype for modern digital banking. 40+ high-fidelity mobile and desktop screens with custom auto-layout components and micro-interactions.',
+    technologies: ['Figma', 'Design Systems', 'Auto-Layout 5.0', 'Prototyping', 'Design Tokens'],
+    deliverables: ['Complete Figma Source File', 'Component Library & Tokens', 'Clickable Flow Prototype', 'Developer Asset Kit'],
+    imageUrl: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&auto=format&fit=crop&q=80',
+    liveDemoUrl: 'https://figma.com/@kraflyn/novapay-ui',
+    liveUrl: 'https://figma.com/@kraflyn/novapay-ui',
+    featured: true,
+    completionDate: '2026-08-12',
+    rating: 5,
+    gradeOutcome: 'Secured $1.2M Pre-Seed Funding',
+    price: 1200,
+    createdAt: '2026-08-12T14:00:00Z'
+  },
+  {
+    id: 'proj-3',
+    title: 'Aura Luxe - High-Conversion WooCommerce E-Commerce Portal',
+    category: 'WordPress Solutions',
+    clientOrStudentName: 'Aura Lifestyle Brand',
+    studentOrClient: 'Aura Lifestyle Brand',
+    universityOrOrg: 'E-Commerce & Retail',
+    description: 'Custom-coded WooCommerce online store featuring instant AJAX cart, bKash and Nagad payment gateway integrations, automated courier shipping sync, and sub-second load times.',
+    technologies: ['WordPress', 'WooCommerce', 'PHP 8.2', 'bKash Gateway', 'Redis Caching', 'Tailwind CSS'],
+    deliverables: ['Custom WP Theme Files', 'Payment & Courier Setup', 'Admin Inventory Guide', 'Security Lockdown'],
+    imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80',
+    liveDemoUrl: 'https://auraluxe-demo.kraflyn.app',
+    liveUrl: 'https://auraluxe-demo.kraflyn.app',
+    featured: true,
+    completionDate: '2026-08-08',
+    rating: 5,
+    gradeOutcome: '99 Google PageSpeed & +38% Sales',
+    price: 1400,
+    createdAt: '2026-08-08T09:00:00Z'
+  },
+  {
+    id: 'proj-4',
+    title: 'OmniBI - Retail Sales & Supply Chain Intelligence Dashboard',
+    category: 'Data Analysis & BI',
+    clientOrStudentName: 'Omni Retail Holdings',
+    studentOrClient: 'Omni Retail Holdings',
+    universityOrOrg: 'Logistics & Supply Chain',
+    description: 'Interactive Power BI and Python data pipeline connecting 14 warehouse inventories with live sales telemetry, predictive stockout forecasting, and regional KPI heatmaps.',
+    technologies: ['Power BI', 'Python', 'Pandas', 'DAX Measures', 'SQL Data Warehouse', 'Streamlit'],
+    deliverables: ['Power BI Workbook (.pbix)', 'Automated ETL Pipeline Script', 'Executive Summary Report', 'SQL Schema'],
+    imageUrl: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&auto=format&fit=crop&q=80',
+    liveDemoUrl: 'https://app.powerbi.com/view?demo=kraflyn-omnibi',
+    liveUrl: 'https://app.powerbi.com/view?demo=kraflyn-omnibi',
+    featured: true,
+    completionDate: '2026-08-02',
+    rating: 5,
+    gradeOutcome: 'Reduced Stockouts by 28%',
+    price: 1100,
+    createdAt: '2026-08-02T16:00:00Z'
+  },
+  {
+    id: 'proj-5',
+    title: 'MedLink - Telemedicine & Real-time Doctor Booking App',
+    category: 'Full-Stack Web',
+    clientOrStudentName: 'MedLink Health Group',
+    studentOrClient: 'MedLink Health Group',
+    universityOrOrg: 'HealthTech & Medical',
+    description: 'HIPAA-compliant web platform for telemedicine video consultations, electronic health record (EHR) management, automated prescription generation, and appointment scheduling.',
+    technologies: ['React 18', 'Node.js', 'Express', 'WebRTC Video', 'MongoDB', 'Socket.io', 'Tailwind'],
+    deliverables: ['Complete Web App Codebase', 'WebRTC Signaling Server', 'API Security Audit Report', 'Production Deployment'],
+    imageUrl: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop&q=80',
+    liveDemoUrl: 'https://medlink-demo.kraflyn.app',
+    liveUrl: 'https://medlink-demo.kraflyn.app',
+    featured: false,
+    completionDate: '2026-07-24',
+    rating: 5,
+    gradeOutcome: 'Serving 15,000+ Active Patients',
+    price: 2800,
+    createdAt: '2026-07-24T11:00:00Z'
+  },
+  {
+    id: 'proj-6',
+    title: 'Apex Global Brand Identity & Executive Style Guide',
+    category: 'Design & UI/UX',
+    clientOrStudentName: 'Apex Advisory Partners',
+    studentOrClient: 'Apex Advisory Partners',
+    universityOrOrg: 'Corporate Enterprise',
+    description: 'Complete corporate visual rebrand including 3D vector logo mark, custom typography pairing, executive presentation templates, stationery pack, and digital marketing design kit.',
+    technologies: ['Adobe Illustrator', 'Photoshop', 'Figma', 'Typography Master'],
+    deliverables: ['Vector AI/EPS/SVG Assets', 'Brand Guidelines Book (PDF)', 'Keynote / PPT Master Deck', 'Social Media Kit'],
+    imageUrl: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&auto=format&fit=crop&q=80',
+    featured: false,
+    completionDate: '2026-07-18',
+    rating: 5,
+    gradeOutcome: 'Launched across 4 Global Offices',
+    price: 650,
+    createdAt: '2026-07-18T13:30:00Z'
   }
 ];
 
 export const INITIAL_ORDERS: AcademicOrder[] = [
   {
-    id: 'NX-ORD-8841',
+    id: 'KT-ORD-2026-8841',
+    customerName: 'Md. Ahsanur Rahaman',
+    phone: '01712345678',
+    whatsapp: '01712345678',
+    email: 'client@technovate.com',
+    companyOrOrg: 'Technovate Solutions Ltd.',
+    industry: 'SaaS & Cloud Platforms',
+    courseName: 'Custom Full-Stack SaaS Web Application',
+    projectTitle: 'Next.js SaaS Analytics & Client Portal',
+    techStack: 'Next.js 14, Tailwind CSS, PostgreSQL, Prisma, Auth',
+    requirements: 'We require an enterprise client portal with multi-tenant permissions, billing dashboard, and webhook integrations.',
+    deadline: '2026-09-10',
+    totalAmount: 1700,
     items: [
       {
-        id: 'cart-1',
-        serviceId: 'presentation-ppt-design',
-        serviceTitle: 'Presentation & PPT Design',
-        category: 'Design Services',
-        basePrice: 350,
-        packageTier: 'Standard Support',
-        urgencyFee: 0,
-        totalPrice: 350,
-        courseName: 'CSE-4200 Capstone Defense',
-        quantity: 1
-      },
-      {
-        id: 'cart-2',
-        serviceId: 'personal-portfolio-website',
-        serviceTitle: 'Personal / Portfolio Website',
+        id: 'item-1',
+        serviceId: 'custom-fullstack-webapp',
+        serviceTitle: 'Custom Full-Stack Web Application',
         category: 'Development Services',
-        basePrice: 1500,
-        packageTier: 'VIP 1-on-1 Mentorship',
-        urgencyFee: 200,
+        basePrice: 1400,
+        packageTier: 'Dedicated Enterprise',
+        urgencyFee: 300,
         totalPrice: 1700,
-        courseName: 'Career & Industry Prep',
+        projectScope: 'Next.js SaaS Portal + PostgreSQL Backend',
         quantity: 1
       }
     ],
-    totalAmount: 2050,
-    customerName: 'Md. Ahsanur Rahaman',
-    phone: '01712-345678',
-    whatsapp: '01712-345678',
-    email: 'ahsanur@example.com',
-    university: 'Pundra University of Science and Technology (PUB)',
-    department: 'Computer Science & Engineering (CSE)',
-    batchOrSemester: '4th Year / 8th Semester',
-    courseName: 'Final Defense Presentation & Portfolio',
-    courseCode: 'CSE-4200',
-    requirements: 'Need a stunning 15-slide defense slide deck with clean typography and custom diagrams, plus a personal portfolio setup on GitHub Pages.',
-    deadline: '2026-08-25',
     preferredContact: 'WhatsApp',
     attachments: [],
     status: 'in_progress',
-    assignedMentorName: 'Engr. Tahmidul Islam (BUET)',
-    createdAt: '2026-08-20 10:30',
-    updatedAt: '2026-08-20 11:15',
-    notes: ['Initial review done. Sent slide outline on WhatsApp.']
+    assignedMentorName: 'Md. Ahsanur Rahaman',
+    assignedSpecialistName: 'Md. Ahsanur Rahaman',
+    createdAt: '2026-08-25T14:30:00Z',
+    updatedAt: '2026-08-26T08:00:00Z',
+    notes: [
+      'Project kick-off call completed via Google Meet.',
+      'Figma wireframe review approved. Database architecture setup in progress.'
+    ]
+  },
+  {
+    id: 'KT-ORD-2026-8842',
+    customerName: 'Amina Khatun',
+    phone: '01898765432',
+    whatsapp: '01898765432',
+    email: 'amina@auraretail.com',
+    companyOrOrg: 'Aura Lifestyle Store',
+    industry: 'E-Commerce & Retail',
+    courseName: 'WooCommerce Store & Payment Setup',
+    projectTitle: 'E-Commerce Online Fashion Store',
+    techStack: 'WordPress, WooCommerce, Stripe, PayPal, SSLCommerz',
+    requirements: 'Setup complete WooCommerce shop with international checkout and courier shipping tracking.',
+    deadline: '2026-09-02',
+    totalAmount: 750,
+    items: [
+      {
+        id: 'item-2',
+        serviceId: 'woocommerce-store-dev',
+        serviceTitle: 'WooCommerce E-Commerce Store & Gateway Setup',
+        category: 'WordPress Services',
+        basePrice: 600,
+        packageTier: 'Priority Sprint',
+        urgencyFee: 150,
+        totalPrice: 750,
+        projectScope: 'WooCommerce Store + Global Gateways',
+        quantity: 1
+      }
+    ],
+    preferredContact: 'WhatsApp',
+    attachments: [],
+    status: 'mentor_assigned',
+    assignedMentorName: 'Md. Atikur Rahman',
+    assignedSpecialistName: 'Md. Atikur Rahman',
+    createdAt: '2026-08-26T05:00:00Z',
+    updatedAt: '2026-08-26T06:30:00Z',
+    notes: [
+      'Specialist assigned. Payment gateway credentials received and verified.'
+    ]
+  },
+  {
+    id: 'KT-ORD-2026-8843',
+    customerName: 'Zubair Al Mahmud',
+    phone: '01755667788',
+    whatsapp: '01755667788',
+    email: 'zubair@dataspark.io',
+    companyOrOrg: 'DataSpark Analytics',
+    industry: 'FinTech & Banking',
+    courseName: 'Interactive Power BI Dashboard',
+    projectTitle: 'Executive Financial KPIs & Sales Dashboard',
+    techStack: 'Power BI, DAX, Python, SQL Warehouse',
+    requirements: 'Build interactive executive dashboard displaying quarterly branch performance, revenue variance, and customer acquisition metrics.',
+    deadline: '2026-09-05',
+    totalAmount: 600,
+    items: [
+      {
+        id: 'item-3',
+        serviceId: 'bi-interactive-dashboard',
+        serviceTitle: 'Interactive BI Dashboards (Power BI)',
+        category: 'Data Analysis',
+        basePrice: 450,
+        packageTier: 'Priority Sprint',
+        urgencyFee: 150,
+        totalPrice: 600,
+        projectScope: 'Multi-Tab Power BI Financial Dashboard',
+        quantity: 1
+      }
+    ],
+    preferredContact: 'WhatsApp',
+    attachments: [],
+    status: 'order_received',
+    createdAt: '2026-08-26T06:15:00Z',
+    updatedAt: '2026-08-26T06:15:00Z',
+    notes: [
+      'New project inquiry submitted. Assigning Md. Masjidul Islam for data review.'
+    ]
   }
 ];
 
-export const INITIAL_MENTORS: Mentor[] = [
-  {
-    id: 'mentor-1',
-    userId: 'user-m-1',
-    name: 'Tanvir Ahmed',
-    email: 'tanvir.cse.buet@gmail.com',
-    phone: '+880 1711-223344',
-    whatsapp: '+880 1711-223344',
-    university: 'Bangladesh University of Engineering and Technology (BUET)',
-    department: 'Computer Science & Engineering (CSE)',
-    qualification: 'B.Sc. in CSE (BUET), Published Researcher (IEEE/Springer)',
-    expertise: ['Fullstack Web', 'Machine Learning', 'NLP', 'System Architecture', 'LaTeX Formatting'],
-    experience: '4+ years guiding undergraduate projects, 6 IEEE conference publications.',
-    availableTime: 'Evenings (6 PM - 11 PM)',
-    expectedRate: '৳800 - ৳1500 / session',
-    verificationStatus: 'approved',
-    rating: 4.95,
-    totalCompletedSessions: 84,
-    earnings: 68500,
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
-    bio: 'Passionate about demystifying complex computer science and AI concepts. Mentored 80+ university students in capstone projects and research publications.'
+export const DEFAULT_SITE_SETTINGS: SiteSettings = {
+  notice: {
+    enabled: true,
+    badge: '🚀 NEW CLIENT SPRINT OFFER',
+    text: 'Claim 15% discount on all Full-Stack Web Development, UI/UX Design & Data Analytics projects this month! Use code: KRAFLYN15',
+    messageEn: 'Claim 15% discount on all Full-Stack Web Development, UI/UX Design & Data Analytics projects this month! Use code: KRAFLYN15',
+    messageBn: 'চলতি মাসে সকল ওয়েব ডেভেলপমেন্ট, UI/UX ডিজাইন ও ডাটা অ্যানালাইসিস প্রজেক্টে ১৫% বিশেষ ছাড়! প্রোমোকোড: KRAFLYN15',
+    type: 'promo',
+    linkText: 'Explore Services',
+    linkUrl: '#services',
+    actionText: 'Explore Services',
+    actionLink: '#services',
+    discountCode: 'KRAFLYN15',
+    discountPercent: 15
   },
-  {
-    id: 'mentor-2',
-    userId: 'user-m-2',
-    name: 'Nusrat Jahan',
-    email: 'nusrat.du.cs@gmail.com',
-    phone: '+880 1822-334455',
-    whatsapp: '+880 1822-334455',
-    university: 'University of Dhaka (DU)',
-    department: 'Computer Science & Engineering (CSE)',
-    qualification: 'M.Sc. in CSE, Senior UI/UX & Frontend Engineer',
-    expertise: ['UI/UX Design', 'Figma', 'React/Next.js', 'Portfolio Building', 'Presentation Design'],
-    experience: '3+ years designing production UI/UX and web apps for global clients.',
-    availableTime: 'Afternoon & Night',
-    expectedRate: '৳600 - ৳1200 / session',
-    verificationStatus: 'approved',
-    rating: 4.9,
-    totalCompletedSessions: 62,
-    earnings: 49000,
-    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80',
-    bio: 'Dedicated to helping students craft industry-level UI/UX designs, slide decks, and responsive frontend web applications.'
+  whatsappNumber: '+880 1712-345678',
+  helplinePhone: '+880 1712-345678',
+  supportEmail: 'contact@kraflyn.com',
+  officeLocation: 'Dhaka & Rajshahi, Bangladesh (Global Remote 24/7)',
+  facebookUrl: 'https://facebook.com/kraflyntechnologies',
+  telegramUrl: 'https://t.me/kraflyntech',
+  isOrderingPaused: false,
+  pauseNoticeText: 'Development sprints are running at full velocity. Direct WhatsApp consultation is open 24/7.',
+  heroStats: {
+    totalProjectsCompleted: 350,
+    completedProjects: 350,
+    satisfactionRate: 99.8,
+    successRate: 99.8,
+    partnerUniversities: 100,
+    activeMentors: 12,
+    happyStudents: 350
+  },
+  socialLinks: {
+    facebook: 'https://facebook.com/kraflyntechnologies',
+    whatsapp: '+880 1712-345678',
+    telegram: 'https://t.me/kraflyntech',
+    github: 'https://github.com/kraflyn',
+    linkedin: 'https://linkedin.com/company/kraflyn-technologies',
+    youtube: 'https://youtube.com/@kraflyntech'
   }
-];
+};
 
-export const INITIAL_REVIEWS: Review[] = [
-  {
-    id: 'rev-1',
-    studentName: 'Sabbir Hossain',
-    university: 'Pundra University of Science and Technology (PUB)',
-    department: 'Computer Science & Engineering',
-    serviceTitle: 'Presentation & PPT Design',
-    rating: 5,
-    comment: 'Kraflyn Technologies designed my final defense slide deck. The typography, color scheme, and diagrams were so clean that our faculty board praised our presentation structure!',
-    date: '2026-08-18',
-    gradeOutcome: 'A+ in Defense',
-    verified: true
-  },
-  {
-    id: 'rev-2',
-    studentName: 'Farhana Akter',
-    university: 'University of Dhaka (DU)',
-    department: 'Software Engineering',
-    serviceTitle: 'Personal / Portfolio Website',
-    rating: 5,
-    comment: 'Got my personal developer portfolio built and deployed in less than 48 hours. Responsive, lightning-fast, and helped me land an internship interview within a week!',
-    date: '2026-08-15',
-    gradeOutcome: 'Internship Offer',
-    verified: true
-  },
-  {
-    id: 'rev-3',
-    studentName: 'Rakibul Islam',
-    university: 'Rajshahi University of Engineering & Technology (RUET)',
-    department: 'Electrical & Electronic Engineering (EEE)',
-    serviceTitle: 'Research Paper Formatting',
-    rating: 5,
-    comment: 'Transformed our messy Word draft into a pristine IEEE two-column LaTeX document. Saved us hours of headache right before the conference submission deadline.',
-    date: '2026-08-12',
-    gradeOutcome: 'IEEE Paper Accepted',
-    verified: true
-  }
-];
-
-export const REVIEWS = INITIAL_REVIEWS;
-
+export const REVIEWS = MOCK_REVIEWS;
+export const INITIAL_PROJECTS = MOCK_PROJECTS;
+export const PROJECTS_SHOWCASE = MOCK_PROJECTS;

@@ -43,11 +43,10 @@ export const ServicesPricingManager: React.FC = () => {
 
   const categories = [
     { key: 'All', label: { bn: 'সকল সার্ভিস', en: 'All Services' }, count: services.length, icon: Layers },
-    { key: 'Design Services', label: { bn: 'ডিজাইন সার্ভিস', en: 'Design Services' }, count: services.filter(s => s.category === 'Design Services').length, icon: Palette },
-    { key: 'Development Services', label: { bn: 'ডেভেলপমেন্ট সার্ভিস', en: 'Development Services' }, count: services.filter(s => s.category === 'Development Services').length, icon: Code2 },
-    { key: 'WordPress Services', label: { bn: 'ওয়ার্ডপ্রেস সার্ভিস', en: 'WordPress Services' }, count: services.filter(s => s.category === 'WordPress Services').length, icon: Globe },
-    { key: 'Data Analysis', label: { bn: 'ডাটা অ্যানালাইসিস', en: 'Data Analysis' }, count: services.filter(s => s.category === 'Data Analysis').length, icon: BarChart3 },
-    { key: 'Student Support', label: { bn: 'স্টুডেন্ট সাপোর্ট', en: 'Student Support' }, count: services.filter(s => s.category === 'Student Support').length, icon: GraduationCap },
+    { key: 'Design Services', label: { bn: 'ডিজাইন ও UI/UX', en: 'Design & UI/UX' }, count: services.filter(s => s.category === 'Design Services').length, icon: Palette },
+    { key: 'Development Services', label: { bn: 'ওয়েব ও সফটওয়্যার', en: 'Web & Software Dev' }, count: services.filter(s => s.category === 'Development Services').length, icon: Code2 },
+    { key: 'WordPress Services', label: { bn: 'ওয়ার্ডপ্রেস ও ই-কমার্স', en: 'WordPress & WooCommerce' }, count: services.filter(s => s.category === 'WordPress Services').length, icon: Globe },
+    { key: 'Data Analysis', label: { bn: 'ডাটা অ্যানালাইসিস ও BI', en: 'Data Analysis & BI' }, count: services.filter(s => s.category === 'Data Analysis').length, icon: BarChart3 },
   ];
 
   return (

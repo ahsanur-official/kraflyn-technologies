@@ -91,28 +91,28 @@ export const OrderTrackerModal: React.FC = () => {
   const steps = [
     { 
       key: 'order_received', 
-      title: language === 'bn' ? 'অর্ডার গ্রহণ করা হয়েছে' : 'Order Received', 
-      desc: language === 'bn' ? 'অর্ডার সিস্টেমে গৃহীত হয়েছে' : 'Order placed and logged in system' 
+      title: language === 'bn' ? 'অর্ডার গ্রহণ করা হয়েছে' : 'Project Brief Received', 
+      desc: language === 'bn' ? 'প্রজেক্ট রিকোয়ারমেন্ট সিস্টেমে গৃহীত হয়েছে' : 'Project brief submitted and logged in system' 
     },
     { 
       key: 'mentor_assigned', 
-      title: language === 'bn' ? 'মেন্টর নিযুক্ত' : 'Mentor Assigned', 
-      desc: language === 'bn' ? 'কোর্স অনুযায়ী বিশেষজ্ঞ মেন্টর নির্ধারিত' : 'Specialized mentor allocated' 
+      title: language === 'bn' ? 'স্পেশালিস্ট নিযুক্ত' : 'Specialist Assigned', 
+      desc: language === 'bn' ? 'প্রজেক্ট অনুযায়ী টেক লিড ও আর্কিটেক্ট বরাদ্দ' : 'Lead technical specialist & architecture lead assigned' 
     },
     { 
       key: 'contacted_student', 
-      title: language === 'bn' ? 'শিক্ষার্থীর সাথে যোগাযোগ' : 'Contacted Student', 
-      desc: language === 'bn' ? 'WhatsApp এ রিকোয়ারমেন্ট কনফার্মেশন' : 'Requirements aligned via WhatsApp' 
+      title: language === 'bn' ? 'ক্লায়েন্ট কনসালটেশন' : 'Client Consultation', 
+      desc: language === 'bn' ? 'WhatsApp/মিটে স্কোপ কনফার্ম ও স্প্রিন্ট শুরু' : 'Requirements confirmed & sprint kickoff initiated' 
     },
     { 
       key: 'in_progress', 
-      title: language === 'bn' ? 'ডেলিভারি প্রস্তুত হচ্ছে' : 'Delivery In Progress', 
-      desc: language === 'bn' ? 'সাপোর্ট সেশন / ডেলিভারি তৈরি হচ্ছে' : 'Solving, mentoring, and code drafting' 
+      title: language === 'bn' ? 'ডেভেলপমেন্ট ও ডিজাইন চলমান' : 'Development In Progress', 
+      desc: language === 'bn' ? 'অ্যাক্টিভ কোডিং, UI ডিজাইন ও টেস্টিং চলছে' : 'Active development, design sprint, and code drafting' 
     },
     { 
       key: 'delivered_completed', 
-      title: language === 'bn' ? 'ডেলিভারি সম্পন্ন' : 'Delivered & Support', 
-      desc: language === 'bn' ? 'ডেলিভারি সম্পন্ন ও ফ্রি রিভিশন' : 'Delivered with post-delivery revisions' 
+      title: language === 'bn' ? 'ডেলিভারি ও ডিপ্লয় সম্পন্ন' : 'Delivered & Deployed', 
+      desc: language === 'bn' ? 'ডেলিভারি সম্পন্ন ও ফ্রি ওয়্যারেন্টি সাপোর্ট' : 'Delivered, deployed to production with free revisions' 
     }
   ];
 
@@ -218,13 +218,13 @@ export const OrderTrackerModal: React.FC = () => {
               <div className="bg-blue-50/80 border border-blue-200/80 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-blue-600">
-                    {language === 'bn' ? 'সক্রিয় একাডেমিক অর্ডার' : 'Active Academic Order'}
+                    {language === 'bn' ? 'সক্রিয় ক্লায়েন্ট প্রজেক্ট' : 'Active Client Project'}
                   </span>
                   <h4 className="text-base font-black text-slate-900 font-mono">
                     {searchedOrder.id}
                   </h4>
                   <p className="text-xs text-slate-600 mt-0.5">
-                    {searchedOrder.customerName} • {searchedOrder.university}
+                    {searchedOrder.customerName} • {searchedOrder.companyOrOrg || searchedOrder.university || 'Kraflyn Client'}
                   </p>
                 </div>
 
@@ -279,14 +279,14 @@ export const OrderTrackerModal: React.FC = () => {
                 </div>
               </div>
 
-              {/* Assigned Mentor & Deliverables Card */}
+              {/* Assigned Specialist & Scope Card */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                 <div className="border border-slate-200 rounded-2xl p-3.5 bg-slate-50">
                   <span className="text-[10px] font-bold uppercase text-slate-400 block mb-1">
-                    {t.courseName} & {t.selectedServices}
+                    {language === 'bn' ? 'প্রজেক্ট স্কোপ ও সার্ভিস' : 'Project Scope & Services'}
                   </span>
                   <div className="font-bold text-slate-800 text-xs">
-                    {searchedOrder.courseName}
+                    {searchedOrder.projectTitle || searchedOrder.courseName || 'Custom Digital Solution'}
                   </div>
                   <div className="text-[11px] text-blue-700 mt-0.5">
                     {searchedOrder.items.map(i => i.serviceTitle).join(', ')}
@@ -299,10 +299,10 @@ export const OrderTrackerModal: React.FC = () => {
                   </span>
                   <div className="font-bold text-slate-800 text-xs flex items-center gap-1.5">
                     <UserCheck className="w-4 h-4 text-emerald-600" />
-                    <span>{searchedOrder.assignedMentorName || (language === 'bn' ? 'একাডেমিক টিম সমন্বয় করছে' : 'Mentorship Team Coordinating')}</span>
+                    <span>{searchedOrder.assignedSpecialistName || searchedOrder.assignedMentorName || (language === 'bn' ? 'টেকনিক্যাল টিম সক্রিয়' : 'Lead Engineering Team')}</span>
                   </div>
                   <div className="text-[11px] text-slate-500 mt-0.5">
-                    Academic Quality Lead
+                    {language === 'bn' ? 'ইঞ্জিনিয়ারিং ও কোয়ালিটি লিড' : 'Engineering & QA Lead'}
                   </div>
                 </div>
               </div>

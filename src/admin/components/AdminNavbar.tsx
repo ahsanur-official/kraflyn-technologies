@@ -9,19 +9,27 @@ import {
   CheckCircle2,
   Users,
   LogOut,
-  ExternalLink
+  ExternalLink,
+  FolderGit2,
+  Inbox,
+  Settings
 } from 'lucide-react';
 import { motion } from 'motion/react';
 
+export type AdminTab = 'overview' | 'orders' | 'projects' | 'services' | 'team' | 'reviews' | 'inquiries' | 'settings';
+
 interface AdminNavbarProps {
-  activeTab: 'overview' | 'orders' | 'reviews' | 'mentors' | 'services';
-  setActiveTab: (tab: 'overview' | 'orders' | 'reviews' | 'mentors' | 'services') => void;
+  activeTab: AdminTab;
+  setActiveTab: (tab: AdminTab) => void;
   onLogout?: () => void;
 }
 
 export const AdminNavbar: React.FC<AdminNavbarProps> = ({ activeTab, setActiveTab, onLogout }) => {
   const { 
     orders, 
+    inquiries,
+    projects,
+    mentors,
     setCurrentView, 
     language, 
     setLanguage, 
@@ -29,13 +37,17 @@ export const AdminNavbar: React.FC<AdminNavbarProps> = ({ activeTab, setActiveTa
 
   const newOrdersCount = orders.filter(o => o.status === 'order_received').length;
   const inProgressCount = orders.filter(o => ['mentor_assigned', 'contacted_student', 'in_progress'].includes(o.status)).length;
+  const newInquiriesCount = inquiries.filter(i => i.status === 'new').length;
 
   const navItems = [
     { id: 'overview' as const, label: language === 'bn' ? 'ওভারভিউ' : 'Overview', icon: Sparkles },
     { id: 'orders' as const, label: language === 'bn' ? 'অর্ডারস' : 'Orders', icon: ShoppingBag, badge: newOrdersCount },
-    { id: 'mentors' as const, label: language === 'bn' ? 'মেন্টরস' : 'Mentors', icon: CheckCircle2 },
-    { id: 'reviews' as const, label: language === 'bn' ? 'রিভিউ ও ফিডব্যাক' : 'Reviews', icon: Users },
+    { id: 'projects' as const, label: language === 'bn' ? 'প্রজেক্ট ও পোর্টফোলিও' : 'Projects', icon: FolderGit2, badge: projects.length },
     { id: 'services' as const, label: language === 'bn' ? 'সার্ভিস ও প্রাইসিং' : 'Services', icon: Clock },
+    { id: 'team' as const, label: language === 'bn' ? 'স্পেশালিস্ট টিম' : 'Specialist Team', icon: Users, badge: mentors.length },
+    { id: 'reviews' as const, label: language === 'bn' ? 'রিভিউ ও ফিডব্যাক' : 'Reviews', icon: CheckCircle2 },
+    { id: 'inquiries' as const, label: language === 'bn' ? 'ইনকোয়ারি' : 'Inquiries', icon: Inbox, badge: newInquiriesCount },
+    { id: 'settings' as const, label: language === 'bn' ? 'সিস্টেম সেটিংস' : 'Settings', icon: Settings },
   ];
 
   return (

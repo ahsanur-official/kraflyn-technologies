@@ -13,6 +13,7 @@ import {
   Languages,
   Home,
   Layers,
+  Users,
   HelpCircle,
   Phone,
   Info,
@@ -100,6 +101,7 @@ export const Navbar: React.FC = () => {
   const navMenuItems = [
     { key: 'home', label: t.home, icon: Home, sectionId: undefined },
     { key: 'services', label: t.services, icon: Layers, sectionId: 'services-section' },
+    { key: 'team', label: t.team || (language === 'bn' ? 'আমাদের টিম' : 'Our Team'), icon: Users, sectionId: 'team-section' },
     { key: 'how-it-works', label: t.howItWorks, icon: Sparkles, sectionId: 'how-it-works-section' },
     { key: 'reviews', label: t.reviews, icon: Star, sectionId: 'reviews-section', badge: '4.9 ★' },
     { key: 'faq', label: t.faq, icon: HelpCircle, sectionId: 'faq-section' },

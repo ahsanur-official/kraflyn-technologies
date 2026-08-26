@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { useApp } from '../../context/AppContext';
 import { DynamicIcon } from '../common/DynamicIcon';
+import { CountUpNumber } from '../common/CountUpNumber';
 import { 
   Clock, 
   CheckCircle2, 
@@ -53,7 +54,6 @@ export const ServiceCardGrid: React.FC = () => {
   const devCount = services.filter(s => s.category === 'Development Services').length;
   const wpCount = services.filter(s => s.category === 'WordPress Services').length;
   const dataCount = services.filter(s => s.category === 'Data Analysis').length;
-  const supportCount = services.filter(s => s.category === 'Student Support').length;
 
   // Standalone Specialized Pillars / Wings of Kraflyn Technologies
   const pillars = [
@@ -71,70 +71,56 @@ export const ServiceCardGrid: React.FC = () => {
       key: 'Design Services',
       icon: Palette,
       count: designCount,
-      label: { bn: '১. ডিজাইন সার্ভিস', en: '1. Design Services' },
-      subtext: { bn: `${designCount}টি সল্যুশন`, en: `${designCount} Creative Solutions` },
+      label: { bn: '১. ডিজাইন ও UI/UX', en: '1. Design & UI/UX' },
+      subtext: { bn: `${designCount}টি সল্যুশন`, en: `${designCount} Design Solutions` },
       accent: 'from-fuchsia-600 to-pink-600',
       activeColor: 'bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white shadow-fuchsia-500/25 ring-2 ring-fuchsia-500',
       badgeBg: 'bg-fuchsia-100 text-fuchsia-800',
       description: {
-        bn: 'ফিগুমা UI/UX, পোস্টার, ব্যানার, প্রেজেন্টেশন স্লাইড, লোগো, সিভি ও রিসার্চ পোস্টার ডিজাইন সহ প্রফেশনাল ক্রিয়েটিভ সল্যুশন।',
-        en: 'High-impact visual design services: Figma UI/UX, Posters, PPT decks, Brand identity, CV/Resume, and Research posters.'
+        bn: 'ফিগুমা UI/UX প্রোটোটাইপ, ডিজাইন সিস্টেম, ল্যান্ডিং পেজ, লোগো ও ব্র্যান্ড আইডেন্টিটি এবং ইনভেস্টর পিচ ডেক।',
+        en: 'High-impact digital product design: Figma UI/UX, Design systems, Landing pages, Brand identity & Investor pitch decks.'
       }
     },
     {
       key: 'Development Services',
       icon: Code2,
       count: devCount,
-      label: { bn: '২. ডেভেলপমেন্ট', en: '2. Development' },
+      label: { bn: '২. ওয়েব ও সফটওয়্যার দেব', en: '2. Web & Software Dev' },
       subtext: { bn: `${devCount}টি সফটওয়্যার সেবা`, en: `${devCount} Tech Solutions` },
       accent: 'from-cyan-600 to-blue-600',
       activeColor: 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-cyan-500/25 ring-2 ring-cyan-500',
       badgeBg: 'bg-cyan-100 text-cyan-800',
       description: {
-        bn: 'পোর্টফোলিও, ফুল-স্ট্যাক ওয়েব অ্যাপ্লিকেশন, মোবাইল অ্যাপ, এপিআই, ব্যাকএন্ড ও বাগ ফিক্সিং সহ মডার্ন সফটওয়্যার সেবা।',
-        en: 'Scalable development services: Portfolio, Full-stack Web Apps, Mobile Apps, APIs, Bug fixes, and Custom software systems.'
+        bn: 'কাস্টম ফুল-স্ট্যাক ওয়েব অ্যাপ (Next.js/React/Node.js), ব্যাকএন্ড API মাইক্রোসার্ভিসেস, ডেটাবেস আর্কিটেকচার ও ই-কমার্স প্ল্যাটফর্ম।',
+        en: 'Scalable engineering: Custom full-stack web applications (Next.js/React), Backend APIs, Database architecture, and E-commerce platforms.'
       }
     },
     {
       key: 'WordPress Services',
       icon: Globe,
       count: wpCount,
-      label: { bn: '৩. ওয়ার্ডপ্রেস', en: '3. WordPress' },
+      label: { bn: '৩. ওয়ার্ডপ্রেস সলিউশনস', en: '3. WordPress Solutions' },
       subtext: { bn: `${wpCount}টি স্পেশালাইজড সেবা`, en: `${wpCount} Specialized Services` },
       accent: 'from-blue-700 via-indigo-700 to-sky-700',
       activeColor: 'bg-gradient-to-r from-blue-700 to-indigo-700 text-white shadow-indigo-500/25 ring-2 ring-indigo-500',
       badgeBg: 'bg-indigo-100 text-indigo-800',
       description: {
-        bn: 'সম্পূর্ণ আলাদা ওয়ার্ডপ্রেস উইং: বিজনেস সাইট, উ-কমার্স অনলাইন স্টোর, স্পিড অপ্টিমাইজেশন, সিকিউরিটি ও কাস্টম প্লাগইন ডেভেলপমেন্ট।',
-        en: 'Dedicated standalone WordPress Wing: Business websites, WooCommerce stores, speed optimization, malware cleanup, and custom plugin development.'
+        bn: 'কাস্টম ওয়ার্ডপ্রেস থিম ডেভেলপমেন্ট, উ-কমার্স অনলাইন স্টোর + পেমেন্ট গেটওয়ে, স্পিড অপ্টিমাইজেশন (PageSpeed 90+) ও সিকিউরিটি লকডাউন।',
+        en: 'Dedicated WordPress Wing: Custom themes from Figma, WooCommerce stores with bKash/Nagad gateways, 90+ PageSpeed score, and enterprise security.'
       }
     },
     {
       key: 'Data Analysis',
       icon: BarChart3,
       count: dataCount,
-      label: { bn: '৪. ডাটা অ্যানালাইসিস', en: '4. Data Analysis' },
+      label: { bn: '৪. ডাটা অ্যানালাইসিস ও BI', en: '4. Data Analysis & BI' },
       subtext: { bn: `${dataCount}টি অ্যানালিটিক্স সেবা`, en: `${dataCount} Analytics Services` },
       accent: 'from-amber-600 via-orange-600 to-rose-600',
       activeColor: 'bg-gradient-to-r from-amber-600 to-rose-600 text-white shadow-orange-500/25 ring-2 ring-orange-500',
       badgeBg: 'bg-orange-100 text-orange-800',
       description: {
-        bn: 'সম্পূর্ণ আলাদা ডাটা সায়েন্স ও অ্যানালিটিক্স উইং: SPSS স্ট্যাটিস্টিক্যাল টেস্ট, পাইথন/R EDA ও মেশিন লার্নিং, Power BI ড্যাশবোর্ড, এক্সেল মডেলিং ও ওয়েব স্ক্র্যাপিং।',
-        en: 'Dedicated standalone Data Analytics Wing: SPSS hypothesis testing, Python/R machine learning, Power BI dashboards, Excel financial modeling, and web scraping.'
-      }
-    },
-    {
-      key: 'Student Support',
-      icon: GraduationCap,
-      count: supportCount,
-      label: { bn: '৫. স্টুডেন্ট সাপোর্ট', en: '5. Student Support' },
-      subtext: { bn: `${supportCount}টি একাডেমিক সেবা`, en: `${supportCount} Academic Supports` },
-      accent: 'from-emerald-600 to-teal-600',
-      activeColor: 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-emerald-500/25 ring-2 ring-emerald-500',
-      badgeBg: 'bg-emerald-100 text-emerald-800',
-      description: {
-        bn: 'ফাইনাল ইয়ার প্রজেক্ট (FYP) গাইডেন্স, রিসার্চ পেপার ফরম্যাটিং (IEEE/LaTeX), কোডিং হেল্প ও টার্নিটিন চেক সহ একাডেমিক সল্যুশন।',
-        en: 'Dedicated student mentorship services: FYP guidance, Research paper formatting, Programming mentorship, and Turnitin assistance.'
+        bn: 'ইন্টারঅ্যাক্টিভ Power BI/Tableau ড্যাশবোর্ড, পাইথন EDA ও স্ট্যাটিস্টিক্যাল ইনসাইট, প্রেডিক্টিভ মেশিন লার্নিং পাইপলাইন ও স্বয়ংক্রিয় ওয়েব স্ক্র্যাপিং।',
+        en: 'Dedicated Data Lab: Interactive Power BI & Tableau dashboards, Python statistical EDA, predictive machine learning models, and automated ETL web scraping.'
       }
     }
   ];
@@ -143,28 +129,27 @@ export const ServiceCardGrid: React.FC = () => {
   const tagFilters = [
     { key: 'All', label: { bn: 'সকল', en: 'All' } },
     { key: 'Popular', icon: Star, label: { bn: '⭐ জনপ্রিয়', en: '⭐ Popular' } },
-    { key: 'Fast', icon: Zap, label: { bn: '⚡ দ্রুত ডেলিভারি', en: '⚡ Fast (<24h)' } },
-    { key: 'High Demand', icon: Flame, label: { bn: '🔥 হাই ডিমান্ড', en: '🔥 High Demand' } },
-    { key: 'Budget', label: { bn: '💰 সাশ্রয়ী (≤ ৳১,০০০)', en: '💰 Budget (≤ ৳1k)' } }
+    { key: 'Fast', icon: Zap, label: { bn: '⚡ দ্রুত স্প্রিন্ট', en: '⚡ Fast Sprint' } },
+    { key: 'High Demand', icon: Flame, label: { bn: '🔥 ফ্ল্যাগশিপ', en: '🔥 Flagship' } }
   ];
 
   // Price range filters
   const priceRanges = [
     { key: 'All', label: { bn: 'সকল বাজেট', en: 'All Budgets' } },
-    { key: 'under-1000', label: { bn: '৳১,০০০ এর নিচে', en: 'Under ৳1,000' } },
-    { key: '1000-3000', label: { bn: '৳১,০০০ - ৳৩,০০০', en: '৳1,000 - ৳3,000' } },
-    { key: 'above-3000', label: { bn: '৳৩,০০০+', en: '৳3,000+' } }
+    { key: 'under-500', label: { bn: '$৫০০ এর নিচে', en: 'Under $500' } },
+    { key: '500-1500', label: { bn: '$৫০০ - $১,৫০০', en: '$500 - $1,500' } },
+    { key: 'above-1500', label: { bn: '$১,৫০০+', en: '$1,500+' } }
   ];
 
   // Quick suggestion chips
   const quickSearchSuggestions = [
-    { label: 'Poster', bn: 'পোস্টার' },
-    { label: 'Portfolio', bn: 'পোর্টফোলিও' },
-    { label: 'FYP', bn: 'এফওয়াইপি' },
-    { label: 'LaTeX', bn: 'ল্যাটেক্স' },
-    { label: 'Figma UI', bn: 'ফিগুমা ইউআই' },
-    { label: 'Turnitin', bn: 'টার্নিটিন' },
-    { label: 'Bug Fix', bn: 'বাগ ফিক্স' }
+    { label: 'Next.js', bn: 'Next.js' },
+    { label: 'Figma UI', bn: 'Figma UI' },
+    { label: 'WordPress', bn: 'WordPress' },
+    { label: 'WooCommerce', bn: 'WooCommerce' },
+    { label: 'Power BI', bn: 'Power BI' },
+    { label: 'Full-Stack', bn: 'Full-Stack' },
+    { label: 'Machine Learning', bn: 'Machine Learning' }
   ];
 
   const filteredAndSortedServices = useMemo(() => {
@@ -187,12 +172,12 @@ export const ServiceCardGrid: React.FC = () => {
 
         // Price range match
         let matchesPrice = true;
-        if (selectedPriceRange === 'under-1000') {
-          matchesPrice = item.startingPrice < 1000;
-        } else if (selectedPriceRange === '1000-3000') {
-          matchesPrice = item.startingPrice >= 1000 && item.startingPrice <= 3000;
-        } else if (selectedPriceRange === 'above-3000') {
-          matchesPrice = item.startingPrice > 3000;
+        if (selectedPriceRange === 'under-500') {
+          matchesPrice = item.startingPrice < 500;
+        } else if (selectedPriceRange === '500-1500') {
+          matchesPrice = item.startingPrice >= 500 && item.startingPrice <= 1500;
+        } else if (selectedPriceRange === 'above-1500') {
+          matchesPrice = item.startingPrice > 1500;
         }
 
         // Search match
@@ -307,10 +292,19 @@ export const ServiceCardGrid: React.FC = () => {
           <div className="flex items-center gap-2 shrink-0 self-start md:self-auto">
             <div className="flex items-center gap-2 text-xs font-bold text-slate-700 bg-white px-3.5 py-2 rounded-2xl border border-slate-200 shadow-xs">
               <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>
-                {language === 'bn'
-                  ? `${filteredAndSortedServices.length} / ৪৫টি সার্ভিস`
-                  : `${filteredAndSortedServices.length} / 45 Services`}
+              <span className="flex items-center gap-1 font-bold">
+                <CountUpNumber 
+                  end={filteredAndSortedServices.length} 
+                  duration={0.6} 
+                  isBengali={language === 'bn'} 
+                />
+                <span>/</span>
+                <CountUpNumber 
+                  end={bilingualServices.length} 
+                  duration={0.8} 
+                  isBengali={language === 'bn'} 
+                />
+                <span>{language === 'bn' ? 'টি সার্ভিস' : 'Services'}</span>
               </span>
             </div>
 
@@ -728,8 +722,13 @@ export const ServiceCardGrid: React.FC = () => {
                           <span className="text-[10px] text-slate-400 block font-semibold uppercase tracking-wider">
                             {t.startingPrice}
                           </span>
-                          <div className="text-lg sm:text-xl font-black text-slate-900 tracking-tight">
-                            ৳{item.startingPrice.toLocaleString()}
+                          <div className="text-lg sm:text-xl font-black text-slate-900 tracking-tight flex items-center">
+                            <CountUpNumber 
+                              prefix="$" 
+                              end={item.startingPrice} 
+                              formatCommas={true} 
+                              isBengali={language === 'bn'} 
+                            />
                           </div>
                         </div>
                         <div className="text-[11px] font-semibold text-slate-500 bg-slate-50 px-2.5 py-1 rounded-xl border border-slate-200 flex items-center gap-1">
@@ -842,7 +841,12 @@ export const ServiceCardGrid: React.FC = () => {
                           </div>
                         </td>
                         <td className="p-4 font-black text-slate-900 text-sm">
-                          ৳{item.startingPrice.toLocaleString()}
+                          <CountUpNumber 
+                            prefix="$" 
+                            end={item.startingPrice} 
+                            formatCommas={true} 
+                            isBengali={language === 'bn'} 
+                          />
                         </td>
                         <td className="p-4 text-right">
                           <div className="flex items-center justify-end gap-2">

@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
-import { AdminNavbar } from './components/AdminNavbar';
+import { AdminNavbar, AdminTab } from './components/AdminNavbar';
 import { AdminOverview } from './components/AdminOverview';
 import { OrdersManager } from './components/OrdersManager';
+import { ProjectsManager } from './components/ProjectsManager';
 import { ReviewsManager } from './components/ReviewsManager';
-import { MentorsManager } from './components/MentorsManager';
+import { TeamManager } from './components/TeamManager';
 import { ServicesPricingManager } from './components/ServicesPricingManager';
+import { InquiriesManager } from './components/InquiriesManager';
+import { SettingsManager } from './components/SettingsManager';
 import { AdminLogin } from './components/AdminLogin';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
@@ -13,7 +16,10 @@ import {
   ShoppingBag, 
   Users, 
   CheckCircle2, 
-  Layers 
+  Layers,
+  FolderGit2,
+  Inbox,
+  Settings
 } from 'lucide-react';
 
 export const AdminDashboard: React.FC = () => {
@@ -24,8 +30,8 @@ export const AdminDashboard: React.FC = () => {
     );
   });
   
-  const [activeTab, setActiveTab] = useState<'overview' | 'orders' | 'reviews' | 'mentors' | 'services'>('overview');
-  const { orders, language } = useApp();
+  const [activeTab, setActiveTab] = useState<AdminTab>('overview');
+  const { orders, inquiries, projects, mentors, language } = useApp();
 
   const handleLogout = () => {
     sessionStorage.removeItem('kraflyn_admin_session');
@@ -38,13 +44,16 @@ export const AdminDashboard: React.FC = () => {
   }
 
   const newOrdersCount = orders.filter(o => o.status === 'order_received').length;
+  const newInquiriesCount = inquiries.filter(i => i.status === 'new').length;
 
   const mobileNavItems = [
     { id: 'overview' as const, label: language === 'bn' ? 'ওভারভিউ' : 'Overview', icon: Sparkles },
     { id: 'orders' as const, label: language === 'bn' ? 'অর্ডারস' : 'Orders', icon: ShoppingBag, badge: newOrdersCount },
-    { id: 'mentors' as const, label: language === 'bn' ? 'মেন্টরস' : 'Mentors', icon: CheckCircle2 },
-    { id: 'reviews' as const, label: language === 'bn' ? 'রিভিউ' : 'Reviews', icon: Users },
+    { id: 'projects' as const, label: language === 'bn' ? 'প্রজেক্টস' : 'Projects', icon: FolderGit2, badge: projects.length },
     { id: 'services' as const, label: language === 'bn' ? 'সার্ভিস' : 'Services', icon: Layers },
+    { id: 'team' as const, label: language === 'bn' ? 'টিম' : 'Team', icon: Users, badge: mentors.length },
+    { id: 'inquiries' as const, label: language === 'bn' ? 'ইনকোয়ারি' : 'Inquiries', icon: Inbox, badge: newInquiriesCount },
+    { id: 'settings' as const, label: language === 'bn' ? 'সেটিংস' : 'Settings', icon: Settings },
   ];
 
   return (
@@ -87,27 +96,15 @@ export const AdminDashboard: React.FC = () => {
             </motion.div>
           )}
 
-          {activeTab === 'reviews' && (
+          {activeTab === 'projects' && (
             <motion.div
-              key="reviews"
+              key="projects"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.2 }}
             >
-              <ReviewsManager />
-            </motion.div>
-          )}
-
-          {activeTab === 'mentors' && (
-            <motion.div
-              key="mentors"
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.2 }}
-            >
-              <MentorsManager />
+              <ProjectsManager />
             </motion.div>
           )}
 
@@ -122,11 +119,59 @@ export const AdminDashboard: React.FC = () => {
               <ServicesPricingManager />
             </motion.div>
           )}
+
+          {activeTab === 'team' && (
+            <motion.div
+              key="team"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.2 }}
+            >
+              <TeamManager />
+            </motion.div>
+          )}
+
+          {activeTab === 'reviews' && (
+            <motion.div
+              key="reviews"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.2 }}
+            >
+              <ReviewsManager />
+            </motion.div>
+          )}
+
+          {activeTab === 'inquiries' && (
+            <motion.div
+              key="inquiries"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.2 }}
+            >
+              <InquiriesManager />
+            </motion.div>
+          )}
+
+          {activeTab === 'settings' && (
+            <motion.div
+              key="settings"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.2 }}
+            >
+              <SettingsManager />
+            </motion.div>
+          )}
         </AnimatePresence>
       </main>
 
       {/* Mobile Fixed Bottom Navigation Bar for Native-App Feel */}
-      <nav aria-label="Mobile Navigation" className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-900/95 backdrop-blur-md border-t border-slate-800 text-white shadow-2xl px-2 py-1.5 flex items-center justify-around safe-area-inset-bottom">
+      <nav aria-label="Mobile Navigation" className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-900/95 backdrop-blur-md border-t border-slate-800 text-white shadow-2xl px-2 py-1.5 flex items-center justify-around overflow-x-auto scrollbar-none safe-area-inset-bottom">
         {mobileNavItems.map((item) => {
           const Icon = item.icon;
           const isActive = activeTab === item.id;
@@ -134,7 +179,7 @@ export const AdminDashboard: React.FC = () => {
             <button
               key={item.id}
               onClick={() => setActiveTab(item.id)}
-              className={`relative flex flex-col items-center justify-center py-1.5 px-2 rounded-xl text-[10px] font-bold transition-all min-w-[56px] min-h-[48px] cursor-pointer ${
+              className={`relative flex flex-col items-center justify-center py-1.5 px-2 rounded-xl text-[10px] font-bold transition-all min-w-[50px] min-h-[48px] shrink-0 cursor-pointer ${
                 isActive 
                   ? 'text-blue-400 bg-blue-500/10' 
                   : 'text-slate-400 hover:text-slate-200'
@@ -148,7 +193,7 @@ export const AdminDashboard: React.FC = () => {
                   </span>
                 )}
               </div>
-              <span className="mt-1 font-semibold truncate max-w-[64px]">{item.label}</span>
+              <span className="mt-1 font-semibold truncate max-w-[56px]">{item.label}</span>
               {isActive && (
                 <motion.div 
                   layoutId="mobile-active-dot" 

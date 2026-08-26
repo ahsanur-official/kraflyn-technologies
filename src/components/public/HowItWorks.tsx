@@ -114,10 +114,10 @@ export const HowItWorks: React.FC = () => {
 
           <div className="space-y-1 text-center md:text-left relative z-10">
             <h3 className="text-xl sm:text-2xl font-black">
-              {language === 'bn' ? 'জরুরি কোনো একাডেমিক সমস্যা আছে?' : 'Have an urgent academic problem or deadline?'}
+              {language === 'bn' ? 'নতুন কোনো ডিজিটাল প্রজেক্ট বা আর্জেন্ট স্প্রিন্ট প্রয়োজন?' : 'Have an upcoming web project or tight launch deadline?'}
             </h3>
             <p className="text-xs sm:text-sm text-blue-100 max-w-xl">
-              {language === 'bn' ? 'এখনই আপনার রিকোয়ারমেন্ট সাবমিট করুন। আমাদের টিম দ্রুততম সময়ে আপনার সাথে যোগাযোগ করবে।' : 'Submit your course requirements now. Our academic coordinators will match the best mentor immediately.'}
+              {language === 'bn' ? 'এখনই আপনার প্রজেক্ট রিকোয়ারমেন্ট সাবমিট করুন। আমাদের টিম তাৎক্ষণিকভাবে আপনার সাথে যোগাযোগ করবে।' : 'Submit your project scope and requirements now. Our engineering and design leads will connect immediately.'}
             </p>
           </div>
 

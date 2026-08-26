@@ -45,9 +45,9 @@ export const AdminOverview: React.FC<AdminOverviewProps> = ({ onGoToOrders, onGo
     },
     {
       id: 'new_orders',
-      title: language === 'bn' ? 'নতুন অর্ডার (অ্যাসাইন বাকি)' : 'New Orders Awaiting',
+      title: language === 'bn' ? 'নতুন ক্লায়েন্ট অর্ডার' : 'New Client Orders',
       value: newOrders,
-      subtitle: language === 'bn' ? 'অবিলম্বে মেন্টর বরাদ্দ দিন' : 'Needs mentor triage',
+      subtitle: language === 'bn' ? 'স্পেশালিস্ট বরাদ্দের অপেক্ষায়' : 'Needs specialist triage',
       icon: AlertCircle,
       color: 'from-amber-500 to-orange-600',
       bg: 'bg-amber-50',
@@ -57,9 +57,9 @@ export const AdminOverview: React.FC<AdminOverviewProps> = ({ onGoToOrders, onGo
     },
     {
       id: 'in_progress',
-      title: language === 'bn' ? 'চলমান ডেলিভারি ও সেশন' : 'In Progress Workflow',
+      title: language === 'bn' ? 'চলমান স্প্রিন্ট ও ডেলিভারি' : 'In Progress Sprints',
       value: inProgressOrders,
-      subtitle: language === 'bn' ? 'মেন্টর কাজ করছেন' : 'Active solutions',
+      subtitle: language === 'bn' ? 'টিম কাজ করছে' : 'Active development',
       icon: Clock,
       color: 'from-blue-500 to-indigo-600',
       bg: 'bg-blue-50',
@@ -70,7 +70,7 @@ export const AdminOverview: React.FC<AdminOverviewProps> = ({ onGoToOrders, onGo
       id: 'delivered',
       title: language === 'bn' ? 'সম্পন্ন সফল ডেলিভারি' : 'Delivered & Completed',
       value: deliveredOrders,
-      subtitle: language === 'bn' ? '১০০% সন্তুষ্টির সাথে' : '100% Student satisfaction',
+      subtitle: language === 'bn' ? '১০০% ক্লায়েন্ট সন্তুষ্টি' : '100% Client satisfaction',
       icon: CheckCircle2,
       color: 'from-indigo-500 to-purple-600',
       bg: 'bg-indigo-50',
@@ -192,7 +192,7 @@ export const AdminOverview: React.FC<AdminOverviewProps> = ({ onGoToOrders, onGo
           </div>
         </motion.div>
 
-        {/* Right 1 Col: Student Feedback & Quick Stats */}
+        {/* Right 1 Col: Client Feedback & Quick Stats */}
         <motion.div
           initial={{ opacity: 0, x: 10 }}
           animate={{ opacity: 1, x: 0 }}
@@ -203,10 +203,10 @@ export const AdminOverview: React.FC<AdminOverviewProps> = ({ onGoToOrders, onGo
             <div className="flex items-center justify-between mb-3 sm:mb-4">
               <div>
                 <h3 className="text-sm sm:text-base font-bold text-slate-900">
-                  {language === 'bn' ? 'শিক্ষার্থী সন্তুষ্টি' : 'Student Satisfaction'}
+                  {language === 'bn' ? 'ক্লায়েন্ট সন্তুষ্টি' : 'Client Satisfaction'}
                 </h3>
                 <p className="text-[11px] text-slate-500">
-                  {reviews.length} {language === 'bn' ? 'যাচাইকৃত রিভিউ' : 'verified student reviews'}
+                  {reviews.length} {language === 'bn' ? 'যাচাইকৃত রিভিউ' : 'verified client testimonials'}
                 </p>
               </div>
 
@@ -220,7 +220,7 @@ export const AdminOverview: React.FC<AdminOverviewProps> = ({ onGoToOrders, onGo
               {reviews.slice(0, 3).map((r) => (
                 <div key={r.id} className="p-2.5 sm:p-3 bg-slate-50 rounded-xl border border-slate-100 text-xs">
                   <div className="flex items-center justify-between mb-1">
-                    <span className="font-bold text-slate-800 text-[11px] sm:text-xs truncate">{r.studentName}</span>
+                    <span className="font-bold text-slate-800 text-[11px] sm:text-xs truncate">{r.studentName || r.clientName}</span>
                     <span className="text-amber-500 font-bold text-[11px] shrink-0">★ {r.rating}.0</span>
                   </div>
                   <p className="text-slate-600 text-[10px] sm:text-[11px] line-clamp-2 italic">

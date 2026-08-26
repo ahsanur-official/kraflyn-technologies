@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
 import { 
   Service, 
   Review, 
@@ -8,18 +8,23 @@ import {
   NotificationItem,
   UserProfile,
   ContactInquiry,
-  MentorProfile
+  MentorProfile,
+  ProjectItem,
+  SiteSettings
 } from '../types';
 import { 
   SERVICES, 
   REVIEWS, 
-  INITIAL_ORDERS 
+  INITIAL_ORDERS,
+  INITIAL_PROJECTS,
+  DEFAULT_SITE_SETTINGS 
 } from '../data/mockData';
 import { 
   Language, 
   TRANSLATIONS, 
   TranslationDictionary,
-  BILINGUAL_SERVICES 
+  BILINGUAL_SERVICES,
+  BilingualService 
 } from '../data/translations';
 import { 
   subscribeToOrders, 
@@ -28,56 +33,74 @@ import {
   deleteOrderFromFirestore,
   subscribeToReviews,
   saveReviewToFirestore,
-  deleteReviewFromFirestore
+  deleteReviewFromFirestore,
+  subscribeToProjects,
+  saveProjectToFirestore,
+  deleteProjectFromFirestore,
+  subscribeToSiteSettings,
+  saveSiteSettingsToFirestore,
+  subscribeToMentors,
+  saveMentorToFirestore,
+  deleteMentorFromFirestore,
+  subscribeToServices,
+  saveServiceToFirestore,
+  deleteServiceFromFirestore,
+  subscribeToInquiries,
+  saveInquiryToFirestore,
+  deleteInquiryFromFirestore
 } from '../lib/firestoreService';
 
 export const INITIAL_MENTORS: MentorProfile[] = [
   {
     id: 'm-1',
-    name: 'Engr. Tanvir Ahmed',
-    institution: 'BUET (CSE 17)',
-    degree: 'B.Sc in Computer Science & Engineering',
-    specialization: ['Data Structures', 'Algorithms', 'Web & Mobile Systems', 'C/C++/Java'],
+    name: 'Md. Ahsanur Rahaman',
+    institution: 'Kraflyn Technologies',
+    degree: 'Co-Founder & Lead Full-Stack Architect',
+    roleTitle: 'Co-Founder & Lead Full-Stack Architect',
+    specialization: ['React / Next.js 14', 'Node.js & TypeScript', 'PostgreSQL / Prisma', 'Cloud Architecture'],
     activeAssignedOrders: 3,
-    completedOrders: 48,
-    rating: 4.9,
-    contactPhone: '+880 1711-000111',
+    completedOrders: 98,
+    rating: 5.0,
+    contactPhone: '+880 1712-345678',
     status: 'available'
   },
   {
     id: 'm-2',
-    name: 'Dr. Shahriar Hasan',
-    institution: 'Dhaka University (Applied Statistics & DS)',
-    degree: 'M.Sc & Ph.D in Applied Statistics',
-    specialization: ['Research Methodology', 'SPSS/R/Stata Analysis', 'Thesis Guidance', 'Econometrics'],
+    name: 'Md. Masjidul Islam',
+    institution: 'Kraflyn Technologies',
+    degree: 'Lead Data Scientist & AI Systems Specialist',
+    roleTitle: 'Lead Data Scientist & AI Systems Specialist',
+    specialization: ['Python / Pandas', 'Power BI & Tableau', 'Machine Learning & LLM', 'SQL Analytics'],
     activeAssignedOrders: 2,
-    completedOrders: 62,
-    rating: 5.0,
-    contactPhone: '+880 1711-000222',
+    completedOrders: 85,
+    rating: 4.98,
+    contactPhone: '+880 1611-778899',
     status: 'available'
   },
   {
     id: 'm-3',
-    name: 'Nusrat Jahan, M.Eng',
-    institution: 'SUST (SWE)',
-    degree: 'B.Sc in Software Engineering',
-    specialization: ['Python / AI / ML', 'Database (SQL/NoSQL)', 'Fullstack Projects', 'React/Node'],
+    name: 'Md. Atikur Rahman',
+    institution: 'Kraflyn Technologies',
+    degree: 'Senior Web Architect & CMS Specialist',
+    roleTitle: 'Senior Web Architect & CMS Specialist',
+    specialization: ['Custom WordPress', 'WooCommerce Architecture', 'PHP 8 / React', 'Speed & Security'],
     activeAssignedOrders: 4,
-    completedOrders: 39,
-    rating: 4.8,
-    contactPhone: '+880 1711-000333',
-    status: 'busy'
+    completedOrders: 92,
+    rating: 4.97,
+    contactPhone: '+880 1933-445566',
+    status: 'available'
   },
   {
     id: 'm-4',
-    name: 'Arif Chowdhury, MBA',
-    institution: 'IBA, University of Dhaka',
-    degree: 'MBA in Finance & Supply Chain',
-    specialization: ['Business Case Studies', 'Financial Modeling', 'Report Writing', 'Economics'],
-    activeAssignedOrders: 1,
-    completedOrders: 55,
-    rating: 4.9,
-    contactPhone: '+880 1711-000444',
+    name: 'Mst. Somaiya Alom Asha',
+    institution: 'Kraflyn Technologies',
+    degree: 'Lead UI/UX Designer & Product Strategist',
+    roleTitle: 'Lead UI/UX Designer & Product Strategist',
+    specialization: ['Figma Prototyping', 'Design Systems & Tokens', 'Mobile App UI/UX', 'User Journey Design'],
+    activeAssignedOrders: 2,
+    completedOrders: 89,
+    rating: 4.99,
+    contactPhone: '+880 1822-998877',
     status: 'available'
   }
 ];
@@ -87,10 +110,12 @@ export const DEFAULT_USER_PROFILE: UserProfile = {
   phone: '',
   whatsapp: '',
   email: '',
-  university: 'Pundra University of Science and Technology (PUB)',
+  companyOrOrg: '',
+  industry: 'SaaS & Cloud Platforms',
+  university: 'Tech Startup & Innovation Lab',
   customUni: '',
-  department: 'Computer Science & Engineering (CSE)',
-  batchOrSemester: '',
+  department: 'Full-Stack Web Engineering',
+  batchOrSemester: 'Web / SaaS Project',
   preferredContact: 'WhatsApp'
 };
 
@@ -99,7 +124,7 @@ interface AppContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: TranslationDictionary;
-  bilingualServices: typeof BILINGUAL_SERVICES;
+  bilingualServices: BilingualService[];
 
   // View Switcher (Student Web vs Admin Web)
   currentView: 'student' | 'admin';
@@ -113,8 +138,21 @@ interface AppContextType {
   userProfile: UserProfile;
   updateUserProfile: (profile: Partial<UserProfile>) => void;
 
-  // Services & Catalog
+  // Projects / Portfolio Showcase (A-to-Z Admin Management)
+  projects: ProjectItem[];
+  addProject: (project: Omit<ProjectItem, 'id' | 'createdAt'>) => string;
+  updateProject: (project: ProjectItem) => void;
+  deleteProject: (projectId: string) => void;
+
+  // Site Settings & Notices (A-to-Z Admin Management)
+  siteSettings: SiteSettings;
+  updateSiteSettings: (settings: Partial<SiteSettings>) => void;
+
+  // Services & Catalog (Full CRUD A-to-Z)
   services: Service[];
+  addService: (service: Omit<Service, 'id'>) => string;
+  updateService: (service: Service) => void;
+  deleteService: (serviceId: string) => void;
   updateServicePrice: (serviceId: string, newPrice: number) => void;
   serviceDetailModalService: Service | null;
   openServiceDetail: (service: Service | null) => void;
@@ -184,16 +222,21 @@ interface AppContextType {
   updateOrderPrice: (orderId: string, newTotal: number) => void;
   deleteOrder: (orderId: string) => void;
 
-  // Mentors
+  // Mentors (Full CRUD A-to-Z)
   mentors: MentorProfile[];
   registerMentor: (mentorData: Omit<MentorProfile, 'id' | 'rating' | 'completedOrders' | 'activeAssignedOrders'>) => string;
+  addMentor: (mentorData: Omit<MentorProfile, 'id' | 'completedOrders' | 'activeAssignedOrders'>) => string;
+  updateMentor: (mentor: MentorProfile) => void;
+  deleteMentor: (mentorId: string) => void;
   updateMentorStatus: (mentorId: string, status: MentorProfile['status']) => void;
 
-  // Contact Inquiries
+  // Contact Inquiries (A-to-Z Management)
   inquiries: ContactInquiry[];
   submitInquiry: (inquiryData: Omit<ContactInquiry, 'id' | 'submittedAt' | 'status'>) => string;
+  updateInquiryStatus: (inquiryId: string, status: ContactInquiry['status']) => void;
+  deleteInquiry: (inquiryId: string) => void;
 
-  // Reviews
+  // Reviews (Full CRUD A-to-Z)
   reviews: Review[];
   writeReviewModalOpen: boolean;
   openWriteReviewModal: () => void;
@@ -207,6 +250,8 @@ interface AppContextType {
     gradeOutcome?: string;
     comment: string;
   }) => void;
+  addReviewDirect: (review: Omit<Review, 'id' | 'date'>) => string;
+  updateReview: (review: Review) => void;
   deleteReview: (reviewId: string) => void;
 
   // Toast / Feedback
@@ -217,17 +262,19 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 const STORAGE_KEYS = {
-  LANGUAGE: 'eduquest_lang_v2',
-  VIEW: 'eduquest_view_v2',
-  CART: 'eduquest_cart_v2',
-  ORDERS: 'eduquest_orders_v2',
-  REVIEWS: 'eduquest_reviews_v2',
-  USER_PROFILE: 'eduquest_user_profile_v2',
-  SERVICES: 'eduquest_services_v2',
-  MENTORS: 'eduquest_mentors_v2',
-  INQUIRIES: 'eduquest_inquiries_v2',
-  RECENT_TRACKED: 'eduquest_recent_tracked_ids_v2',
-  FAVORITES: 'eduquest_favorites_v2',
+  LANGUAGE: 'kraflyn_lang_v3',
+  VIEW: 'kraflyn_view_v3',
+  CART: 'kraflyn_cart_v3',
+  ORDERS: 'kraflyn_orders_v3',
+  REVIEWS: 'kraflyn_reviews_v3',
+  USER_PROFILE: 'kraflyn_user_profile_v3',
+  SERVICES: 'kraflyn_services_v4',
+  MENTORS: 'kraflyn_team_v3',
+  INQUIRIES: 'kraflyn_inquiries_v3',
+  RECENT_TRACKED: 'kraflyn_recent_tracked_ids_v3',
+  FAVORITES: 'kraflyn_favorites_v3',
+  PROJECTS: 'kraflyn_projects_v3',
+  SETTINGS: 'kraflyn_settings_v3',
 };
 
 // Safe JSON parser helper
@@ -241,11 +288,36 @@ function safeParse<T>(key: string, fallback: T): T {
   }
 }
 
+const VALID_SERVICE_CATEGORIES = new Set([
+  'Design Services',
+  'Development Services',
+  'WordPress Services',
+  'Data Analysis'
+]);
+
+function sanitizeServicesList(rawList: any[]): Service[] {
+  if (!Array.isArray(rawList) || rawList.length === 0) return SERVICES;
+  // Keep only services that belong to the 4 digital pillars (exclude legacy academic items)
+  const valid = rawList.filter(item => 
+    item && 
+    typeof item.id === 'string' && 
+    typeof item.title === 'string' && 
+    VALID_SERVICE_CATEGORIES.has(item.category)
+  );
+
+  if (valid.length === 0) return SERVICES;
+
+  // Ensure all base 30 services are present
+  const existingIds = new Set(valid.map(s => s.id));
+  const missing = SERVICES.filter(s => !existingIds.has(s.id));
+  return [...valid, ...missing];
+}
+
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Language State
+  // Language State (Default: English 'en', with instant switch to Bengali 'bn')
   const [language, setLanguageState] = useState<Language>(() => {
     const saved = localStorage.getItem(STORAGE_KEYS.LANGUAGE);
-    return (saved === 'en' || saved === 'bn') ? saved : 'bn';
+    return (saved === 'en' || saved === 'bn') ? saved : 'en';
   });
 
   const setLanguage = (lang: Language) => {
@@ -261,7 +333,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   // Helper to check if current URL or environment specifies Admin Portal
   const checkIsAdminRoute = (): boolean => {
-    // Check environment variable (used for separate Netlify deployment: VITE_APP_MODE=admin)
     if (import.meta.env.VITE_APP_MODE === 'admin') return true;
     if (typeof window === 'undefined') return false;
     const path = window.location.pathname.toLowerCase();
@@ -350,29 +421,237 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     });
   };
 
-  // Services Catalog State with LocalStorage Persistence & Auto-merging of new services
-  const [services, setServices] = useState<Service[]>(() => {
-    const cached = safeParse<Service[]>(STORAGE_KEYS.SERVICES, []);
-    if (!cached || cached.length === 0) return SERVICES;
-    
-    // Ensure all default services (e.g. figma-design, wordpress-development, data-analysis) exist
-    const existingIds = new Set(cached.map(s => s.id));
-    const missing = SERVICES.filter(s => !existingIds.has(s.id));
-    if (missing.length > 0) {
-      const merged = [...cached, ...missing];
+  // -------------------------------------------------------------
+  // PROJECTS / PORTFOLIO SHOWCASE (A-to-Z Admin Management)
+  // -------------------------------------------------------------
+  const [projects, setProjects] = useState<ProjectItem[]>(() => {
+    const cached = safeParse<ProjectItem[]>(STORAGE_KEYS.PROJECTS, []);
+    return cached && cached.length > 0 ? cached : INITIAL_PROJECTS;
+  });
+
+  const addProject = (projectData: Omit<ProjectItem, 'id' | 'createdAt'>): string => {
+    const id = `proj-${Date.now()}`;
+    const newProject: ProjectItem = {
+      ...projectData,
+      id,
+      createdAt: new Date().toISOString()
+    };
+    setProjects(prev => {
+      const next = [newProject, ...prev];
       try {
-        localStorage.setItem(STORAGE_KEYS.SERVICES, JSON.stringify(merged));
+        localStorage.setItem(STORAGE_KEYS.PROJECTS, JSON.stringify(next));
       } catch (e) {
         console.error(e);
       }
-      return merged;
-    }
-    return cached;
+      return next;
+    });
+    // Sync to Cloud Firestore
+    saveProjectToFirestore(newProject);
+    showToast(language === 'bn' ? `প্রজেক্ট "${newProject.title}" যুক্ত হয়েছে!` : `Project "${newProject.title}" added!`);
+    return id;
+  };
+
+  const updateProject = (project: ProjectItem) => {
+    setProjects(prev => {
+      const next = prev.map(p => p.id === project.id ? project : p);
+      try {
+        localStorage.setItem(STORAGE_KEYS.PROJECTS, JSON.stringify(next));
+      } catch (e) {
+        console.error(e);
+      }
+      return next;
+    });
+    // Sync to Cloud Firestore
+    saveProjectToFirestore(project);
+    showToast(language === 'bn' ? `প্রজেক্ট "${project.title}" আপডেট হয়েছে!` : `Project "${project.title}" updated!`);
+  };
+
+  const deleteProject = (projectId: string) => {
+    const target = projects.find(p => p.id === projectId);
+    setProjects(prev => {
+      const next = prev.filter(p => p.id !== projectId);
+      try {
+        localStorage.setItem(STORAGE_KEYS.PROJECTS, JSON.stringify(next));
+      } catch (e) {
+        console.error(e);
+      }
+      return next;
+    });
+    // Sync to Cloud Firestore
+    deleteProjectFromFirestore(projectId);
+    showToast(language === 'bn' ? `প্রজেক্ট মুছে ফেলা হয়েছে!` : `Project deleted!`);
+  };
+
+  // -------------------------------------------------------------
+  // SITE SETTINGS & ANNOUNCEMENTS (A-to-Z Admin Management)
+  // -------------------------------------------------------------
+  const [siteSettings, setSiteSettings] = useState<SiteSettings>(() => {
+    return safeParse<SiteSettings>(STORAGE_KEYS.SETTINGS, DEFAULT_SITE_SETTINGS);
   });
+
+  const updateSiteSettings = (settingsUpdate: Partial<SiteSettings>) => {
+    setSiteSettings(prev => {
+      const next: SiteSettings = {
+        ...prev,
+        ...settingsUpdate,
+        notice: settingsUpdate.notice ? { ...prev.notice, ...settingsUpdate.notice } : prev.notice
+      };
+      try {
+        localStorage.setItem(STORAGE_KEYS.SETTINGS, JSON.stringify(next));
+      } catch (e) {
+        console.error(e);
+      }
+      // Sync to Cloud Firestore
+      saveSiteSettingsToFirestore(next);
+      return next;
+    });
+    showToast(language === 'bn' ? 'সাইট সেটিংস সফলভাবে সেভ হয়েছে!' : 'Site settings saved successfully!');
+  };
+
+  // -------------------------------------------------------------
+  // SERVICES & CATALOG (Full CRUD A-to-Z)
+  // -------------------------------------------------------------
+  const [services, setServices] = useState<Service[]>(() => {
+    const cached = safeParse<Service[]>(STORAGE_KEYS.SERVICES, []);
+    const sanitized = sanitizeServicesList(cached);
+    try {
+      localStorage.setItem(STORAGE_KEYS.SERVICES, JSON.stringify(sanitized));
+    } catch (e) {
+      console.error(e);
+    }
+    return sanitized;
+  });
+
+  // Dynamically synchronized bilingual services that reflect live Admin price & service changes
+  const bilingualServices = useMemo<BilingualService[]>(() => {
+    const bilingualLookup = new Map<string, BilingualService>();
+    BILINGUAL_SERVICES.forEach(bs => bilingualLookup.set(bs.id, bs));
+
+    return services.map(service => {
+      const existing = bilingualLookup.get(service.id);
+      if (existing) {
+        return {
+          ...existing,
+          startingPrice: service.startingPrice,
+          typicalTurnaround: service.typicalTurnaround || existing.typicalTurnaround,
+          tag: service.tag !== undefined ? service.tag : existing.tag,
+          category: service.category,
+          title: {
+            en: service.title || existing.title.en,
+            bn: (service as any).titleBn || existing.title.bn || service.title,
+          },
+          shortDesc: {
+            en: service.shortDesc || existing.shortDesc.en,
+            bn: (service as any).shortDescBn || existing.shortDesc.bn || service.shortDesc,
+          },
+          fullDesc: {
+            en: service.fullDesc || existing.fullDesc.en,
+            bn: (service as any).fullDescBn || existing.fullDesc.bn || service.fullDesc,
+          },
+          deliverables: {
+            en: service.deliverables || existing.deliverables.en,
+            bn: (service as any).deliverablesBn || existing.deliverables.bn || service.deliverables,
+          },
+          subServices: service.subServices ? service.subServices.map(ss => ({
+            id: ss.id,
+            price: ss.price,
+            turnaround: ss.turnaround,
+            title: typeof ss.title === 'object' ? ss.title : { en: ss.title, bn: ss.title },
+            deliverables: Array.isArray(ss.deliverables) ? { en: ss.deliverables, bn: ss.deliverables } : (ss.deliverables as any),
+            recommendedFor: ss.recommendedFor ? (typeof ss.recommendedFor === 'object' ? ss.recommendedFor : { en: ss.recommendedFor, bn: ss.recommendedFor }) : undefined
+          })) : existing.subServices
+        };
+      }
+
+      // Dynamic custom service added via Admin Panel
+      return {
+        id: service.id,
+        iconName: service.iconName || 'Sparkles',
+        category: service.category,
+        startingPrice: service.startingPrice,
+        typicalTurnaround: service.typicalTurnaround || '2 - 4 Days',
+        tag: service.tag,
+        title: {
+          en: service.title,
+          bn: (service as any).titleBn || service.title,
+        },
+        shortDesc: {
+          en: service.shortDesc,
+          bn: (service as any).shortDescBn || service.shortDesc,
+        },
+        fullDesc: {
+          en: service.fullDesc,
+          bn: (service as any).fullDescBn || service.fullDesc,
+        },
+        deliverables: {
+          en: service.deliverables || [],
+          bn: (service as any).deliverablesBn || service.deliverables || [],
+        },
+        subServices: service.subServices ? service.subServices.map(ss => ({
+          id: ss.id,
+          price: ss.price,
+          turnaround: ss.turnaround,
+          title: typeof ss.title === 'object' ? ss.title : { en: ss.title, bn: ss.title },
+          deliverables: Array.isArray(ss.deliverables) ? { en: ss.deliverables, bn: ss.deliverables } : (ss.deliverables as any),
+          recommendedFor: ss.recommendedFor ? (typeof ss.recommendedFor === 'object' ? ss.recommendedFor : { en: ss.recommendedFor, bn: ss.recommendedFor }) : undefined
+        })) : undefined
+      };
+    });
+  }, [services]);
+
+  const addService = (serviceData: Omit<Service, 'id'>): string => {
+    const id = `srv-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`;
+    const newService: Service = {
+      ...serviceData,
+      id
+    };
+    setServices(prev => {
+      const next = [newService, ...prev];
+      try {
+        localStorage.setItem(STORAGE_KEYS.SERVICES, JSON.stringify(next));
+      } catch (e) {
+        console.error(e);
+      }
+      return next;
+    });
+    saveServiceToFirestore(newService);
+    showToast(language === 'bn' ? `নতুন সার্ভিস "${newService.title}" যুক্ত হয়েছে!` : `New service "${newService.title}" added!`);
+    return id;
+  };
+
+  const updateService = (service: Service) => {
+    setServices(prev => {
+      const next = prev.map(s => s.id === service.id ? service : s);
+      try {
+        localStorage.setItem(STORAGE_KEYS.SERVICES, JSON.stringify(next));
+      } catch (e) {
+        console.error(e);
+      }
+      return next;
+    });
+    saveServiceToFirestore(service);
+    showToast(language === 'bn' ? `সার্ভিস "${service.title}" আপডেট হয়েছে!` : `Service "${service.title}" updated!`);
+  };
+
+  const deleteService = (serviceId: string) => {
+    setServices(prev => {
+      const next = prev.filter(s => s.id !== serviceId);
+      try {
+        localStorage.setItem(STORAGE_KEYS.SERVICES, JSON.stringify(next));
+      } catch (e) {
+        console.error(e);
+      }
+      return next;
+    });
+    deleteServiceFromFirestore(serviceId);
+    showToast(language === 'bn' ? 'সার্ভিস ডিলিট করা হয়েছে!' : 'Service deleted!');
+  };
 
   const updateServicePrice = (serviceId: string, newPrice: number) => {
     setServices(prev => {
       const next = prev.map(s => s.id === serviceId ? { ...s, startingPrice: newPrice } : s);
+      const target = next.find(s => s.id === serviceId);
+      if (target) saveServiceToFirestore(target);
       try {
         localStorage.setItem(STORAGE_KEYS.SERVICES, JSON.stringify(next));
       } catch (e) {
@@ -420,7 +699,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   // Recent Tracked Orders History
   const [recentTrackedIds, setRecentTrackedIds] = useState<string[]>(() => {
-    return safeParse<string[]>(STORAGE_KEYS.RECENT_TRACKED, ['EQ-ORD-2608-8841', 'EQ-ORD-2608-4192']);
+    return safeParse<string[]>(STORAGE_KEYS.RECENT_TRACKED, ['KT-ORD-2026-8841', 'KT-ORD-2026-8842']);
   });
 
   const addRecentTrackedId = (orderId: string) => {
@@ -460,12 +739,65 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       }
       return next;
     });
+    saveMentorToFirestore(newMentor);
     return id;
+  };
+
+  const addMentor = (mentorData: Omit<MentorProfile, 'id' | 'completedOrders' | 'activeAssignedOrders'>): string => {
+    const id = `m-${Date.now()}`;
+    const newMentor: MentorProfile = {
+      ...mentorData,
+      id,
+      completedOrders: 0,
+      activeAssignedOrders: 0
+    };
+    setMentors(prev => {
+      const next = [newMentor, ...prev];
+      try {
+        localStorage.setItem(STORAGE_KEYS.MENTORS, JSON.stringify(next));
+      } catch (e) {
+        console.error(e);
+      }
+      return next;
+    });
+    saveMentorToFirestore(newMentor);
+    showToast(language === 'bn' ? `মেন্টর "${newMentor.name}" যুক্ত হয়েছেন!` : `Mentor "${newMentor.name}" added!`);
+    return id;
+  };
+
+  const updateMentor = (mentor: MentorProfile) => {
+    setMentors(prev => {
+      const next = prev.map(m => m.id === mentor.id ? mentor : m);
+      try {
+        localStorage.setItem(STORAGE_KEYS.MENTORS, JSON.stringify(next));
+      } catch (e) {
+        console.error(e);
+      }
+      return next;
+    });
+    saveMentorToFirestore(mentor);
+    showToast(language === 'bn' ? `মেন্টর প্রোফাইল আপডেট হয়েছে!` : `Mentor profile updated!`);
+  };
+
+  const deleteMentor = (mentorId: string) => {
+    setMentors(prev => {
+      const next = prev.filter(m => m.id !== mentorId);
+      try {
+        localStorage.setItem(STORAGE_KEYS.MENTORS, JSON.stringify(next));
+      } catch (e) {
+        console.error(e);
+      }
+      return next;
+    });
+    deleteMentorFromFirestore(mentorId);
+    showToast(language === 'bn' ? 'মেন্টর মুছে ফেলা হয়েছে!' : 'Mentor deleted!');
   };
 
   const updateMentorStatus = (mentorId: string, status: MentorProfile['status']) => {
     setMentors(prev => {
       const next = prev.map(m => m.id === mentorId ? { ...m, status } : m);
+      const target = next.find(m => m.id === mentorId);
+      if (target) saveMentorToFirestore(target);
       try {
         localStorage.setItem(STORAGE_KEYS.MENTORS, JSON.stringify(next));
       } catch (e) {
@@ -497,6 +829,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       }
       return next;
     });
+    saveInquiryToFirestore(newInquiry);
     // Also cache basic user info
     updateUserProfile({
       name: inquiryData.name,
@@ -504,6 +837,35 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       phone: inquiryData.phone
     });
     return id;
+  };
+
+  const updateInquiryStatus = (inquiryId: string, status: ContactInquiry['status']) => {
+    setInquiries(prev => {
+      const next = prev.map(inq => inq.id === inquiryId ? { ...inq, status } : inq);
+      const target = next.find(inq => inq.id === inquiryId);
+      if (target) saveInquiryToFirestore(target);
+      try {
+        localStorage.setItem(STORAGE_KEYS.INQUIRIES, JSON.stringify(next));
+      } catch (e) {
+        console.error(e);
+      }
+      return next;
+    });
+    showToast(language === 'bn' ? 'ইনকোয়ারি স্ট্যাটাস আপডেট হয়েছে!' : 'Inquiry status updated!');
+  };
+
+  const deleteInquiry = (inquiryId: string) => {
+    setInquiries(prev => {
+      const next = prev.filter(inq => inq.id !== inquiryId);
+      try {
+        localStorage.setItem(STORAGE_KEYS.INQUIRIES, JSON.stringify(next));
+      } catch (e) {
+        console.error(e);
+      }
+      return next;
+    });
+    deleteInquiryFromFirestore(inquiryId);
+    showToast(language === 'bn' ? 'ইনকোয়ারি ডিলিট করা হয়েছে!' : 'Inquiry deleted!');
   };
 
   // Order Modals
@@ -541,9 +903,49 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       }
     });
 
+    // 3. Subscribe to Projects
+    const unsubscribeProjects = subscribeToProjects((cloudProjects) => {
+      if (cloudProjects && cloudProjects.length > 0) {
+        setProjects(cloudProjects);
+      }
+    });
+
+    // 4. Subscribe to Site Settings
+    const unsubscribeSettings = subscribeToSiteSettings((cloudSettings) => {
+      if (cloudSettings) {
+        setSiteSettings(cloudSettings);
+      }
+    });
+
+    // 5. Subscribe to Mentors
+    const unsubscribeMentors = subscribeToMentors((cloudMentors) => {
+      if (cloudMentors && cloudMentors.length > 0) {
+        setMentors(cloudMentors);
+      }
+    });
+
+    // 6. Subscribe to Services
+    const unsubscribeServices = subscribeToServices((cloudServices) => {
+      if (cloudServices && cloudServices.length > 0) {
+        setServices(cloudServices);
+      }
+    });
+
+    // 7. Subscribe to Inquiries
+    const unsubscribeInquiries = subscribeToInquiries((cloudInquiries) => {
+      if (cloudInquiries && cloudInquiries.length > 0) {
+        setInquiries(cloudInquiries);
+      }
+    });
+
     return () => {
       unsubscribeOrders();
       unsubscribeReviews();
+      unsubscribeProjects();
+      unsubscribeSettings();
+      unsubscribeMentors();
+      unsubscribeServices();
+      unsubscribeInquiries();
     };
   }, []);
 
@@ -572,6 +974,46 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   }, [reviews]);
 
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEYS.PROJECTS, JSON.stringify(projects));
+    } catch (e) {
+      console.error(e);
+    }
+  }, [projects]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEYS.SETTINGS, JSON.stringify(siteSettings));
+    } catch (e) {
+      console.error(e);
+    }
+  }, [siteSettings]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEYS.MENTORS, JSON.stringify(mentors));
+    } catch (e) {
+      console.error(e);
+    }
+  }, [mentors]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEYS.SERVICES, JSON.stringify(services));
+    } catch (e) {
+      console.error(e);
+    }
+  }, [services]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEYS.INQUIRIES, JSON.stringify(inquiries));
+    } catch (e) {
+      console.error(e);
+    }
+  }, [inquiries]);
+
   const showToast = (msg: string) => {
     setToastMessage(msg);
     setTimeout(() => {
@@ -597,7 +1039,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   ) => {
     const tier = options?.packageTier || 'Standard Support';
-    const urgencyFee = options?.urgencyFee || (tier === 'Express 24h Support' ? 200 : tier === 'VIP 1-on-1 Mentorship' ? 500 : 0);
+    const urgencyFee = options?.urgencyFee || (tier === 'Express 24h Support' ? 150 : tier === 'VIP 1-on-1 Mentorship' ? 300 : 0);
     const basePrice = options?.customPrice !== undefined ? options.customPrice : service.startingPrice;
     const totalPrice = basePrice + urgencyFee;
 
@@ -730,9 +1172,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     } else {
       orderItems = [{
         id: `ci-custom-${Date.now()}`,
-        serviceId: 'custom-academic-support',
-        serviceTitle: 'Custom Academic Support',
-        category: 'Academic Support',
+        serviceId: 'custom-digital-solution',
+        serviceTitle: 'Custom Digital Solution & Consultation',
+        category: 'Development Services',
         basePrice: 500,
         packageTier: 'Standard Support',
         urgencyFee: 0,
@@ -766,7 +1208,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       updatedAt: 'Just now',
       notes: [
         'Order registered in Kraflyn Technologies queue.',
-        'Academic Coordinator will contact via WhatsApp shortly.'
+        'Technical Lead & Project Architect will connect via WhatsApp shortly.'
       ]
     };
 
@@ -855,7 +1297,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }));
     // Sync to Cloud Firestore
     updateOrderStatusInFirestore(orderId, currStatus, undefined, undefined, newTotal);
-    showToast(language === 'bn' ? `অর্ডার মূল্য ৳${newTotal} তে আপডেট করা হয়েছে!` : `Order price updated to ৳${newTotal}!`);
+    showToast(language === 'bn' ? `অর্ডার মূল্য $${newTotal} তে আপডেট করা হয়েছে!` : `Order price updated to $${newTotal}!`);
   };
 
   const deleteOrder = (orderId: string) => {
@@ -902,6 +1344,26 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     showToast(language === 'bn' ? 'ধন্যবাদ! আপনার মূল্যবান রিভিউ যুক্ত হয়েছে।' : 'Thank you! Your review has been added.');
   };
 
+  const addReviewDirect = (reviewData: Omit<Review, 'id' | 'date'>): string => {
+    const id = `rev-${Date.now()}`;
+    const newRev: Review = {
+      ...reviewData,
+      id,
+      date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+      verified: reviewData.verified !== undefined ? reviewData.verified : true
+    };
+    setReviews(prev => [newRev, ...prev]);
+    saveReviewToFirestore(newRev);
+    showToast(language === 'bn' ? 'রিভিউ যুক্ত হয়েছে!' : 'Review added!');
+    return id;
+  };
+
+  const updateReview = (review: Review) => {
+    setReviews(prev => prev.map(r => r.id === review.id ? review : r));
+    saveReviewToFirestore(review);
+    showToast(language === 'bn' ? 'রিভিউ আপডেট হয়েছে!' : 'Review updated!');
+  };
+
   const deleteReview = (reviewId: string) => {
     setReviews(prev => prev.filter(r => r.id !== reviewId));
     deleteReviewFromFirestore(reviewId);
@@ -914,14 +1376,23 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         language,
         setLanguage,
         t,
-        bilingualServices: BILINGUAL_SERVICES,
+        bilingualServices,
         currentView,
         setCurrentView,
         activeNavTab,
         setActiveNavTab,
         userProfile,
         updateUserProfile,
+        projects,
+        addProject,
+        updateProject,
+        deleteProject,
+        siteSettings,
+        updateSiteSettings,
         services,
+        addService,
+        updateService,
+        deleteService,
         updateServicePrice,
         serviceDetailModalService,
         openServiceDetail,
@@ -959,14 +1430,21 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         deleteOrder,
         mentors,
         registerMentor,
+        addMentor,
+        updateMentor,
+        deleteMentor,
         updateMentorStatus,
         inquiries,
         submitInquiry,
+        updateInquiryStatus,
+        deleteInquiry,
         reviews,
         writeReviewModalOpen,
         openWriteReviewModal,
         closeWriteReviewModal,
         addCustomerReview,
+        addReviewDirect,
+        updateReview,
         deleteReview,
         toastMessage,
         showToast
@@ -984,3 +1462,4 @@ export const useApp = () => {
   }
   return context;
 };
+

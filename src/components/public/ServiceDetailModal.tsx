@@ -163,7 +163,7 @@ export const ServiceDetailModal: React.FC = () => {
                           <span className={`text-xs font-black shrink-0 px-2 py-0.5 rounded-md ${
                             isSelected ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-800'
                           }`}>
-                            ৳{sub.price}
+                            ${sub.price}
                           </span>
                         </div>
 
@@ -252,7 +252,7 @@ export const ServiceDetailModal: React.FC = () => {
               {selectedSubServiceId ? (language === 'bn' ? 'প্যাকেজ মূল্য' : 'Package Price') : t.startingPrice}
             </span>
             <div className="flex items-baseline gap-1">
-              <span className="text-2xl font-black text-slate-900">৳{displayPrice.toLocaleString()}</span>
+              <span className="text-2xl font-black text-slate-900">${displayPrice.toLocaleString()}</span>
             </div>
           </div>
 
