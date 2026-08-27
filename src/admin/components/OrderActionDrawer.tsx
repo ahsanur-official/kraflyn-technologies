@@ -120,7 +120,7 @@ export const OrderActionDrawer: React.FC<OrderActionDrawerProps> = ({ order, onC
             <div className="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 sm:p-4 space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-[11px] font-bold uppercase text-slate-400">
-                  {language === 'bn' ? 'শিক্ষার্থী বিবরণ' : 'Student Information'}
+                  {language === 'bn' ? 'ক্লায়েন্ট বিবরণ' : 'Client Information'}
                 </span>
                 <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase bg-blue-100 text-blue-800">
                   {order.status.replace(/_/g, ' ')}
@@ -141,12 +141,12 @@ export const OrderActionDrawer: React.FC<OrderActionDrawerProps> = ({ order, onC
                   </div>
                 </div>
                 <div>
-                  <span className="text-slate-400 text-[10px] sm:text-[11px] block">{language === 'bn' ? 'বিশ্ববিদ্যালয়' : 'University'}</span>
-                  <span className="font-semibold text-slate-800 truncate block">{order.university}</span>
+                  <span className="text-slate-400 text-[10px] sm:text-[11px] block">{language === 'bn' ? 'প্রতিষ্ঠান / সেক্টর' : 'Company / Organization'}</span>
+                  <span className="font-semibold text-slate-800 truncate block">{order.companyOrOrg || order.university}</span>
                   <span className="text-[10px] sm:text-[11px] text-slate-500 truncate block">{order.department}</span>
                 </div>
                 <div>
-                  <span className="text-slate-400 text-[10px] sm:text-[11px] block">{language === 'bn' ? 'কোর্স ও ডেডলাইন' : 'Course & Deadline'}</span>
+                  <span className="text-slate-400 text-[10px] sm:text-[11px] block">{language === 'bn' ? 'প্রজেক্ট ও ডেডলাইন' : 'Project & Deadline'}</span>
                   <span className="font-bold text-slate-800 block truncate">{order.courseName}</span>
                   <span className="text-[10px] sm:text-[11px] text-blue-600 font-bold">📅 {order.deadline}</span>
                 </div>
@@ -164,8 +164,8 @@ export const OrderActionDrawer: React.FC<OrderActionDrawerProps> = ({ order, onC
                 className="w-full px-3.5 py-3 bg-white border border-slate-300 rounded-xl font-bold text-base sm:text-sm text-slate-800 focus:ring-2 focus:ring-blue-500"
               >
                 <option value="order_received">1. Order Received (অর্ডার গৃহীত)</option>
-                <option value="mentor_assigned">2. Mentor Assigned (মেন্টর নিযুক্ত)</option>
-                <option value="contacted_student">3. Contacted Student (শিক্ষার্থীর সাথে যোগাযোগ)</option>
+                <option value="mentor_assigned">2. Specialist Assigned (স্পেশালিস্ট নিযুক্ত)</option>
+                <option value="contacted_student">3. Contacted Client (ক্লায়েন্টের সাথে যোগাযোগ)</option>
                 <option value="in_progress">4. In Progress (কাজ চলমান)</option>
                 <option value="delivered_completed">5. Delivered & Completed (ডেলিভারি সম্পন্ন)</option>
                 <option value="cancelled">6. Cancelled (বাতিলকৃত)</option>
@@ -291,7 +291,7 @@ export const OrderActionDrawer: React.FC<OrderActionDrawerProps> = ({ order, onC
                   rel="noreferrer"
                   className="p-3 bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-800 rounded-xl text-center font-bold text-xs transition-colors block min-h-[44px] flex items-center justify-center"
                 >
-                  👨‍🏫 Mentor Update
+                  👨‍💻 Specialist Update
                 </a>
                 <a
                   href={getWhatsappQuickMsg('delivery')}

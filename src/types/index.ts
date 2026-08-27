@@ -256,7 +256,7 @@ export interface ContactInquiry {
   subject: string;
   message: string;
   submittedAt: string;
-  status: 'new' | 'reviewed' | 'resolved';
+  status: 'new' | 'contacted' | 'reviewed' | 'resolved';
 }
 
 export interface MentorProfile {

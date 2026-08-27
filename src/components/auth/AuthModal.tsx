@@ -71,47 +71,17 @@ export const AuthModal: React.FC = () => {
 
         {/* Modal Header */}
         <div className="text-center mb-6">
-          <div className="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center mx-auto mb-3 shadow-md shadow-indigo-600/20">
-            <GraduationCap className="w-7 h-7" />
+          <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mx-auto mb-3 shadow-md shadow-blue-600/20">
+            <User className="w-6 h-6" />
           </div>
           <h2 className="text-xl font-bold text-slate-900">
-            {authModalMode === 'login' ? 'Welcome Back to Kraflyn Technologies' : 'Create a Kraflyn Technologies Account'}
+            {authModalMode === 'login' ? 'Client & Partner Login' : 'Create a Client Account'}
           </h2>
           <p className="text-xs text-slate-500 mt-1">
             {authModalMode === 'login'
-              ? 'Access your academic requests, assignments, and mentor chats'
-              : 'Join thousands of university students getting tailored academic support'}
+              ? 'Access your active project dashboard, invoices, and direct specialist communication'
+              : 'Register to manage your software deliverables, design requests, and business solutions'}
           </p>
-        </div>
-
-        {/* 1-Click Demo Accounts Selector */}
-        <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 mb-6">
-          <div className="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-2 flex items-center gap-1">
-            <Sparkles className="w-3 h-3 text-indigo-600" />
-            <span>1-Click Instant Demo Login:</span>
-          </div>
-
-          <div className="grid grid-cols-2 gap-2">
-            <button
-              onClick={() => handleQuickLogin('student')}
-              className="p-2.5 rounded-xl bg-white border border-indigo-200 hover:border-indigo-500 text-indigo-900 text-left transition-colors shadow-2xs cursor-pointer"
-            >
-              <div className="font-bold text-xs flex items-center gap-1">
-                <span>🎓</span> Student
-              </div>
-              <div className="text-[10px] text-slate-400">Ehsanur (PUB)</div>
-            </button>
-
-            <button
-              onClick={() => handleQuickLogin('mentor')}
-              className="p-2.5 rounded-xl bg-white border border-emerald-200 hover:border-emerald-500 text-emerald-900 text-left transition-colors shadow-2xs cursor-pointer"
-            >
-              <div className="font-bold text-xs flex items-center gap-1">
-                <span>👨‍🏫</span> Mentor
-              </div>
-              <div className="text-[10px] text-slate-400">Tanvir (BUET)</div>
-            </button>
-          </div>
         </div>
 
         {/* Traditional Form */}
@@ -126,47 +96,31 @@ export const AuthModal: React.FC = () => {
                   placeholder="e.g. Md. Ahsanur Rahaman"
                   value={name}
                   onChange={e => setName(e.target.value)}
-                  className="w-full px-3.5 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-hidden"
                 />
               </div>
 
               <div>
-                <label className="block font-bold text-slate-700 mb-1">Phone Number *</label>
+                <label className="block font-bold text-slate-700 mb-1">Phone Number / WhatsApp *</label>
                 <input
                   type="tel"
                   required
-                  placeholder="e.g. 01712345678"
+                  placeholder="e.g. +880 1712-345678"
                   value={phone}
                   onChange={e => setPhone(e.target.value)}
-                  className="w-full px-3.5 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-hidden"
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-2">
-                <div>
-                  <label className="block font-bold text-slate-700 mb-1">University</label>
-                  <select
-                    value={university}
-                    onChange={e => setUniversity(e.target.value)}
-                    className="w-full px-2.5 py-2 border border-slate-300 rounded-xl"
-                  >
-                    {UNIVERSITIES.slice(0, 8).map(u => (
-                      <option key={u} value={u}>{u}</option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <label className="block font-bold text-slate-700 mb-1">Department</label>
-                  <select
-                    value={department}
-                    onChange={e => setDepartment(e.target.value)}
-                    className="w-full px-2.5 py-2 border border-slate-300 rounded-xl"
-                  >
-                    {DEPARTMENTS.slice(0, 6).map(d => (
-                      <option key={d} value={d}>{d}</option>
-                    ))}
-                  </select>
-                </div>
+              <div>
+                <label className="block font-bold text-slate-700 mb-1">Company / Organization / Brand</label>
+                <input
+                  type="text"
+                  placeholder="e.g. Acme Tech Innovations"
+                  value={university}
+                  onChange={e => setUniversity(e.target.value)}
+                  className="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-hidden"
+                />
               </div>
             </>
           )}
@@ -176,10 +130,10 @@ export const AuthModal: React.FC = () => {
             <input
               type="email"
               required
-              placeholder="e.g. student@pundra.edu.bd"
+              placeholder="e.g. client@company.com"
               value={email}
               onChange={e => setEmail(e.target.value)}
-              className="w-full px-3.5 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-hidden"
             />
           </div>
 
@@ -191,15 +145,15 @@ export const AuthModal: React.FC = () => {
               placeholder="••••••••"
               value={password}
               onChange={e => setPassword(e.target.value)}
-              className="w-full px-3.5 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-hidden"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-md transition-colors cursor-pointer"
+            className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-md transition-colors cursor-pointer text-xs sm:text-sm"
           >
-            {authModalMode === 'login' ? 'Sign In to Portal' : 'Register Account'}
+            {authModalMode === 'login' ? 'Sign In Securely' : 'Create Account'}
           </button>
         </form>
 

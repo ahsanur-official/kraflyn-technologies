@@ -28,7 +28,6 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onAuthenticated }) => {
 
       if (isAllowed) {
         sessionStorage.setItem('kraflyn_admin_session', 'authenticated');
-        sessionStorage.setItem('eduquest_admin_session', 'authenticated');
         onAuthenticated();
       } else {
         setError(language === 'bn' ? 'ভুল পাসকোড! সঠিক এডমিন সিকিউরিটি পাসকোড দিন।' : 'Invalid Admin Passcode! Access Denied.');

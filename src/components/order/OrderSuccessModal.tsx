@@ -48,7 +48,7 @@ export const OrderSuccessModal: React.FC = () => {
 
   // Pre-filled WhatsApp message
   const waMessage = encodeURIComponent(
-    `Hello Kraflyn Technologies Support Team!\nI just placed an order on your website.\n\n*Order ID:* ${lastPlacedOrder.id}\n*Customer Name:* ${lastPlacedOrder.customerName}\n*University / Org:* ${lastPlacedOrder.university}\n*Course / Project:* ${lastPlacedOrder.courseName}\n*Services:* ${lastPlacedOrder.items.map(i => i.serviceTitle).join(', ')}\n*Deadline:* ${lastPlacedOrder.deadline}\n\nPlease let me know the next steps for specialist assignment and confirmation.`
+    `Hello Kraflyn Technologies Support Team!\nI just placed an order on your website.\n\n*Order ID:* ${lastPlacedOrder.id}\n*Customer Name:* ${lastPlacedOrder.customerName}\n*Company / Brand:* ${lastPlacedOrder.companyOrOrg || lastPlacedOrder.university || 'N/A'}\n*Project Title:* ${lastPlacedOrder.courseName}\n*Services:* ${lastPlacedOrder.items.map(i => i.serviceTitle).join(', ')}\n*Deadline:* ${lastPlacedOrder.deadline}\n\nPlease let me know the next steps for technical lead assignment and confirmation.`
   );
 
   const whatsappUrl = `https://wa.me/8801712345678?text=${waMessage}`;
@@ -111,8 +111,8 @@ export const OrderSuccessModal: React.FC = () => {
           <div className="grid grid-cols-2 gap-3 text-xs bg-blue-50/50 border border-blue-100 rounded-2xl p-4">
             <div>
               <span className="text-slate-400 block text-[11px]">{t.universityName}</span>
-              <strong className="text-slate-800 block truncate">{lastPlacedOrder.university}</strong>
-              <span className="text-slate-600 text-[11px] block">{lastPlacedOrder.department}</span>
+              <strong className="text-slate-800 block truncate">{lastPlacedOrder.companyOrOrg || lastPlacedOrder.university}</strong>
+              <span className="text-slate-600 text-[11px] block">{lastPlacedOrder.customerPhone}</span>
             </div>
 
             <div>

@@ -23,19 +23,20 @@ export const OrdersManager: React.FC = () => {
   const [universityFilter, setUniversityFilter] = useState<string>('All');
   const [selectedOrderForDrawer, setSelectedOrderForDrawer] = useState<AcademicOrder | null>(null);
 
-  const universitiesList = Array.from(new Set(orders.map(o => o.university).filter(Boolean)));
+  const universitiesList = Array.from(new Set(orders.map(o => o.companyOrOrg || o.university).filter(Boolean)));
 
   const filteredOrders = orders.filter(order => {
+    const org = order.companyOrOrg || order.university || '';
     const matchesSearch = 
       order.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
       order.customerName.toLowerCase().includes(searchQuery.toLowerCase()) ||
       order.phone.includes(searchQuery) ||
       order.whatsapp.includes(searchQuery) ||
-      order.university.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      org.toLowerCase().includes(searchQuery.toLowerCase()) ||
       order.courseName.toLowerCase().includes(searchQuery.toLowerCase());
     
     const matchesStatus = statusFilter === 'All' || order.status === statusFilter;
-    const matchesUni = universityFilter === 'All' || order.university === universityFilter;
+    const matchesUni = universityFilter === 'All' || org === universityFilter;
 
     return matchesSearch && matchesStatus && matchesUni;
   });
@@ -153,14 +154,14 @@ export const OrdersManager: React.FC = () => {
                 {getStatusBadge(order.status)}
               </div>
 
-              {/* Student & University */}
+              {/* Client & Organization */}
               <div className="space-y-1">
                 <div className="flex items-center justify-between">
                   <span className="font-bold text-slate-900 text-sm">{order.customerName}</span>
                   <span className="font-black text-slate-900 text-sm">৳{order.totalAmount}</span>
                 </div>
                 <div className="text-xs text-slate-600 font-medium truncate">
-                  🏛️ {order.university} • <span className="text-blue-700 font-bold">{order.courseName}</span>
+                  🏢 {order.companyOrOrg || order.university} • <span className="text-blue-700 font-bold">{order.courseName}</span>
                 </div>
                 <div className="text-[11px] text-slate-500 truncate">
                   📦 {order.items.map(i => i.serviceTitle).join(', ')}
@@ -272,7 +273,7 @@ export const OrdersManager: React.FC = () => {
                       </div>
                     </td>
 
-                    {/* Student Info */}
+                    {/* Client Info */}
                     <td className="py-3.5 px-4">
                       <div className="font-bold text-slate-900">
                         {order.customerName}
@@ -282,10 +283,10 @@ export const OrdersManager: React.FC = () => {
                       </div>
                     </td>
 
-                    {/* University & Course */}
+                    {/* Company & Project */}
                     <td className="py-3.5 px-4 max-w-[200px]">
-                      <div className="font-semibold text-slate-800 truncate" title={order.university}>
-                        {order.university}
+                      <div className="font-semibold text-slate-800 truncate" title={order.companyOrOrg || order.university}>
+                        {order.companyOrOrg || order.university}
                       </div>
                       <div className="text-[11px] text-blue-600 truncate font-medium" title={order.courseName}>
                         {order.courseName}

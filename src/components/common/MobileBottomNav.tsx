@@ -93,7 +93,8 @@ export const MobileBottomNav: React.FC = () => {
   };
 
   return (
-    <motion.div 
+    <motion.nav 
+      aria-label="Mobile Bottom Navigation"
       initial={{ y: 0, opacity: 1 }}
       animate={{ 
         y: isVisible ? 0 : 90, 
@@ -106,74 +107,110 @@ export const MobileBottomNav: React.FC = () => {
         damping: 26,
         mass: 0.8
       }}
-      className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200/90 px-3 py-2 flex items-center justify-around shadow-2xl safe-area-inset-bottom"
+      className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-lg border-t border-slate-200/90 px-1 py-1.5 shadow-[0_-4px_20px_rgba(0,0,0,0.06)] safe-area-inset-bottom"
     >
-      {/* Home */}
-      <motion.button
-        whileTap={{ scale: 0.9 }}
-        onClick={() => handleTabClick('home')}
-        className={`flex flex-col items-center gap-0.5 py-1 px-2 rounded-lg text-[10px] font-bold transition-colors ${
-          activeNavTab === 'home' ? 'text-blue-600 font-extrabold' : 'text-slate-500 hover:text-slate-800'
-        }`}
-      >
-        <Home className="w-5 h-5" />
-        <span>{t.home}</span>
-      </motion.button>
+      <div className="grid grid-cols-5 items-center justify-items-center w-full max-w-md mx-auto">
+        {/* 1. Home */}
+        <motion.button
+          whileTap={{ scale: 0.92 }}
+          onClick={() => handleTabClick('home')}
+          className={`flex flex-col items-center justify-center w-full py-1 px-0.5 rounded-xl transition-all cursor-pointer ${
+            activeNavTab === 'home' 
+              ? 'text-blue-600 font-black' 
+              : 'text-slate-500 hover:text-slate-800 font-semibold'
+          }`}
+        >
+          <div className="relative flex items-center justify-center w-6 h-6">
+            <Home className={`w-5 h-5 transition-transform ${activeNavTab === 'home' ? 'scale-110 text-blue-600' : ''}`} />
+          </div>
+          <span className="text-[10px] mt-0.5 tracking-tight truncate max-w-full text-center leading-tight">
+            {t.home}
+          </span>
+          {activeNavTab === 'home' && (
+            <span className="w-1 h-1 bg-blue-600 rounded-full mt-0.5" />
+          )}
+        </motion.button>
 
-      {/* Services */}
-      <motion.button
-        whileTap={{ scale: 0.9 }}
-        onClick={() => handleTabClick('services', 'services-section')}
-        className={`flex flex-col items-center gap-0.5 py-1 px-2 rounded-lg text-[10px] font-bold transition-colors ${
-          activeNavTab === 'services' ? 'text-blue-600 font-extrabold' : 'text-slate-500 hover:text-slate-800'
-        }`}
-      >
-        <Layers className="w-5 h-5" />
-        <span>{t.services}</span>
-      </motion.button>
+        {/* 2. Services */}
+        <motion.button
+          whileTap={{ scale: 0.92 }}
+          onClick={() => handleTabClick('services', 'services-section')}
+          className={`flex flex-col items-center justify-center w-full py-1 px-0.5 rounded-xl transition-all cursor-pointer ${
+            activeNavTab === 'services' 
+              ? 'text-blue-600 font-black' 
+              : 'text-slate-500 hover:text-slate-800 font-semibold'
+          }`}
+        >
+          <div className="relative flex items-center justify-center w-6 h-6">
+            <Layers className={`w-5 h-5 transition-transform ${activeNavTab === 'services' ? 'scale-110 text-blue-600' : ''}`} />
+          </div>
+          <span className="text-[10px] mt-0.5 tracking-tight truncate max-w-full text-center leading-tight">
+            {t.services}
+          </span>
+          {activeNavTab === 'services' && (
+            <span className="w-1 h-1 bg-blue-600 rounded-full mt-0.5" />
+          )}
+        </motion.button>
 
-      {/* Center Cart / Order Now Button */}
-      <motion.button
-        whileHover={{ scale: 1.08 }}
-        whileTap={{ scale: 0.92 }}
-        onClick={openCart}
-        className="relative -top-3 bg-gradient-to-tr from-blue-600 to-indigo-600 text-white w-12 h-12 rounded-full flex flex-col items-center justify-center shadow-lg shadow-blue-500/40 ring-4 ring-white"
-        aria-label="Open Cart"
-      >
-        <ShoppingBag className="w-5 h-5" />
-        {cartCount > 0 && (
-          <motion.span 
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            className="absolute -top-1 -right-1 bg-amber-400 text-slate-950 text-[10px] font-black w-4.5 h-4.5 rounded-full flex items-center justify-center border-2 border-white shadow-xs"
-          >
-            {cartCount}
-          </motion.span>
-        )}
-      </motion.button>
+        {/* 3. Cart / Bag */}
+        <motion.button
+          whileTap={{ scale: 0.92 }}
+          onClick={openCart}
+          className="flex flex-col items-center justify-center w-full py-1 px-0.5 rounded-xl transition-all cursor-pointer text-slate-700 hover:text-blue-600 font-semibold"
+          aria-label="Open Cart"
+        >
+          <div className="relative flex items-center justify-center w-7 h-7 rounded-xl bg-blue-50 text-blue-600 border border-blue-200/80 shadow-xs">
+            <ShoppingBag className="w-4 h-4" />
+            {cartCount > 0 && (
+              <motion.span 
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                className="absolute -top-1 -right-1 bg-blue-600 text-white text-[9px] font-black w-4 h-4 rounded-full flex items-center justify-center border-2 border-white shadow-xs"
+              >
+                {cartCount}
+              </motion.span>
+            )}
+          </div>
+          <span className="text-[10px] mt-0.5 tracking-tight truncate max-w-full text-center leading-tight font-bold text-blue-700">
+            {t.cart}
+          </span>
+        </motion.button>
 
-      {/* Customer Reviews */}
-      <motion.button
-        whileTap={{ scale: 0.9 }}
-        onClick={() => handleTabClick('reviews', 'reviews-section')}
-        className={`flex flex-col items-center gap-0.5 py-1 px-2 rounded-lg text-[10px] font-bold transition-colors ${
-          activeNavTab === 'reviews' ? 'text-blue-600 font-extrabold' : 'text-slate-500 hover:text-slate-800'
-        }`}
-      >
-        <Star className="w-5 h-5 fill-amber-400 text-amber-400" />
-        <span>{t.reviews}</span>
-      </motion.button>
+        {/* 4. Customer Reviews */}
+        <motion.button
+          whileTap={{ scale: 0.92 }}
+          onClick={() => handleTabClick('reviews', 'reviews-section')}
+          className={`flex flex-col items-center justify-center w-full py-1 px-0.5 rounded-xl transition-all cursor-pointer ${
+            activeNavTab === 'reviews' 
+              ? 'text-blue-600 font-black' 
+              : 'text-slate-500 hover:text-slate-800 font-semibold'
+          }`}
+        >
+          <div className="relative flex items-center justify-center w-6 h-6">
+            <Star className={`w-5 h-5 transition-transform ${activeNavTab === 'reviews' ? 'scale-110 text-amber-500 fill-amber-400' : 'text-slate-400'}`} />
+          </div>
+          <span className="text-[10px] mt-0.5 tracking-tight truncate max-w-full text-center leading-tight">
+            {t.reviews}
+          </span>
+          {activeNavTab === 'reviews' && (
+            <span className="w-1 h-1 bg-blue-600 rounded-full mt-0.5" />
+          )}
+        </motion.button>
 
-      {/* Track Order */}
-      <motion.button
-        whileTap={{ scale: 0.9 }}
-        onClick={() => openOrderTracker()}
-        className="flex flex-col items-center gap-0.5 py-1 px-2 rounded-lg text-[10px] font-bold text-slate-500 hover:text-blue-600 transition-colors"
-      >
-        <Search className="w-5 h-5 text-blue-500" />
-        <span>{t.trackOrder}</span>
-      </motion.button>
-
-    </motion.div>
+        {/* 5. Track Project */}
+        <motion.button
+          whileTap={{ scale: 0.92 }}
+          onClick={() => openOrderTracker()}
+          className="flex flex-col items-center justify-center w-full py-1 px-0.5 rounded-xl transition-all cursor-pointer text-slate-500 hover:text-blue-600 font-semibold"
+        >
+          <div className="relative flex items-center justify-center w-6 h-6">
+            <Search className="w-5 h-5 text-slate-500 hover:text-blue-600" />
+          </div>
+          <span className="text-[10px] mt-0.5 tracking-tight truncate max-w-full text-center leading-tight">
+            {t.trackOrder}
+          </span>
+        </motion.button>
+      </div>
+    </motion.nav>
   );
 };

@@ -27,9 +27,9 @@ export const OrderTrackerModal: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState(selectedOrderIdForTracking || '');
   const [searchedOrder, setSearchedOrder] = useState<AcademicOrder | null>(() => {
     if (selectedOrderIdForTracking) {
-      return orders.find(o => o.id === selectedOrderIdForTracking) || null;
+      return orders.find(o => o.id.toLowerCase() === selectedOrderIdForTracking.toLowerCase()) || null;
     }
-    return orders[0] || null;
+    return null;
   });
   const [errorMsg, setErrorMsg] = useState('');
 
@@ -38,13 +38,11 @@ export const OrderTrackerModal: React.FC = () => {
     if (orderTrackerOpen) {
       if (selectedOrderIdForTracking) {
         setSearchQuery(selectedOrderIdForTracking);
-        const match = orders.find(o => o.id === selectedOrderIdForTracking);
+        const match = orders.find(o => o.id.toLowerCase() === selectedOrderIdForTracking.toLowerCase());
         if (match) {
           setSearchedOrder(match);
           setErrorMsg('');
         }
-      } else if (orders.length > 0 && !searchedOrder) {
-        setSearchedOrder(orders[0]);
       }
     }
   }, [orderTrackerOpen, selectedOrderIdForTracking, orders]);
@@ -73,9 +71,10 @@ export const OrderTrackerModal: React.FC = () => {
     }
 
     const found = orders.find(
-      o => o.id.toLowerCase().includes(query) || 
-           o.phone.replace(/[^0-9]/g, '').includes(query.replace(/[^0-9]/g, '')) ||
-           o.whatsapp.replace(/[^0-9]/g, '').includes(query.replace(/[^0-9]/g, ''))
+      o => o.id.toLowerCase() === query || 
+           o.id.toLowerCase().includes(query) ||
+           (o.phone && o.phone.replace(/[^0-9]/g, '').includes(query.replace(/[^0-9]/g, ''))) ||
+           (o.whatsapp && o.whatsapp.replace(/[^0-9]/g, '').includes(query.replace(/[^0-9]/g, '')))
     );
 
     if (found) {
@@ -83,7 +82,7 @@ export const OrderTrackerModal: React.FC = () => {
       addRecentTrackedId(found.id);
       setErrorMsg('');
     } else {
-      setErrorMsg(language === 'bn' ? 'কোনো অর্ডার পাওয়া যায়নি। সঠিক Order ID বা ফোন নম্বর দিন।' : 'No order found with this ID or phone number.');
+      setErrorMsg(language === 'bn' ? 'কোনো অর্ডার পাওয়া যায়নি। অনুগ্রহ করে সঠিক Order ID বা ফোন নম্বর দিন।' : 'No order found with this ID or phone number. Please verify your Tracking ID.');
       setSearchedOrder(null);
     }
   };
@@ -325,9 +324,18 @@ export const OrderTrackerModal: React.FC = () => {
               </div>
             </>
           ) : (
-            <div className="py-12 text-center text-slate-400">
-              <Package className="w-12 h-12 mx-auto mb-2 opacity-50" />
-              <p>{t.orderNotFound}</p>
+            <div className="py-12 px-4 text-center">
+              <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl mx-auto flex items-center justify-center mb-3.5 border border-blue-100 shadow-xs">
+                <Search className="w-8 h-8 opacity-80" />
+              </div>
+              <h4 className="text-sm sm:text-base font-bold text-slate-800 mb-1">
+                {language === 'bn' ? 'অর্ডার ট্র্যাকিং আইডি প্রদান করুন' : 'Track Your Client Project'}
+              </h4>
+              <p className="text-xs text-slate-500 max-w-sm mx-auto leading-relaxed">
+                {language === 'bn' 
+                  ? 'আপনার অর্ডার কনফার্মেশন কোড (যেমন: KT-ORD-2026-8841) অথবা নিবন্ধিত মোবাইল নম্বর লিখে সার্চ বাটনে চাপ দিন।'
+                  : 'Enter your assigned Order ID (e.g. KT-ORD-2026-8841) or registered phone number above to inspect live sprint progress.'}
+              </p>
             </div>
           )}
         </div>

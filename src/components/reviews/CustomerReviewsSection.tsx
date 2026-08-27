@@ -21,12 +21,11 @@ export const CustomerReviewsSection: React.FC = () => {
 
   const categories = [
     { key: 'All', label: { bn: 'সকল রিভিউ', en: 'All Reviews' } },
-    { key: 'Design', label: { bn: '🎨 ডিজাইন', en: '🎨 Design' } },
-    { key: 'Development', label: { bn: '💻 ডেভেলপমেন্ট', en: '💻 Development' } },
-    { key: 'WordPress', label: { bn: '🌐 ওয়ার্ডপ্রেস', en: '🌐 WordPress' } },
-    { key: 'Data Analysis', label: { bn: '📊 ডাটা অ্যানালাইসিস', en: '📊 Data Analysis' } },
-    { key: 'Student Support', label: { bn: '🎓 স্টুডেন্ট সাপোর্ট', en: '🎓 Student Support' } },
-    { key: 'Thesis', label: { bn: '📚 থিসিস ও FYP', en: '📚 Thesis & FYP' } }
+    { key: 'Design', label: { bn: '🎨 ডিজাইন ও UI/UX', en: '🎨 Design & UI/UX' } },
+    { key: 'Development', label: { bn: '💻 সফটওয়্যার ও ওয়েব', en: '💻 Web & Software' } },
+    { key: 'WordPress', label: { bn: '🌐 ওয়ার্ডপ্রেস উইং', en: '🌐 WordPress Wing' } },
+    { key: 'Data Analysis', label: { bn: '📊 ডাটা অ্যানালিটিক্স', en: '📊 Data Analytics' } },
+    { key: 'Enterprise', label: { bn: '🏢 এন্টারপ্রাইজ ক্লাউড', en: '🏢 Enterprise & Cloud' } }
   ];
 
   const filteredReviews = selectedCategory === 'All'
@@ -34,26 +33,23 @@ export const CustomerReviewsSection: React.FC = () => {
     : reviews.filter(r => {
         const cat = selectedCategory.toLowerCase();
         const srvTitle = (r.serviceTitle || '').toLowerCase();
-        const crsSolved = (r.courseSolved || '').toLowerCase();
-        const combined = `${srvTitle} ${crsSolved}`;
+        const crsSolved = (r.courseSolved || r.impactOutcome || '').toLowerCase();
+        const combined = `${srvTitle} ${crsSolved} ${(r.comment || '').toLowerCase()}`;
         
         if (cat === 'design') {
-          return combined.includes('poster') || combined.includes('banner') || combined.includes('design') || combined.includes('ui') || combined.includes('cv') || combined.includes('logo') || combined.includes('presentation');
+          return combined.includes('poster') || combined.includes('banner') || combined.includes('design') || combined.includes('ui') || combined.includes('cv') || combined.includes('logo') || combined.includes('presentation') || combined.includes('figma');
         }
         if (cat === 'development') {
-          return combined.includes('website') || combined.includes('web') || combined.includes('app') || combined.includes('code') || combined.includes('portfolio') || combined.includes('api') || combined.includes('bug');
+          return combined.includes('website') || combined.includes('web') || combined.includes('app') || combined.includes('code') || combined.includes('portfolio') || combined.includes('api') || combined.includes('bug') || combined.includes('saas') || combined.includes('react');
         }
         if (cat === 'wordpress') {
           return combined.includes('wordpress') || combined.includes('woocommerce') || combined.includes('elementor') || combined.includes('plugin') || combined.includes('seo');
         }
         if (cat === 'data analysis') {
-          return combined.includes('data') || combined.includes('spss') || combined.includes('python') || combined.includes('power bi') || combined.includes('powerbi') || combined.includes('excel') || combined.includes('scraping') || combined.includes('stats');
+          return combined.includes('data') || combined.includes('spss') || combined.includes('python') || combined.includes('power bi') || combined.includes('powerbi') || combined.includes('excel') || combined.includes('scraping') || combined.includes('stats') || combined.includes('sql');
         }
-        if (cat === 'student support') {
-          return combined.includes('fyp') || combined.includes('thesis') || combined.includes('support') || combined.includes('paper') || combined.includes('research') || combined.includes('turnitin');
-        }
-        if (cat === 'thesis') {
-          return combined.includes('thesis') || combined.includes('fyp') || combined.includes('paper') || combined.includes('research') || combined.includes('ieee') || combined.includes('latex');
+        if (cat === 'enterprise') {
+          return combined.includes('enterprise') || combined.includes('cloud') || combined.includes('scale') || combined.includes('docker') || combined.includes('aws') || combined.includes('database') || combined.includes('production');
         }
         return combined.includes(cat);
       });
@@ -148,9 +144,9 @@ export const CustomerReviewsSection: React.FC = () => {
                   <CountUpNumber end={30} suffix="+" duration={1.8} isBengali={language === 'bn'} />
                 </div>
                 <div className="text-xs font-semibold text-slate-700 mt-0.5">
-                  {language === 'bn' ? 'বিশ্ববিদ্যালয় কভারেজ' : 'Universities Covered'}
+                  {language === 'bn' ? 'ইন্ডাস্ট্রি ও ক্লায়েন্ট কভারেজ' : 'Industries Served'}
                 </div>
-                <div className="text-[10px] text-slate-400">BUET, DU, NSU, BRAC & More</div>
+                <div className="text-[10px] text-slate-400">SaaS, FinTech, E-Commerce & Retail</div>
               </div>
 
               <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100 hover:bg-indigo-50/40 transition-colors duration-200">
@@ -158,7 +154,7 @@ export const CustomerReviewsSection: React.FC = () => {
                   <CountUpNumber end={100} suffix="%" duration={1.8} isBengali={language === 'bn'} />
                 </div>
                 <div className="text-xs font-semibold text-slate-700 mt-0.5">
-                  {language === 'bn' ? 'গোপনীয়তা সংরক্ষিত' : 'Confidential Delivery'}
+                  {language === 'bn' ? 'গোপনীয়তা ও কোড ওনারশিপ' : '100% NDA & Code Ownership'}
                 </div>
                 <div className="text-[10px] text-slate-400">Verified Specialists</div>
               </div>
@@ -218,7 +214,7 @@ export const CustomerReviewsSection: React.FC = () => {
                     {rev.verified && (
                       <span className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
                         <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-                        {language === 'bn' ? 'যাচাইকৃত শিক্ষার্থী' : 'Verified Order'}
+                        {language === 'bn' ? 'যাচাইকৃত ক্লায়েন্ট' : 'Verified Client'}
                       </span>
                     )}
                   </div>
@@ -232,8 +228,8 @@ export const CustomerReviewsSection: React.FC = () => {
                 {/* Footer User Info */}
                 <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
                   <div>
-                    <div className="font-bold text-slate-900">{rev.userName}</div>
-                    <div className="text-[10px] text-slate-400 truncate max-w-[170px]">{rev.serviceTitle}</div>
+                    <div className="font-bold text-slate-900">{rev.clientName || rev.studentName || rev.userName || 'Verified Client'}</div>
+                    <div className="text-[10px] text-slate-500 truncate max-w-[170px]">{rev.companyOrOrg || rev.university || rev.serviceTitle}</div>
                   </div>
 
                   <button

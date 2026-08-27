@@ -148,8 +148,8 @@ export const SettingsManager: React.FC = () => {
                 </h3>
                 <p className="text-xs text-slate-500 mt-0.5">
                   {language === 'bn' 
-                    ? 'ওয়েবসাইটের একেবারে শীর্ষে ব্যানার হিসেবে শিক্ষার্থীদের জন্য জরুরি মেসেজ দিন।' 
-                    : 'Shows an alert banner at the very top of the student website.'}
+                    ? 'ওয়েবসাইটের একেবারে শীর্ষে ব্যানার হিসেবে ভিজিটর ও ক্লায়েন্টদের জন্য জরুরি বার্তা দিন।' 
+                    : 'Shows an alert banner at the very top of the live website.'}
                 </p>
               </div>
 
@@ -177,7 +177,7 @@ export const SettingsManager: React.FC = () => {
                   rows={3}
                   value={formData.notice.messageBn}
                   onChange={(e) => handleNoticeChange('messageBn', e.target.value)}
-                  placeholder="যেমন: স্পেশাল অফার! ফাইনাল সেমিস্টার ক্যাপস্টন প্রজেক্টে ৩০% ডিসকাউন্ট চলছে।"
+                  placeholder="যেমন: স্পেশাল অফার! কাস্টম ওয়েব ও সফটওয়্যার সলিউশনে বিশেষ ২০% ডিসকাউন্ট।"
                   className="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:bg-white focus:outline-none"
                 />
               </div>
@@ -190,7 +190,7 @@ export const SettingsManager: React.FC = () => {
                   rows={3}
                   value={formData.notice.messageEn}
                   onChange={(e) => handleNoticeChange('messageEn', e.target.value)}
-                  placeholder="e.g. Special Discount: 30% OFF on Final Semester CSE Capstone Projects!"
+                  placeholder="e.g. Limited Time: 20% OFF on Full-Stack Custom Web & Mobile App Solutions!"
                   className="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:bg-white focus:outline-none"
                 />
               </div>
@@ -311,11 +311,11 @@ export const SettingsManager: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="text-sm font-bold text-slate-900">
-                    {language === 'bn' ? 'নতুন শিক্ষার্থী অর্ডার গ্রহণ' : 'Accepting New Student Orders'}
+                    {language === 'bn' ? 'নতুন ক্লায়েন্ট অর্ডার গ্রহণ' : 'Accepting New Client Orders'}
                   </h4>
                   <p className="text-xs text-slate-500">
                     {formData.acceptingOrders 
-                      ? (language === 'bn' ? 'সিস্টেমে নতুন অর্ডার ফর্ম সক্রিয় রয়েছে।' : 'Students can place orders without restrictions.') 
+                      ? (language === 'bn' ? 'সিস্টেমে নতুন অর্ডার ফর্ম সক্রিয় রয়েছে।' : 'Clients can place orders without restrictions.') 
                       : (language === 'bn' ? 'অর্ডার সাময়িক স্থগিত থাকবে।' : 'Shows high-capacity waitlist notice.')}
                   </p>
                 </div>
@@ -398,7 +398,7 @@ export const SettingsManager: React.FC = () => {
                   type="text"
                   value={formData.workingHours}
                   onChange={(e) => setFormData({ ...formData, workingHours: e.target.value })}
-                  placeholder="24/7 Academic Support Active"
+                  placeholder="24/7 Tech & Client Support Active"
                   className="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:bg-white focus:outline-none"
                 />
               </div>
@@ -429,7 +429,7 @@ export const SettingsManager: React.FC = () => {
 
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">
-                  {language === 'bn' ? 'অভিজ্ঞ মেন্টর সংখ্যা' : 'Expert Mentors'}
+                  {language === 'bn' ? 'অভিজ্ঞ স্পেশালিস্ট সংখ্যা' : 'Expert Specialists'}
                 </label>
                 <input
                   type="number"
@@ -441,7 +441,7 @@ export const SettingsManager: React.FC = () => {
 
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">
-                  {language === 'bn' ? 'সফল শিক্ষার্থী সংখ্যা' : 'Happy Students'}
+                  {language === 'bn' ? 'সন্তুষ্ট ক্লায়েন্ট সংখ্যা' : 'Happy Clients & Partners'}
                 </label>
                 <input
                   type="number"

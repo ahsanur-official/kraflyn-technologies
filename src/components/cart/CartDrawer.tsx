@@ -186,7 +186,7 @@ export const CartDrawer: React.FC = () => {
                     <strong className="block font-bold">{language === 'bn' ? '১০০% ডেলিভারি ও সন্তুষ্টি নিশ্চয়তা' : '100% Delivery Assurance'}</strong>
                     {language === 'bn' 
                       ? 'অর্ডার প্লেস করার পর আমাদের টিম WhatsApp এ সরাসরি যোগাযোগ করে সব বিস্তারিত জেনে কাজ শুরু করবে।' 
-                      : 'After placing your order, our academic coordinator reaches out on WhatsApp within 15-30 minutes.'}
+                      : 'After placing your order, our technical project lead reaches out on WhatsApp within 15-30 minutes.'}
                   </div>
                 </div>
               </>

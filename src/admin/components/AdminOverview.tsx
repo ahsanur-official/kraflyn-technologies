@@ -164,7 +164,7 @@ export const AdminOverview: React.FC<AdminOverviewProps> = ({ onGoToOrders, onGo
                       <span className="font-bold text-slate-900 truncate">{order.customerName}</span>
                     </div>
                     <div className="text-slate-500 text-[11px] mt-0.5 truncate">
-                      {order.university} • <strong className="text-slate-700 font-medium">{order.courseName}</strong>
+                      {order.companyOrOrg || order.university} • <strong className="text-slate-700 font-medium">{order.courseName}</strong>
                     </div>
                   </div>
 

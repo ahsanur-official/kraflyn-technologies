@@ -111,7 +111,7 @@ export const AdminNavbar: React.FC<AdminNavbarProps> = ({ activeTab, setActiveTa
               whileTap={{ scale: 0.98 }}
               onClick={() => setCurrentView('student')}
               className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white text-xs font-semibold border border-slate-700 transition-colors cursor-pointer min-h-[36px]"
-              title="Open Public Student Website"
+              title="Open Public Website"
             >
               <ExternalLink className="w-3.5 h-3.5 text-blue-400" />
               <span className="hidden sm:inline">{language === 'bn' ? 'পাবলিক সাইট' : 'Public Site'}</span>

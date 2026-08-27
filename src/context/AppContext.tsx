@@ -699,7 +699,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   // Recent Tracked Orders History
   const [recentTrackedIds, setRecentTrackedIds] = useState<string[]>(() => {
-    return safeParse<string[]>(STORAGE_KEYS.RECENT_TRACKED, ['KT-ORD-2026-8841', 'KT-ORD-2026-8842']);
+    return safeParse<string[]>(STORAGE_KEYS.RECENT_TRACKED, []);
   });
 
   const addRecentTrackedId = (orderId: string) => {
@@ -892,49 +892,118 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     // 1. Subscribe to Live Orders from Cloud Firestore
     const unsubscribeOrders = subscribeToOrders((cloudOrders) => {
       if (cloudOrders && cloudOrders.length > 0) {
-        setOrders(cloudOrders);
+        setOrders(prev => {
+          const cloudMap = new Map(cloudOrders.map(co => [co.id, co]));
+          const merged = prev.map(o => cloudMap.get(o.id) || o);
+          cloudOrders.forEach(co => {
+            if (!merged.some(m => m.id === co.id)) {
+              merged.unshift(co);
+            }
+          });
+          return merged;
+        });
       }
     });
 
     // 2. Subscribe to Live Reviews from Cloud Firestore
     const unsubscribeReviews = subscribeToReviews((cloudReviews) => {
       if (cloudReviews && cloudReviews.length > 0) {
-        setReviews(cloudReviews);
+        setReviews(prev => {
+          const cloudMap = new Map(cloudReviews.map(cr => [cr.id, cr]));
+          const merged = prev.map(r => cloudMap.get(r.id) || r);
+          cloudReviews.forEach(cr => {
+            if (!merged.some(m => m.id === cr.id)) {
+              merged.unshift(cr);
+            }
+          });
+          return merged;
+        });
       }
     });
 
     // 3. Subscribe to Projects
     const unsubscribeProjects = subscribeToProjects((cloudProjects) => {
       if (cloudProjects && cloudProjects.length > 0) {
-        setProjects(cloudProjects);
+        setProjects(prev => {
+          const cloudMap = new Map(cloudProjects.map(cp => [cp.id, cp]));
+          const merged = prev.map(p => cloudMap.get(p.id) || p);
+          cloudProjects.forEach(cp => {
+            if (!merged.some(m => m.id === cp.id)) {
+              merged.unshift(cp);
+            }
+          });
+          return merged;
+        });
       }
     });
 
     // 4. Subscribe to Site Settings
     const unsubscribeSettings = subscribeToSiteSettings((cloudSettings) => {
       if (cloudSettings) {
-        setSiteSettings(cloudSettings);
+        setSiteSettings(prev => ({
+          ...prev,
+          ...cloudSettings,
+          notice: {
+            ...prev.notice,
+            ...(cloudSettings.notice || {})
+          },
+          heroStats: {
+            ...prev.heroStats,
+            ...(cloudSettings.heroStats || {})
+          },
+          socialLinks: {
+            ...prev.socialLinks,
+            ...(cloudSettings.socialLinks || {})
+          }
+        }));
       }
     });
 
-    // 5. Subscribe to Mentors
+    // 5. Subscribe to Mentors / Specialists
     const unsubscribeMentors = subscribeToMentors((cloudMentors) => {
       if (cloudMentors && cloudMentors.length > 0) {
-        setMentors(cloudMentors);
+        setMentors(prev => {
+          const cloudMap = new Map(cloudMentors.map(cm => [cm.id, cm]));
+          const merged = prev.map(m => cloudMap.get(m.id) || m);
+          cloudMentors.forEach(cm => {
+            if (!merged.some(m => m.id === cm.id)) {
+              merged.push(cm);
+            }
+          });
+          return merged;
+        });
       }
     });
 
     // 6. Subscribe to Services
     const unsubscribeServices = subscribeToServices((cloudServices) => {
       if (cloudServices && cloudServices.length > 0) {
-        setServices(cloudServices);
+        setServices(prev => {
+          const cloudMap = new Map(cloudServices.map(cs => [cs.id, cs]));
+          const merged = prev.map(s => cloudMap.get(s.id) || s);
+          cloudServices.forEach(cs => {
+            if (!merged.some(m => m.id === cs.id)) {
+              merged.push(cs);
+            }
+          });
+          return merged;
+        });
       }
     });
 
     // 7. Subscribe to Inquiries
     const unsubscribeInquiries = subscribeToInquiries((cloudInquiries) => {
       if (cloudInquiries && cloudInquiries.length > 0) {
-        setInquiries(cloudInquiries);
+        setInquiries(prev => {
+          const cloudMap = new Map(cloudInquiries.map(ci => [ci.id, ci]));
+          const merged = prev.map(i => cloudMap.get(i.id) || i);
+          cloudInquiries.forEach(ci => {
+            if (!merged.some(m => m.id === ci.id)) {
+              merged.unshift(ci);
+            }
+          });
+          return merged;
+        });
       }
     });
 

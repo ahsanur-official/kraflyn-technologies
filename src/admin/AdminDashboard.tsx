@@ -24,10 +24,7 @@ import {
 
 export const AdminDashboard: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
-    return (
-      sessionStorage.getItem('kraflyn_admin_session') === 'authenticated' ||
-      sessionStorage.getItem('eduquest_admin_session') === 'authenticated'
-    );
+    return sessionStorage.getItem('kraflyn_admin_session') === 'authenticated';
   });
   
   const [activeTab, setActiveTab] = useState<AdminTab>('overview');
@@ -35,7 +32,6 @@ export const AdminDashboard: React.FC = () => {
 
   const handleLogout = () => {
     sessionStorage.removeItem('kraflyn_admin_session');
-    sessionStorage.removeItem('eduquest_admin_session');
     setIsAuthenticated(false);
   };
 

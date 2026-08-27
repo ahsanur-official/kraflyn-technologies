@@ -446,7 +446,7 @@ export const ProjectsManager: React.FC = () => {
                     required
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    placeholder="Provide a clear, engaging summary of the project, features, and academic scope..."
+                    placeholder="Provide a clear, engaging summary of the project, architecture, features, and business impact..."
                     className="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none"
                   />
                 </div>
@@ -546,17 +546,17 @@ export const ProjectsManager: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Student Info, Completion Date & Grade Output */}
+                {/* Client Info, Completion Date & Grade Output */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div>
                     <label className="block text-xs font-bold text-slate-700 mb-1">
-                      {language === 'bn' ? 'শিক্ষার্থী / ক্লায়েন্ট' : 'Client / University'}
+                      {language === 'bn' ? 'ক্লায়েন্ট / প্রতিষ্ঠান' : 'Client / Brand / Sector'}
                     </label>
                     <input
                       type="text"
                       value={studentOrClient}
                       onChange={(e) => setStudentOrClient(e.target.value)}
-                      placeholder="e.g. CSE Student, PUB"
+                      placeholder="e.g. Enterprise FinTech / Global Client"
                       className="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none"
                     />
                   </div>
@@ -576,13 +576,13 @@ export const ProjectsManager: React.FC = () => {
 
                   <div>
                     <label className="block text-xs font-bold text-slate-700 mb-1">
-                      {language === 'bn' ? 'ফলাফল / ব্যাজ' : 'Grade / Outcome'}
+                      {language === 'bn' ? 'ফলাফল / ব্যাজ' : 'Outcome / Impact'}
                     </label>
                     <input
                       type="text"
                       value={gradeOutcome}
                       onChange={(e) => setGradeOutcome(e.target.value)}
-                      placeholder="e.g. A+ Grade Output"
+                      placeholder="e.g. 100% Production Live"
                       className="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none"
                     />
                   </div>
@@ -602,7 +602,7 @@ export const ProjectsManager: React.FC = () => {
                         {language === 'bn' ? 'ওয়েবসাইটের শীর্ষে ফিচারড প্রজেক্ট হিসেবে প্রদর্শন করুন' : 'Highlight as Featured Showcase Project'}
                       </span>
                       <span className="text-[10px] text-amber-700">
-                        {language === 'bn' ? 'এটি হোমপেজের শোকেসে গোল্ডেন ব্যাজ সহ সবার আগে দেখাবে।' : 'Will be displayed prominently on the student homepage portfolio section.'}
+                        {language === 'bn' ? 'এটি হোমপেজের পোর্টফোলিও শোকেসে সবার আগে দেখাবে।' : 'Will be displayed prominently on the public homepage portfolio section.'}
                       </span>
                     </div>
                   </label>

@@ -13,13 +13,13 @@ export const Testimonials: React.FC = () => {
         <div className="text-center max-w-2xl mx-auto mb-14">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold mb-3">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Verified Student Reviews</span>
+            <span>Verified Client Reviews</span>
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-            What Clients & Students Say About Kraflyn Technologies
+            What Clients & Partners Say About Kraflyn Technologies
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600">
-            Real feedback from university students who conquered tricky courses, labs, and thesis defenses.
+            Real feedback from founders, businesses, and enterprises who built products, platforms, and analytics with Kraflyn Technologies.
           </p>
         </div>
 
@@ -53,11 +53,13 @@ export const Testimonials: React.FC = () => {
               <div className="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between">
                 <div>
                   <div className="text-xs font-bold text-slate-900 flex items-center gap-1">
-                    <span>{rev.studentName}</span>
+                    <span>{rev.clientName || rev.studentName}</span>
                     <CheckCircle2 className="w-3 h-3 text-emerald-500" />
                   </div>
-                  <div className="text-[11px] text-slate-500">{rev.university}</div>
-                  <div className="text-[10px] text-slate-400">{rev.department}</div>
+                  <div className="text-[11px] text-slate-500">{rev.companyOrOrg || rev.university}</div>
+                  {rev.impactOutcome && (
+                    <div className="text-[10px] text-emerald-600 font-semibold">{rev.impactOutcome}</div>
+                  )}
                 </div>
                 <span className="text-[10px] text-slate-400">{rev.date}</span>
               </div>

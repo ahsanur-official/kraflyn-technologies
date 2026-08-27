@@ -18,21 +18,21 @@ export const WriteReviewModal: React.FC = () => {
     t 
   } = useApp();
 
-  const [studentName, setStudentName] = useState(userProfile.name || '');
-  const [university, setUniversity] = useState(userProfile.university || UNIVERSITIES[0]);
-  const [department, setDepartment] = useState(userProfile.department || DEPARTMENTS[0]);
-  const [serviceTitle, setServiceTitle] = useState(bilingualServices[0]?.title[language] || 'Course Support');
+  const [clientName, setClientName] = useState(userProfile.name || '');
+  const [companyOrOrg, setCompanyOrOrg] = useState(userProfile.companyOrOrg || userProfile.university || '');
+  const [serviceTitle, setServiceTitle] = useState(bilingualServices[0]?.title[language] || 'Custom Development');
   const [rating, setRating] = useState(5);
   const [hoverRating, setHoverRating] = useState(0);
-  const [gradeOutcome, setGradeOutcome] = useState(language === 'bn' ? 'A+ গ্রেড পেয়েছি' : 'Achieved Grade A+');
+  const [impactOutcome, setImpactOutcome] = useState(language === 'bn' ? 'সময়মতো নিখুঁত ডেলিভারি' : 'Delivered on Schedule & High Quality');
   const [comment, setComment] = useState('');
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   React.useEffect(() => {
-    if (writeReviewModalOpen && userProfile.name && !studentName) {
-      setStudentName(userProfile.name);
-      if (userProfile.university) setUniversity(userProfile.university);
-      if (userProfile.department) setDepartment(userProfile.department);
+    if (writeReviewModalOpen && userProfile.name && !clientName) {
+      setClientName(userProfile.name);
+      if (userProfile.companyOrOrg || userProfile.university) {
+        setCompanyOrOrg(userProfile.companyOrOrg || userProfile.university || '');
+      }
     }
   }, [writeReviewModalOpen, userProfile]);
 
@@ -41,8 +41,8 @@ export const WriteReviewModal: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const errs: Record<string, string> = {};
-    if (!studentName.trim()) {
-      errs.studentName = language === 'bn' ? 'আপনার নাম লিখুন' : 'Please enter your name';
+    if (!clientName.trim()) {
+      errs.clientName = language === 'bn' ? 'আপনার নাম লিখুন' : 'Please enter your name';
     }
     if (!comment.trim() || comment.trim().length < 10) {
       errs.comment = language === 'bn' 
@@ -53,12 +53,14 @@ export const WriteReviewModal: React.FC = () => {
 
     if (Object.keys(errs).length === 0) {
       addCustomerReview({
-        studentName,
-        university,
-        department,
+        clientName,
+        studentName: clientName,
+        companyOrOrg: companyOrOrg.trim() || 'Valued Client',
+        university: companyOrOrg.trim() || 'Client Enterprise',
         serviceTitle,
         rating,
-        gradeOutcome,
+        impactOutcome,
+        gradeOutcome: impactOutcome,
         comment
       });
     }
@@ -119,7 +121,7 @@ export const WriteReviewModal: React.FC = () => {
               ))}
             </div>
             <span className="text-xs font-bold text-amber-600 mt-1 block">
-              {rating === 5 ? (language === 'bn' ? '৫/৫ - অসাধারণ সাপোর্ট ও ডেলিভারি!' : '5/5 - Outstanding Academic Guidance!') : `${rating} Star Rating`}
+              {rating === 5 ? (language === 'bn' ? '৫/৫ - অসাধারণ সাপোর্ট ও ডেলিভারি!' : '5/5 - Outstanding Quality & Execution!') : `${rating} Star Rating`}
             </span>
           </div>
 
@@ -131,14 +133,14 @@ export const WriteReviewModal: React.FC = () => {
               </label>
               <input
                 type="text"
-                value={studentName}
-                onChange={(e) => setStudentName(e.target.value)}
+                value={clientName}
+                onChange={(e) => setClientName(e.target.value)}
                 placeholder={t.fullNamePlaceholder}
                 className={`w-full px-3 py-2 border rounded-xl text-xs sm:text-sm ${
-                  errors.studentName ? 'border-rose-400 bg-rose-50' : 'border-slate-300'
+                  errors.clientName ? 'border-rose-400 bg-rose-50' : 'border-slate-300'
                 }`}
               />
-              {errors.studentName && <p className="text-[10px] text-rose-500 mt-0.5">{errors.studentName}</p>}
+              {errors.clientName && <p className="text-[10px] text-rose-500 mt-0.5">{errors.clientName}</p>}
             </div>
 
             <div>
@@ -157,49 +159,30 @@ export const WriteReviewModal: React.FC = () => {
             </div>
           </div>
 
-          {/* University & Department */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
-                {t.universityName}
-              </label>
-              <select
-                value={university}
-                onChange={(e) => setUniversity(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-300 bg-white rounded-xl text-xs"
-              >
-                {UNIVERSITIES.map(u => (
-                  <option key={u} value={u}>{u}</option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
-                {t.departmentName}
-              </label>
-              <select
-                value={department}
-                onChange={(e) => setDepartment(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-300 bg-white rounded-xl text-xs"
-              >
-                {DEPARTMENTS.map(d => (
-                  <option key={d} value={d}>{d}</option>
-                ))}
-              </select>
-            </div>
+          {/* Company / Brand */}
+          <div>
+            <label className="block text-xs font-semibold text-slate-700 mb-1">
+              {t.universityName}
+            </label>
+            <input
+              type="text"
+              value={companyOrOrg}
+              onChange={(e) => setCompanyOrOrg(e.target.value)}
+              placeholder="e.g. Acme Tech / Startup Lab / E-Commerce Brand"
+              className="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs"
+            />
           </div>
 
           {/* Outcome / Result badge */}
           <div>
             <label className="block text-xs font-semibold text-slate-700 mb-1">
-              {t.gradeOutcomeLabel}
+              {language === 'bn' ? 'প্রজেক্ট ফলাফল / সাফল্য' : 'Project Outcome / Business Impact'}
             </label>
             <input
               type="text"
-              value={gradeOutcome}
-              onChange={(e) => setGradeOutcome(e.target.value)}
-              placeholder={t.gradeOutcomePlaceholder}
+              value={impactOutcome}
+              onChange={(e) => setImpactOutcome(e.target.value)}
+              placeholder="e.g. 100% On-Time Delivery, 3x Conversion Growth"
               className="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs"
             />
           </div>

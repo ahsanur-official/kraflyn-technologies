@@ -24,10 +24,10 @@ export const ReviewsManager: React.FC = () => {
       >
         <div>
           <h3 className="font-bold text-sm sm:text-base text-slate-900">
-            {language === 'bn' ? 'শিক্ষার্থী ফিডব্যাক ও রিভিউ মডারেশন' : 'Student Feedback & Review Moderation'}
+            {language === 'bn' ? 'ক্লায়েন্ট রিভিউ ও ফিডব্যাক মডারেশন' : 'Client Reviews & Feedback Moderation'}
           </h3>
           <p className="text-[11px] text-slate-500 mt-0.5">
-            {language === 'bn' ? 'ওয়েবসাইটে প্রদর্শিত সকল যাচাইকৃত রিভিউ পরিচালনা করুন' : 'Manage student reviews, ratings, and course testimonials'}
+            {language === 'bn' ? 'ওয়েবসাইটে প্রদর্শিত সকল ক্লায়েন্ট ও পার্টনার রিভিউ পরিচালনা করুন' : 'Manage verified client reviews, ratings, and project testimonials'}
           </p>
         </div>
 
@@ -54,9 +54,9 @@ export const ReviewsManager: React.FC = () => {
             <div>
               <div className="flex items-start justify-between gap-2 mb-1.5">
                 <div className="min-w-0">
-                  <h4 className="font-bold text-slate-900 text-sm truncate">{r.studentName}</h4>
-                  <div className="text-[11px] text-slate-500 truncate">{r.university}</div>
-                  <div className="text-[11px] text-blue-600 font-semibold truncate">{r.department}</div>
+                  <h4 className="font-bold text-slate-900 text-sm truncate">{r.clientName || r.studentName}</h4>
+                  <div className="text-[11px] text-slate-500 truncate">{r.companyOrOrg || r.university}</div>
+                  <div className="text-[11px] text-blue-600 font-semibold truncate">{r.serviceTitle}</div>
                 </div>
 
                 <div className="flex items-center gap-0.5 text-amber-500 bg-amber-50 px-2 py-0.5 rounded-lg text-xs font-bold shrink-0">
@@ -65,10 +65,14 @@ export const ReviewsManager: React.FC = () => {
                 </div>
               </div>
 
-              {(r.courseSolved || r.serviceTitle) && (
+              {(r.courseSolved || r.impactOutcome || r.gradeOutcome) && (
                 <div className="my-2 px-2.5 py-1 bg-slate-50 border border-slate-100 rounded-xl text-[11px] font-semibold text-slate-700 flex items-center justify-between">
                   <span className="truncate">🎯 {r.courseSolved || r.serviceTitle}</span>
-                  {r.gradeOutcome && <span className="text-emerald-600 font-bold ml-1 shrink-0 text-[10px] bg-emerald-50 px-1.5 py-0.5 rounded">{r.gradeOutcome}</span>}
+                  {(r.impactOutcome || r.gradeOutcome) && (
+                    <span className="text-emerald-600 font-bold ml-1 shrink-0 text-[10px] bg-emerald-50 px-1.5 py-0.5 rounded">
+                      {r.impactOutcome || r.gradeOutcome}
+                    </span>
+                  )}
                 </div>
               )}
 
